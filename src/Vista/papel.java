@@ -83,6 +83,10 @@ public class papel extends javax.swing.JFrame {
         __SALIR = new javax.swing.JButton();
         __NUEVO = new javax.swing.JButton();
         __GUARDAR = new javax.swing.JButton();
+        __etqEliNombre = new javax.swing.JLabel();
+        __etqEliColor = new javax.swing.JLabel();
+        __etqEliPropiedad = new javax.swing.JLabel();
+        __etqEliMarca = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         __Archivo = new javax.swing.JMenu();
         __menuMovimientosPapel = new javax.swing.JMenuItem();
@@ -404,6 +408,30 @@ public class papel extends javax.swing.JFrame {
         getContentPane().add(__GUARDAR);
         __GUARDAR.setBounds(240, 400, 80, 30);
 
+        __etqEliNombre.setFont(new java.awt.Font("Papyrus", 0, 12)); // NOI18N
+        __etqEliNombre.setForeground(new java.awt.Color(255, 255, 255));
+        __etqEliNombre.setText("X");
+        getContentPane().add(__etqEliNombre);
+        __etqEliNombre.setBounds(220, 170, 9, 20);
+
+        __etqEliColor.setFont(new java.awt.Font("Papyrus", 0, 12)); // NOI18N
+        __etqEliColor.setForeground(new java.awt.Color(255, 255, 255));
+        __etqEliColor.setText("X");
+        getContentPane().add(__etqEliColor);
+        __etqEliColor.setBounds(230, 250, 9, 20);
+
+        __etqEliPropiedad.setFont(new java.awt.Font("Papyrus", 0, 12)); // NOI18N
+        __etqEliPropiedad.setForeground(new java.awt.Color(255, 255, 255));
+        __etqEliPropiedad.setText("X");
+        getContentPane().add(__etqEliPropiedad);
+        __etqEliPropiedad.setBounds(520, 200, 9, 20);
+
+        __etqEliMarca.setFont(new java.awt.Font("Papyrus", 0, 12)); // NOI18N
+        __etqEliMarca.setForeground(new java.awt.Color(255, 255, 255));
+        __etqEliMarca.setText("X");
+        getContentPane().add(__etqEliMarca);
+        __etqEliMarca.setBounds(520, 270, 9, 20);
+
         __Archivo.setText("Archivo");
 
         __menuMovimientosPapel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
@@ -615,6 +643,10 @@ public class papel extends javax.swing.JFrame {
     public javax.swing.JButton __SALIR;
     public javax.swing.JLabel __etqAlto_;
     public javax.swing.JLabel __etqClave;
+    public javax.swing.JLabel __etqEliColor;
+    public javax.swing.JLabel __etqEliMarca;
+    public javax.swing.JLabel __etqEliNombre;
+    public javax.swing.JLabel __etqEliPropiedad;
     public javax.swing.JLabel __etqFech;
     public javax.swing.JLabel __etqNewColor;
     public javax.swing.JLabel __etqNewNombre;
