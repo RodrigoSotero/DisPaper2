@@ -7743,6 +7743,19 @@ public class jControlador implements ActionListener{
                         id_entrada++;
                         for(int i=0;i<movimientos.__tablaEntrada.getRowCount();i++){
                             try{
+                                for(int j =0;j<movimientos.__tablaEntrada.getColumnCount();j++){
+                                    if(movimientos.__tablaEntrada.getValueAt(i, j).equals(null)){
+                                        mensaje(3,"completa los campos en la fila "+(i+1));
+                                        return;
+                                    }
+                                }
+                            }catch(java.lang.NullPointerException e){
+                                
+                                    mensaje(3,"completa los campos en la fila "+(i+1));
+                                    return;
+                                
+                            }
+                            try{
                                 clavePapel=movimientos.__tablaEntrada.getValueAt(i, 0).toString();
                                 int totalentrada =Integer.parseInt(movimientos.__tablaEntrada.getValueAt(i, 1).toString());
                                 int cantidadentrada=Integer.parseInt(movimientos.__tablaEntrada.getValueAt(i, 2).toString());
@@ -7939,6 +7952,19 @@ public class jControlador implements ActionListener{
                         
                         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
                             try{
+                                for(int j =0;j<movimientos.__tablaSalida.getColumnCount();j++){
+                                    if(movimientos.__tablaSalida.getValueAt(i, j).equals(null)){
+                                        mensaje(3,"completa los campos en la fila "+(i+1));
+                                        return;
+                                    }
+                                }
+                            }catch(java.lang.NullPointerException e){
+                                
+                                    mensaje(3,"completa los campos en la fila "+(i+1));
+                                    return;
+                                
+                            }
+                            try{
                                 String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
                                 int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
                                 int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
@@ -7997,6 +8023,19 @@ public class jControlador implements ActionListener{
                 confir=mensajeConfirmacion("Estas seguro de modificar la Salida","Aceptar");
                 if (confir==JOptionPane.OK_OPTION){
                     for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
+                        try{
+                                for(int j =0;j<movimientos.__tablaSalida.getColumnCount();j++){
+                                    if(movimientos.__tablaSalida.getValueAt(i, j).equals(null)){
+                                        mensaje(3,"completa los campos en la fila "+(i+1));
+                                        return;
+                                    }
+                                }
+                            }catch(java.lang.NullPointerException e){
+                                
+                                    mensaje(3,"completa los campos en la fila "+(i+1));
+                                    return;
+                                
+                            }
                         try{
                             String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
                             int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
@@ -8130,6 +8169,19 @@ public class jControlador implements ActionListener{
                                     id_salidah++;
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         try{
+                                            for(int j =0;j<movimientos.__tablaSalidaHoja.getColumnCount();j++){
+                                                if(movimientos.__tablaSalidaHoja.getValueAt(i, j).equals(null)){
+                                                    mensaje(3,"completa los campos en la fila "+(i+1));
+                                                    return;
+                                                }
+                                            }
+                                        }catch(java.lang.NullPointerException e){
+
+                                                mensaje(3,"completa los campos en la fila "+(i+1));
+                                                return;
+
+                                        }
+                                        try{
                                             String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                             double totalhojassalh =Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
                                             int contsalh=0;
@@ -8200,6 +8252,19 @@ public class jControlador implements ActionListener{
                             confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
                             if (confir==JOptionPane.OK_OPTION){
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+                                        try{
+                                            for(int j =0;j<movimientos.__tablaSalidaHoja.getColumnCount();j++){
+                                                if(movimientos.__tablaSalidaHoja.getValueAt(i, j).equals(null)){
+                                                    mensaje(3,"completa los campos en la fila "+(i+1));
+                                                    return;
+                                                }
+                                            }
+                                        }catch(java.lang.NullPointerException e){
+
+                                                mensaje(3,"completa los campos en la fila "+(i+1));
+                                                return;
+
+                                        }
                                         try{
                                             String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                             int totalhojassalh =Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
@@ -8372,10 +8437,18 @@ public class jControlador implements ActionListener{
         switch(modificarsalidab){
             case 0:
                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
-                    for(int j=0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
-                        if(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, j)==null&&j!=0){
-                            //movimientos.__tablaSalidaBobinaInventario.setValueAt("0", i, j);
+                    try{
+                        for(int j =0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
+                            if(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, j).equals(null)){
+                                mensaje(3,"completa los campos en la fila "+(i+1));
+                                return;
+                            }
                         }
+                    }catch(java.lang.NullPointerException e){
+
+                            mensaje(3,"completa los campos en la fila "+(i+1));
+                            return;
+
                     }
                     try{
                         tmpclv= movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
@@ -8422,10 +8495,18 @@ public class jControlador implements ActionListener{
                 break;
             case 1:
                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
-                    for(int j=0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
-                        if(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, j)==null&&j!=0){
-                            movimientos.__tablaSalidaBobinaInventario.setValueAt("0", i, j);
+                    try{
+                        for(int j =0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
+                            if(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, j).equals(null)){
+                                mensaje(3,"completa los campos en la fila "+(i+1));
+                                return;
+                            }
                         }
+                    }catch(java.lang.NullPointerException e){
+
+                            mensaje(3,"completa los campos en la fila "+(i+1));
+                            return;
+
                     }
                     try{
                         tmpclv= movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
