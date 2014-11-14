@@ -38,7 +38,7 @@ public class modelo extends database {
     }
     
     public ResultSet buscarUser1(String nombre) throws java.sql.SQLException{       
-        String q = "SELECT pswd,id_responsable,cargo_id_cargo,nombre,usuario,Activo FROM responsable where usuario='"+nombre+"' and Activo=1 and sesion<>1 " ;
+        String q = "SELECT pswd,id_responsable,cargo_id_cargo,nombre,usuario,Activo,Sesion FROM responsable where usuario='"+nombre+"'" ;
         String pswd="";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);

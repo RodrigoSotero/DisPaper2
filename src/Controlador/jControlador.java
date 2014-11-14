@@ -98,7 +98,7 @@ public class jControlador implements ActionListener{
     String fec,mensaje,user="",contra,ordenProduccion,ordenCompra,documentoEntrada,t1="",t2="",t3="",Obs="",modificaruser,folioentrada,foliosalida;
     String buscarfolio;
     boolean campo;
-    int cliente =0,a=1,id_responsable,cargo,confir,tiposalida, propietario,proveedor, tipoentrada,tipotraspaso=1,tipoalta=0,clienteprovedor=0,modificarentrada=0,modificarsalida=0,modificarsh,modificarentradab;
+    int cliente =0,a=1,id_responsable,cargo,confir,tiposalida, propietario,proveedor, tipoentrada,tipotraspaso=1,tipoalta=0,clienteprovedor=0,modificarentrada=0,modificarsalida=0,modificarsh,modificarentradab,se,act;
     Double tmp=0.0,tmppliegos=0.0,tmpkg=0.0,tmpbob=0.0;
     int  tiposal=0; 
     String tmpclv="",horaentrada,fech,horasalida,ent,sal;
@@ -6813,36 +6813,58 @@ public class jControlador implements ActionListener{
             }else{
                 try {
                       ResultSet buscarUser=this.mimodelo.buscarUser1(user);
+                      if(!buscarUser.next()){
+                          mensaje(3,"Error,  Usuario No Dado de Alta");
+                          login.__Pswd.setText("");
+                          login.__Usuario.setText("");
+                          login.__Usuario.requestFocus();
+                          return;
+                      }
+                      buscarUser.beforeFirst();
                       while(buscarUser.next()){
                            pswd = buscarUser.getString(1);
                            id_responsable = buscarUser.getInt(2);
-                           cargo = buscarUser.getInt(3);
+                           cargo = buscarUser.getInt(3);     
+                           se=buscarUser.getInt(7); 
+                           act=buscarUser.getInt(6); 
                       }
                        if(contra.equals(pswd)){
-                           login.__Usuario.setText("");
-                           login.__Pswd.setText("");
-                           if(!user.equals("ROOT")){
-                                mimodelo.abrirsesion(user);
-                           }
-                           fecha.__etqUser.setText(user);
-                           Calendar Cal= Calendar.getInstance();
-                           String anio=Cal.get(Cal.YEAR)<10 ? "0"+Cal.get(Cal.YEAR) : ""+Cal.get(Cal.YEAR);
-                           String mess=(Cal.get(Cal.MONTH)+1)<10 ? "0"+(Cal.get(Cal.MONTH)+1) : ""+(Cal.get(Cal.MONTH)+1);
-                           String day=Cal.get(Cal.DATE)<10 ? "0"+Cal.get(Cal.DATE) : ""+Cal.get(Cal.DATE);
-                           fech=anio+"-"+mess+"-"+day;
-                           String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
-                           String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
-                           horaentrada = hora+":"+minute;
-                           boolean registraentrada = mimodelo.registraracceso(user,fech,horaentrada);
-                           login.setEnabled(false);
-                           fecha.setLocationRelativeTo(null);
-                           fecha.setVisible(true);
-                           
+                            if(act==1){
+                                if(se==0){
+                                    login.__Usuario.setText("");
+                                    login.__Pswd.setText("");
+                                    if(!user.equals("ROOT")){
+                                         mimodelo.abrirsesion(user);
+                                    }
+                                    fecha.__etqUser.setText(user);
+                                    Calendar Cal= Calendar.getInstance();
+                                    String anio=Cal.get(Cal.YEAR)<10 ? "0"+Cal.get(Cal.YEAR) : ""+Cal.get(Cal.YEAR);
+                                    String mess=(Cal.get(Cal.MONTH)+1)<10 ? "0"+(Cal.get(Cal.MONTH)+1) : ""+(Cal.get(Cal.MONTH)+1);
+                                    String day=Cal.get(Cal.DATE)<10 ? "0"+Cal.get(Cal.DATE) : ""+Cal.get(Cal.DATE);
+                                    fech=anio+"-"+mess+"-"+day;
+                                    String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
+                                    String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
+                                    horaentrada = hora+":"+minute;
+                                    boolean registraentrada = mimodelo.registraracceso(user,fech,horaentrada);
+                                    login.setEnabled(false);
+                                    fecha.setLocationRelativeTo(null);
+                                    fecha.setVisible(true);
+                                }else{
+                                    mensaje(3,"Error, La Sesion esta Activa Cierre Su Sesion");
+                                    login.__Pswd.setText("");
+                                    login.__Usuario.setText("");
+                                    login.__Usuario.requestFocus();
+                                }
+                            }else{
+                                mensaje(3,"Error, El Usuario esta Bloqueado Contacte al Administrador");
+                                login.__Pswd.setText("");
+                                login.__Usuario.setText("");
+                                login.__Usuario.requestFocus();
+                            }
                        }else{
-                           mensaje(3,"Error, Usuario o Contraseña Erroneas y/o el usuario esta Bloqueado o la sesion esta activa");
-                           login.__Pswd.setText("");
-                           login.__Usuario.setText("");
-                           login.__Usuario.requestFocus();
+                           mensaje(3,"Error,  Contraseña Erronea");
+                           login.__Pswd.selectAll();
+                           login.__Pswd.requestFocus();
                        }
                 }catch (SQLException ex) {
                        mensaje(3,ex.getMessage());
@@ -7872,32 +7894,32 @@ public class jControlador implements ActionListener{
             return;
         }
         proveedor=this.busquedaid(movimientos.__ProvSalida);
-        if(proveedor==0){
+        /*if(proveedor==0){
             mensaje(3,"Verifica el Proveedor");
             movimientos.__ProvSalida.requestFocus();
             return;
-        }
+        }*/
         cliente = this.busquedaid(movimientos.__ClientSalida);
-        if(cliente== 0){
+        /*if(cliente== 0){
             mensaje(3,"Verifica el Cliente");
             movimientos.__ClientSalida.requestFocus();
             return;
-        }
+        }*/
         ordenProduccion = this.movimientos.__OrdenProduccionSalida.getText();
-        if(ordenProduccion.isEmpty()){
+        /*if(ordenProduccion.isEmpty()){
             mensaje(3,"Debe Especificar la Orden de Producción de Papel");
             movimientos.__OrdenProduccionSalida.requestFocus();
             return;
-        }
+        }*/
         if(movimientos.__TipoSalida.getText().equals("PAPEL DEL CLIENTE")){
              this.movimientos.__OrdenCompraEntr.setText("N/A");
         }
         ordenCompra = this.movimientos.__OrdenCompraSalida.getText();
-        if(ordenCompra.isEmpty()){
+        /*if(ordenCompra.isEmpty()){
             mensaje(3,"Debe Especificar la Orden de Compra");
             movimientos.__OrdenCompraSalida.requestFocus();
             return;
-        }    
+        } */   
         documentoSalida = this.movimientos.__documentoSalida.getText();
         if(documentoSalida.isEmpty()){
             mensaje(3,"Debe Especificar el Documento de Salida");
