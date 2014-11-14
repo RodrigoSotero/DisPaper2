@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a9e3a3ff-53df-44d2-8de9-d23c248a42f6">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="985"/>
+	<property name="ireport.y" value="405"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF8000"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     CONVERT(vw_infoentradabobina.`costo`,UNSIGNED INT) AS vw_infoentradabobina_costo,
+     CONVERT(vw_infoentradabobina.`total`,UNSIGNED INT) AS vw_infoentradabobina_total,
+     vw_infoentradabobina.`clave` AS vw_infoentradabobina_clave,
+     vw_infoentradabobina.`ancho` AS vw_infoentradabobina_ancho,
+     vw_infoentradabobina.`grams` AS vw_infoentradabobina_grams,
+     vw_infoentradabobina.`color` AS vw_infoentradabobina_color,
+     vw_infoentradabobina.`marca` AS vw_infoentradabobina_marca,
+     vw_infoentradabobina.`propiedad` AS vw_infoentradabobina_propiedad,
+     vw_infoentradabobina.`orden_produccion` AS vw_infoentradabobina_orden_produccion,
+     vw_infoentradabobina.`orden_compra` AS vw_infoentradabobina_orden_compra,
+     vw_infoentradabobina.`documento` AS vw_infoentradabobina_documento,
+     vw_infoentradabobina.`proveedor` AS vw_infoentradabobina_proveedor,
+     vw_infoentradabobina.`tipo_entrada` AS vw_infoentradabobina_tipo_entrada,
+     vw_infoentradabobina.`observaciones` AS vw_infoentradabobina_observaciones,
+     vw_infoentradabobina.`presentacion` AS vw_infoentradabobina_presentacion,
+     vw_infoentradabobina.`cantidad` AS vw_infoentradabobina_cantidad,
+     vw_infoentradabobina.`turno` AS vw_infoentradabobina_turno,
+     vw_infoentradabobina.`folio` AS vw_infoentradabobina_folio,
+     vw_infoentradabobina.`fecha` AS vw_infoentradabobina_fecha,
+     vw_infoentradabobina.`ubicacion` AS vw_infoentradabobina_ubicacion,
+     vw_infoentradabobina.`nombre` AS vw_infoentradabobina_nombre
+FROM
+     `vw_infoentradabobina` vw_infoentradabobina]]>
+	</queryString>
+	<field name="vw_infoentradabobina_costo" class="java.math.BigInteger"/>
+	<field name="vw_infoentradabobina_total" class="java.math.BigInteger"/>
+	<field name="vw_infoentradabobina_clave" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_ancho" class="java.lang.Long"/>
+	<field name="vw_infoentradabobina_grams" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_color" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_marca" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_propiedad" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_orden_produccion" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_orden_compra" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_documento" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_proveedor" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_tipo_entrada" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_observaciones" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_presentacion" class="java.lang.Integer"/>
+	<field name="vw_infoentradabobina_cantidad" class="java.lang.Integer"/>
+	<field name="vw_infoentradabobina_turno" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_folio" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_fecha" class="java.sql.Date"/>
+	<field name="vw_infoentradabobina_ubicacion" class="java.lang.String"/>
+	<field name="vw_infoentradabobina_nombre" class="java.lang.String"/>
+	<variable name="Presentacion" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infoentradabobina_presentacion}]]></variableExpression>
+	</variable>
+	<variable name="cantidad" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infoentradabobina_cantidad}]]></variableExpression>
+	</variable>
+	<variable name="costo" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infoentradabobina_costo}]]></variableExpression>
+	</variable>
+	<variable name="totalcosto" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infoentradabobina_total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement uuid="7d9e101e-0d53-44ae-93f3-7dc5f4315e08" mode="Opaque" x="81" y="0" width="679" height="66" backcolor="#000066"/>
+				<staticText>
+					<reportElement uuid="32ce637e-4bbc-4d1f-ad06-94d4af454293" style="Title" x="0" y="0" width="370" height="66"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Entradas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3e81486c-1919-4288-8589-351eb236cca6" style="SubTitle" x="370" y="37" width="309" height="29"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Bobinas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="264" y="26" width="218" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="308" y="6" width="124" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[***GRUPO CORME***]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="265" y="46" width="217" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[-   Departamento de Administracion de Papel   -]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement uuid="1db159e1-bd8a-41f7-acc9-d33fe153ecac" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="644035cf-1dac-4001-b363-2e6c5cd65cbc" x="613" y="12" width="144" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement uuid="efff6400-f947-40ee-9305-aaf76fcb6306" x="0" y="0" width="81" height="66"/>
+				<imageExpression><![CDATA["C:\\IEXSA\\config\\cherry.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="017b319e-9b2a-4a19-bf33-7ba7bf477192" style="Column header" x="159" y="0" width="91" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58e6b7c7-3979-424c-aa80-4c7c0f905c1f" style="Column header" x="250" y="0" width="36" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Papel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52674a2c-e840-4518-b3dc-0bb7b5c390aa" style="Column header" x="286" y="0" width="29" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ancho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da57f27c-7f43-46c6-a430-8e6123039bd2" style="Column header" x="315" y="0" width="20" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grs.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ba492b0-9acf-4992-9a8e-55564a31d4b3" style="Column header" x="335" y="0" width="36" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Color]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7894ad5b-5c8f-47fd-a63b-f09fefb2b4bb" style="Column header" x="371" y="0" width="53" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Propiedad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4fec9695-bc7b-4ff1-8193-10b0075312b4" style="Column header" x="424" y="0" width="36" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O-P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e514c27f-1f57-41eb-8e6e-4f4707a6199b" style="Column header" x="460" y="0" width="36" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Orden Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fce12254-27c3-42f0-923b-802f67722447" style="Column header" x="496" y="0" width="50" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="29865680-7bb0-47bb-bb39-82ad587f18c5" style="Column header" x="546" y="0" width="40" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bfb4b6e6-74e5-44e1-b912-717fcb9d8d41" style="Column header" x="586" y="0" width="49" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b8fa322-39dc-4cdb-8e55-a2666247f416" style="Column header" x="635" y="0" width="36" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad Bobina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2f83542-080e-4309-8e65-5e58dec345b7" style="Column header" x="671" y="0" width="34" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad Kg.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="715a9081-c0ee-490c-bb0c-4f5d6a1bcdde" style="Column header" x="705" y="0" width="28" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a279a488-8002-4bef-b5ef-faa0cd6095a5" style="Column header" x="733" y="0" width="27" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48587a09-8582-4fbc-b311-61c614dbb0ff" x="81" y="0" width="43" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f67330a6-1efd-4689-b1a0-d9fd2e242880" style="Column header" x="40" y="0" width="40" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Turnos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="53c1602e-1d6c-4986-bb21-2032dbfe28e7" style="Column header" x="-1" y="0" width="41" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ffb71301-6414-4f60-bca3-38d9ae9ccb8a" x="124" y="0" width="35" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicación]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="11c07252-1520-45e8-9376-cd8d02e26809" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="43fc41e9-f71f-42b4-9f4b-f0447a7a7b60" style="Detail" positionType="Float" x="159" y="0" width="91" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_clave}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="35e0b350-622e-4043-8b4d-998cf536546a" style="Detail" positionType="Float" x="286" y="0" width="29" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_ancho}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="372f15c3-4e62-479f-adf1-bb4c8aa916b3" style="Detail" positionType="Float" x="315" y="0" width="20" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_grams}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="2a71f171-78ca-4a88-b8a5-c20cbd13e695" style="Detail" positionType="Float" x="335" y="0" width="36" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_color}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="03a21389-aafd-479a-a6ff-d58f9a32b408" style="Detail" positionType="Float" x="371" y="0" width="53" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_propiedad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="12ecc7b3-301f-4252-a633-6a559daabca0" style="Detail" positionType="Float" x="424" y="0" width="36" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_orden_produccion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="23aa0456-02eb-483d-acf5-9f74b6b02f8e" style="Detail" positionType="Float" x="460" y="0" width="36" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_orden_compra}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="376100ce-808c-4da5-ab73-ef781f9e95d2" style="Detail" positionType="Float" x="496" y="0" width="50" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_documento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="8765bbf9-299a-481d-ae1a-0d1d0b7a4785" style="Detail" positionType="Float" x="546" y="0" width="40" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_proveedor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="3ab22db3-2177-417f-b36f-17bd9c151dc8" style="Detail" positionType="Float" x="586" y="0" width="49" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_tipo_entrada}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="aac31558-d9d8-43c2-8458-cf0d2f5e3d44" style="Detail" positionType="Float" x="635" y="0" width="36" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_presentacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="a074b04a-a019-4675-8e20-1a8369ea3718" style="Detail" positionType="Float" x="671" y="0" width="34" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_cantidad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+					<reportElement uuid="2c8cc874-a8be-49d3-8161-f047be5aac05" style="Detail" positionType="Float" x="705" y="0" width="28" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_costo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+					<reportElement uuid="8c632df9-c859-4ddd-9ad4-5384b2b26781" style="Detail" positionType="Float" x="733" y="0" width="27" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_total}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="fdf2a1da-add1-44a5-bf65-233a179c612c" x="81" y="0" width="43" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_folio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="4383b26c-a332-44ef-9eb8-be571838538c" style="Detail" positionType="Float" x="40" y="0" width="40" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_turno}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="MMMMM dd, yyyy">
+					<reportElement uuid="763f9967-43a2-434f-8e12-291ffc13a91c" style="Detail" positionType="Float" x="0" y="0" width="40" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_fecha}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="951bcd2f-7898-4ab7-9480-0e1834512c27" x="124" y="0" width="35" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_ubicacion}]]></textFieldExpression>
+				</textField>
+				<elementGroup>
+					<textField isStretchWithOverflow="true">
+						<reportElement uuid="56eb1990-37c6-4015-87f8-bbb92856b330" style="Detail" positionType="Float" x="250" y="0" width="36" height="18"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Arial" size="5"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{vw_infoentradabobina_nombre}]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="cf001f6a-dd93-478c-8d09-e648c36dcb0d" x="635" y="0" width="36" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Presentacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10c563b5-86f3-4284-af49-fa9e07ae2011" x="671" y="0" width="34" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="b845e869-0248-4f6f-9169-019b17367076" x="705" y="0" width="28" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="871d4176-4e61-440f-a809-5bbef145967f" x="733" y="0" width="27" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalcosto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1ad3a37d-9efb-46d2-bf24-8a6d6bde7994" x="466" y="0" width="169" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES-----------------------------------------------------------------------]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ae820a9b-7899-46d3-ba3b-1f1a908020e7" positionType="FixRelativeToBottom" x="2" y="0" width="758" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="4a2d5870-f978-42d0-99df-e6299cd35fb5" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="ad0ff9cf-077a-467c-b8a2-022b8a3e0769" style="Column header" x="713" y="3" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="ee86942c-f0bc-4f69-aabf-76778a38d3e3" style="Column header" x="553" y="3" width="160" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="2c823804-abff-4482-a2e6-20ecaee26a9d" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

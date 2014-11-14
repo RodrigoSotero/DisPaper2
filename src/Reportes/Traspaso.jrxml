@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF8000"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     traspaso.`id_traspaso` AS traspaso_id_traspaso,
+     traspaso.`folio` AS traspaso_folio,
+     traspaso.`clave_papel_origen` AS traspaso_clave_papel_origen,
+     traspaso.`clavel_papel_destino` AS traspaso_clavel_papel_destino,
+     traspaso.`kg_hojas` AS traspaso_kg_hojas,
+     traspaso.`bobina_paq_tarima` AS traspaso_bobina_paq_tarima,
+     traspaso.`fecha` AS traspaso_fecha,
+     traspaso.`costo` AS traspaso_costo
+FROM
+     `traspaso` traspaso]]>
+	</queryString>
+	<field name="traspaso_id_traspaso" class="java.lang.Integer"/>
+	<field name="traspaso_folio" class="java.lang.String"/>
+	<field name="traspaso_clave_papel_origen" class="java.lang.String"/>
+	<field name="traspaso_clavel_papel_destino" class="java.lang.String"/>
+	<field name="traspaso_kg_hojas" class="java.lang.String"/>
+	<field name="traspaso_bobina_paq_tarima" class="java.lang.String"/>
+	<field name="traspaso_fecha" class="java.sql.Date"/>
+	<field name="traspaso_costo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement uuid="50734bd7-1348-4afb-9b25-9b47c9626d77" mode="Opaque" x="81" y="0" width="679" height="66" forecolor="#0000CC" backcolor="#000066"/>
+				<staticText>
+					<reportElement uuid="41bbe4e4-03b7-409b-8b8b-0357bc4a811f" style="Title" x="0" y="0" width="370" height="66" backcolor="#000099"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Traspaso]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6a198eb7-c7cb-4152-b6ee-19aa54383fa9" style="SubTitle" x="358" y="37" width="309" height="29"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[de Papeles]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="261" y="20" width="218" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="305" y="0" width="124" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[***GRUPO CORME***]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="262" y="40" width="217" height="20" forecolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[-   Departamento de Administracion de Papel   -]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement uuid="0e59d8af-4a99-4f98-b943-b6543e3a44f1" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="c4b5b0ba-4478-48ea-8880-7f245944c5c5" x="604" y="12" width="144" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement uuid="20e829b0-00ad-4247-b2cf-be3a5074edce" x="0" y="0" width="81" height="66"/>
+				<imageExpression><![CDATA["C:\\IEXSA\\config\\cherry.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="36bf113d-9dea-4525-afda-9a3156e08641" style="Column header" x="0" y="0" width="63" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="119" y="0" width="199" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave de Papel Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="72ed4be6-1e62-4b6f-b027-8e4fb75cf2ad" style="Column header" x="509" y="0" width="76" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kilos y/o Hojas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b7052bd-b605-406f-ad12-552c14beb0c3" style="Column header" x="585" y="0" width="121" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# de Bobinas y/o Paquetes y/o Tarimas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="698b3b9a-a786-4e85-bffd-259f2252e0a1" x="706" y="0" width="54" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="63" y="0" width="56" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio del Traspaso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="318" y="0" width="191" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clave de Papel Destino]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement uuid="3a88558b-31f1-4f50-9126-5e3989311a37" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
+				<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="0e8157b2-3461-423a-8651-96b7bde531b3" style="Detail" positionType="Float" x="0" y="0" width="63" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_fecha}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="118" y="0" width="199" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_clave_papel_origen}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="6c6eded1-0374-477b-b1a8-3071de24cd99" style="Detail" positionType="Float" x="509" y="0" width="76" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_kg_hojas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="6386d449-5aff-456b-8e84-a7ad09c94757" style="Detail" positionType="Float" x="585" y="0" width="121" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_bobina_paq_tarima}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement uuid="4bbfcd1e-71db-462f-8d0d-1d6199d4551a" x="706" y="0" width="54" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_costo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="63" y="0" width="56" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_folio}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="318" y="0" width="191" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{traspaso_clavel_papel_destino}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch">
+			<line>
+				<reportElement uuid="dc2cbfb3-61a5-4937-969f-8d759d83c114" positionType="FixRelativeToBottom" x="0" y="3" width="760" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="4bb561b8-d789-4f19-a91c-da5936a8f7b3" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="0a92c800-6efd-4b48-9357-ce4a5b2b71f3" style="Column header" x="708" y="5" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="b3d85ba9-4fb4-4d85-b8a1-57725e44507b" style="Column header" x="511" y="5" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="6cf5f59b-d62f-4c13-a87c-d981b99442fb" style="Column header" x="2" y="3" width="216" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
