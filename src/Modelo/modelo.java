@@ -2288,5 +2288,41 @@ public class modelo extends database {
             return false;
         }
     }
+    public boolean bajaNombre(int id) {
+            String q="delete from nombre_papel where id_nombre='"+id+"'";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean bajaColor(int id) {
+            String q="delete from color where id_color='"+id+"'";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean bajaMarca(int id) {
+            String q="delete from marca where id_marca='"+id+"'";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
 }
 
