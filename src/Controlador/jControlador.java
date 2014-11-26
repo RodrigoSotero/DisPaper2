@@ -589,6 +589,98 @@ public class jControlador implements ActionListener{
         }
 
     }
+    int totbdtem=0,cantbdtem=0,newtottem,newcantem,totbd=0,cantbd,j;
+    public boolean antipeps2(String[] entradas, int totalsumar, int cantidadsumar) {
+        j--;
+        try{
+            ResultSet detent = mimodelo.buscarEntradaID(entradas[j]);
+            while(detent.next()){
+                totbd=detent.getInt(1);
+                cantbd=detent.getInt(2);
+                totbdtem = detent.getInt(3);
+                cantbdtem = detent.getInt(4);
+            }
+            newcantem=cantbdtem+cantidadsumar;
+            newtottem=totbdtem+totalsumar;
+            if(newcantem==0){
+                //no se suma cantidad
+                if(newtottem==0){
+                    return true;
+                }
+                if(newtottem>totbd){
+                    mimodelo.tottemp(totbd, cantbdtem, entradas[j]);
+                    antipeps2(entradas,totalsumar-totbdtem,0);
+                }
+                if(newtottem<totbd){
+                    mimodelo.tottemp(newtottem, 0, entradas[j]);
+                    return true;
+                }
+                if(newtottem==totbd){
+                    mimodelo.tottemp(newtottem, 0, entradas[j]);
+                    return true;
+                }
+            }
+            if(newcantem>cantbd){
+                if(newtottem==0){
+                    mimodelo.tottemp(0, cantbd , entradas[j]);
+                    antipeps2(entradas,0,cantidadsumar-cantbdtem);
+                }
+                if(newtottem>totbd){
+                    mimodelo.tottemp(totbd, cantbd , entradas[j]);
+                    antipeps2(entradas,totalsumar-totbd,cantidadsumar-cantbdtem);
+                }
+                if(newtottem<totbd){
+                    mimodelo.tottemp(newtottem, newcantem , entradas[j]);
+                    antipeps2(entradas,0,cantidadsumar-cantbdtem);
+                }
+                if(newtottem==totbd){
+                    mimodelo.tottemp(newtottem, newcantem , entradas[j]);
+                    antipeps2(entradas,0,cantidadsumar-cantbdtem);
+                }
+            }
+            if(newcantem<cantbd){
+                if(newtottem==0){
+                    mimodelo.tottemp(totbdtem, newcantem, entradas[j]);
+                    return true;
+                }
+                if(newtottem>totbd){
+                    mimodelo.tottemp(totbd, newcantem, entradas[j]);
+                    antipeps2(entradas,totalsumar-totbdtem,0);
+                }
+                if(newtottem<totbd){
+                    //sumar canitdad y total al temporal
+                     mimodelo.tottemp(newtottem, newcantem , entradas[j]);
+                     return true;
+                }
+                if(newtottem==totbd){
+                    mimodelo.tottemp(newtottem, newcantem , entradas[j]);
+                     return true;
+                }
+            }
+            if(newcantem==cantbd){
+                if(newtottem==0){
+                    mimodelo.tottemp(totbd ,newcantem , entradas[j]);
+                    return true;
+                }
+                if(newtottem>totbd){
+                    mimodelo.tottemp(newtottem ,cantbdtem, entradas[j]);
+                    antipeps2(entradas,totalsumar-totbdtem,0);
+                    return true;
+                }
+                if(newtottem<totbd){
+                    mimodelo.tottemp(newtottem, cantbdtem, entradas[j]);
+                    return true;
+                }
+                if(newtottem==totbd){
+                    mimodelo.tottemp(newtottem, newcantem, entradas[j]);
+                    return true;
+                }
+            }
+        }
+       catch(Exception e) {
+       }
+        return false;
+    }
 
     public enum Accion{
         __INICIA_SESION, //-> Ejecuta Login
@@ -1857,7 +1949,6 @@ public class jControlador implements ActionListener{
         this.movimientos.__MODIFICACIONSALIDA.setActionCommand("__MODIFICACIONSALIDA");
         this.movimientos.__MODIFICACIONSALIDA.setMnemonic('M');
         this.movimientos.__MODIFICACIONSALIDA.addActionListener(this);
-         this.movimientos.__MODIFICACIONSALIDA.setEnabled(false);
         this.movimientos.__MODIFICACIONH.setActionCommand("__MODIFICACIONSALHOJ");
         this.movimientos.__MODIFICACIONH.setMnemonic('M');
         this.movimientos.__MODIFICACIONH.addActionListener(this);
@@ -5062,19 +5153,21 @@ public class jControlador implements ActionListener{
                                idsalidas[i]=detallesalida.getString("idsalida");
                                movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), i, 0);
                                movimientos.__tablaSalida.setValueAt(detallesalida.getInt("total_salida"), i, 1);
-                               restarcantidad=Double.parseDouble(detallesalida.getString("total_salida"));
+                               int totalsumar=detallesalida.getInt("total_salida");
                                movimientos.__tablaSalida.setValueAt(detallesalida.getInt("cantidad_salida"), i, 2);
-                               restartotal=Double.parseDouble(detallesalida.getString("cantidad_salida"));
+                               int cantidadsumar=detallesalida.getInt("cantidad_salida");
                                ResultSet bep= mimodelo.buscarExistenciaPapel(detallesalida.getString("clavepapel"));
                                while(bep.next()){
                                    totalbd=Double.parseDouble(bep.getString("presentacion"));
                                    cantidadbd=Double.parseDouble(bep.getString("cantidad"));
                                }
-                               newcantidad=cantidadbd+restarcantidad;
-                               newtotal=totalbd+restartotal;
-                               mimodelo.nuevaExistencia(newcantidad+"", detallesalida.getString("clavepapel"),newtotal+"");
+                               
+                               String entradas[] = detallesalida.getString("entradas").split(",");
+                               j = entradas.length;
+                               antipeps2(entradas,totalsumar,cantidadsumar);
                                movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("costo")), i, 3);
                                movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("totalcosto")), i, 4);
+                               mimodelo.sumarexistencia(detallesalida.getString("clavepapel"));
                            }
                            ResultSetMetaData metaData = detallesalida.getMetaData();
                            int numcol = metaData.getColumnCount();
@@ -5650,8 +5743,9 @@ public class jControlador implements ActionListener{
                                     id_salida++;
                                     int propietario = obtenerpropietario(clavecl);
                                     mimodelo.altaSalida(foliosalida,"-", "-", "-", "N/A", "N/A","-", cliente, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,0);
-                                    mimodelo.altaDetalleSalida(id_salida,clavecl,agregarexistencia+"",presentacion+"",costotras+"",(costotras*agregarexistencia)+"");
                                     this.PEPS2(clavecl,agregarexistencia,presentacion);
+                                    mimodelo.altaDetalleSalida(id_salida,clavecl,agregarexistencia+"",presentacion+"",costotras+"",(costotras*agregarexistencia)+"",identradas_);
+                                    
                                      mimodelo.altaEntrada(folioentrada,"-", "-", "-", "N/A", "N/A","-", cliente1, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,0);
                                      mimodelo.sumarexistencia(clavecl);
 
@@ -7137,6 +7231,7 @@ public class jControlador implements ActionListener{
         this.addItems("ap");
     }
     public void borrarFormularioMovimientosPapel() {
+        identradas_="";
         modificarentrada=0;
         modificarsalidah=0;
         modificarsalida=0;
@@ -7688,14 +7783,25 @@ public class jControlador implements ActionListener{
                 cantidad=UE.getInt("cantidad");
                 ID=UE.getString("id");
             }
-            if(rk>total){
-                
+            if(rb==0){
+                if(rk==0){
+                    //no sumes nada
+                }
+                if(rk>total){
+                    //suma la diferencia de rk y vuelve a buscar!
+                    
+                }
+                if(rk<total){
+                }
+                if(rk==total){
+                }
             }
         }catch(Exception e){
             
         }
         return false;
     }
+    String identradas_="";
     public boolean PEPS2(String clave,double total_restar,double cantidad_restar){
         String fecpe="";
         Double total=0.0,cantidad=0.0;
@@ -7711,10 +7817,12 @@ public class jControlador implements ActionListener{
                     total=Double.parseDouble(PE.getString("total"));
                     cantidad=Double.parseDouble(PE.getString("cantidad"));
                     ID=PE.getString("id");
+                    identradas_+=ID;
                 }
             }
         }catch(Exception e){
         }
+        identradas_+=",";
         if(cantidad_restar==0.0){
             if(total_restar==0.0){
                 return true;
@@ -8059,6 +8167,40 @@ public class jControlador implements ActionListener{
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
+        Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
+        for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
+            
+            try{
+                String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
+                int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
+                int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
+                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
+                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
+                ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
+                int totalentr = 0,nuevototentr;
+                int cantentr =0, nuevacantentr;
+                if(existenciaPapel.next()){
+                    existenciaPapel.beforeFirst();
+                    while(existenciaPapel.next()){
+                        totalentr=existenciaPapel.getInt(1);
+                        cantentr=existenciaPapel.getInt(2);
+                    }
+                    if(totalsalida>totalentr){
+                        mensaje(3,"tu existencia de kg/hojas es de "+totalentr+" en la salida " +(i+1));
+                        return;
+
+                    }
+                    if(cantidadsalida>cantentr){
+                        mensaje(3,"tu cantidad de paq/bob es de "+cantentr+" en la salida " +(i+1));
+                        return;
+                    }
+                }else{
+                    mensaje(3,"EL PAPEL NO EXISTE");
+                    return;
+                }
+            }catch(Exception e){
+            }
+        }
         switch(this.modificarsalida){
             case 0:
                 confir=mensajeConfirmacion("Estas seguro de registrar la Salida","Aceptar");
@@ -8075,19 +8217,6 @@ public class jControlador implements ActionListener{
                         buscarMaxSalida.close();
                         id_salida++;
                         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
-                            try{
-                                for(int j =0;j<movimientos.__tablaSalida.getColumnCount();j++){
-                                    if(movimientos.__tablaSalida.getValueAt(i, j).equals(null)){
-                                        mensaje(3,"completa los campos en la fila "+(i+1));
-                                        return;
-                                    }
-                                }
-                            }catch(java.lang.NullPointerException e){
-                                
-                                    mensaje(3,"completa los campos en la fila "+(i+1));
-                                    return;
-                                
-                            }
                             try{
                                 String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
                                 int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
@@ -8114,10 +8243,10 @@ public class jControlador implements ActionListener{
                                         mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
                                         return;
                                     }
-                                    //mimodelo.nuevaExistencia(nuevototentr+"",clavePapel,nuevacantentr+"");
-                                    detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto);
                                     this.PEPS2(clavePapel, totalsalida, cantidadsalida);
                                     mimodelo.sumarexistencia(clavePapel);
+                                    detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto,identradas_);
+                                    
                                 }else{
                                     mensaje(3,"EL PAPEL NO EXISTE");
                                     return;
@@ -8126,12 +8255,13 @@ public class jControlador implements ActionListener{
                                 break;
                             }
                         }
-                        Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
+                        
                         String fechaentrada=fec.replaceAll("-", "");
                         boolean altaSalida = mimodelo.altaSalida(foliosalida,t1, t2, t3, ordenProduccion, ordenCompra,documentoSalida, propietario, proveedor, id_responsable, fechaentrada, tiposalida,Obs,cliente);
                         if(altaSalida==true && detallesalida==true){
                             mensaje(1,"Salida agregada correctamente");
                             this.borrarFormularioMovimientosPapel();
+                            
                         }else{
                             mensaje(3,"Ocurrio un error al dar de alta la SALIDA");
                             break;
@@ -8146,72 +8276,58 @@ public class jControlador implements ActionListener{
             case 1:
                 Obs="Modificacion";
                 confir=mensajeConfirmacion("Estas seguro de modificar la Salida","Aceptar");
+                
                 if (confir==JOptionPane.OK_OPTION){
                     for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
-                        try{
-                                for(int j =0;j<movimientos.__tablaSalida.getColumnCount();j++){
-                                    if(movimientos.__tablaSalida.getValueAt(i, j).equals(null)){
-                                        mensaje(3,"completa los campos en la fila "+(i+1));
+                            try{
+                                String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
+                                int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
+                                int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
+                                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
+                                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
+                                ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
+                                int totalentr = 0,nuevototentr;
+                                int cantentr =0, nuevacantentr;
+                                if(existenciaPapel.next()){
+                                    existenciaPapel.beforeFirst();
+                                    while(existenciaPapel.next()){
+                                        totalentr=existenciaPapel.getInt(1);
+                                         cantentr=existenciaPapel.getInt(2);
+                                         System.out.println(totalentr);
+                                        System.out.println(cantentr);
+                                    }
+                                    if(totalsalida>totalentr){
+                                        mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
+                                        return;
+                                        
+                                    }
+                                    if(cantidadsalida>cantentr){
+                                        mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
                                         return;
                                     }
-                                }
-                            }catch(java.lang.NullPointerException e){
-                                
-                                    mensaje(3,"completa los campos en la fila "+(i+1));
-                                    return;
-                                
-                            }
-                        try{
-                            String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
-                            int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
-                            int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                            if(movimientos.__TipoSalida.getText().equals("PAPEL DEL CLIENTE")){
-                                movimientos.__tablaSalida.setValueAt("0",i, 3);
-                                movimientos.__tablaSalida.setValueAt("0.0",i, 4);
-                            }
-                            String costo=movimientos.__tablaSalida.getValueAt(i, 4).toString();
-                            String totalcosto=movimientos.__tablaSalida.getValueAt(i, 5).toString();
-                            ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
-                            int totalentr = 0,nuevototentr;
-                            int cantentr =0, nuevacantentr;
-                            if(existenciaPapel.next()){
-                                existenciaPapel.beforeFirst();
-                                while(existenciaPapel.next()){
-                                    totalentr=existenciaPapel.getInt(1);
-                                     cantentr=existenciaPapel.getInt(2);
-                                }
-                                existenciaPapel.close();
-                                if(totalsalida>totalentr){
-                                    mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
+                                    this.PEPS2(clavePapel, totalsalida, cantidadsalida);
+                                    mimodelo.sumarexistencia(clavePapel);
+                                    mimodelo.modifDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto,identradas_);
+                                }else{
+                                    mensaje(3,"EL PAPEL NO EXISTE");
                                     return;
                                 }
-                                if(cantidadsalida>cantentr){
-                                    mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
-                                    return;
-                                }
-                                mimodelo.modifDetalleSalida(Integer.parseInt(identradas[i]),clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto);
-                                this.PEPS2(clavePapel, totalsalida, cantidadsalida);
-                                mimodelo.sumarexistencia(clavePapel);
-                            }else{
-                                mensaje(3,"EL PAPEL NO EXISTE");
-                                return;
+                            }catch(Exception evt){
+                                break;
                             }
-                        }catch(Exception evt){
-                            break;
                         }
-                    }
                     String fechaentrada=fec.replaceAll("-", "");
                     boolean modifSalida = mimodelo.modifSalida(foliosalida,t1, t2, t3, ordenProduccion, ordenCompra,documentoSalida, propietario, proveedor, id_responsable, fechaentrada, tiposalida,Obs,cliente);
                     if(modifSalida==true){
                         mensaje(1,"Modificacion Correcta");
                         this.borrarFormularioMovimientosPapel();
                         this.movimientos.__MenuMovimiento.setEnabled(true);
-                    this.movimientos.__Archivo.setEnabled(true);
-                    this.movimientos.__Edicion.setEnabled(true);
-                    this.movimientos.__MODIFICACIONSALIDA.setEnabled(true);
-                    this.movimientos.JPanel.setEnabledAt(0, true);
-                    this.movimientos.JPanel.setEnabledAt(2, true);
-                    this.movimientos.JPanel.setEnabledAt(3, true);
+                        this.movimientos.__Archivo.setEnabled(true);
+                        this.movimientos.__Edicion.setEnabled(true);
+                        this.movimientos.__MODIFICACIONSALIDA.setEnabled(true);
+                        this.movimientos.JPanel.setEnabledAt(0, true);
+                        this.movimientos.JPanel.setEnabledAt(2, true);
+                        this.movimientos.JPanel.setEnabledAt(3, true);
                     }
                 }
                 break;
@@ -8278,6 +8394,48 @@ public class jControlador implements ActionListener{
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
+                    for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+                        try{
+                            String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
+                            double totalhojassalh =Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
+                            int contsalh=0;
+                            double cantsalh=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
+                            costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
+                            totalcosto =new BigDecimal( movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
+                            int restosalh=0;
+                            ResultSet existenciaPapelh = mimodelo.buscarExistenciaPapelfecha(cpsalh,fec);
+                            double totalsalh = 0.0,nuevototsalh, totalcanth=0.0,nuevacantsalh;
+                            if(existenciaPapelh.next()){
+                                existenciaPapelh.beforeFirst();
+                                while(existenciaPapelh.next()){
+                                    totalsalh=Double.parseDouble(existenciaPapelh.getString("cantidad"));
+                                    totalcanth=Double.parseDouble(existenciaPapelh.getString("presentacion"));
+                                }
+                            }else{
+                                mensaje(3,"EL PAPEL NO EXISTE");
+                                return;
+                            }
+                            if(totalhojassalh>totalsalh){
+                                mensaje(3,"No tienes suficiente existencia en la salida #"+(i+1)+". El total es de "+totalsalh);
+                                break;
+                            }else{
+                                if(cantsalh>totalcanth){
+                                    mensaje(3,"No tienes suficiente cantidad en la salida #"+(i+1)+". El total es de "+cantsalh);
+                                    break;
+                                }else{
+                                    if(totalhojassalh==totalsalh&&cantsalh<totalcanth){
+                                        mensaje(3,"Verifica el numero de paquetes");
+                                        return;
+                                    }
+                                    if(cantsalh==totalcanth&&totalhojassalh<totalsalh){
+                                        mensaje(3,"Verifica el total de hojas");
+                                        return;
+                                    }
+                                }
+                            }
+                        }catch(Exception evt){
+                        }
+                    }
                 switch(this.modificarsalidah){
                        case 0:
                            confir = this.mensajeConfirmacion("Estas Seguro de Realizar la Salida", "Salida");
@@ -8294,19 +8452,6 @@ public class jControlador implements ActionListener{
                                     id_salidah++;
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         try{
-                                            for(int j =0;j<movimientos.__tablaSalidaHoja.getColumnCount();j++){
-                                                if(movimientos.__tablaSalidaHoja.getValueAt(i, j).equals(null)){
-                                                    mensaje(3,"completa los campos en la fila "+(i+1));
-                                                    return;
-                                                }
-                                            }
-                                        }catch(java.lang.NullPointerException e){
-
-                                                mensaje(3,"completa los campos en la fila "+(i+1));
-                                                return;
-
-                                        }
-                                        try{
                                             String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                             double totalhojassalh =Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
                                             int contsalh=0;
@@ -8321,17 +8466,18 @@ public class jControlador implements ActionListener{
                                                 while(existenciaPapelh.next()){
                                                 totalsalh=Double.parseDouble(existenciaPapelh.getString("cantidad"));
                                                 totalcanth=Double.parseDouble(existenciaPapelh.getString("presentacion"));
-                                            }}else{
+                                                }
+                                            }else{
                                                 mensaje(3,"EL PAPEL NO EXISTE");
                                                 return;
                                             }
                                             if(totalhojassalh>totalsalh){
-                                                mensaje(2,"No tienes suficiente existencia en la salida #"+(i+1)+". El total es de "+totalhojassalh);
+                                                mensaje(3,"No tienes suficiente existencia en la salida #"+(i+1)+". El total es de "+totalhojassalh);
                                                 detallesalidah=false;
                                                 break;
                                             }else{
                                                 if(cantsalh>totalcanth){
-                                                     mensaje(2,"No tienes suficiente cantidad en la salida #"+(i+1)+". El total es de "+cantsalh);
+                                                     mensaje(3,"No tienes suficiente cantidad en la salida #"+(i+1)+". El total es de "+cantsalh);
                                                      detallesalidah=false;
                                                      break;
                                                 }else{
@@ -8349,27 +8495,24 @@ public class jControlador implements ActionListener{
                                                         return;
                                                     }
                                                     mimodelo.sumarexistencia(cpsalh);
-                                                    //mimodelo.agregarnuevaexistencia(cpsalh, nuevototsalh,nuevacantsalh);
-                                                    detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"");
+                                                    detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_);
                                                 }
                                             }
                                         }catch(Exception evt){
                                             break;
                                         }
-                                        String fechasalidah = fec.replaceAll("-", "");
+                                        
+                                    }
+                                    String fechasalidah = fec.replaceAll("-", "");
                                         boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
                                         if(altasalidah==true&&detallesalidah==true){
                                               mensaje(1,"Salida de Hoja agregada correctamente");
                                               this.borrarFormularioMovimientosPapel();
-                                        }else{
-                                            break;
                                         }
-                                    }
                                 }catch(SQLException ex){
                                     mensaje(3,ex.getMessage());
                                     break;
                                 }
-
                             }
                            break;
                        case 1:
@@ -8377,19 +8520,7 @@ public class jControlador implements ActionListener{
                             confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
                             if (confir==JOptionPane.OK_OPTION){
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
-                                        try{
-                                            for(int j =0;j<movimientos.__tablaSalidaHoja.getColumnCount();j++){
-                                                if(movimientos.__tablaSalidaHoja.getValueAt(i, j).equals(null)){
-                                                    mensaje(3,"completa los campos en la fila "+(i+1));
-                                                    return;
-                                                }
-                                            }
-                                        }catch(java.lang.NullPointerException e){
-
-                                                mensaje(3,"completa los campos en la fila "+(i+1));
-                                                return;
-
-                                        }
+                                        
                                         try{
                                             String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                             int totalhojassalh =Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
@@ -8445,13 +8576,13 @@ public class jControlador implements ActionListener{
                                       mensaje(1,"Modificacion Correcta");
                                       this.borrarFormularioMovimientosPapel();
                                       this.movimientos.__MenuMovimiento.setEnabled(true);
-                    this.movimientos.__Archivo.setEnabled(true);
-                    this.movimientos.__Edicion.setEnabled(true);
-                    this.movimientos.__MODIFICACIONH.setEnabled(true);
-                    this.movimientos.JPanel.setEnabledAt(0, true);
-                    this.movimientos.JPanel.setEnabledAt(1, true); 
-                    this.movimientos.JPanel.setEnabledAt(2, true); 
-                    this.movimientos.JPanel.setEnabledAt(3, true);
+                                    this.movimientos.__Archivo.setEnabled(true);
+                                    this.movimientos.__Edicion.setEnabled(true);
+                                    this.movimientos.__MODIFICACIONH.setEnabled(true);
+                                    this.movimientos.JPanel.setEnabledAt(0, true);
+                                    this.movimientos.JPanel.setEnabledAt(1, true); 
+                                    this.movimientos.JPanel.setEnabledAt(2, true); 
+                                    this.movimientos.JPanel.setEnabledAt(3, true);
                                     }else{
                                     mensaje(3,"Modificacion Incorrecta");
                                 }

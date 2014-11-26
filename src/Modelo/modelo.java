@@ -864,10 +864,10 @@ public class modelo extends database {
         }
     }
     
-    public boolean altaDetalleSalida(int id_salida, String clavePapel, String totalsalida,String cantidadsalida, String costo, String totalcosto) {
+    public boolean altaDetalleSalida(int id_salida, String clavePapel, String totalsalida,String cantidadsalida, String costo, String totalcosto,String identradas_) {
         String q = " INSERT INTO  `dis_paper`.`detallesalida`"
-                + "     (`idsalida`  ,`ClavePapel` ,`total_salida` ,`cantidad_salida`,`Costo` ,`totalcosto`)"
-             + "VALUES ('"+id_salida+"','"+clavePapel+"','"+totalsalida+"','"+cantidadsalida+"','"+costo+"','"+totalcosto+"');";                         
+                + "     (`idsalida`  ,`ClavePapel` ,`total_salida` ,`cantidad_salida`,`Costo` ,`totalcosto`,`entradas`)"
+             + "VALUES ('"+id_salida+"','"+clavePapel+"','"+totalsalida+"','"+cantidadsalida+"','"+costo+"','"+totalcosto+"','"+identradas_+"');";                         
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -903,7 +903,7 @@ public class modelo extends database {
         }
     }
     
-    public boolean modifDetalleSalida(int id_salida, String clavePapel, String totalsalida,String cantidadsalida, String costo, String totalcosto) {
+    public boolean modifDetalleSalida(int id_salida, String clavePapel, String totalsalida,String cantidadsalida, String costo, String totalcosto,String identradas_) {
        // String q = " INSERT INTO  `dis_paper`.`detalleentrada`"
        //         + "     (`id_entrada` ,`Clave_Papel` ,`total_entrada` ,`cantidad_entrada`,  `ubicacion`,`Costo` ,`total_costo`)"
        //      + "VALUES ('"+id_entrada+"','"+clavePapel+"','"+totalentrada+"','"+cantidadentrada+"','"+ubicacion+"','"+costo+"','"+totalcosto+"');"; 
@@ -911,7 +911,7 @@ public class modelo extends database {
                                         +"total_salida='"+totalsalida+"',"
                                         +"cantidad_salida='"+cantidadsalida+"',"
                                         +"costo='"+costo+"', "
-                                        +"total_costo='"+totalcosto+"' where id_entrada='"+id_salida+"';";
+                                        +"total_costo='"+totalcosto+"', entradas='"+identradas_+"' where id_entrada='"+id_salida+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -923,9 +923,9 @@ public class modelo extends database {
         }
     }
 
-    public boolean altaDetalleSalidah(int id_salidah, String clave_papel, double total_hojas,int contenido, double cantidad, int resto,String costo,String totalcosto) {
-        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`)" 
-             + "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+totalcosto+"');";                         
+    public boolean altaDetalleSalidah(int id_salidah, String clave_papel, double total_hojas,int contenido, double cantidad, int resto,String costo,String totalcosto,String identradas_) {
+        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`,`entradas`)" 
+             + "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+identradas_+"');";                         
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -1755,6 +1755,18 @@ public class modelo extends database {
                 return null;
             }
     }
+    public ResultSet buscarEntradaID(String id) {
+        String q = "SELECT total_entrada,cantidad_entrada,total_temporal,cantidad_temoporal FROM detalleentrada where id_detalleentrada="+id+"; ";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                System.err.println( e.getMessage() );
+                return null;
+            }
+    }
+    //
     public ResultSet buscarDetalleSalidaB(int idfolio) {
         String q = "SELECT * FROM detallesalidab where id_salida = '"+idfolio+"'; ";
         try {
@@ -1927,7 +1939,7 @@ public class modelo extends database {
     }
 
      public ResultSet buscarUltimaEntrada(String clave,String fec) {
-        String q = "select id_detalleentrada,d.id_entrada,clave_papel, total_temporal as total ,cantidad_temoporal as cantidad,fecha as fecha_entrada\n" +
+        String q = "select id_detalleentrada,d.id_entrada,clave_papel,total_entrada,cantidad_entrada, total_temporal as total_temporal ,cantidad_temoporal as cantidad_temoporal,fecha as fecha_entrada\n" +
 "from detalleentrada d, entrada e " +
 "where e.id_entrada=d.id_entrada " +
 "and clave_papel = '"+clave+"'" +
@@ -2277,6 +2289,20 @@ public class modelo extends database {
     
     public boolean ubicacion(String clave,String ubicacion) {
             String q=" UPDATE  inventario SET ubicacion='"+ubicacion+"' where clavepapel ='"+clave+"';";
+        try{
+            System.out.println(q);
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean tottemp(int tottemp,int canttem,String id) {
+            String q=" UPDATE  detalleentrada SET total_temporal='"+tottemp+"', cantidad_temoporal='"+canttem+"' where id_detalleentrada ='"+id+"';";
         try{
             System.out.println(q);
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
