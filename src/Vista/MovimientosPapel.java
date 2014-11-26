@@ -1622,6 +1622,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __EstandarProduccionSalidaHoja.setMaximumSize(new java.awt.Dimension(10, 30));
         __EstandarProduccionSalidaHoja.setMinimumSize(new java.awt.Dimension(10, 30));
         __EstandarProduccionSalidaHoja.setName(""); // NOI18N
+        __EstandarProduccionSalidaHoja.setNextFocusableComponent(__MaquinaSalidaH);
         __EstandarProduccionSalidaHoja.setPreferredSize(new java.awt.Dimension(10, 30));
         __EstandarProduccionSalidaHoja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

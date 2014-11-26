@@ -4620,7 +4620,7 @@ public class jControlador implements ActionListener{
                 break;
             
             case __ALTAS_REGRESAR:
-                confir = mensajeConfirmacion("¿Realmente Deseas Regresar al \n Menú Principal?","Salida");
+                confir = mensajeConfirmacion("¿Realmente Deseas Regresar al Menú Principal?","Salida");
                                  if (confir == JOptionPane.OK_OPTION){
                                     this.ap.dispose();
                                     this.menumaster.setVisible(true);
@@ -4724,7 +4724,7 @@ public class jControlador implements ActionListener{
                 if(confir==JOptionPane.OK_OPTION){
                    String altapApel=mimodelo.altaPapel(clave, idmarca, idnombrepapel, idcolor, altacara, tipopapel, altaclase, ancho, alto, gramaje+"");
                    if(altapApel.equals("Duplicate entry '"+clave+"' for key 'Clave'")){
-                       mensaje(3,"Error ya se capturo este papel");
+                       mensaje(3,"Error Ya Se Capturo Este Papel");
                        break;
                    }
                    if(altapApel.equals("true")){
@@ -4755,12 +4755,12 @@ public class jControlador implements ActionListener{
             case __ACEPTAR_BAJA:
                 String claveBorrar = bajaP.__ClavePapelBaja.getText();
                 if(claveBorrar.isEmpty()||claveBorrar.equals(null)){
-                    mensaje(2,"Ingresa la clave de Papel a Eliminar");
+                    mensaje(2,"Ingresa la Clave de Papel a Eliminar");
                 }else{
                     try {
                         ResultSet buscaClavePapela = mimodelo.buscaClavea(claveBorrar);
                         if(buscaClavePapela.next()){
-                            confir=this.mensajeConfirmacion("Realmente deseas borrar el Papel "+claveBorrar, "Borrar Papel");
+                            confir=this.mensajeConfirmacion("Realmente Deseas Borrar el Papel "+claveBorrar, "Borrar Papel");
                             if(confir == JOptionPane.OK_OPTION){
                                 boolean borrado = mimodelo.bajaPapel(claveBorrar);
                                 if(borrado){
@@ -4770,7 +4770,7 @@ public class jControlador implements ActionListener{
                                 }
                             }
                         }else{
-                            mensaje(2,"El papel no existe, verifica la Clave");
+                            mensaje(2,"El papel no Existe, Verifica la Clave");
                             break;
                         }
                     } catch (SQLException ex) {
@@ -4899,7 +4899,7 @@ public class jControlador implements ActionListener{
                         File f = new File(fil);
                         Desktop.getDesktop().open(f);
                     }else{
-                        mensaje(3,"Debes Seleccionar el archivo para abrir");
+                        mensaje(3,"Debes Seleccionar el Archivo para Abrir");
                     }
                 } catch (IOException ex) {
                     mensaje(3,ex.getMessage());
@@ -5101,7 +5101,7 @@ public class jControlador implements ActionListener{
                     break;
                 case __MODIFICACIONSALIDA:
                     this.modificarsalida=1;
-                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el folio de la salida a modificar");
+                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el Folio de la Salida a Modificar");
                 if(buscarfolio==null || buscarfolio.length()<3){
                     mensaje(2,"Intenta otra vez");
                     break;
@@ -5140,7 +5140,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(2, false);
                         this.movimientos.JPanel.setEnabledAt(3, false);
                    }else{
-                       mensaje(2,"La entrada no existe");
+                       mensaje(2,"La Entrada no Existe");
                        break;
                    }
                    ResultSet detallesalida = mimodelo.buscarDetalleSalida(idfolio);
@@ -5190,7 +5190,7 @@ public class jControlador implements ActionListener{
             case __MODIFICACIONENTRADA:
                 this.modificarentrada=1;
                 
-                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el folio de la entrada a modificar");
+                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el Folio de la Entrada a Modificar");
                 if(buscarfolio==null || buscarfolio.length()<3){
                     mensaje(2,"Intenta otra vez");
                     break;
@@ -5228,7 +5228,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(2, false);
                         this.movimientos.JPanel.setEnabledAt(3, false);
                    }else{
-                       mensaje(2,"La entrada no existe");
+                       mensaje(2,"La Entrada no Existe");
                        break;
                    }
                    ResultSet detalleentrada = mimodelo.buscarDetalleEntrada(idfolio);
@@ -5277,7 +5277,7 @@ public class jControlador implements ActionListener{
                 break;
             case __MODIFICACIONSALHOJ:
                 this.modificarsalidah=1;
-                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el folio de la salida de hoja a modificar");
+                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el Folio de la Salida de Hoja a Modificar");
                 if(buscarfolio==null || buscarfolio.length()<3){
                     mensaje(2,"Intenta otra vez");
                     break;
@@ -5328,7 +5328,7 @@ public class jControlador implements ActionListener{
                     this.movimientos.JPanel.setEnabledAt(2, true);
                     this.movimientos.JPanel.setEnabledAt(3, false);
                    }else{
-                       mensaje(2,"La Salida no existe");
+                       mensaje(2,"La Salida no Existe");
                        break;
                    }
                    ResultSet detallesalidah = mimodelo.buscarDetalleSalidaH(idfolio);
@@ -5376,7 +5376,7 @@ public class jControlador implements ActionListener{
             case __MODIFICACIONSALBOB:
                 this.borrarFormularioMovimientosPapel();
                 this.modificarsalidab=1;
-                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el folio de la salida de bobina a modificar");
+                buscarfolio = JOptionPane.showInputDialog("Folio","Ingresa el Folio de la Salida de bobina a Modificar");
                 if(buscarfolio==null || buscarfolio.length()<3){
                     mensaje(2,"Intenta otra vez");
                     break;
