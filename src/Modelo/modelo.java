@@ -683,7 +683,7 @@ public class modelo extends database {
      
      
      public ResultSet buscaClaveHoja(String parametro,int propietario) {
-        String q = "select clavePapel from inventario where id_propietario="+propietario+" and clavePapel like '02-%"+parametro+"%'";
+        String q = "select clavePapel from inventario where id_propietario="+propietario+" and clavePapel like '02-%"+parametro+"%' and (cantidad>0 or presentacion>0) ";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
@@ -694,7 +694,7 @@ public class modelo extends database {
             }
     }
      public ResultSet buscaClaveBobina(String parametro,int propietario) {
-        String q = "select clavePapel from inventario where id_propietario="+propietario+" and clavePapel like '01-%"+parametro+"%' and cantidad >0 and presentacion >0";
+        String q = "select clavePapel from inventario where id_propietario="+propietario+" and clavePapel like '01-%"+parametro+"%' and (cantidad >0 or presentacion >0)";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
@@ -924,8 +924,8 @@ public class modelo extends database {
     }
 
     public boolean altaDetalleSalidah(int id_salidah, String clave_papel, double total_hojas,int contenido, double cantidad, int resto,String costo,String totalcosto,String identradas_) {
-        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`,`entradas`)" 
-             + "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+identradas_+"');";                         
+        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`,`identradas`)" 
+             +                                       "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+totalcosto+"','"+identradas_+"');";                         
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -936,7 +936,7 @@ public class modelo extends database {
             return false;
         }
     }
-    public boolean modifDetalleSalidah(int id_salidah, String clave_papel, int total_hojas,int contenido, int cantidad, int resto,String costo,String totalcosto) {
+    public boolean modifDetalleSalidah(int id_salidah, String clave_papel, int total_hojas,int contenido, int cantidad, int resto,String costo,String totalcosto,String identradas_) {
         //String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`)" 
         //     + "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"');";                         
         String q="UPdATE detallesalidah SET clave_papel='"+clave_papel+"', total_hojas='"+total_hojas+"', "
@@ -944,7 +944,7 @@ public class modelo extends database {
                 + "                          cantidad='"+cantidad+"', "
                 + "                           resto='"+resto+"',"
                 + "                           costo='"+costo+"',"
-                + "                      totalcosto='"+totalcosto+"' where id_salida='"+id_salidah+"';";
+                + "                      totalcosto='"+totalcosto+", identradas='"+identradas_+"' where id_salida='"+id_salidah+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -955,9 +955,9 @@ public class modelo extends database {
             return false;
         }
     }
-    public boolean altaDetalleSalidab(int id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo, String totalcosto,String totalkil) {
-        String q = "INSERT INTO  `dis_paper`.`detallesalidab` (`id_salida` ,`Clave_Papel` ,`totkgsini` ,`totbobini` ,`totkgssur` ,`totbobsur` ,`totkgsdev` ,`totbobdev` ,`totalsurtido` ,`desperdicio` ,`empaque` ,`capa` ,`cono` ,`totales` ,`totalpliegos` ,`despliegos` ,`empqplie` ,`capaplie` ,`conoplie` ,`totalesplie`,`costo`,`totalcosto`,`estandar`)"
-        +"VALUES ('"+id_salidab+"',  '"+clave_papel+"',  '"+totksini+"',  '"+totbobini+"',  '"+totkgssur+"',  '"+totbobsur+"',  '"+totkgsdev+"',  '"+totbobdev+"',  '"+totalsurtido+"',  '"+desperdicio+"',  '"+empaque+"',  '"+capa+"',  '"+cono+"',  '"+totales+"',  '"+totalpliegos+"',  '"+despliegos+"',  '"+empqplie+"',  '"+capaplie+"',  '"+conoplie+"',  '"+totalesplie+"',  '"+costo+"',  '"+totalcosto+"',  '"+totalkil+"');";                   
+    public boolean altaDetalleSalidab(int id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo, String totalcosto,String totalkil,String identradas_) {
+        String q = "INSERT INTO  `dis_paper`.`detallesalidab` (`id_salida` ,`Clave_Papel` ,`totkgsini` ,`totbobini` ,`totkgssur` ,`totbobsur` ,`totkgsdev` ,`totbobdev` ,`totalsurtido` ,`desperdicio` ,`empaque` ,`capa` ,`cono` ,`totales` ,`totalpliegos` ,`despliegos` ,`empqplie` ,`capaplie` ,`conoplie` ,`totalesplie`,`costo`,`totalcosto`,`estandar`,`entradas`)"
+        +"VALUES ('"+id_salidab+"',  '"+clave_papel+"',  '"+totksini+"',  '"+totbobini+"',  '"+totkgssur+"',  '"+totbobsur+"',  '"+totkgsdev+"',  '"+totbobdev+"',  '"+totalsurtido+"',  '"+desperdicio+"',  '"+empaque+"',  '"+capa+"',  '"+cono+"',  '"+totales+"',  '"+totalpliegos+"',  '"+despliegos+"',  '"+empqplie+"',  '"+capaplie+"',  '"+conoplie+"',  '"+totalesplie+"',  '"+costo+"',  '"+totalcosto+"',  '"+totalkil+"',  '"+identradas_+"');";                   
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -968,10 +968,10 @@ public class modelo extends database {
             return false;
         }
     }
-    public boolean modifdetalleSalidab(String id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo,String totalcosto) {
+    public boolean modifdetalleSalidab(String id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo,String totalcosto,String identradas_) {
        // String q = "INSERT INTO  `dis_paper`.`detallesalidab` (`id_salida` ,`Clave_Papel` ,`totkgsini` ,`totbobini` ,`totkgssur` ,`totbobsur` ,`totkgsdev` ,`totbobdev` ,`totalsurtido` ,`desperdicio` ,`empaque` ,`capa` ,`cono` ,`totales` ,`totalpliegos` ,`despliegos` ,`empqplie` ,`capaplie` ,`conoplie` ,`totalesplie`)"
         //+"VALUES ('"+id_salidab+"',  '"+clave_papel+"',  '"+totksini+"',  '"+totbobini+"',  '"+totkgssur+"',  '"+totbobsur+"',  '"+totkgsdev+"',  '"+totbobdev+"',  '"+totalsurtido+"',  '"+desperdicio+"',  '"+empaque+"',  '"+capa+"',  '"+cono+"',  '"+totales+"',  '"+totalpliegos+"',  '"+despliegos+"',  '"+empqplie+"',  '"+capaplie+"',  '"+conoplie+"',  '"+totalesplie+"');";
-         String q="UPDATE `dis_paper`.`detallesalidab` SET `totkgsini`='"+totksini+"', `totbobini`='"+totbobini+"', `totkgssur`='"+totkgssur+"', `totbobsur`='"+totbobsur+"', `totkgsdev`='"+totkgsdev+"', `totbobdev`='"+totbobdev+"', `totalsurtido`='"+totalsurtido+"', `desperdicio`='"+desperdicio+"', `empaque`='"+empaque+"', `capa`='"+capa+"', `cono`='"+cono+"', `totales`='"+totales+"', `totalpliegos`='"+totalpliegos+"', `despliegos`='"+despliegos+"', `empqplie`='"+empqplie+"', `capaplie`='"+capaplie+"', `conoplie`='"+conoplie+"', `totalesplie`='"+totalesplie+"', `costo`='"+costo+"', `totalcosto`='"+totalcosto+"' WHERE `idd_salida`='"+id_salidab+"';";                      
+         String q="UPDATE `dis_paper`.`detallesalidab` SET `totkgsini`='"+totksini+"', `totbobini`='"+totbobini+"', `totkgssur`='"+totkgssur+"', `totbobsur`='"+totbobsur+"', `totkgsdev`='"+totkgsdev+"', `totbobdev`='"+totbobdev+"', `totalsurtido`='"+totalsurtido+"', `desperdicio`='"+desperdicio+"', `empaque`='"+empaque+"', `capa`='"+capa+"', `cono`='"+cono+"', `totales`='"+totales+"', `totalpliegos`='"+totalpliegos+"', `despliegos`='"+despliegos+"', `empqplie`='"+empqplie+"', `capaplie`='"+capaplie+"', `conoplie`='"+conoplie+"', `totalesplie`='"+totalesplie+"', `costo`='"+costo+"', `totalcosto`='"+totalcosto+"', `entradas`='"+identradas_+"' WHERE `idd_salida`='"+id_salidab+"';";                      
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
