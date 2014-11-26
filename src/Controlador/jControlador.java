@@ -857,6 +857,109 @@ public class jControlador implements ActionListener{
         this.ap.__GUARDAR.setActionCommand("__ALTAPAPEL_GUARDAR");
         this.ap.__GUARDAR.setMnemonic('G');
         this.ap.__GUARDAR.addActionListener(this);
+        this.ap.__etqEliNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                String altanombre=ap.__NombrePapel.getSelectedItem().toString();
+                if(ap.__NombrePapel.getSelectedIndex()==0){
+                    mensaje(3,"Debe Seleccionar un Nombre de Papel");
+                }else{
+                    confir = mensajeConfirmacion("¿Deseas eliminar el nombre "+altanombre+"?","Confirma"); 
+                    if(confir!=JOptionPane.OK_OPTION){
+                        return;
+                    }else{
+                    int idnombrepapel = busquedaid("nombre");
+                    mimodelo.bajaNombre(idnombrepapel);
+                    mensaje(1,"Nombre "+ altanombre +" eliminado correctamente");
+                    ap.__NombrePapel.removeItem(altanombre);
+                    }
+                }
+                
+            }    
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+               
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                
+            }
+        });
+        this.ap.__etqEliColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                String foraltacolor = ap.__ColorPapel.getSelectedItem()+"";
+                if( foraltacolor.equals("Selecciona...")){
+                    mensaje(3,"Debe Seleccionar un Color de Papel");
+                }else{
+                    confir = mensajeConfirmacion("¿Deseas eliminar el color "+foraltacolor+"?","Confirma"); 
+                    if(confir!=JOptionPane.OK_OPTION){
+                        return;
+                    }else{
+                    int idcolor = busquedaid("color");
+                    mimodelo.bajaColor(idcolor);
+                    ap.__ColorPapel.removeItem(foraltacolor);
+                mensaje(1,"Color "+ foraltacolor +" eliminado correctamente");
+                    }
+                }              
+                
+            }    
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+               
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                
+            }
+        });
+        this.ap.__etqEliPropiedad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                int altapropiedad = Integer.parseInt(ap.__Propiedad.getSelectedIndex()+"");
+                Object propiedad=ap.__Propiedad.getSelectedItem();
+                if( altapropiedad == 0){
+                    mensaje(3,"Debe Seleccionar un Propiedad de Papel");
+                    return;
+                }else{
+                    confir = mensajeConfirmacion("¿Deseas eliminar la propiedad "+propiedad+"?","Confirma"); 
+                    if(confir!=JOptionPane.OK_OPTION){
+                        return;
+                    }else{
+                    propiedad = ap.__Propiedad.getSelectedItem()+"";
+                    altapropiedad = busquedaid("propiedad");
+                    mimodelo.bajaPropietarios(altapropiedad);
+                    ap.__Propiedad.removeItem(propiedad);
+                    mensaje(1,"Propiedad "+ propiedad+" eliminada correctamente");}
+                }
+                
+            }    
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+               
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                
+            }
+        });
+        this.ap.__etqEliMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                String altamarca = ap.__Marca.getSelectedItem()+"";
+                
+                    if( altamarca.equals("Selecciona...")){
+                        mensaje(3,"Debe Seleccionar una Marca de Papel");
+                    }else{
+                        confir = mensajeConfirmacion("¿Deseas eliminar la marca "+altamarca+"?","Confirma"); 
+                        if(confir!=JOptionPane.OK_OPTION){
+                            return;
+                        }else{
+                        int idmarca = busquedaid("marca");
+                        mimodelo.bajaMarca(idmarca);
+                        ap.__Marca.removeItem(altamarca);
+                        mensaje(1,"Marca "+ altamarca+" eliminada correctamente");}
+                    }
+                
+            }    
+            public void mouseEntered(java.awt.event.MouseEvent evt){
+               
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt){
+                
+            }
+        });
+        
         this.ap.__etqNewColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt){
                 nuevoColor(ap.__ColorPapel);
@@ -7958,12 +8061,12 @@ public class jControlador implements ActionListener{
                     }
         switch(this.modificarsalida){
             case 0:
-                
                 confir=mensajeConfirmacion("Estas seguro de registrar la Salida","Aceptar");
                 if (confir==JOptionPane.OK_OPTION){
                     ResultSet buscarMaxSalida=null;
                     boolean detallesalida = false;
                     int id_salida = 0;
+                    
                     try {
                         buscarMaxSalida = mimodelo.bucarMaxSalida();
                         while(buscarMaxSalida.next()){
@@ -7971,7 +8074,6 @@ public class jControlador implements ActionListener{
                         }
                         buscarMaxSalida.close();
                         id_salida++;
-                        
                         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
                             try{
                                 for(int j =0;j<movimientos.__tablaSalida.getColumnCount();j++){
@@ -8006,6 +8108,7 @@ public class jControlador implements ActionListener{
                                     if(totalsalida>totalentr){
                                         mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
                                         return;
+                                        
                                     }
                                     if(cantidadsalida>cantentr){
                                         mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
