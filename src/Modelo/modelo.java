@@ -1311,7 +1311,7 @@ public class modelo extends database {
             return true;
         }catch(SQLException e){            
                if(e.getMessage().equals("Duplicate entry '"+Nombre+"' for key 'Nombre'")){                   
-                JOptionPane.showMessageDialog(null, "Ya Existe Este Proveedor: " +Nombre);
+                JOptionPane.showMessageDialog(null, "Ya Existe Este Cliente: " +Nombre);
             }else{
                System.err.println(e.getMessage()); 
             }            
