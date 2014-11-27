@@ -5144,35 +5144,37 @@ public class jControlador implements ActionListener{
                    ResultSet detallesalida = mimodelo.buscarDetalleSalida(idfolio);
                    if(detallesalida.next()){
                        detallesalida.beforeFirst();
+                       int a=0;
                        while(detallesalida.next()){
                            int f = detallesalida.getRow();
                            idsalidas = new String [f];
-                           for(int i=0;i<f;i++){
-                               idsalidas[i]=detallesalida.getString("idsalida");
-                               movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), i, 0);
-                               movimientos.__tablaSalida.setValueAt(detallesalida.getInt("total_salida"), i, 1);
-                               int totalsumar=detallesalida.getInt("total_salida");
-                               movimientos.__tablaSalida.setValueAt(detallesalida.getInt("cantidad_salida"), i, 2);
-                               int cantidadsumar=detallesalida.getInt("cantidad_salida");
-                               ResultSet bep= mimodelo.buscarExistenciaPapel(detallesalida.getString("clavepapel"));
-                               while(bep.next()){
-                                   totalbd=Double.parseDouble(bep.getString("presentacion"));
-                                   cantidadbd=Double.parseDouble(bep.getString("cantidad"));
-                               }
-                               
-                               String entradas[] = detallesalida.getString("entradas").split(",");
-                               j = entradas.length;
-                               antipeps2(entradas,totalsumar,cantidadsumar);
-                               movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("costo")), i, 3);
-                               movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("totalcosto")), i, 4);
+                           
+                            idsalidas[a]=detallesalida.getString("idsalida");
+                            movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), a, 0);
+                            movimientos.__tablaSalida.setValueAt(detallesalida.getInt("total_salida"), a, 1);
+                            int totalsumar=detallesalida.getInt("total_salida");
+                            movimientos.__tablaSalida.setValueAt(detallesalida.getInt("cantidad_salida"), a, 2);
+                            int cantidadsumar=detallesalida.getInt("cantidad_salida");
+                            ResultSet bep= mimodelo.buscarExistenciaPapel(detallesalida.getString("clavepapel"));
+                            while(bep.next()){
+                                totalbd=Double.parseDouble(bep.getString("presentacion"));
+                                cantidadbd=Double.parseDouble(bep.getString("cantidad"));
+                            }
+
+                            String entradas[] = detallesalida.getString("entradas").split(",");
+                            j = entradas.length;
+                            antipeps2(entradas,totalsumar,cantidadsumar);
+                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("costo")), a, 3);
+                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("totalcosto")), a, 4);
                                mimodelo.sumarexistencia(detallesalida.getString("clavepapel"));
-                           }
+                           
                            ResultSetMetaData metaData = detallesalida.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
                            for(int i=2;i<numcol;i++){
                                this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
                            }
+                           a++;
                        }
                    }
                    movimientos.__TipoSalida.requestFocus();
@@ -5232,15 +5234,16 @@ public class jControlador implements ActionListener{
                    ResultSet detalleentrada = mimodelo.buscarDetalleEntrada(idfolio);
                    if(detalleentrada.next()){
                        detalleentrada.beforeFirst();
+                       int d =0;
                        while(detalleentrada.next()){
                            int f = detalleentrada.getRow();
                            identradas = new String [f];
-                           for(int i=0;i<f;i++){
-                               identradas[i]=detalleentrada.getString("id_entrada");
-                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("clave_papel"), i, 0);
-                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getInt("total_entrada"), i, 1);
+                           
+                               identradas[d]=detalleentrada.getString("id_entrada");
+                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("clave_papel"), d, 0);
+                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getInt("total_entrada"), d, 1);
                                restarcantidad=Double.parseDouble(detalleentrada.getString("total_entrada"));
-                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getInt("cantidad_entrada"), i, 2);
+                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getInt("cantidad_entrada"), d, 2);
                                restartotal=Double.parseDouble(detalleentrada.getString("cantidad_entrada"));
                                ResultSet bep= mimodelo.buscarExistenciaPapel(detalleentrada.getString("clave_papel"));
                                int totaltemporal,cantidadtemporal;
@@ -5252,21 +5255,22 @@ public class jControlador implements ActionListener{
                                newcantidad=cantidadbd-restarcantidad;
                                newtotal=totalbd-restartotal;
                                mimodelo.nuevaExistencia(newcantidad+"", detalleentrada.getString("clave_papel"),newtotal+"");
-                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("ubicacion"), i, 3);
-                               movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("costo")), i, 4);
-                               movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("total_costo")), i, 5);
+                               movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("ubicacion"), d, 3);
+                               movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("costo")), d, 4);
+                               movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("total_costo")), d, 5);
                                totaltemporal=detalleentrada.getInt("total_temporal");
                                cantidadtemporal=detalleentrada.getInt("cantidad_temoporal");
                                int a =totaltemporal-totaltemporal;
                                int b =cantidadtemporal-cantidadtemporal;
-                               mimodelo.updateteporalde(a, b, identradas[i]);
-                           }
+                               mimodelo.updateteporalde(a, b, identradas[d]);
+                           
                            ResultSetMetaData metaData = detalleentrada.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
                            for(int i=2;i<numcol;i++){
                                this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
                            }
+                           d++;
                        }
                    }
                 }catch(Exception ex){
@@ -5332,34 +5336,36 @@ public class jControlador implements ActionListener{
                    ResultSet detallesalidah = mimodelo.buscarDetalleSalidaH(idfolio);
                    if(detallesalidah.next()){
                        detallesalidah.beforeFirst();
+                       int a=0;
                        while(detallesalidah.next()){
                            int f = detallesalidah.getRow();
                            idsalidash = new String [f];
-                           for(int i=0;i<f;i++){
-                               idsalidash[i]=detallesalidah.getString("id_salida");
-                               movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), i, 0);
-                               movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), i, 1);
-                               int totalsumar=detallesalidah.getInt("total_hojas");
-                               movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), i, 2);
-                               int cantidadsumar=detallesalidah.getInt("cantidad");
-                               movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("costo")),i,3);
-                               movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("totalcosto")),i,4);
-                               ResultSet bep = mimodelo.buscarExistenciaPapel(detallesalidah.getString("clave_papel"));
-                               while(bep.next()){
-                                   totalbd=Double.parseDouble(bep.getString("presentacion"));
-                                   cantidadbd=Double.parseDouble(bep.getString("cantidad"));
-                               }
-                              String entradas[] = detallesalidah.getString("identradas").split(",");
-                               j = entradas.length;
-                               antipeps2(entradas,totalsumar,cantidadsumar);
-                               mimodelo.sumarexistencia(detallesalidah.getString("clave_papel"));
+                           System.out.println(a+"------------");
+                           System.out.println(detallesalidah.getString("clave_papel"));
+                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
+                           idsalidash[a]=detallesalidah.getString("id_salida");
+                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
+                           int totalsumar=detallesalidah.getInt("total_hojas");
+                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), a, 2);
+                           int cantidadsumar=detallesalidah.getInt("cantidad");
+                           movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("costo")),a,3);
+                           movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("totalcosto")),a,4);
+                           ResultSet bep = mimodelo.buscarExistenciaPapel(detallesalidah.getString("clave_papel"));
+                           while(bep.next()){
+                               totalbd=Double.parseDouble(bep.getString("presentacion"));
+                               cantidadbd=Double.parseDouble(bep.getString("cantidad"));
                            }
+                           String entradas[] = detallesalidah.getString("identradas").split(",");
+                           j = entradas.length;
+                           antipeps2(entradas,totalsumar,cantidadsumar);
+                           mimodelo.sumarexistencia(detallesalidah.getString("clave_papel"));
                            ResultSetMetaData metaData = detallesalidah.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
                            for(int i=2;i<numcol;i++){
                                this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
                            }
+                           a++;
                        }
                    }
                 }catch(Exception ex){
@@ -5436,25 +5442,26 @@ public class jControlador implements ActionListener{
                     ResultSet detallesalidab = mimodelo.buscarDetalleSalidaB(idfolio);
                     if(detallesalidab.next()){
                         detallesalidab.beforeFirst();
+                        int s=0;
                          while(detallesalidab.next()){
                            int f = detallesalidab.getRow();
                            idsalidasb = new String [f];
-                           for(int i=0;i<f;i++){    
-                               idsalidasb[i]=detallesalidab.getString("idd_salida");
+                           
+                               idsalidasb[s]=detallesalidab.getString("idd_salida");
                                String cclave= detallesalidab.getString("clave_papel");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getString("clave_papel"), i, 0);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getString("clave_papel"), s, 0);
                                int a =detallesalidab.getInt("totkgsini");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsini"), i, 1);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsini"), s, 1);
                                int a1 =detallesalidab.getInt("totbobini");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobini"), i, 2);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobini"), s, 2);
                                int b= detallesalidab.getInt("totkgssur");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgssur"), i, 3);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgssur"), s, 3);
                                int b1=detallesalidab.getInt("totbobsur");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobsur"), i, 4);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobsur"), s, 4);
                                int c=detallesalidab.getInt("totkgsdev");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsdev"), i, 5);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsdev"), s, 5);
                                int c1=detallesalidab.getInt("totbobdev");
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobdev"), i, 6);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobdev"), s, 6);
                                int rk = a+b-c;
                                int rb = a1+b1-c1;
                                
@@ -5462,10 +5469,10 @@ public class jControlador implements ActionListener{
                                j = entradas.length;
                                antipeps2(entradas,rk,rb);
                                mimodelo.sumarexistencia(detallesalidab.getString("clave_papel"));
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("costo")), i, 7);
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("totalcosto")), i, 8);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("costo")), s, 7);
+                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("totalcosto")), s, 8);
                                
-                           }
+                           
                            emergente.__CapaKG.setText(detallesalidab.getString("capa"));
                            emergente.__ConoKG.setText(detallesalidab.getString("cono"));
                            emergente.__DesperdicioKG.setText(detallesalidab.getString("desperdicio"));
@@ -5477,6 +5484,7 @@ public class jControlador implements ActionListener{
                            for(int i=2;i<numcol;i++){
                                this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
                            }
+                           s++;
                        }
                    }
                    filas=movimientos.__tablaSalidaBobinaInventario.getRowCount();
@@ -8021,19 +8029,6 @@ public class jControlador implements ActionListener{
                         buscarMaxEntrada.close();
                         id_entrada++;
                         for(int i=0;i<movimientos.__tablaEntrada.getRowCount();i++){
-                            try{
-                                for(int j =0;j<movimientos.__tablaEntrada.getColumnCount();j++){
-                                    if(movimientos.__tablaEntrada.getValueAt(i, j).equals(null)){
-                                        mensaje(3,"completa los campos en la fila "+(i+1));
-                                        return;
-                                    }
-                                }
-                            }catch(java.lang.NullPointerException e){
-                                
-                                    mensaje(3,"completa los campos en la fila "+(i+1));
-                                    return;
-                                
-                            }
                             try{
                                 clavePapel=movimientos.__tablaEntrada.getValueAt(i, 0).toString();
                                 int totalentrada =Integer.parseInt(movimientos.__tablaEntrada.getValueAt(i, 1).toString());
