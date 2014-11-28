@@ -244,14 +244,6 @@
                       <Component id="__etqTotal14" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                      <Component id="__RSalidaB" min="-2" pref="140" max="-2" attributes="0"/>
-                      <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                      <Component id="__RSalidaH" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                      <Component id="__RSalidaG" min="-2" pref="142" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="__etqTotal8" min="-2" max="-2" attributes="0"/>
@@ -286,10 +278,6 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                      <Component id="__CONSUMOTOTALOP" min="-2" pref="140" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                       <Component id="__SALIR" min="-2" pref="101" max="-2" attributes="0"/>
                   </Group>
@@ -321,17 +309,18 @@
                           <Component id="__etqTotal7" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="__RBobina" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace min="155" pref="155" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="__REntradaB" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                                   <Component id="__REntradaH" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="__REntradaB" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="__RBobina" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="__RHojas" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
@@ -339,6 +328,19 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="__RFinanzas" pref="140" max="32767" attributes="0"/>
                               <Component id="__TraspasoBH" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="80" pref="80" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="__CONSUMOTOTALOP" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="__RSalidaB" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
+                              <Component id="__RSalidaH" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="__RSalidaG" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -372,14 +374,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="__REntradaB" min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="__RHojas" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="__RHojas" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="__TraspasoBH" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="__RBobina" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -388,11 +391,18 @@
                           <Component id="__etqTotal6" min="-2" max="-2" attributes="0"/>
                           <Component id="__etqTotal7" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="__RBobina" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="__REntradaH" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="__RFinanzas" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="__REntradaH" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="__RFinanzas" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="__REntradaB" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">

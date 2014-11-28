@@ -10,7 +10,7 @@
 	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
-			<style mode="Opaque" backcolor="#FF8000"/>
+			<style backcolor="#FF8000"/>
 		</conditionalStyle>
 	</style>
 	<queryString>
@@ -32,8 +32,8 @@ FROM
      `vw_infopapelh` vw_infopapelh
 WHERE
      vw_infopapelh.`cantidad` <> 0
-ORDER BY FIELD(vw_infopapelh.`propiedad`,'IEXSA') DESC,
-     vw_infopapelh.`propiedad` ASC,vw_infopapelh.`nombre` ASC,vw_infopapelh.`color` ASC,     vw_infopapelh.`ubicacion` ASC]]>
+ORDER BY vw_infopapelh.`nombre` ASC,
+     vw_infopapelh.`caras` ASC, vw_infopapelh.`alto` ASC]]>
 	</queryString>
 	<field name="vw_infopapelh_clave" class="java.lang.String"/>
 	<field name="vw_infopapelh_nombre" class="java.lang.String"/>
@@ -128,86 +128,93 @@ ORDER BY FIELD(vw_infopapelh.`propiedad`,'IEXSA') DESC,
 			<staticText>
 				<reportElement uuid="0ecd264c-fde6-4746-b2a2-201bad5deebe" style="Column header" x="0" y="0" width="143" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Clave]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="143" y="0" width="70" height="35" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="143" y="0" width="57" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Papel]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="349" y="0" width="43" height="35" forecolor="#000000"/>
+				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="368" y="0" width="43" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ancho]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5aafe76d-1647-435a-89ba-07005a8b1c71" style="Column header" x="392" y="0" width="40" height="35" forecolor="#000000"/>
+				<reportElement uuid="5aafe76d-1647-435a-89ba-07005a8b1c71" style="Column header" x="411" y="0" width="40" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Grams]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="aaaf9fb1-c210-4863-b6b3-e24649c144fb" style="Column header" x="432" y="0" width="68" height="35" forecolor="#000000"/>
+				<reportElement uuid="aaaf9fb1-c210-4863-b6b3-e24649c144fb" style="Column header" x="451" y="0" width="60" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Propiedad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e131aba1-5063-4366-8de4-1fee351cd26d" style="Column header" x="500" y="0" width="72" height="35" forecolor="#000000"/>
+				<reportElement uuid="e131aba1-5063-4366-8de4-1fee351cd26d" style="Column header" x="511" y="0" width="61" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad de Hojas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="95bd7efe-1d5c-449f-847b-7617e0089eb6" style="Column header" x="572" y="0" width="68" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No. Paq ó Tarimas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="5407a09d-0cce-4496-8d2f-4774e0a05c4b" x="640" y="0" width="52" height="35"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo Promedio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="b9176006-8e3a-4895-a9e0-f4c53eb17c34" x="692" y="0" width="68" height="35"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="315" y="0" width="34" height="35" forecolor="#000000"/>
+				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="334" y="0" width="34" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Alto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="262" y="0" width="53" height="35" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="281" y="0" width="53" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ubicación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="213" y="0" width="49" height="35" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="232" y="0" width="49" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Color]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="19482571-a322-4347-ac7e-f74ccbbbe82e" x="200" y="0" width="32" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caras]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -223,35 +230,35 @@ ORDER BY FIELD(vw_infopapelh.`propiedad`,'IEXSA') DESC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_clave}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="88485793-7b08-4a19-8383-560fdc473884" style="Detail" positionType="Float" x="143" y="0" width="70" height="18"/>
+					<reportElement uuid="88485793-7b08-4a19-8383-560fdc473884" style="Detail" positionType="Float" x="143" y="0" width="57" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_nombre}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="1ff22870-e103-4f22-9f01-708e9665205d" style="Detail" positionType="Float" x="349" y="0" width="43" height="18"/>
+					<reportElement uuid="1ff22870-e103-4f22-9f01-708e9665205d" style="Detail" positionType="Float" x="368" y="0" width="43" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_ancho}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="304b10b3-f083-4654-859d-64cfbb4997a2" style="Detail" positionType="Float" x="392" y="0" width="40" height="18"/>
+					<reportElement uuid="304b10b3-f083-4654-859d-64cfbb4997a2" style="Detail" positionType="Float" x="411" y="0" width="40" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_grams}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="a71ceb75-b645-4d2f-89ed-424471b88131" style="Detail" positionType="Float" x="432" y="0" width="68" height="18"/>
+					<reportElement uuid="a71ceb75-b645-4d2f-89ed-424471b88131" style="Detail" positionType="Float" x="451" y="0" width="60" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_propiedad}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="#,##0.0">
-					<reportElement uuid="d2880205-839b-4c36-b75e-3258b3ff2ea1" style="Detail" positionType="Float" x="500" y="0" width="72" height="18"/>
+					<reportElement uuid="d2880205-839b-4c36-b75e-3258b3ff2ea1" style="Detail" positionType="Float" x="511" y="0" width="61" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -279,25 +286,32 @@ ORDER BY FIELD(vw_infopapelh.`propiedad`,'IEXSA') DESC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_total}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="315" y="0" width="34" height="18"/>
+					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="334" y="0" width="34" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_alto}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="213" y="0" width="49" height="18"/>
+					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="232" y="0" width="49" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_color}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="262" y="0" width="53" height="18"/>
+					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="281" y="0" width="53" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_ubicacion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="73b23dc8-8565-41c6-967e-42df813fa482" x="200" y="0" width="32" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infopapelh_caras}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
