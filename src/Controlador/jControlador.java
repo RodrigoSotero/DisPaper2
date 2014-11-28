@@ -8055,6 +8055,7 @@ public class jControlador implements ActionListener{
                                     mimodelo.nuevaExistencia(nuevototentr+"",clavePapel,nuevacantentr+"");*/
                                     detalleentrada = mimodelo.altaDetalleEntrada(id_entrada,clavePapel,totalentrada+"",cantidadentrada+"",ubicacion,costo,totalcosto);
                                     mimodelo.sumarexistencia(clavePapel);
+                                    mimodelo.costopromedio(clavePapel);
                                     mimodelo.ubicacion(clavePapel, ubicacion);
                                 }else{
                                     mensaje(3,"EL PAPEL NO EXISTE");
@@ -8113,7 +8114,9 @@ public class jControlador implements ActionListener{
                                 nuevacantentr = cantidadentrada + cantentr;
                                 mimodelo.nuevaExistencia(nuevototentr+"",clavePapel,nuevacantentr+"");*/
                                 mimodelo.modifDetalleEntrada(Integer.parseInt(identradas[i]),clavePapel,totalentrada+"",cantidadentrada+"",ubicacion,costo,totalcosto);
+                                mimodelo.costopromedio(clavePapel);
                                 mimodelo.sumarexistencia(clavePapel);
+                                mimodelo.ubicacion(clavePapel, ubicacion);
                             }else{
                                 mensaje(3,"EL PAPEL NO EXISTE");
                                 return;
