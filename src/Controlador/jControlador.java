@@ -6444,7 +6444,7 @@ public class jControlador implements ActionListener{
                 this.mimodelo.abrirReporte("bobina.jrxml",new HashMap());
                 break;
             case __RHOJA:
-                  this.mimodelo.abrirReporte("Hojas.jrxml",new HashMap());
+                  this.mimodelo.abrirReporte("Hojas1.jrxml",new HashMap());
                break;
             case __ENTRADASH:
                 String ENH = JOptionPane.showInputDialog(null,"Ingresa la Fecha Inicial(aaaa-mm-dd)");
