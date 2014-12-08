@@ -33,7 +33,8 @@ FROM
 WHERE
      vw_infopapelb.`cantidad` <> 0
 ORDER BY vw_infopapelb.`nombre` ASC,
-		vw_infopapelb.`ancho` ASC]]>
+         vw_infopapelb.`ancho` ASC,
+         vw_infopapelb.`grams` ASC]]>
 	</queryString>
 	<field name="vw_infopapelb_clave" class="java.lang.String"/>
 	<field name="vw_infopapelb_tipo" class="java.lang.String"/>
