@@ -1,6 +1,6 @@
     /**
  *
- * @author Favorito && y0op0o
+ * @author Favorito && y0op0o    DISPAPER
  */
 package Controlador;
 
@@ -5651,6 +5651,8 @@ public class jControlador implements ActionListener{
                     movimientos.setEnabled(true);
                     reportes.setEnabled(true);
                     consultas.setEnabled(true);
+                    reportes.setEnabled(true);
+                    consultas.setEnabled(true);
                     traspaso.setVisible(false);
                 }else{
                     confir= mensajeConfirmacion("Deseas Cancelar el Traspaso","Cancelar");
@@ -5778,6 +5780,10 @@ public class jControlador implements ActionListener{
                                     mimodelo.ubicacion(clavePapcl1, ubicacion);
                                     mensaje(1,"traspaso correcto");
                                     addItems("traspaso");
+                                    ap.setEnabled(true);
+                                    movimientos.setEnabled(true);
+                                    reportes.setEnabled(true);
+                                    consultas.setEnabled(true);
                                      maximoentrada();
                                     maximosalida();
                                     maximosalidah();
