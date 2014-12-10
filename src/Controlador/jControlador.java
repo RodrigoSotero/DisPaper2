@@ -6002,6 +6002,7 @@ public class jControlador implements ActionListener{
                             }catch(Exception evt){
                             }
                         }
+                        
                         break;
                 }
                 
@@ -7295,6 +7296,7 @@ public class jControlador implements ActionListener{
         modificarentrada=0;
         modificarsalidah=0;
         modificarsalida=0;
+        modificarsalidab=0;
         //PanelEntrada
         movimientos.__TipoEntrada.setText("");
         movimientos.__PropietarioEntr.setText("");

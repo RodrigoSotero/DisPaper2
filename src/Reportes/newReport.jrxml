@@ -33,10 +33,12 @@ FROM
 WHERE
      vw_infopapelh.`cantidad` <> 0
 ORDER BY vw_infopapelh.`nombre` ASC,
-     vw_infopapelh.`caras` ASC, 
+     vw_infopapelh.`caras` ASC,
+     vw_infopapelh.`color` ASC, 
      vw_infopapelh.`alto` ASC,
      vw_infopapelh.`ancho` ASC,
-     vw_infopapelh.`grams` ASC]]>
+     vw_infopapelh.`grams` ASC,
+     vw_infopapelh.`propiedad`]]>
 	</queryString>
 	<field name="vw_infopapelh_clave" class="java.lang.String"/>
 	<field name="vw_infopapelh_nombre" class="java.lang.String"/>
