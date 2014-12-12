@@ -880,7 +880,7 @@ public class modelo extends database {
                                         +"costo='"+costo+"', "
                 +"total_temporal='"+totalentrada+"', "
                 +"cantidad_temoporal='"+cantidadentrada+"', "
-                                        +"total_costo='"+totalcosto+"' where id_entrada='"+id_entrada+"';";
+                                        +"total_costo='"+totalcosto+"' where id_detalleentrada='"+id_entrada+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             System.err.println(q);
@@ -897,11 +897,11 @@ public class modelo extends database {
        // String q = " INSERT INTO  `dis_paper`.`detalleentrada`"
        //         + "     (`id_entrada` ,`Clave_Papel` ,`total_entrada` ,`cantidad_entrada`,  `ubicacion`,`Costo` ,`total_costo`)"
        //      + "VALUES ('"+id_entrada+"','"+clavePapel+"','"+totalentrada+"','"+cantidadentrada+"','"+ubicacion+"','"+costo+"','"+totalcosto+"');"; 
-        String q="UPDATE detallesalidaset Clave_Papel='"+clavePapel+"',"
+        String q="UPDATE detallesalida set Clave_Papel='"+clavePapel+"',"
                                         +"total_salida='"+totalsalida+"',"
                                         +"cantidad_salida='"+cantidadsalida+"',"
                                         +"costo='"+costo+"', "
-                                        +"total_costo='"+totalcosto+"', entradas='"+identradas_+"' where id_entrada='"+id_salida+"';";
+                                        +"total_costo='"+totalcosto+"', entradas='"+identradas_+"' where iddetallesalida='"+id_salida+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();

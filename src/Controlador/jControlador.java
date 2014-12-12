@@ -5198,7 +5198,7 @@ public class jControlador implements ActionListener{
                        while(detallesalida.next()){
                            
                            
-                            idsalidas[a]=detallesalida.getString("idsalida");
+                            idsalidas[a]=detallesalida.getString("iddetallesalida");
                             movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), a, 0);
                             movimientos.__tablaSalida.setValueAt(detallesalida.getInt("total_salida"), a, 1);
                             int totalsumar=detallesalida.getInt("total_salida");
@@ -5285,9 +5285,8 @@ public class jControlador implements ActionListener{
                        detalleentrada.beforeFirst();
                        int d =0;
                        while(detalleentrada.next()){
-                           
-                           
-                               identradas[d]=detalleentrada.getString("id_entrada");
+                               identradas[d]=detalleentrada.getString("id_detalleentrada");
+                               System.out.println(identradas[d]+" --- esta es la entrada");
                                movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("clave_papel"), d, 0);
                                movimientos.__tablaEntrada.setValueAt(detalleentrada.getInt("total_entrada"), d, 1);
                                restarcantidad=Double.parseDouble(detalleentrada.getString("total_entrada"));
@@ -5976,7 +5975,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.__pnlSalidaBobina.requestFocus();
                         break;
                     case 1:
-                        Obs = "modificacion";      
+                        Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Bobina");    
                         confir = this.mensajeConfirmacion("Estas Seguro de Modificar la Salida", "Salida");
                         if(confir==JOptionPane.OK_OPTION){
                             try{
@@ -8132,7 +8131,7 @@ public class jControlador implements ActionListener{
                 }
             break;
             case 1:
-                Obs="Modificacion";
+                Obs=JOptionPane.showInputDialog(null, "Observaciones de la Entrada");
                 confir=mensajeConfirmacion("Estas seguro de modificar la entrada","Aceptar");
                 if (confir==JOptionPane.OK_OPTION){
                     for(int i=0;i<movimientos.__tablaEntrada.getRowCount();i++){
@@ -8258,7 +8257,7 @@ public class jControlador implements ActionListener{
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
-        Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
+        
         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
             
             try{
@@ -8294,6 +8293,7 @@ public class jControlador implements ActionListener{
         }
         switch(this.modificarsalida){
             case 0:
+                Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
                 confir=mensajeConfirmacion("Estas seguro de registrar la Salida","Aceptar");
                 if (confir==JOptionPane.OK_OPTION){
                     ResultSet buscarMaxSalida=null;
@@ -8364,7 +8364,7 @@ public class jControlador implements ActionListener{
                 }
                 break;
             case 1:
-                Obs="Modificacion";
+                Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
                 confir=mensajeConfirmacion("Estas seguro de modificar la Salida","Aceptar");
                 
                 if (confir==JOptionPane.OK_OPTION){
@@ -8527,9 +8527,9 @@ public class jControlador implements ActionListener{
                     }
                 switch(this.modificarsalidah){
                        case 0:
+                           Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
                            confir = this.mensajeConfirmacion("Estas Seguro de Realizar la Salida", "Salida");
                             if(confir==JOptionPane.OK_OPTION){
-                                Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
                                 ResultSet buscarMaxSalidah=null;
                                 boolean detallesalidah=false;
                                 int id_salidah=0;
@@ -8606,7 +8606,7 @@ public class jControlador implements ActionListener{
                             }
                            break;
                        case 1:
-                           Obs="Modificacion";
+                           Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
                             confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
                             if (confir==JOptionPane.OK_OPTION){
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
