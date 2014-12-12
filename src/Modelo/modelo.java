@@ -45,8 +45,8 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
-                System.out.println(q);
+                
+
                 return null;
             }
     }
@@ -60,7 +60,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -71,7 +71,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -82,7 +82,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -93,7 +93,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -217,7 +217,6 @@ public class modelo extends database {
             }
             res.beforeFirst();
             while(res.next()){
-                System.out.println(res.getString("folio"));
                 String folio = res.getString("folio");
                 if(folio==null){
                     return "SALBOB"+anio+"-1";
@@ -252,7 +251,6 @@ public class modelo extends database {
             }
             res.beforeFirst();
             while(res.next()){
-                System.out.println(res.getString("folio"));
                 String folio = res.getString("folio");
                 if(folio==null){
                     return "TRAS"+anio+"-1";
@@ -283,7 +281,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -294,7 +292,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -305,7 +303,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -316,7 +314,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -328,7 +326,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -341,7 +339,7 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
             }
         return false;
     }
@@ -353,7 +351,7 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
             }
         return false;
     }
@@ -362,14 +360,13 @@ public class modelo extends database {
         //INSERT INTO `dis_paper`.`traspaso`  VALUES ('TRAS2014-1', '32132132', '3213132', '654', '654', '65454', '15.326');
         String q ="INSERT INTO traspaso "
                                 + "VALUES (null,'"+folio+"','"+claveo+"','"+claved+"','"+kg_hojas+"','"+bob_pq+"','"+fecha+"','"+costo+"')";
-        System.out.println(q);
+        
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 pstm.execute();
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
             }
         return false;
     }
@@ -381,7 +378,6 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
             }
         return false;
     }
@@ -394,7 +390,6 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
             }
         return false;
     }
@@ -405,7 +400,6 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
                 return null;
             }
     }
@@ -416,7 +410,6 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
                 return null;
             }
     }
@@ -427,7 +420,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -438,7 +431,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -449,7 +442,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -460,7 +453,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -471,7 +464,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -513,7 +506,6 @@ public class modelo extends database {
                 int id = res.getInt(1);
                 return id;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
                 return 0;
             }
     }
@@ -526,7 +518,7 @@ public class modelo extends database {
                 int id = res.getInt(1);
                 return id;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return 0;
             }
     }
@@ -538,7 +530,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -549,7 +541,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -560,7 +552,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -572,7 +564,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -583,7 +575,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -594,7 +586,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -607,7 +599,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -618,7 +610,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -629,7 +621,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -641,7 +633,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -652,7 +644,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -664,7 +656,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -676,7 +668,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -689,7 +681,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -700,7 +692,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -711,7 +703,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -723,7 +715,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -753,7 +745,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }   
     } 
@@ -783,7 +775,6 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
             return false;
         }   
     }
@@ -796,7 +787,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -808,7 +799,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -821,7 +812,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -832,7 +823,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -844,7 +835,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -859,7 +850,6 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
             return false;
         }
     }
@@ -898,7 +888,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -918,7 +908,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -971,7 +961,7 @@ public class modelo extends database {
     public boolean modifdetalleSalidab(String id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo,String totalcosto,String identradas_) {
        // String q = "INSERT INTO  `dis_paper`.`detallesalidab` (`id_salida` ,`Clave_Papel` ,`totkgsini` ,`totbobini` ,`totkgssur` ,`totbobsur` ,`totkgsdev` ,`totbobdev` ,`totalsurtido` ,`desperdicio` ,`empaque` ,`capa` ,`cono` ,`totales` ,`totalpliegos` ,`despliegos` ,`empqplie` ,`capaplie` ,`conoplie` ,`totalesplie`)"
         //+"VALUES ('"+id_salidab+"',  '"+clave_papel+"',  '"+totksini+"',  '"+totbobini+"',  '"+totkgssur+"',  '"+totbobsur+"',  '"+totkgsdev+"',  '"+totbobdev+"',  '"+totalsurtido+"',  '"+desperdicio+"',  '"+empaque+"',  '"+capa+"',  '"+cono+"',  '"+totales+"',  '"+totalpliegos+"',  '"+despliegos+"',  '"+empqplie+"',  '"+capaplie+"',  '"+conoplie+"',  '"+totalesplie+"');";
-         String q="UPDATE `dis_paper`.`detallesalidab` SET `totkgsini`='"+totksini+"', `totbobini`='"+totbobini+"', `totkgssur`='"+totkgssur+"', `totbobsur`='"+totbobsur+"', `totkgsdev`='"+totkgsdev+"', `totbobdev`='"+totbobdev+"', `totalsurtido`='"+totalsurtido+"', `desperdicio`='"+desperdicio+"', `empaque`='"+empaque+"', `capa`='"+capa+"', `cono`='"+cono+"', `totales`='"+totales+"', `totalpliegos`='"+totalpliegos+"', `despliegos`='"+despliegos+"', `empqplie`='"+empqplie+"', `capaplie`='"+capaplie+"', `conoplie`='"+conoplie+"', `totalesplie`='"+totalesplie+"', `costo`='"+costo+"', `totalcosto`='"+totalcosto+"', `entradas`='"+identradas_+"' WHERE `idd_salida`='"+id_salidab+"';";                      
+         String q="UPDATE `dis_paper`.`detallesalidab` SET `clave_papel`='"+clave_papel+"',`totkgsini`='"+totksini+"', `totbobini`='"+totbobini+"', `totkgssur`='"+totkgssur+"', `totbobsur`='"+totbobsur+"', `totkgsdev`='"+totkgsdev+"', `totbobdev`='"+totbobdev+"', `totalsurtido`='"+totalsurtido+"', `desperdicio`='"+desperdicio+"', `empaque`='"+empaque+"', `capa`='"+capa+"', `cono`='"+cono+"', `totales`='"+totales+"', `totalpliegos`='"+totalpliegos+"', `despliegos`='"+despliegos+"', `empqplie`='"+empqplie+"', `capaplie`='"+capaplie+"', `conoplie`='"+conoplie+"', `totalesplie`='"+totalesplie+"', `costo`='"+costo+"', `totalcosto`='"+totalcosto+"', `entradas`='"+identradas_+"' WHERE `idd_salida`='"+id_salidab+"';";                      
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -990,7 +980,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -998,12 +988,11 @@ public class modelo extends database {
     public ResultSet buscarExistenciaPapelfecha(String clavePapel,String fecha) {
         String q = "call sumaxistencia_fecha('"+clavePapel+"','"+fecha+"');";
         try {
-            System.out.println(q);
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1014,7 +1003,6 @@ public class modelo extends database {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
-            System.out.println(q);
             return true;
         }catch(SQLException e){
             System.err.println(e.getMessage() + "nuevexis");
@@ -1028,7 +1016,6 @@ public class modelo extends database {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
-            System.out.println(q);
             return true;
         }catch(SQLException e){
             System.err.println(e.getMessage() + "nuevexis");
@@ -1044,7 +1031,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1087,7 +1074,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1099,7 +1086,6 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
                 return null;
             }
     }
@@ -1111,7 +1097,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1124,7 +1110,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1136,7 +1122,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1151,7 +1137,7 @@ public class modelo extends database {
                 result= res.getString("nombre");
                 return result;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1166,7 +1152,6 @@ public class modelo extends database {
                 result= res.getString("color");
                 return result;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
                 return null;
             }
     }
@@ -1178,7 +1163,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1195,7 +1180,7 @@ public class modelo extends database {
             if(e.getMessage().equals("Duplicate entry '"+usuario+"' for key 'usuario'")){
                 JOptionPane.showMessageDialog(null, "Ya existe el usuario " + usuario);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }
             return false;
         }
@@ -1210,7 +1195,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1223,7 +1208,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1235,7 +1220,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1247,7 +1232,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1261,9 +1246,21 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            //
+            if(e.getMessage().equals("Duplicate entry '"+op+"' for key 'PRIMARY'")){
+                String q2 ="update ordenprod set merma='"+merma+"',fecha_inicial='"+fechaini+"',hora_inicial='"+hraini+"',fecha_inicial='"+fechafin+"',hora_final='"+hrafin+"',estandar_produccion='"+estandarprod+"',tiempo_real='"+tiemporeal+"',total_pliego='"+totalpliego+"',contador_rotatvivas='"+controtativas+"' where id_op='"+op+"'";
+                try{
+                    PreparedStatement pstm = this.getConexion().prepareStatement(q2);
+                    pstm.execute();
+                    pstm.close();
+                    return true;
+                }catch(SQLException a){
+                    return false;
+                }
+            }else
             return false;
         }
+        
     }
     public boolean nuevatipoentrada(String tipoEntra) {
         String q = "INSERT INTO  `dis_paper`.`tipo_entrada` (`id_tipo_en` ,`Tipo_Entrada`)VALUES (NULL, '"+tipoEntra+"')";                 
@@ -1276,7 +1273,7 @@ public class modelo extends database {
             if(e.getMessage().equals("Duplicate entry '"+tipoEntra+"' for key 'Tipo_Entrada'")){
                 JOptionPane.showMessageDialog(null, "Ya Existe la Entrada: " +tipoEntra);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }
             return false;
         }   
@@ -1294,7 +1291,7 @@ public class modelo extends database {
                if(e.getMessage().equals("Duplicate entry '"+Nombre+"' for key 'Nombre'")){                   
                 JOptionPane.showMessageDialog(null, "Ya Existe Este Proveedor: " +Nombre);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }            
             return false;
         }
@@ -1313,7 +1310,7 @@ public class modelo extends database {
                if(e.getMessage().equals("Duplicate entry '"+Nombre+"' for key 'Nombre'")){                   
                 JOptionPane.showMessageDialog(null, "Ya Existe Este Cliente: " +Nombre);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }            
             return false;
         }
@@ -1332,7 +1329,7 @@ public class modelo extends database {
                if(e.getMessage().equals("Duplicate entry '"+maquina+"' for key 'nombre'")){                   
                 JOptionPane.showMessageDialog(null, "Ya Existe Esta Maquina: " +maquina);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }            
             return false;
         }
@@ -1346,7 +1343,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){                                      
-               System.err.println(e.getMessage()); 
+                
                        
             return false;
         }
@@ -1366,7 +1363,7 @@ public class modelo extends database {
             pstm2.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1379,7 +1376,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1391,7 +1388,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1404,7 +1401,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );                
+                                
                 return null;
                 
             }
@@ -1418,7 +1415,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1431,7 +1428,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1448,7 +1445,7 @@ public class modelo extends database {
                if(e.getMessage().equals("Duplicate entry '"+devolucion+"' for key 'descripcion'")){                   
                 JOptionPane.showMessageDialog(null, "Ya Existe Este tipo de devolucion: " +devolucion);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }            
             return false;
         }
@@ -1466,7 +1463,7 @@ public class modelo extends database {
                if(e.getMessage().equals("Duplicate entry '"+salida+"' for key 'tipo_salida'")){                   
                 JOptionPane.showMessageDialog(null, "Ya Existe Este tipo de devolucion: " +salida);
             }else{
-               System.err.println(e.getMessage()); 
+                
             }            
             return false;
         }
@@ -1478,7 +1475,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1491,7 +1488,7 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return true;
             }
     }
@@ -1503,20 +1500,19 @@ public class modelo extends database {
                 pstm.close();
                 return true;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return true;
             }
     }
 
     public ResultSet Consulta(String consulta) {
         String q = consulta;
-        System.out.println(consulta);
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1527,7 +1523,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1538,7 +1534,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1549,7 +1545,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1560,7 +1556,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1571,7 +1567,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1582,7 +1578,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1593,7 +1589,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1604,7 +1600,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1616,7 +1612,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1628,20 +1624,20 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
 
     public ResultSet buscaPapelExist(String parametro, String propietario, String tipo) {
         String q = "select clave from vw_infopapel"+tipo+" where propiedad='"+propietario+"' and cantidad>0 and presentacion>0;";
-        System.out.println(q);
+
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1682,7 +1678,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1693,7 +1689,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1705,7 +1701,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1717,7 +1713,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1728,7 +1724,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1740,7 +1736,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1751,7 +1747,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1762,7 +1758,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1774,7 +1770,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1786,7 +1782,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1860,7 +1856,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1886,7 +1882,7 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -1920,20 +1916,20 @@ public class modelo extends database {
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
      }
      
      public ResultSet buscarPrimeraEntrada2(String clave,String fec) {
         String q = "select d.id_detalleentrada as id, clave_papel, total_temporal as total ,cantidad_temoporal as cantidad,min(fecha) as fecha_entrada from detalleentrada d, entrada e where clave_papel='"+clave+"' and e.id_entrada=d.id_entrada  and fecha<='"+fec+"' and(total_temporal>0 OR cantidad_temoporal>0) ;";
-        System.out.println(q);
+
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1949,26 +1945,25 @@ public class modelo extends database {
 "where e.id_entrada=d.id_entrada " +
 "and clave_papel = '"+clave+"' " +
 "and fecha <= '"+fec+"')";
-        System.out.println(q);
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
      
     public ResultSet buscarPrimeraEntrada(String clave,String fec) {
         String q = "select d.id_detalleentrada as id, clave_papel, total_temporal as total ,cantidad_temoporal as cantidad,min(fecha) as fecha_entrada from detalleentrada d, entrada e where clave_papel='"+clave+"' and e.id_entrada=d.id_entrada and total_temporal>0  cantidad_temoporal>0 and fecha<='"+fec+"';";
-        System.out.println(q);
+
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -1976,13 +1971,13 @@ public class modelo extends database {
     public boolean nuevacantidadtemporal(String id,Double cantidad, Double total) {
         String q1="UPDATE `dis_paper`.`detalleentrada` SET cantidad_temoporal='"+cantidad+"', total_temporal='"+total+"' where id_detalleentrada='"+id+"'";
          try{
-             System.out.println(q1);
+
             PreparedStatement pstm = this.getConexion().prepareStatement(q1);
             pstm.execute();
             pstm.close();
             return true;
         }catch(SQLException e){
-            System.err.println(e.getMessage());
+            
             return false;
         }
     }
@@ -2032,7 +2027,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2045,7 +2040,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2058,7 +2053,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2071,7 +2066,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(Exception e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2154,7 +2149,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2238,7 +2233,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2249,7 +2244,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2260,7 +2255,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2271,7 +2266,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2282,7 +2277,7 @@ public class modelo extends database {
                 ResultSet res = pstm.executeQuery();
                 return res;
             }catch(SQLException e){
-                System.err.println( e.getMessage() );
+                
                 return null;
             }
     }
@@ -2290,7 +2285,7 @@ public class modelo extends database {
     public boolean ubicacion(String clave,String ubicacion) {
             String q=" UPDATE  inventario SET ubicacion='"+ubicacion+"' where clavepapel ='"+clave+"';";
         try{
-            System.out.println(q);
+
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
@@ -2304,7 +2299,6 @@ public class modelo extends database {
     public boolean tottemp(int tottemp,int canttem,String id) {
             String q=" UPDATE  detalleentrada SET total_temporal='"+tottemp+"', cantidad_temoporal='"+canttem+"' where id_detalleentrada ='"+id+"';";
         try{
-            System.out.println(q);
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();

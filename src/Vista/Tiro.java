@@ -20,6 +20,7 @@ import java.awt.Toolkit;
 public class Tiro extends javax.swing.JFrame {
 
     public String op;
+    public int guardar = 0;
     /**
      * Creates new form Tiro
      */

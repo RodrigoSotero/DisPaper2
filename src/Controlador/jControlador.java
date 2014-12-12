@@ -63,6 +63,8 @@ import Modelo.*;
 import Vista.*;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
@@ -114,7 +116,10 @@ public class jControlador implements ActionListener{
     String datosfin [][];//array nuevo :P
     int filas,columnas;
     String nombrecolumnas[];
-    String identradas[],idsalidash[],idsalidasb[],idsalidas[];
+    String identradas[]=new String [1000];
+    String idsalidash[]=new String [1000];
+    String idsalidas[]=new String [1000];
+    String idsalidasb[] = new String[1000];
     int modificarsalidah=0,modificarsalidab=0;
     private String idsalb ,idd_salida;
     TextAutoCompleter Com_cliente,Com_clienteEntr ,Com_propietario,Com_propietarioEntr,bajapapel,Com_Origen,Com_Destino ;
@@ -1218,6 +1223,9 @@ public class jControlador implements ActionListener{
         this.movimientos.__menutraspaso.setActionCommand("__MENU_MOV_TRASPASO");
         this.movimientos.__menutraspaso.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T,InputEvent.CTRL_MASK));
         this.movimientos.__menutraspaso.addActionListener(this);
+        JButton btnEliRegistroB = new JButton ("Elimina");
+        btnEliRegistroB.setActionCommand("__ELIMINA_REGISTRO");
+        btnEliRegistroB.addActionListener(this);
         //--MENU CONSULTA   
         this.consultas.__menucerrarsesiones.setActionCommand("__MENU_CERRAR_SESIONES");
         this.consultas.__menucerrarsesiones.addActionListener(this);
@@ -2474,6 +2482,8 @@ public class jControlador implements ActionListener{
                 } 
             }
         });
+        
+        
         final TextAutoCompleter opSalH = new TextAutoCompleter( movimientos.__OPSalidaHoja );
         opSalH.setMode(0); // infijo
         this.movimientos.__OPSalidaHoja.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2544,6 +2554,21 @@ public class jControlador implements ActionListener{
             
             }
         });
+        final JPopupMenu pop = new JPopupMenu();
+        //JMenuItem findMenuItem = new JMenuItem("Eliminar Registro.");
+        JButton btnalgo = new JButton("Eliminar");
+        pop.add(btnalgo);
+        
+        movimientos.__tablaSalidaBobinaInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getButton() == MouseEvent.BUTTON3 && evt.MOUSE_CLICKED == MouseEvent.MOUSE_CLICKED) {
+                    movimientos.__tablaSalidaBobinaInventario.setComponentPopupMenu(pop);
+                }
+            }
+        });
+        
+       
+        
         //etiquetas del panel de nuevas entradas
         this.movimientos.__etqNewEliPropietario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt){}
@@ -2918,6 +2943,7 @@ public class jControlador implements ActionListener{
                 movimientos.__etqNewClienteE.setFont(new java.awt.Font("Papyrus", 0, 12));
             }
         });
+        
         //etiquetas del panel de salidas generales
         this.movimientos.__etqNewClienteSalida.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3574,7 +3600,29 @@ public class jControlador implements ActionListener{
                                 ResultSet Op = mimodelo.buscarop(op);
                                 if(Op.next()){
                                     Op.beforeFirst();
+                                    tiro.op = op;                                    
+                                    movimientos.setEnabled(false);
+                                    tiro.setVisible(true);
+                                    tiro.setLocationRelativeTo(null);
                                     while(Op.next()){
+                                        tiro.__MermaImpresion.setText(Op.getString("merma"));
+                                        //String fechaini=Op.getString("fecha_inicial");
+                                        Date fechini=null;
+                                        Date fechfin=null;
+                                        try {
+                                            fechini = new SimpleDateFormat("yyyy-MM-d").parse(Op.getString("fecha_inicial"));
+                                            fechfin = new SimpleDateFormat("yyyy-MM-d").parse(Op.getString("fecha_final"));
+                                        } catch (ParseException ex) {
+                                            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                                        } 
+                                        tiro.__FechaInicial.setDate(fechini);
+                                        tiro.__FechaFinal.setDate(fechfin);
+                                        tiro.__HoraInicial.setText(Op.getString("hora_inicial"));
+                                        tiro.__HoraFinal.setText(Op.getString("hora_final"));
+                                        tiro.__EstandarProduccionXHora.setText(Op.getString("estandar_produccion"));
+                                        tiro.__TiempoRealProduccion.setText(Op.getString("tiempo_real"));
+                                        tiro.__TotalPliegos.setText(Op.getString("total_pliego"));
+                                        tiro.__ContadorRotativas.setText(Op.getString("contador_rotatvivas"));
                                         limpiarTabla(movimientos.__tablaSalidaBobinaInventario);
                                         movimientos.__tablaSalidaBobinaInventario.setValueAt(Op.getString("clave_papel"), 0, 0);
                                         movimientos.__tablaSalidaBobinaInventario.setValueAt(Op.getString("invkgs"), 0, 1);
@@ -3591,9 +3639,11 @@ public class jControlador implements ActionListener{
                                     }else{
                                         movimientos.__TituloSalidaBobina.requestFocus();
                                     }
+                                    tiro.guardar=1;
                                 }else{
                                     mensaje(2,"La orden de produccion "+op+" no existe, Se capturara la nueva orden de produccion");
-                                    tiro.op = op;                                    
+                                    tiro.op = op;
+                                    tiro.guardar=0;
                                     movimientos.setEnabled(false);
                                     tiro.setVisible(true);
                                     tiro.setLocationRelativeTo(null);                                   
@@ -5146,8 +5196,7 @@ public class jControlador implements ActionListener{
                        detallesalida.beforeFirst();
                        int a=0;
                        while(detallesalida.next()){
-                           int f = detallesalida.getRow();
-                           idsalidas = new String [f];
+                           
                            
                             idsalidas[a]=detallesalida.getString("idsalida");
                             movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), a, 0);
@@ -5236,8 +5285,7 @@ public class jControlador implements ActionListener{
                        detalleentrada.beforeFirst();
                        int d =0;
                        while(detalleentrada.next()){
-                           int f = detalleentrada.getRow();
-                           identradas = new String [f];
+                           
                            
                                identradas[d]=detalleentrada.getString("id_entrada");
                                movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("clave_papel"), d, 0);
@@ -5338,10 +5386,6 @@ public class jControlador implements ActionListener{
                        detallesalidah.beforeFirst();
                        int a=0;
                        while(detallesalidah.next()){
-                           int f = detallesalidah.getRow();
-                           idsalidash = new String [f];
-                           System.out.println(a+"------------");
-                           System.out.println(detallesalidah.getString("clave_papel"));
                            movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
                            idsalidash[a]=detallesalidah.getString("id_salida");
                            movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
@@ -5444,9 +5488,6 @@ public class jControlador implements ActionListener{
                         detallesalidab.beforeFirst();
                         int s=0;
                          while(detallesalidab.next()){
-                           int f = detallesalidab.getRow();
-                           idsalidasb = new String [f];
-                           
                                idsalidasb[s]=detallesalidab.getString("idd_salida");
                                String cclave= detallesalidab.getString("clave_papel");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getString("clave_papel"), s, 0);
@@ -5838,7 +5879,7 @@ public class jControlador implements ActionListener{
                 }else{
                     boolean altaop = mimodelo.altaop(op, merma, fechaini, hraini, fechafin, hrafin, estandarprod, tiempoReal, totalpliegos, controtativas);
                     if(altaop==true){
-                        mensaje(1,"Alta correcta de OP");
+                        mensaje(1,"Datos Correctos de OP");
                         this.borrarFormularioTiro();
                         tiro.dispose();
                         movimientos.__FactorSalidaBobina.requestFocus();
@@ -5907,7 +5948,7 @@ public class jControlador implements ActionListener{
                                     }
                                     identradas_="";
                                     PEPS2(tmpclv,tmpkg,tmpbob);
-                                    boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",totalkil,identradas_);
+                                    boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",totalkil,identradas_);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
@@ -5970,7 +6011,8 @@ public class jControlador implements ActionListener{
                                     }
                                     identradas_="";
                                     PEPS2(tmpclv,tmpkg,tmpbob);
-                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idd_salida, tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_);
+                                    System.out.println("clave" + tmpclv);
+                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
@@ -6269,7 +6311,7 @@ public class jControlador implements ActionListener{
                         campos=campos.replace("orden_produccion,", "");
                         campos=campos.replace("orden_compra,", "");
                         campos=campos.replace("Folio, documento, proveedor, tipo_entrada, tipo_salida, fecha, turno", "");
-                        System.err.println(campos);
+                        
                         campos= campos.replace(" clave, nombre ancho, alto, grams, color, marca, propiedad, presentacion, cantidad,   ,", "clave, cantidad, presentacion, nombre, ancho,alto,grams, color, marca, propiedad,");
                         campos = campos.replace("marca,", "");
                         campos+="preciopromedio,total,";
@@ -6687,7 +6729,6 @@ public class jControlador implements ActionListener{
                 }
                 mimodelo.ops();
                 if(!opini.equals("") && !opfin.equals("")){
-                    System.out.println("Ambas Op");
                     ResultSet ops = mimodelo.ops(opini, opfin);
                     try {
                         while (ops.next()){
@@ -6702,14 +6743,12 @@ public class jControlador implements ActionListener{
                     return;
                 }
                 if(!opini.equals("") && opfin.equals("")){
-                    System.out.println("Op inicial");
                     mimodelo.oop(opini);
                     mensaje(1,"Busqueda por: OP Inicial "+opini);
                     this.mimodelo.abrirReporte("ConsumoTotalOP.jrxml",new HashMap());
                     return;
                 }
                 if(opini.equals("") && !opfin.equals("")){
-                    System.out.println("Op final");
                     mimodelo.oop(opfin);
                     mensaje(1,"Busqueda por: OP Final "+opfin);
                     this.mimodelo.abrirReporte("ConsumoTotalOP.jrxml",new HashMap());
@@ -8283,8 +8322,6 @@ public class jControlador implements ActionListener{
                                     while(existenciaPapel.next()){
                                         totalentr=existenciaPapel.getInt(1);
                                          cantentr=existenciaPapel.getInt(2);
-                                         System.out.println(totalentr);
-                                        System.out.println(cantentr);
                                     }
                                     if(totalsalida>totalentr){
                                         mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
@@ -8346,8 +8383,6 @@ public class jControlador implements ActionListener{
                                     while(existenciaPapel.next()){
                                         totalentr=existenciaPapel.getInt(1);
                                          cantentr=existenciaPapel.getInt(2);
-                                         System.out.println(totalentr);
-                                        System.out.println(cantentr);
                                     }
                                     if(totalsalida>totalentr){
                                         mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
