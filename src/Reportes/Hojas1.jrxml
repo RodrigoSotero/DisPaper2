@@ -255,7 +255,7 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_propiedad}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0.0">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement uuid="c4921e98-2fa4-4f4d-a5dd-28780faa2748" style="Detail" positionType="Float" x="573" y="0" width="68" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
