@@ -1,4 +1,4 @@
-    /**
+ /**
  *
  * @author Favorito && y0op0o    DISPAPER
  */
@@ -435,9 +435,11 @@ public class jControlador implements ActionListener{
                             menumaster.show();
                             break;
                         case 3:
-                            this.addItems("consultas");
-                            consultas.setLocationRelativeTo(null);
-                            consultas.show();
+                            menumaster.__etqUsuarioMenuMaster.setText(fecha.__etqUser.getText());
+                            menumaster.__ALTA_PAPEL.setEnabled(false);
+                            menumaster.__MOVIMIENTOS.setEnabled(false);
+                            menumaster.setLocationRelativeTo(null);
+                            menumaster.show();
                             break;
                     }
                 }
@@ -1757,8 +1759,7 @@ public class jControlador implements ActionListener{
         clavePapel.setMode(0);//infijo
         this.Finanzas.__clave.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                KeyTipedLetrasNum(evt);
-                
+                KeyTipedLetrasNum(evt);               
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
@@ -4901,7 +4902,17 @@ public class jControlador implements ActionListener{
                         }
                         break;
                     case 3:
-                        mensaje(2,"No Hay Acceso a esta Información");
+                         confir = mensajeConfirmacion("¿Realmente Deseas ir a Consultas?","Salida");
+                        if (confir == JOptionPane.OK_OPTION){
+                            this.addItems("consultas");
+                            consultas.setVisible(true);
+                            consultas.setLocationRelativeTo(null);
+                            this.ap.dispose();
+                            reportes.dispose();
+                            movimientos.dispose();
+                            reporteuser.dispose();
+                            verconsulta.dispose();
+                        }
                         break;               
                 }
                 break;
@@ -4932,7 +4943,16 @@ public class jControlador implements ActionListener{
                             }
                         break;
                      case 3:
-                        mensaje(2,"No Hay Acceso a esta Información");
+                        confir = mensajeConfirmacion("¿Realmente Deseas ir a Generar un Reporte?","Salida");
+                            if (confir == JOptionPane.OK_OPTION){
+                            reportes.setVisible(true);
+                            reportes.setLocationRelativeTo(null);
+                            movimientos.dispose();
+                            this.ap.dispose();
+                            consultas.dispose();
+                            reporteuser.dispose();
+                            verconsulta.dispose();
+                            }
                         break; 
                 }                                
                 break;
@@ -5007,7 +5027,7 @@ public class jControlador implements ActionListener{
                 case __MENU_NEWUSER:                   
                     Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, true);  
                     newusuario.__etqBloqMayus.setVisible(true);
-                        if(cargo!=3 || cargo!=2){
+                        if(cargo!=3 && cargo!=2){
                             ap.setEnabled(false);
                             movimientos.setEnabled(false);
                             reportes.setEnabled(false);
@@ -5016,7 +5036,7 @@ public class jControlador implements ActionListener{
                             newusuario.setLocationRelativeTo(null);
                          }else{
                             mensaje(2,"No Hay Acceso a esta Información");
-                        }
+                        }                        
                 break;
                 case __MENU_CONTRASEÑA:
                     if(menumaster.__etqUsuarioMenuMaster.getText().equals("ROOT")){
@@ -6701,7 +6721,9 @@ public class jControlador implements ActionListener{
                 this.Finanzas.__dateIni.setDate(null);
                 this.Finanzas.__datefin.setDate(null);                
                 reportes.setEnabled(true);
+                reportes.setVisible(true);
                 Finanzas.setVisible(false);
+                
                 break;
             case __CONSUMOOP:
                 this.Consumo.setVisible(true);
@@ -7554,7 +7576,7 @@ public class jControlador implements ActionListener{
     private void KeyTipedLetrasNum(KeyEvent evt) {
         mayusculas();
         char caracter = evt.getKeyChar();
-        if(((caracter < 'A') || (caracter > 'Z'))  && ((caracter < '0') || (caracter > '9')) && caracter !=' ' && caracter != 'Ñ' && caracter != '.' ){
+        if(((caracter < 'A') || (caracter > 'Z'))  && ((caracter < '0') || (caracter > '9')) && caracter !=' ' && caracter != 'Ñ' && caracter != '.' && caracter != '-' ){
             evt.consume();
         }
     }
@@ -9014,7 +9036,21 @@ public class jControlador implements ActionListener{
                                 }
                             break;
                         case 3:                                
-                                mensaje(2,"No Hay Acceso a esta Información");                                                                                                  
+                                confir = mensajeConfirmacion("¿Realmente Deseas Regresar al \n Menú Principal?","Salida");
+                                if (confir == JOptionPane.OK_OPTION){
+                                menumaster.setVisible(true);
+                                menumaster.setLocationRelativeTo(null);
+                                consultas.dispose();
+                                movimientos.dispose();
+                                this.ap.dispose();
+                                reportes.dispose();
+                                borrarFormularioNewUser();
+                                borrarFormularioAltaPapel();
+                                borrarFormularioMovimientosPapel();
+                                borrarFormularioProveedor();
+                                borrarFormularioConsultas();
+                                borrarFormularioEmergente();
+                                }
                             break;                    
                     }
                     
