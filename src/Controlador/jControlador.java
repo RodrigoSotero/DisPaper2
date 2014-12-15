@@ -5784,6 +5784,7 @@ public class jControlador implements ActionListener{
                                     }
                                     String foliotras=traspaso.__folioT.getText().toString();
                                     double costotras=Double.parseDouble(traspaso.__CostoTras.getText().toString());
+                                    System.out.println(costotras);
                                     mimodelo.Traspaso(foliotras, clavecl, clavePapcl1, agregarexistencia+"", presentacion+"", fec, costotras+"");
                                     String folioentrada = mimodelo.buscarFolioEntrada();
                                     String foliosalida = mimodelo.buscarFolioSalida();
@@ -5799,7 +5800,7 @@ public class jControlador implements ActionListener{
                                     identradas_="";
                                     this.PEPS2(clavecl,agregarexistencia,presentacion);
                                     mimodelo.altaDetalleSalida(id_salida,clavecl,agregarexistencia+"",presentacion+"",costotras+"",(costotras*agregarexistencia)+"",identradas_);
-                                    
+                                    System.out.println(costotras);
                                      mimodelo.altaEntrada(folioentrada,"-", "-", "-", "N/A", "N/A","-", cliente1, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,0);
                                      mimodelo.sumarexistencia(clavecl);
 
@@ -5817,6 +5818,7 @@ public class jControlador implements ActionListener{
                                     //id_entrada++;
                                     mimodelo.altaDetalleEntrada(id_entrada, clavePapcl1, agregarexistencia+"", presentacion+"",ubicacion,costotras+"", (costotras*agregarexistencia)+"");
                                     mimodelo.sumarexistencia(clavePapcl1);
+                                    mimodelo.costopromedio(clavePapcl1);
                                     mimodelo.ubicacion(clavePapcl1, ubicacion);
                                     mensaje(1,"traspaso correcto");
                                     addItems("traspaso");
