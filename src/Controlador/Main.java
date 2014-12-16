@@ -27,8 +27,6 @@ public class Main {
             System.out.println(ex.getMessage());
         }
         new jControlador( new Splash() ).iniciar();
-        //Vista.hilobd a =new Vista.hilobd("A");
-        //a.run();
         
     }
     
