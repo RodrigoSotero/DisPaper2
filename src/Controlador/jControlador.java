@@ -127,7 +127,6 @@ public class jControlador implements ActionListener{
     private TextAutoCompleter Com_propietarioB;
     private String ventana;
     hilobd h1;
-    
     public jControlador( JFrame padre ){
         //this.frmprincipal = (frmPrincipal) padre;
         this.splash = (Splash) padre;
