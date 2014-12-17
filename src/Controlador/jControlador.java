@@ -128,7 +128,6 @@ public class jControlador implements ActionListener{
     private TextAutoCompleter Com_propietarioB;
     private String ventana;
     hilobd h1;
-    
     public jControlador( JFrame padre ){
         //this.frmprincipal = (frmPrincipal) padre;
         this.splash = (Splash) padre;
@@ -3527,13 +3526,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalida.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==2){
+                        if(columna==3||columna==1||columna==2||columna==4){
                             Double tot=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 3)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaSalida.setValueAt(totcos, fila, 4);
                         }
                     }catch(Exception e){
+                        mensaje(3,"completa los campos");
                     }
                 }
             }
@@ -3550,13 +3550,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaEntrada.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==4||columna==1||columna==2){
+                        if(columna==4||columna==1||columna==2||columna==3||columna==5){
                             Double tot=Double.parseDouble(movimientos.__tablaEntrada.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaEntrada.getValueAt(fila, 4)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaEntrada.setValueAt(totcos, fila, 5);
                         }
                     }catch(Exception e){
+                        mensaje(2,"completa los campos");
                     }
                 }
             }
@@ -3573,13 +3574,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalidaHoja.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==2){
+                        if(columna==3||columna==1||columna==2||columna==4){
                             Double tot=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 3)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaSalidaHoja.setValueAt(totcos, fila, 4);
                         }
                     }catch(Exception e){
+                        mensaje(3,"completa los campos");
                     }
                 }
             }
@@ -3596,7 +3598,7 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==5||columna==6||columna==7){
+                        if(columna==3||columna==1||columna==2||columna==4||columna==5||columna==6||columna==7||columna==8){
                             Double tot=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 1)+"");
                             tot+=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 3)+"");
                             tot-=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 5)+"");
@@ -3606,8 +3608,15 @@ public class jControlador implements ActionListener{
                             //1+3-5
                             
                             movimientos.__tablaSalidaBobinaInventario.setValueAt(totcos, fila, 8);
+                            /*for(int i=0;i<6;i++){
+                                Object valor = movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, i);
+                                if(valor==null){
+                                    mensaje(2,"Completa los campos...");
+                                }
+                            }*/
                         }
                     }catch(Exception e){
+                        mensaje(2,"Completa los campos...");
                     }
                 }
             }
@@ -6827,29 +6836,64 @@ public class jControlador implements ActionListener{
                     if(ClaveDestino.isEmpty()){
                         if(trasFI.equals("")){
                             if(trasFF.equals("")){
-                                //4 vacios
-                                mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte");  
+                                //no busca nada
                             }else{
-                                //lo unico que tiene es fecha final
-                                mensaje(1,"Busqueda por: Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoFFinal.jrxml",map);
+                                //busca solo por fecha final
                             }
                         }else{
-                            //Tiene fecha Inicial
-                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI);
-                                this.mimodelo.abrirReporte("TraspasoFInicial.jrxml",map);
+                            if(trasFF.equals("")){
+                               //busca solo por fecha inicial
+                            }else{
+                                //busca solo por fecha final
+                            }
                         }
                     }else{
-                        //Tiene Clave Destino
-                        mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino);
-                        this.mimodelo.abrirReporte("TraspasoDestino.jrxml",map);
+                        if(trasFI.equals("")){
+                            if(trasFF.equals("")){
+                                 //busca solo por clave destino
+                            }else{
+                                //destino y  fecha final
+                            }
+                        }else{
+                            if(trasFF.equals("")){
+                              //destino y fecha inicial
+                            }else{
+                                //busca solo por fecha inicial y final
+                            }
+                        }                       
                     }
                 }else{
-                    
-                    //Tiene Clave Origen
-                    mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen);
-                    this.mimodelo.abrirReporte("TraspasoOrigen.jrxml",map);
+                    if(ClaveDestino.isEmpty()){
+                        if(trasFI.equals("")){
+                            if(trasFF.equals("")){
+                                //busca solo por clave origen
+                            }else{
+                                //busca solo por clave origen y fecha final
+                            }
+                        }else{
+                            if(trasFF.equals("")){
+                              //origen y fecha inicial
+                            }else{
+                                //busca solo por  origen inicial y fecha final
+                            }
+                        }
+                    }else{
+                        if(trasFI.equals("")){
+                            if(trasFF.equals("")){
+                                //busca solo por clave origen y dstino
+                            }else{
+                                //busca solo por clave origen destino y fecha final
+                            }
+                        }else{
+                            if(trasFF.equals("")){
+                              //origen destino y fecha inicial
+                            }else{
+                                //busca solo por origen destino inicial y final
+                            }
+                        }
+                    }
                 }
+                
                 break;
             case __CANCELAR_TRASPASORE:
                 break;
