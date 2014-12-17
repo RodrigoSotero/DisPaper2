@@ -94,6 +94,7 @@ public class jControlador implements ActionListener{
     private final  Vista.ReFinanzas Finanzas = new ReFinanzas();
     private final  Vista.Ubicacion ubi = new Ubicacion();
     private final  Vista.ConsumoTotal Consumo = new ConsumoTotal();
+    private final  Vista.ReTraspaso retras = new ReTraspaso();
     JPopupMenu popup = new JPopupMenu(); 
     HashMap map = new HashMap();
     String pswd;
@@ -816,7 +817,10 @@ public class jControlador implements ActionListener{
         __ACEPTAR_CONSUMO,
         __CANCELAR_CONSUMO,
         __ACEPTAR_UBICACION,
-        __CANCELAR_UBICACION
+        __CANCELAR_UBICACION,
+        //vista ReTraspaso
+        __ACEPTAR_TRASPASORE,  
+        __CANCELAR_TRASPASORE
         
     }
     public void iniciar(){
@@ -1057,8 +1061,7 @@ public class jControlador implements ActionListener{
             public void mouseExited(java.awt.event.MouseEvent evt){
                 
             }
-        });
-        
+        });        
         this.ap.__etqNewColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt){
                 nuevoColor(ap.__ColorPapel);
@@ -1746,14 +1749,13 @@ public class jControlador implements ActionListener{
         this.reportes.__RFinanzas.addActionListener(this);
         this.reportes.__CONSUMOTOTALOP.setActionCommand("__CONSUMOOP");
         this.reportes.__CONSUMOTOTALOP.setMnemonic('C');
-        this.reportes.__CONSUMOTOTALOP.addActionListener(this);
-        
+        this.reportes.__CONSUMOTOTALOP.addActionListener(this);        
         //ReFinanzas
         this.Finanzas.__ACEPTAR.setActionCommand("__ACEPTAR_FINANZAS");
         this.Finanzas.__ACEPTAR.setMnemonic('A');
         this.Finanzas.__ACEPTAR.addActionListener(this);
         this.Finanzas.__SALIR.setActionCommand("__CANCELAR_FINANZAS");
-        this.Finanzas.__SALIR.setMnemonic('S');
+        this.Finanzas.__SALIR.setMnemonic('C');
         this.Finanzas.__SALIR.addActionListener(this);
         final TextAutoCompleter clavePapel = new TextAutoCompleter(Finanzas.__clave );
         clavePapel.setMode(0);//infijo
@@ -1786,7 +1788,78 @@ public class jControlador implements ActionListener{
                 }
              }
                     
-        });  
+        }); 
+        // REPORTE TRASPASO         
+        this.retras.__ACEPTAR.setActionCommand("__ACEPTAR_TRASPASORE");
+        this.retras.__ACEPTAR.setMnemonic('A');
+        this.retras.__ACEPTAR.addActionListener(this);
+        this.retras.__SALIR.setActionCommand("__CANCELAR_TRASPASORE");
+        this.retras.__SALIR.setMnemonic('C');
+        this.retras.__SALIR.addActionListener(this);
+        final TextAutoCompleter claveOrigen = new TextAutoCompleter(retras.__claveorigen);
+        claveOrigen.setMode(0);//infijo
+        this.retras.__claveorigen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNum(evt);                  
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
+                    //_ Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, true);
+                    boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){                        
+                        a=0;
+                    }else{
+                        a=1;
+                    }                   
+                } 
+               
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = retras.__claveorigen.getText();
+                    ResultSet buscarClave = mimodelo.vw_buscaClaveTodo(parametro);
+                    claveOrigen.removeAll();
+                    while(buscarClave.next()){
+                        claveOrigen.addItem(buscarClave.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }
+                    
+        });
+        final TextAutoCompleter clavedestino = new TextAutoCompleter(retras.__clavedestino);
+        clavedestino.setMode(0);//infijo
+        this.retras.__clavedestino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNum(evt);                  
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
+                    //_ Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, true);
+                    boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){                        
+                        a=0;
+                    }else{
+                        a=1;
+                    }                   
+                } 
+               
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = retras.__clavedestino.getText();
+                    ResultSet buscarClave = mimodelo.vw_buscaClaveTodo(parametro);
+                    clavedestino.removeAll();
+                    while(buscarClave.next()){
+                        clavedestino.addItem(buscarClave.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }
+                    
+        });
         //ReporteConsumototal
         this.Consumo.__ACEPTAR.setActionCommand("__ACEPTAR_CONSUMO");
         this.Consumo.__ACEPTAR.setMnemonic('A');
@@ -6624,7 +6697,8 @@ public class jControlador implements ActionListener{
                 }
                 break;
             case __Traspaso:
-                this.mimodelo.abrirReporte("Traspaso.jrxml",new HashMap());
+                this.retras.setVisible(true);                
+                this.reportes.setEnabled(false);
                 break;
             case __SALIDAG:
                 String SG = JOptionPane.showInputDialog(null, "Ingresa la Fecha Inicial (aaaa-mm-dd)");
@@ -6722,8 +6796,62 @@ public class jControlador implements ActionListener{
                 this.Finanzas.__datefin.setDate(null);                
                 reportes.setEnabled(true);
                 reportes.setVisible(true);
-                Finanzas.setVisible(false);
-                
+                Finanzas.setVisible(false);                
+                break;
+            case __ACEPTAR_TRASPASORE:
+                String ClaveOrigen=this.retras.__claveorigen.getText();
+                String ClaveDestino=this.retras.__clavedestino.getText();
+                Date fechainicial=null,fechafinal=null;
+                map.put("clave",ClaveOrigen);
+                map.put("clave destino",ClaveDestino);
+                String trasFI,trasFF;
+                if(aceptarFecha(this.retras.__dateIni,1)==null){
+                     trasFI="";
+                }else{
+                    trasFI= this.aceptarFecha(this.retras.__dateIni,1).toString();
+                    fechainicial = retras.__dateIni.getCalendar().getTime();
+                    map.put("fechainicial",trasFI);
+                }
+                if(aceptarFecha(this.retras.__datefin,1)==null){
+                    trasFF="";
+                }else{
+                    trasFF = this.aceptarFecha(this.retras.__datefin,1).toString();
+                    map.put("fechafinal",trasFF);
+                    fechafinal= retras.__datefin.getCalendar().getTime();
+                }
+                if(fechafinal!=null&&fechainicial!=null&&fechafinal.before(fechainicial)){
+                    mensaje(3,"La Fecha Inicial No Puede se Mayor a Fecha Final");
+                    return;
+                }
+                if(ClaveOrigen.isEmpty()){
+                    if(ClaveDestino.isEmpty()){
+                        if(trasFI.equals("")){
+                            if(trasFF.equals("")){
+                                //4 vacios
+                                mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte");  
+                            }else{
+                                //lo unico que tiene es fecha final
+                                mensaje(1,"Busqueda por: Fecha Final "+trasFF);
+                                this.mimodelo.abrirReporte("TraspasoFFinal.jrxml",map);
+                            }
+                        }else{
+                            //Tiene fecha Inicial
+                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI);
+                                this.mimodelo.abrirReporte("TraspasoFInicial.jrxml",map);
+                        }
+                    }else{
+                        //Tiene Clave Destino
+                        mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino);
+                        this.mimodelo.abrirReporte("TraspasoDestino.jrxml",map);
+                    }
+                }else{
+                    
+                    //Tiene Clave Origen
+                    mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen);
+                    this.mimodelo.abrirReporte("TraspasoOrigen.jrxml",map);
+                }
+                break;
+            case __CANCELAR_TRASPASORE:
                 break;
             case __CONSUMOOP:
                 this.Consumo.setVisible(true);

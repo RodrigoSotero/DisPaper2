@@ -24,46 +24,60 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Component id="__etqFechaIni1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="__clave" min="-2" pref="243" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="85" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="__etqFechaIni" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="__dateIni" min="-2" pref="135" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="__etqFechaIni2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="__datefin" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="__SALIR" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="119" pref="119" max="-2" attributes="0"/>
-              <Component id="__ACEPTAR" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="__etqFechaIni1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="__clave" min="-2" pref="243" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="__etqFechaIni" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="__dateIni" min="-2" pref="135" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="__etqFechaIni2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="__datefin" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="109" max="-2" attributes="0"/>
+                              <Component id="__SALIR" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="119" pref="119" max="-2" attributes="0"/>
+                              <Component id="__ACEPTAR" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="__etqFechaIni2" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="__etqFechaIni1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="__clave" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="__dateIni" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
@@ -174,6 +188,17 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Papyrus" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Finanzas"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
