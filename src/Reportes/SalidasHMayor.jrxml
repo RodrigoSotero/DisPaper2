@@ -78,9 +78,9 @@ WHERE
 	<title>
 		<band height="102" splitType="Stretch">
 			<frame>
-				<reportElement uuid="4ecf9bae-c89b-43b1-97f6-c95ee5d95dd7" mode="Opaque" x="81" y="0" width="679" height="66" backcolor="#000066"/>
+				<reportElement uuid="4ecf9bae-c89b-43b1-97f6-c95ee5d95dd7" mode="Opaque" x="81" y="0" width="679" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 				<staticText>
-					<reportElement uuid="f0165792-914b-4577-91f4-7a679756b166" style="Title" x="0" y="0" width="370" height="66"/>
+					<reportElement uuid="f0165792-914b-4577-91f4-7a679756b166" style="Title" x="0" y="0" width="370" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
@@ -88,28 +88,28 @@ WHERE
 					<text><![CDATA[Salidas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="29a0f88e-3fc5-4fa5-b84d-678ea596e752" style="SubTitle" x="370" y="37" width="309" height="29"/>
+					<reportElement uuid="29a0f88e-3fc5-4fa5-b84d-678ea596e752" style="SubTitle" x="370" y="37" width="309" height="29" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Hojas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="260" y="20" width="218" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="260" y="20" width="218" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
 					<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="304" y="0" width="124" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="304" y="0" width="124" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
 					<text><![CDATA[***GRUPO CORME***]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="261" y="37" width="217" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="261" y="37" width="217" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
@@ -117,9 +117,9 @@ WHERE
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement uuid="c7a3805c-edb2-4bb8-b05e-be40b5048e1b" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<reportElement uuid="c7a3805c-edb2-4bb8-b05e-be40b5048e1b" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="3e80eaf6-c0bb-4767-8a50-05be2d2b4fa5" x="613" y="12" width="144" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="3e80eaf6-c0bb-4767-8a50-05be2d2b4fa5" x="613" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -383,23 +383,23 @@ WHERE
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement uuid="7da42732-a6ac-45af-8a73-8b3d17139e89" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<reportElement uuid="7da42732-a6ac-45af-8a73-8b3d17139e89" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField evaluationTime="Report">
-					<reportElement uuid="b8a91c78-8f30-47f9-af3a-f122ac8f03b7" style="Column header" x="715" y="5" width="40" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="b8a91c78-8f30-47f9-af3a-f122ac8f03b7" style="Column header" x="715" y="5" width="40" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="cead8ca5-b1d8-41dc-aee4-1aa145e6aa79" style="Column header" x="541" y="5" width="174" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="cead8ca5-b1d8-41dc-aee4-1aa145e6aa79" style="Column header" x="541" y="5" width="174" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="351f9cb3-48ec-4a52-bea5-0370381d772e" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="351f9cb3-48ec-4a52-bea5-0370381d772e" style="Column header" x="2" y="3" width="197" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1e7a043-d6af-4b58-a35c-a44e3745b731">
-	<property name="ireport.zoom" value="5.706233412220008"/>
-	<property name="ireport.x" value="3276"/>
-	<property name="ireport.y" value="903"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -126,9 +126,9 @@ WHERE
 	<title>
 		<band height="120" splitType="Stretch">
 			<frame>
-				<reportElement uuid="0587de44-ef59-4c7d-acf9-86de5a7540e9" mode="Opaque" x="81" y="0" width="681" height="66" backcolor="#000066"/>
+				<reportElement uuid="0587de44-ef59-4c7d-acf9-86de5a7540e9" mode="Opaque" x="81" y="0" width="681" height="66" backcolor="#FFFFFF"/>
 				<staticText>
-					<reportElement uuid="e05de2f5-9b9c-46dc-babe-d10b92151632" style="Title" x="0" y="0" width="370" height="66"/>
+					<reportElement uuid="e05de2f5-9b9c-46dc-babe-d10b92151632" style="Title" x="0" y="0" width="370" height="66" forecolor="#333333"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
@@ -136,7 +136,7 @@ WHERE
 					<text><![CDATA[Consumos]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="96feb3d1-7181-407d-a249-057ecbe32b99" style="SubTitle" x="390" y="37" width="286" height="29"/>
+					<reportElement uuid="96feb3d1-7181-407d-a249-057ecbe32b99" style="SubTitle" x="390" y="37" width="286" height="29" forecolor="#333333"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
@@ -144,58 +144,58 @@ WHERE
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement uuid="927f3db5-3507-40c3-9470-fdf78cf66b4d" mode="Opaque" x="0" y="70" width="762" height="50" forecolor="#000000" backcolor="#CC0000"/>
+				<reportElement uuid="927f3db5-3507-40c3-9470-fdf78cf66b4d" mode="Opaque" x="0" y="70" width="762" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="58" y="1" width="23" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="58" y="1" width="23" height="18" forecolor="#333333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[O.P.]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="bb09f5d2-1045-4aee-85b2-34d9cc1d8861" style="Detail" positionType="Float" x="81" y="1" width="49" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="bb09f5d2-1045-4aee-85b2-34d9cc1d8861" style="Detail" positionType="Float" x="81" y="1" width="49" height="18" forecolor="#333333"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_id_op}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="99babd91-031f-4adf-acec-190328a436d6" style="Detail" positionType="Float" x="255" y="32" width="502" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="99babd91-031f-4adf-acec-190328a436d6" style="Detail" positionType="Float" x="255" y="32" width="502" height="18" forecolor="#333333"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_cliente}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="63d1812a-b90d-42cc-bc94-b72406d95488" x="13" y="19" width="96" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="63d1812a-b90d-42cc-bc94-b72406d95488" x="13" y="19" width="96" height="18" forecolor="#333333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Merma de Impresión:]]></text>
 				</staticText>
 				<textField>
-					<reportElement uuid="fbabceaf-cd62-4cae-895f-35ab632e4f40" x="109" y="19" width="45" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="fbabceaf-cd62-4cae-895f-35ab632e4f40" x="109" y="19" width="45" height="18" forecolor="#333333"/>
 					<textElement verticalAlignment="Middle">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_merma}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="fa7ca441-b302-468b-88c4-d59af023ce79" x="199" y="1" width="558" height="31" forecolor="#FFFFFF"/>
+					<reportElement uuid="fa7ca441-b302-468b-88c4-d59af023ce79" x="199" y="1" width="558" height="31" forecolor="#333333"/>
 					<textElement verticalAlignment="Top">
 						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_titulo}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="160" y="1" width="39" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="160" y="1" width="39" height="18" forecolor="#333333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Titulo:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="216" y="32" width="39" height="18" forecolor="#FFFFFF"/>
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="216" y="32" width="39" height="18" forecolor="#333333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="10" isBold="true"/>
 					</textElement>
@@ -203,21 +203,21 @@ WHERE
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="310" y="27" width="218" height="20" forecolor="#CCCCCC"/>
+				<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="310" y="27" width="218" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="310" y="47" width="217" height="20" forecolor="#CCCCCC"/>
+				<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="310" y="47" width="217" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-   Departamento de Administracion de Papel   -]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="359" y="7" width="124" height="20" forecolor="#CCCCCC"/>
+				<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="359" y="7" width="124" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
@@ -766,23 +766,23 @@ WHERE
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement uuid="a52b3869-5320-4ba5-9810-30589fd837d3" mode="Opaque" x="0" y="0" width="762" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<reportElement uuid="a52b3869-5320-4ba5-9810-30589fd837d3" mode="Opaque" x="0" y="0" width="762" height="25" forecolor="#D0B48E" backcolor="#FFFFFF"/>
 				<textField evaluationTime="Report">
-					<reportElement uuid="87e94c7e-a0e6-4437-a5d1-4219b4997017" style="Column header" x="717" y="3" width="40" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="87e94c7e-a0e6-4437-a5d1-4219b4997017" style="Column header" x="717" y="3" width="40" height="20" forecolor="#333333"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="7bd24f59-b50b-4a84-b873-160107601ee5" style="Column header" x="570" y="3" width="147" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="7bd24f59-b50b-4a84-b873-160107601ee5" style="Column header" x="570" y="3" width="147" height="20" forecolor="#333333"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="f63759fd-c031-4ded-b2a3-54957af73ef8" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="f63759fd-c031-4ded-b2a3-54957af73ef8" style="Column header" x="2" y="3" width="197" height="20" forecolor="#333333"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

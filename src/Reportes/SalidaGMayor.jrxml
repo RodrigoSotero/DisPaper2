@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
-	<property name="ireport.zoom" value="6.72749994932561"/>
-	<property name="ireport.x" value="3374"/>
-	<property name="ireport.y" value="983"/>
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="15"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -76,9 +76,9 @@ WHERE
 	<title>
 		<band height="102" splitType="Stretch">
 			<frame>
-				<reportElement uuid="53f8d0f8-24f5-4b5b-a656-60faf1b48feb" mode="Opaque" x="83" y="0" width="677" height="66" backcolor="#000066"/>
+				<reportElement uuid="53f8d0f8-24f5-4b5b-a656-60faf1b48feb" mode="Opaque" x="83" y="0" width="677" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 				<staticText>
-					<reportElement uuid="9a23c430-78e0-45e8-9435-696aef90b1aa" style="Title" x="0" y="0" width="370" height="66"/>
+					<reportElement uuid="9a23c430-78e0-45e8-9435-696aef90b1aa" style="Title" x="0" y="0" width="370" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
@@ -86,28 +86,28 @@ WHERE
 					<text><![CDATA[Salidas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="d704b66a-b6d7-44d9-ab51-f415c43bcd74" style="SubTitle" x="370" y="37" width="307" height="29"/>
+					<reportElement uuid="d704b66a-b6d7-44d9-ab51-f415c43bcd74" style="SubTitle" x="370" y="37" width="307" height="29" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Generales]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="264" y="20" width="218" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="264" y="20" width="218" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
 					<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="308" y="0" width="124" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="308" y="0" width="124" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
 					<text><![CDATA[***GRUPO CORME***]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="265" y="40" width="217" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="265" y="40" width="217" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
@@ -115,9 +115,9 @@ WHERE
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement uuid="d04ace1d-708e-4862-b259-fa52081543dd" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<reportElement uuid="d04ace1d-708e-4862-b259-fa52081543dd" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="79c1e0c1-972b-45eb-b5b7-33261e331604" x="613" y="12" width="144" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="79c1e0c1-972b-45eb-b5b7-33261e331604" x="613" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -416,23 +416,23 @@ WHERE
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement uuid="22742956-f78a-4f1d-ac80-7aaaedcca5bc" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<reportElement uuid="22742956-f78a-4f1d-ac80-7aaaedcca5bc" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField evaluationTime="Report">
-					<reportElement uuid="c01355da-4763-43a9-98ce-681e8591fa13" style="Column header" x="701" y="5" width="40" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="c01355da-4763-43a9-98ce-681e8591fa13" style="Column header" x="701" y="5" width="40" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="5bfbc088-2e99-4b3f-9c41-81f239a8c466" style="Column header" x="528" y="5" width="173" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="5bfbc088-2e99-4b3f-9c41-81f239a8c466" style="Column header" x="528" y="5" width="173" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="cb20727e-7494-4b90-9b57-7f1c9a17a2a9" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="cb20727e-7494-4b90-9b57-7f1c9a17a2a9" style="Column header" x="2" y="3" width="197" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

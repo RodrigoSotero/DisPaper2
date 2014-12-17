@@ -81,9 +81,9 @@ AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
 	<title>
 		<band height="102" splitType="Stretch">
 			<frame>
-				<reportElement uuid="7d9e101e-0d53-44ae-93f3-7dc5f4315e08" mode="Opaque" x="81" y="0" width="679" height="66" backcolor="#000066"/>
+				<reportElement uuid="7d9e101e-0d53-44ae-93f3-7dc5f4315e08" mode="Opaque" x="81" y="0" width="679" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 				<staticText>
-					<reportElement uuid="32ce637e-4bbc-4d1f-ad06-94d4af454293" style="Title" x="0" y="0" width="370" height="66"/>
+					<reportElement uuid="32ce637e-4bbc-4d1f-ad06-94d4af454293" style="Title" x="0" y="0" width="370" height="66" forecolor="#000000" backcolor="#FFFFFF"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
 					<textElement verticalAlignment="Bottom">
 						<font isBold="false"/>
@@ -91,14 +91,14 @@ AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
 					<text><![CDATA[Entradas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="3e81486c-1919-4288-8589-351eb236cca6" style="SubTitle" x="363" y="37" width="309" height="29"/>
+					<reportElement uuid="3e81486c-1919-4288-8589-351eb236cca6" style="SubTitle" x="363" y="37" width="309" height="29" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Bobinas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="264" y="26" width="218" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="264" y="26" width="218" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
@@ -112,7 +112,7 @@ AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
 					<text><![CDATA[***GRUPO CORME***]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="265" y="46" width="217" height="20" forecolor="#CCCCCC"/>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="265" y="46" width="217" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
@@ -120,9 +120,9 @@ AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement uuid="1db159e1-bd8a-41f7-acc9-d33fe153ecac" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<reportElement uuid="1db159e1-bd8a-41f7-acc9-d33fe153ecac" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="644035cf-1dac-4001-b363-2e6c5cd65cbc" x="599" y="12" width="144" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="644035cf-1dac-4001-b363-2e6c5cd65cbc" x="599" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -463,23 +463,23 @@ AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement uuid="4a2d5870-f978-42d0-99df-e6299cd35fb5" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#D0B48E" backcolor="#000066"/>
+				<reportElement uuid="4a2d5870-f978-42d0-99df-e6299cd35fb5" mode="Opaque" x="0" y="0" width="760" height="25" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textField evaluationTime="Report">
-					<reportElement uuid="ad0ff9cf-077a-467c-b8a2-022b8a3e0769" style="Column header" x="713" y="3" width="40" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="ad0ff9cf-077a-467c-b8a2-022b8a3e0769" style="Column header" x="713" y="3" width="40" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="ee86942c-f0bc-4f69-aabf-76778a38d3e3" style="Column header" x="553" y="3" width="160" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="ee86942c-f0bc-4f69-aabf-76778a38d3e3" style="Column header" x="553" y="3" width="160" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="2c823804-abff-4482-a2e6-20ecaee26a9d" style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF"/>
+					<reportElement uuid="2c823804-abff-4482-a2e6-20ecaee26a9d" style="Column header" x="2" y="3" width="197" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
