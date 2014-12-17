@@ -41,7 +41,9 @@
 FROM
      `vw_infoentradahoja` vw_infoentradahoja
 WHERE
-     vw_infoentradahoja.`fecha` <=$P{final}]]>
+     vw_infoentradahoja.`fecha` <=$P{final}
+ORDER BY
+     vw_infoentradahoja.`fecha` ]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
@@ -51,7 +53,7 @@ WHERE
 	<field name="vw_infoentradahoja_ubicacion" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_clave" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_nombre" class="java.lang.String"/>
-	<field name="vw_infoentradahoja_ancho" class="java.lang.Long"/>
+	<field name="vw_infoentradahoja_ancho" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_alto" class="java.lang.Long"/>
 	<field name="vw_infoentradahoja_grams" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_color" class="java.lang.String"/>

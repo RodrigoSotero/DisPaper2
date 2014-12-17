@@ -38,7 +38,9 @@
      vw_infoentradahoja.`fecha` AS vw_infoentradahoja_fecha,
      vw_infoentradahoja.`ubicacion` AS vw_infoentradahoja_ubicacion
 FROM
-     `vw_infoentradahoja` vw_infoentradahoja]]>
+     `vw_infoentradahoja` vw_infoentradahoja
+     ORDER BY
+     vw_infoentradahoja.`fecha` ]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>

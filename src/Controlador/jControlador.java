@@ -3453,13 +3453,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalida.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==2){
+                        if(columna==3||columna==1||columna==2||columna==4){
                             Double tot=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 3)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaSalida.setValueAt(totcos, fila, 4);
                         }
                     }catch(Exception e){
+                        mensaje(3,"completa los campos");
                     }
                 }
             }
@@ -3476,13 +3477,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaEntrada.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==4||columna==1||columna==2){
+                        if(columna==4||columna==1||columna==2||columna==3||columna==5){
                             Double tot=Double.parseDouble(movimientos.__tablaEntrada.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaEntrada.getValueAt(fila, 4)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaEntrada.setValueAt(totcos, fila, 5);
                         }
                     }catch(Exception e){
+                        mensaje(2,"completa los campos");
                     }
                 }
             }
@@ -3499,13 +3501,14 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalidaHoja.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==2){
+                        if(columna==3||columna==1||columna==2||columna==4){
                             Double tot=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 1)+"");
                             Double cos=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 3)+"");
                             Double totcos= tot*cos;
                             movimientos.__tablaSalidaHoja.setValueAt(totcos, fila, 4);
                         }
                     }catch(Exception e){
+                        mensaje(3,"completa los campos");
                     }
                 }
             }
@@ -3522,7 +3525,7 @@ public class jControlador implements ActionListener{
                 int fila = movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                     try{
-                        if(columna==3||columna==1||columna==5||columna==6||columna==7){
+                        if(columna==3||columna==1||columna==2||columna==4||columna==5||columna==6||columna==7||columna==8){
                             Double tot=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 1)+"");
                             tot+=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 3)+"");
                             tot-=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 5)+"");
@@ -3532,8 +3535,15 @@ public class jControlador implements ActionListener{
                             //1+3-5
                             
                             movimientos.__tablaSalidaBobinaInventario.setValueAt(totcos, fila, 8);
+                            /*for(int i=0;i<6;i++){
+                                Object valor = movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, i);
+                                if(valor==null){
+                                    mensaje(2,"Completa los campos...");
+                                }
+                            }*/
                         }
                     }catch(Exception e){
+                        mensaje(2,"Completa los campos...");
                     }
                 }
             }

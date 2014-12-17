@@ -41,7 +41,9 @@
 FROM
      `vw_infoentradahoja` vw_infoentradahoja
 WHERE
-     vw_infoentradahoja.`fecha`>=$P{Ingresa}]]>
+     vw_infoentradahoja.`fecha`>=$P{Ingresa}
+     ORDER BY
+     vw_infoentradahoja.`fecha` ]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
