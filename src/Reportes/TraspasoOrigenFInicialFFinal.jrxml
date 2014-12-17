@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
-	<property name="ireport.zoom" value="1.6105100000000008"/>
-	<property name="ireport.x" value="24"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -37,7 +37,10 @@
      traspaso.`costo` AS traspaso_costo
 FROM
      `traspaso` traspaso
-WHERE traspaso.`clave_papel_origen` = $P{clave}]]>
+WHERE      traspaso.`clave_papel_origen` = $P{clave}
+AND traspaso.`fecha` >= $P{fechainicial}
+AND traspaso.`fecha` <= $P{fechafinal}
+ORDER BY traspaso.`fecha` ASC]]>
 	</queryString>
 	<field name="traspaso_id_traspaso" class="java.lang.Integer"/>
 	<field name="traspaso_folio" class="java.lang.String"/>
@@ -53,7 +56,7 @@ WHERE traspaso.`clave_papel_origen` = $P{clave}]]>
 	<title>
 		<band height="102" splitType="Stretch">
 			<frame>
-				<reportElement uuid="50734bd7-1348-4afb-9b25-9b47c9626d77" mode="Opaque" x="81" y="0" width="679" height="66" forecolor="#0000CC" backcolor="#FFFFFF"/>
+				<reportElement uuid="50734bd7-1348-4afb-9b25-9b47c9626d77" mode="Opaque" x="81" y="0" width="679" height="66" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
 				<staticText>
 					<reportElement uuid="41bbe4e4-03b7-409b-8b8b-0357bc4a811f" style="Title" x="0" y="0" width="370" height="66" forecolor="#000000" backcolor="#000099"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
@@ -63,7 +66,7 @@ WHERE traspaso.`clave_papel_origen` = $P{clave}]]>
 					<text><![CDATA[Traspaso]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="6a198eb7-c7cb-4152-b6ee-19aa54383fa9" style="SubTitle" x="358" y="37" width="309" height="29" forecolor="#000000"/>
+					<reportElement uuid="6a198eb7-c7cb-4152-b6ee-19aa54383fa9" style="SubTitle" x="358" y="37" width="309" height="29" forecolor="#000000" backcolor="#000000"/>
 					<textElement textAlignment="Right">
 						<font size="22" isBold="false"/>
 					</textElement>
@@ -84,7 +87,7 @@ WHERE traspaso.`clave_papel_origen` = $P{clave}]]>
 					<text><![CDATA[***GRUPO CORME***]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="262" y="40" width="217" height="20" forecolor="#000000"/>
+					<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="262" y="40" width="217" height="20" forecolor="#000000" backcolor="#003333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
 					</textElement>
