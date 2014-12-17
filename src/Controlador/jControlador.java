@@ -127,11 +127,12 @@ public class jControlador implements ActionListener{
     private TextAutoCompleter Com_clienteB;
     private TextAutoCompleter Com_propietarioB;
     private String ventana;
-    
+    hilobd h1;
     
     public jControlador( JFrame padre ){
         //this.frmprincipal = (frmPrincipal) padre;
         this.splash = (Splash) padre;
+        
     }
     public boolean conexionBD(){
         try {
@@ -689,7 +690,6 @@ public class jControlador implements ActionListener{
        }
         return false;
     }
-
     public enum Accion{
         __INICIA_SESION, //-> Ejecuta Login
         __SALIR, //-> Sale del sistema
@@ -6961,7 +6961,6 @@ public class jControlador implements ActionListener{
         }   
         
     }  
-    
     public File archivo(int file){
         File archivo;
         JFileChooser fileChooser = new JFileChooser();
@@ -6981,7 +6980,6 @@ public class jControlador implements ActionListener{
         }
         return archivo = fileChooser.getSelectedFile();
     }
-    
     public boolean imprimirExcel(File archivo,JTable table){
         try {
             HSSFWorkbook libro = new HSSFWorkbook();
@@ -7011,7 +7009,6 @@ public class jControlador implements ActionListener{
         }
         return false;
     }
-    
     public boolean enviaarchivo(String urlarchivo, String destinatario,String msg){
         try{
             Properties props = new Properties();
@@ -7169,11 +7166,9 @@ public class jControlador implements ActionListener{
         emergente.__TotalesKG.setText("");
         emergente.__TotalesPliegos.setText("");
     }
-    
     public javax.swing.JProgressBar getjProgressBar1() {
         return this.splash.progreso;
     }
-    
     public void iniciarSplash() {
         this.getjProgressBar1().setBorderPainted(true);
         //this.getjProgressBar1().setForeground(new Color(50, 50, 153, 100));
@@ -8018,8 +8013,6 @@ public class jControlador implements ActionListener{
         }
         JOptionPane.showMessageDialog(null,"No Agregaste Tipo De Salida.","Error",JOptionPane.ERROR_MESSAGE);   
     }
-     
-    
     public boolean ANTIPEPS(String cclave, int rk, int rb, String feca) {
         //clave a sumar 
         //total de kilos a sumar
@@ -8833,7 +8826,6 @@ public class jControlador implements ActionListener{
                            break;
                 }
     }
-    
     int totalkkgssss;
     public void modificacionsalb(){
         foliob = movimientos.__FolioSalidaBobina.getText();
@@ -9183,7 +9175,6 @@ public class jControlador implements ActionListener{
                     }
                     
     }
-    
     public Component prepareRenderer(JTable tabla,TableCellRenderer renderer,int row,int column){
          Component c=movimientos.__tablaSalidaBobinaInventario.prepareRenderer(renderer,row,column);
          //renderer.
@@ -9243,7 +9234,6 @@ public class jControlador implements ActionListener{
                     }
                 }
     }
-
     public int busquedaid(String nombre){
         String texto="";
         if(nombre.isEmpty()){

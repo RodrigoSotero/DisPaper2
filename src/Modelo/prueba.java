@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Controlador.*;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -23,10 +24,27 @@ public class prueba {
     private final modelo mimodelo = new modelo();
     
     public static void main(String[]args){
-        
-        System.out.println(new prueba().busquedaid("marca")+"");
+        new prueba().a();
         
     }
+    public void a(){
+        for(;;){
+            try {
+                
+                Connection conexion = mimodelo.getConexion();
+                if(conexion!=null){
+                    System.out.println(conexion+"");
+                }
+                else{
+                    System.out.println("coexion perdida");
+                    break;
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public int busquedaid(String nombre){
         String texto="";
         if(nombre.isEmpty()){
