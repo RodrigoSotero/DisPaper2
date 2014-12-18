@@ -1795,9 +1795,9 @@ public class jControlador implements ActionListener{
         this.retras.__SALIR.setActionCommand("__CANCELAR_TRASPASORE");
         this.retras.__SALIR.setMnemonic('C');
         this.retras.__SALIR.addActionListener(this);
-        final TextAutoCompleter claveOrigen = new TextAutoCompleter(retras.__claveorigen);
+        final TextAutoCompleter claveOrigen = new TextAutoCompleter(retras.__foliotras);
         claveOrigen.setMode(0);//infijo
-        this.retras.__claveorigen.addKeyListener(new java.awt.event.KeyAdapter() {
+        this.retras.__foliotras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 KeyTipedLetrasNum(evt);                  
             }
@@ -1815,7 +1815,7 @@ public class jControlador implements ActionListener{
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
               try {
-                    String parametro = retras.__claveorigen.getText();
+                    String parametro = retras.__foliotras.getText();
                     ResultSet buscarClave = mimodelo.vw_buscaClaveTodo(parametro);
                     claveOrigen.removeAll();
                     while(buscarClave.next()){
@@ -1827,9 +1827,9 @@ public class jControlador implements ActionListener{
              }
                     
         });
-        final TextAutoCompleter clavedestino = new TextAutoCompleter(retras.__clavedestino);
+        final TextAutoCompleter clavedestino = new TextAutoCompleter(retras.__foliotrashasta);
         clavedestino.setMode(0);//infijo
-        this.retras.__clavedestino.addKeyListener(new java.awt.event.KeyAdapter() {
+        this.retras.__foliotrashasta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 KeyTipedLetrasNum(evt);                  
             }
@@ -1847,7 +1847,7 @@ public class jControlador implements ActionListener{
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
               try {
-                    String parametro = retras.__clavedestino.getText();
+                    String parametro = retras.__foliotrashasta.getText();
                     ResultSet buscarClave = mimodelo.vw_buscaClaveTodo(parametro);
                     clavedestino.removeAll();
                     while(buscarClave.next()){
@@ -6808,8 +6808,8 @@ public class jControlador implements ActionListener{
                 Finanzas.setVisible(false);                
                 break;
             case __ACEPTAR_TRASPASORE:
-                String ClaveOrigen=this.retras.__claveorigen.getText();
-                String ClaveDestino=this.retras.__clavedestino.getText();
+                String ClaveOrigen=this.retras.__foliotras.getText();
+                String ClaveDestino=this.retras.__foliotrashasta.getText();
                 Date fechainicial=null,fechafinal=null;
                 map.put("clave",ClaveOrigen);
                 map.put("clave destino",ClaveDestino);
@@ -6945,8 +6945,8 @@ public class jControlador implements ActionListener{
                 
                 break;
             case __CANCELAR_TRASPASORE:
-                retras.__claveorigen.setText("");
-                retras.__clavedestino.setText("");
+                retras.__foliotras.setText("");
+                retras.__foliotrashasta.setText("");
                 this.retras.__dateIni.setDate(null);
                 this.retras.__datefin.setDate(null);                
                 reportes.setEnabled(true);
