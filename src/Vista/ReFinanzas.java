@@ -20,7 +20,7 @@ public class ReFinanzas extends javax.swing.JFrame {
      * Creates new form ReFinanzas
      */
     public ReFinanzas() {
-          initComponents();
+        initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         Fondo fondo = new Fondo();

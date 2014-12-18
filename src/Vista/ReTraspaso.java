@@ -6,6 +6,10 @@
 
 package Vista;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Rodrigo
@@ -17,6 +21,19 @@ public class ReTraspaso extends javax.swing.JFrame {
      */
     public ReTraspaso() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        Fondo fondo = new Fondo();
+        Dimension size = this.getSize();
+        fondo.setSize(size);
+        add(fondo);
+    }
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+
+
+        return retValue;
     }
 
     /**
@@ -40,7 +57,8 @@ public class ReTraspaso extends javax.swing.JFrame {
         __etqFechaIni3 = new javax.swing.JLabel();
         __clavedestino = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
 
         __claveorigen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
