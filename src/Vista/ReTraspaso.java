@@ -45,7 +45,7 @@ public class ReTraspaso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        __claveorigen = new javax.swing.JTextField();
+        __foliotras = new javax.swing.JTextField();
         __datefin = new com.toedter.calendar.JDateChooser();
         __ACEPTAR = new javax.swing.JButton();
         __etqFechaIni2 = new javax.swing.JLabel();
@@ -55,12 +55,12 @@ public class ReTraspaso extends javax.swing.JFrame {
         __SALIR = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         __etqFechaIni3 = new javax.swing.JLabel();
-        __clavedestino = new javax.swing.JTextField();
+        __foliotrashasta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
-        __claveorigen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        __foliotras.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         __datefin.setDateFormatString("yyyy-MM-d");
 
@@ -72,7 +72,7 @@ public class ReTraspaso extends javax.swing.JFrame {
 
         __etqFechaIni1.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __etqFechaIni1.setForeground(new java.awt.Color(255, 255, 255));
-        __etqFechaIni1.setText("Clave de Papel Origen:");
+        __etqFechaIni1.setText("Folio de Inicial:");
 
         __etqFechaIni.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __etqFechaIni.setForeground(new java.awt.Color(255, 255, 255));
@@ -93,9 +93,9 @@ public class ReTraspaso extends javax.swing.JFrame {
 
         __etqFechaIni3.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __etqFechaIni3.setForeground(new java.awt.Color(255, 255, 255));
-        __etqFechaIni3.setText("Clave de Papel Destino:");
+        __etqFechaIni3.setText("Folio de Final:");
 
-        __clavedestino.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        __foliotrashasta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,21 +121,21 @@ public class ReTraspaso extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(__datefin, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(__ACEPTAR)
                                 .addGap(55, 55, 55)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(__etqFechaIni3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(__clavedestino, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(__foliotrashasta, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(__etqFechaIni1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(__claveorigen, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(__foliotras, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -146,11 +146,11 @@ public class ReTraspaso extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(__etqFechaIni1)
-                    .addComponent(__claveorigen, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(__foliotras, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(__etqFechaIni3)
-                    .addComponent(__clavedestino, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(__foliotrashasta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,14 +210,14 @@ public class ReTraspaso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton __ACEPTAR;
     public javax.swing.JButton __SALIR;
-    public javax.swing.JTextField __clavedestino;
-    public javax.swing.JTextField __claveorigen;
     public com.toedter.calendar.JDateChooser __dateIni;
     public com.toedter.calendar.JDateChooser __datefin;
     public javax.swing.JLabel __etqFechaIni;
     public javax.swing.JLabel __etqFechaIni1;
     public javax.swing.JLabel __etqFechaIni2;
     public javax.swing.JLabel __etqFechaIni3;
+    public javax.swing.JTextField __foliotras;
+    public javax.swing.JTextField __foliotrashasta;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
