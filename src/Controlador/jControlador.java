@@ -6840,47 +6840,52 @@ public class jControlador implements ActionListener{
                                 mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte"); 
                             }else{
                                 //busca solo por fecha final
-                                mensaje(1,"Busqueda por: Fecha Final "+trasFF);
+                                System.out.println("fecha final");
+                                /*mensaje(1,"Busqueda por: Fecha Final "+trasFF);
                                 this.mimodelo.abrirReporte("TraspasoFFinal.jrxml",map);
-                                System.out.println("Segun es esto busca solo por fecha final");
+                                */
                             }
                         }else{
                             if(trasFF.equals("")){
                                //busca solo por fecha inicial
-                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI);
-                                this.mimodelo.abrirReporte("TraspasoFInicial.jrxml",map);
-                                System.out.println("Segun es esto busca solo por fecha inicial");
+                                System.out.println("fecha inicail");
+//                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI);
+//                                this.mimodelo.abrirReporte("TraspasoFInicial.jrxml",map);
+//                                System.out.println("Segun es esto busca solo por fecha inicial");
                             }else{
                                 //busca solo por fecha Inicial y Final
-                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoFinicialFFinal.jrxml",map);
-                                System.out.println("Segun es esto busca solo por fecha Inicial y Final");
+                                System.out.println("fecha inicial final");
+//                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
+//                                this.mimodelo.abrirReporte("TraspasoFinicialFFinal.jrxml",map);
+//                                System.out.println("Segun es esto busca solo por fecha Inicial y Final");
                             }
                         }
                     }else{
                         if(trasFI.equals("")){
                             if(trasFF.equals("")){
                                  //busca solo por clave destino
-                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino);
-                                this.mimodelo.abrirReporte("TraspasoDestino.jrxml",map);
-                                System.out.println("Segun es esto busca solo por clave destino");
+                                System.out.println("calve destino");
+//                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino);
+//                                this.mimodelo.abrirReporte("TraspasoDestino.jrxml",map);
+//                                System.out.println("Segun es esto busca solo por clave destino");
                             }else{
-                                //destino y  fecha final                                
-                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoDestinoFFinal.jrxml",map);
-                                System.out.println("Segun es esto destino y  fecha final ");
+                                //destino y  fecha final   
+                                System.out.println("destino fecha final");
+//                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Final "+trasFF);
+//                                this.mimodelo.abrirReporte("TraspasoDestinoFFinal.jrxml",map);
+//                                System.out.println("Segun es esto destino y  fecha final ");
                             }
                         }else{
                             if(trasFF.equals("")){
                               //destino y fecha inicial
-                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Inicial "+trasFI);
-                                this.mimodelo.abrirReporte("TraspasoDestinoFInicial.jrxml",map);
-                                System.out.println("Segun es esto destino y fecha inicial");
+                                System.out.println("destino fecha inicial final");
+//                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Inicial "+trasFI);
+//                                this.mimodelo.abrirReporte("TraspasoDestinoFInicial.jrxml",map);
+//                                System.out.println("Segun es esto destino y fecha inicial");
                             }else{
                                 //busca solo por fecha inicial y final
-                                mensaje(1,"Busqueda por: Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoFinicialFFinal.jrxml",map);
-                                System.out.println("Segun es esto busca solo por fecha inicial y final");
+                                System.out.println("destino fecha inicial final");
+                                
                             }
                         }                       
                     }
@@ -6889,25 +6894,25 @@ public class jControlador implements ActionListener{
                         if(trasFI.equals("")){
                             if(trasFF.equals("")){
                                 //busca solo por clave origen
-                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino);
-                                this.mimodelo.abrirReporte("TraspasoDestino.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen);
+//                                this.mimodelo.abrirReporte("TraspasoOrigen.jrxml",map);
                                 System.out.println("Segun es esto busca solo por clave origen");
                             }else{
                                 //busca solo por clave origen y fecha final
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoOrigenFFinal.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Final "+trasFF);
+//                                this.mimodelo.abrirReporte("TraspasoOrigenFFinal.jrxml",map);
                                 System.out.println("Segun es esto busca solo por clave origen y fecha final");
                             }
                         }else{
                             if(trasFF.equals("")){
                               //origen y fecha inicial
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Inicial "+trasFI);
-                                this.mimodelo.abrirReporte("TraspasoOrigenFInicial.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Inicial "+trasFI);
+//                                this.mimodelo.abrirReporte("TraspasoOrigenFInicial.jrxml",map);
                                 System.out.println("Segun es esto busca origen y fecha inicial");
                             }else{
                                 //busca solo por  origen inicial y fecha final
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoOrigenFInicialFFinal.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
+//                                this.mimodelo.abrirReporte("TraspasoOrigenFInicialFFinal.jrxml",map);
                                 System.out.println("Segun es esto busca solo por  origen inicial y fecha final");
                             }
                         }
@@ -6915,26 +6920,24 @@ public class jControlador implements ActionListener{
                         if(trasFI.equals("")){
                             if(trasFF.equals("")){
                                 //busca solo por clave origen y dstino
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Clave Destino "+ClaveDestino);
-                                this.mimodelo.abrirReporte("TraspasoOrigenDestino.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Clave Destino "+ClaveDestino);
+//                                this.mimodelo.abrirReporte("TraspasoOrigenDestino.jrxml",map);
                                 System.out.println("Segun es esto busca solo por clave origen y dstino");
                             }else{
                                 //busca solo por clave origen destino y fecha final
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Clave Destino "+ClaveDestino+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoOrigenDestinoFFinal.jrxml",map);
+//                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Clave Destino "+ClaveDestino+", Fecha Final "+trasFF);
+//                                this.mimodelo.abrirReporte("TraspasoOrigenDestinoFFinal.jrxml",map);
                                 System.out.println("Segun es esto busca solo por clave origen destino y fecha final");
                             }
                         }else{
                             if(trasFF.equals("")){
-                              //origen destino y fecha inicial
-                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Inicial "+trasFI);
-                                this.mimodelo.abrirReporte("TraspasoDestinoFInicial.jrxml",map);
-                                System.out.println("Segun es esto busca origen destino y fecha inicial");
-                            }else{
                                 //busca solo por origen destino inicial y final
-                                mensaje(1,"Busqueda por: Clave Origen "+ClaveOrigen+", Clave Destino "+ClaveDestino+", Fecha Inicial "+trasFI+", Fecha Final "+trasFF);
-                                this.mimodelo.abrirReporte("TraspasoOrigenDestinoFInicialFFinal.jrxml",map);
-                                System.out.println("Segun es esto busca solo por origen destino inicial y final");
+                                System.out.println("Segun es esto busca solo por origen destino inicial ");
+                            }else{
+                                //origen destino y fecha inicial
+//                                mensaje(1,"Busqueda por: Clave Destino "+ClaveDestino+", Fecha Inicial "+trasFI);
+//                                this.mimodelo.abrirReporte("TraspasoDestinoFInicial.jrxml",map);
+                                System.out.println("Segun es esto busca origen destino y fecha inicial");
                             }
                         }
                     }
