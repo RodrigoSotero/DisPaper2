@@ -5372,7 +5372,7 @@ public class jControlador implements ActionListener{
                                }
                                newcantidad=cantidadbd-restarcantidad;
                                newtotal=totalbd-restartotal;
-                               mimodelo.nuevaExistencia(newcantidad+"", detalleentrada.getString("clave_papel"),newtotal+"");
+//                               mimodelo.nuevaExistencia(newcantidad+"", detalleentrada.getString("clave_papel"),newtotal+"");
                                movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("ubicacion"), d, 3);
                                movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("costo")), d, 4);
                                movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("total_costo")), d, 5);
@@ -5381,7 +5381,7 @@ public class jControlador implements ActionListener{
                                int a =totaltemporal-totaltemporal;
                                int b =cantidadtemporal-cantidadtemporal;
                                mimodelo.updateteporalde(a, b, identradas[d]);
-                           
+                               mimodelo.sumarexistencia(detalleentrada.getString("clave_papel"));
                            ResultSetMetaData metaData = detalleentrada.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
