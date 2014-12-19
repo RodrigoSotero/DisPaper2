@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
-	<property name="ireport.x" value="15"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="5.559917313492243"/>
+	<property name="ireport.x" value="3269"/>
+	<property name="ireport.y" value="549"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -116,13 +116,6 @@ WHERE
 			</frame>
 			<frame>
 				<reportElement uuid="d04ace1d-708e-4862-b259-fa52081543dd" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="79c1e0c1-972b-45eb-b5b7-33261e331604" x="613" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="c66692f6-60f9-4497-afab-acb5360cc6c3" x="2" y="0" width="81" height="66"/>
@@ -365,6 +358,9 @@ WHERE
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalida_cliente}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement uuid="92ecf8f1-a009-4fe0-8ea4-aaa03be0b092" x="0" y="0" width="757" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>

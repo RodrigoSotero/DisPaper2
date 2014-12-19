@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
 	<property name="ireport.zoom" value="5.696247503748628"/>
 	<property name="ireport.x" value="3391"/>
-	<property name="ireport.y" value="725"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -108,13 +108,6 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 			</frame>
 			<frame>
 				<reportElement uuid="0e59d8af-4a99-4f98-b943-b6543e3a44f1" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="c4b5b0ba-4478-48ea-8880-7f245944c5c5" x="604" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="20e829b0-00ad-4247-b2cf-be3a5074edce" x="0" y="0" width="81" height="66"/>
@@ -288,7 +281,7 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_ubicacion}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement uuid="e1989b93-834a-43dd-9637-0a5129fdea5a" x="2" y="17" width="758" height="1"/>
+					<reportElement uuid="e1989b93-834a-43dd-9637-0a5129fdea5a" x="2" y="0" width="758" height="1" forecolor="#CCCCCC"/>
 				</line>
 			</frame>
 		</band>

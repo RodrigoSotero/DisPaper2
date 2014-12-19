@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5822724e-44db-41b1-a504-7d31c0aebf80">
-	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="7"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -76,13 +76,6 @@ FROM
 			</frame>
 			<frame>
 				<reportElement uuid="0a2c7bb3-489e-4e23-a624-3318bc3ff519" mode="Opaque" x="0" y="100" width="572" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="fb85c5e0-801f-4bfb-aaa2-5a936202dfc0" x="409" y="12" width="144" height="20" forecolor="#000000"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="6c6aca23-aaeb-4927-8d99-1f3028eda1ac" x="2" y="0" width="119" height="66"/>
@@ -96,35 +89,35 @@ FROM
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="0ecd264c-fde6-4746-b2a2-201bad5deebe" style="Column header" x="2" y="0" width="197" height="19" forecolor="#000000"/>
+				<reportElement uuid="0ecd264c-fde6-4746-b2a2-201bad5deebe" style="Column header" x="2" y="0" width="178" height="19" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="180" y="0" width="130" height="19" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="180" y="0" width="111" height="19" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Dirección]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5aafe76d-1647-435a-89ba-07005a8b1c71" style="Column header" x="478" y="0" width="94" height="19" forecolor="#000000"/>
+				<reportElement uuid="5aafe76d-1647-435a-89ba-07005a8b1c71" style="Column header" x="478" y="0" width="75" height="19" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="291" y="0" width="107" height="19" forecolor="#000000"/>
+				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="291" y="0" width="88" height="19" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Telefono]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="379" y="0" width="118" height="19" forecolor="#000000"/>
+				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="379" y="0" width="99" height="19" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -171,6 +164,9 @@ FROM
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infointeresados_tipo}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement uuid="eb561f12-845b-4458-8f28-adf8e2a3c153" x="2" y="0" width="551" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>
@@ -183,7 +179,7 @@ FROM
 				</graphicElement>
 			</line>
 			<textField pattern="#,##0">
-				<reportElement uuid="cf7648f5-190c-4fd2-9fb4-f10e49f2c6ca" x="436" y="4" width="136" height="20"/>
+				<reportElement uuid="cf7648f5-190c-4fd2-9fb4-f10e49f2c6ca" x="456" y="4" width="116" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>

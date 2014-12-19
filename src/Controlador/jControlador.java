@@ -1794,10 +1794,12 @@ public class jControlador implements ActionListener{
         this.retras.__ACEPTAR.addActionListener(this);
         this.retras.__SALIR.setActionCommand("__CANCELAR_TRASPASORE");
         this.retras.__SALIR.setMnemonic('C');
-        this.retras.__SALIR.addActionListener(this);
+        this.retras.__SALIR.addActionListener(this);        
+        final TextAutoCompleter foliotras = new TextAutoCompleter(retras.__foliotras );
+        foliotras.setMode(0);//infijo
         this.retras.__foliotras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                KeyTipedLetrasNum(evt);                  
+                KeyTipedLetrasNum(evt);               
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
@@ -1810,11 +1812,26 @@ public class jControlador implements ActionListener{
                     }                   
                 } 
                
-            }                                
-        });
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = retras.__foliotras.getText();
+                    ResultSet buscarfoliotras = mimodelo.buscafoliotrasp(parametro);
+                    foliotras.removeAll();
+                    while(buscarfoliotras.next()){
+                        foliotras.addItem(buscarfoliotras.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }
+                    
+        });         
+        final TextAutoCompleter foliotrasi = new TextAutoCompleter(retras.__foliotrashasta);
+        foliotrasi.setMode(0);//infijo
         this.retras.__foliotrashasta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                KeyTipedLetrasNum(evt);                  
+                KeyTipedLetrasNum(evt);               
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
@@ -1825,9 +1842,23 @@ public class jControlador implements ActionListener{
                     }else{
                         a=1;
                     }                   
-                }                
-            }                                
-        });
+                } 
+               
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = retras.__foliotrashasta.getText();
+                    ResultSet buscarfoliotras = mimodelo.buscafoliotrasp(parametro);
+                    foliotrasi.removeAll();
+                    while(buscarfoliotras.next()){
+                        foliotrasi.addItem(buscarfoliotras.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }
+                    
+        }); 
         //ReporteConsumototal
         this.Consumo.__ACEPTAR.setActionCommand("__ACEPTAR_CONSUMO");
         this.Consumo.__ACEPTAR.setMnemonic('A');

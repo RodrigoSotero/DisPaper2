@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a9e3a3ff-53df-44d2-8de9-d23c248a42f6">
-	<property name="ireport.zoom" value="1.4019755979255695"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="6.892459479535831"/>
+	<property name="ireport.x" value="1457"/>
+	<property name="ireport.y" value="831"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -138,28 +138,28 @@ FROM
 	<columnHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="017b319e-9b2a-4a19-bf33-7ba7bf477192" style="Column header" x="159" y="0" width="91" height="35" forecolor="#000000"/>
+				<reportElement uuid="017b319e-9b2a-4a19-bf33-7ba7bf477192" style="Column header" x="159" y="0" width="85" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Clave]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="58e6b7c7-3979-424c-aa80-4c7c0f905c1f" style="Column header" x="250" y="0" width="36" height="35" forecolor="#000000"/>
+				<reportElement uuid="58e6b7c7-3979-424c-aa80-4c7c0f905c1f" style="Column header" x="244" y="0" width="36" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre Papel]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="52674a2c-e840-4518-b3dc-0bb7b5c390aa" style="Column header" x="286" y="0" width="29" height="35" forecolor="#000000"/>
+				<reportElement uuid="52674a2c-e840-4518-b3dc-0bb7b5c390aa" style="Column header" x="280" y="0" width="29" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ancho]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="da57f27c-7f43-46c6-a430-8e6123039bd2" style="Column header" x="315" y="0" width="20" height="35" forecolor="#000000"/>
+				<reportElement uuid="da57f27c-7f43-46c6-a430-8e6123039bd2" style="Column header" x="309" y="0" width="26" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -273,25 +273,25 @@ FROM
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="18" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<frame>
 				<reportElement uuid="11c07252-1520-45e8-9376-cd8d02e26809" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="43fc41e9-f71f-42b4-9f4b-f0447a7a7b60" style="Detail" positionType="Float" x="159" y="0" width="91" height="18"/>
+					<reportElement uuid="43fc41e9-f71f-42b4-9f4b-f0447a7a7b60" style="Detail" positionType="Float" x="159" y="0" width="85" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_clave}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="35e0b350-622e-4043-8b4d-998cf536546a" style="Detail" positionType="Float" x="286" y="0" width="29" height="18"/>
+					<reportElement uuid="35e0b350-622e-4043-8b4d-998cf536546a" style="Detail" positionType="Float" x="280" y="0" width="29" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_ancho}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement uuid="372f15c3-4e62-479f-adf1-bb4c8aa916b3" style="Detail" positionType="Float" x="315" y="0" width="20" height="18"/>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+					<reportElement uuid="372f15c3-4e62-479f-adf1-bb4c8aa916b3" style="Detail" positionType="Float" x="309" y="0" width="26" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
@@ -404,13 +404,16 @@ FROM
 				</textField>
 				<elementGroup>
 					<textField isStretchWithOverflow="true">
-						<reportElement uuid="56eb1990-37c6-4015-87f8-bbb92856b330" style="Detail" positionType="Float" x="250" y="0" width="36" height="18"/>
+						<reportElement uuid="56eb1990-37c6-4015-87f8-bbb92856b330" style="Detail" positionType="Float" x="244" y="0" width="36" height="18"/>
 						<textElement textAlignment="Center" verticalAlignment="Middle">
 							<font fontName="Arial" size="5"/>
 						</textElement>
 						<textFieldExpression><![CDATA[$F{vw_infoentradabobina_nombre}]]></textFieldExpression>
 					</textField>
 				</elementGroup>
+				<line>
+					<reportElement uuid="1ead0371-9c91-42a7-8aff-c669bc8dfb48" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>

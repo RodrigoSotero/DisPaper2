@@ -65,13 +65,6 @@ ORDER BY traspaso.`fecha` ASC]]>
 					<text><![CDATA[Traspaso]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="6a198eb7-c7cb-4152-b6ee-19aa54383fa9" style="SubTitle" x="358" y="37" width="309" height="29" forecolor="#000000" backcolor="#000000"/>
-					<textElement textAlignment="Right">
-						<font size="22" isBold="false"/>
-					</textElement>
-					<text><![CDATA[de Papeles]]></text>
-				</staticText>
-				<staticText>
 					<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="261" y="20" width="218" height="20" forecolor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman" isBold="true"/>
@@ -95,13 +88,6 @@ ORDER BY traspaso.`fecha` ASC]]>
 			</frame>
 			<frame>
 				<reportElement uuid="0e59d8af-4a99-4f98-b943-b6543e3a44f1" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="c4b5b0ba-4478-48ea-8880-7f245944c5c5" x="604" y="12" width="144" height="20" forecolor="#000000"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="20e829b0-00ad-4247-b2cf-be3a5074edce" x="0" y="0" width="81" height="66"/>
@@ -163,6 +149,9 @@ ORDER BY traspaso.`fecha` ASC]]>
 				</textElement>
 				<text><![CDATA[Clave de Papel Destino]]></text>
 			</staticText>
+			<line>
+				<reportElement uuid="ad9e60c4-407e-46ff-9116-577549fd1326" x="0" y="31" width="760" height="1" forecolor="#CCCCCC"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>

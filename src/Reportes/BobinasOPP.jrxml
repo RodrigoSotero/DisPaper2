@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1e7a043-d6af-4b58-a35c-a44e3745b731">
-	<property name="ireport.zoom" value="1.5394743546921197"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="361"/>
+	<property name="ireport.y" value="78"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -349,16 +349,16 @@ WHERE
 				<text><![CDATA[Consumos]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="621" y="0" width="1" height="38"/>
+				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="621" y="0" width="1" height="38" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="507" y="0" width="1" height="38"/>
+				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="507" y="0" width="1" height="38" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="428" y="1" width="1" height="38"/>
+				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="428" y="1" width="1" height="38" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="327" y="0" width="1" height="38"/>
+				<reportElement uuid="bad15002-cbb1-47b8-8d45-177176f300c0" x="327" y="0" width="1" height="38" forecolor="#CCCCCC"/>
 			</line>
 			<staticText>
 				<reportElement uuid="2e28859e-faf8-46f2-b1ed-09183a2f2445" style="Column header" x="0" y="0" width="51" height="38" forecolor="#000000"/>
@@ -458,10 +458,10 @@ WHERE
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_despliegos}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="621" y="0" width="1" height="18"/>
+					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="621" y="0" width="1" height="18" forecolor="#CCCCCC"/>
 				</line>
 				<line>
-					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="507" y="0" width="1" height="18"/>
+					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="507" y="0" width="1" height="18" forecolor="#CCCCCC"/>
 				</line>
 				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement uuid="5c8f52cd-7393-4ec0-a2d0-53ee2680a670" style="Detail" positionType="Float" x="468" y="0" width="40" height="18"/>
@@ -478,10 +478,10 @@ WHERE
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_totales}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="428" y="1" width="1" height="17"/>
+					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="428" y="1" width="1" height="17" forecolor="#CCCCCC"/>
 				</line>
 				<line>
-					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="327" y="1" width="1" height="16"/>
+					<reportElement uuid="dc75f7c0-e49a-4ff2-be2d-fdeda5c37eaa" x="327" y="1" width="1" height="16" forecolor="#CCCCCC"/>
 				</line>
 				<textField isStretchWithOverflow="true">
 					<reportElement uuid="85cb6314-9f12-4a16-be50-f7a07e00f2a4" style="Detail" positionType="Float" x="288" y="0" width="39" height="17"/>
@@ -525,6 +525,9 @@ WHERE
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_turno}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement uuid="d71384d3-3d72-4a80-bfd4-05daf83a9673" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>
@@ -701,16 +704,16 @@ WHERE
 				<text><![CDATA[PORCENTAJE----------------------]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="621" y="0" width="1" height="42"/>
+				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="621" y="0" width="1" height="42" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="507" y="0" width="1" height="42"/>
+				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="507" y="0" width="1" height="42" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="428" y="0" width="1" height="42"/>
+				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="428" y="0" width="1" height="42" forecolor="#CCCCCC"/>
 			</line>
 			<line>
-				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="327" y="-1" width="1" height="23"/>
+				<reportElement uuid="01470b19-f627-4bed-8830-f5d7c8f6117a" x="327" y="-1" width="1" height="23" forecolor="#CCCCCC"/>
 			</line>
 			<textField pattern="#,##0.00">
 				<reportElement uuid="70aedf73-6548-4680-b796-ee1df6fcd51d" x="707" y="3" width="49" height="20"/>
