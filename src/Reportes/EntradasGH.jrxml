@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.6105100000000014"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
@@ -32,16 +32,17 @@
      vw_infoentradahoja.`presentacion` AS vw_infoentradahoja_presentacion,
      vw_infoentradahoja.`cantidad` AS vw_infoentradahoja_cantidad,
      vw_infoentradahoja.`folio` AS vw_infoentradahoja_folio,
-     vw_infoentradahoja.`fecha` AS vw_infoentradahoja_fecha,    
+     vw_infoentradahoja.`fecha` AS vw_infoentradahoja_fecha,
      vw_infoentradahoja.`nombre` AS vw_infoentradahoja_nombre,
-     vw_infoentradahoja.`documento_entrada` AS vw_infoentradahoja_documento_entrada
+     vw_infoentradahoja.`ubicacion` AS vw_infoentradahoja_ubicacion,
+     vw_infoentradahoja.`documento` AS vw_infoentradahoja_documento
 FROM
      `vw_infoentradahoja` vw_infoentradahoja]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_clave" class="java.lang.String"/>
-	<field name="vw_infoentradahoja_ancho" class="java.lang.Long"/>
+	<field name="vw_infoentradahoja_ancho" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_alto" class="java.lang.Long"/>
 	<field name="vw_infoentradahoja_grams" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_color" class="java.lang.String"/>
@@ -57,7 +58,8 @@ FROM
 	<field name="vw_infoentradahoja_folio" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_fecha" class="java.sql.Date"/>
 	<field name="vw_infoentradahoja_nombre" class="java.lang.String"/>
-	<field name="vw_infoentradahoja_documento_entrada" class="java.lang.String"/>
+	<field name="vw_infoentradahoja_ubicacion" class="java.lang.String"/>
+	<field name="vw_infoentradahoja_documento" class="java.lang.String"/>
 	<variable name="totalpaq" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infoentradahoja_presentacion}]]></variableExpression>
 	</variable>
@@ -116,13 +118,6 @@ FROM
 			</frame>
 			<frame>
 				<reportElement uuid="d04ace1d-708e-4862-b259-fa52081543dd" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="79c1e0c1-972b-45eb-b5b7-33261e331604" x="613" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="c66692f6-60f9-4497-afab-acb5360cc6c3" x="2" y="0" width="81" height="66"/>
@@ -349,7 +344,7 @@ FROM
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_documento_entrada}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_documento}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement uuid="6d9548e5-fb86-4100-9b9e-46cab1f242bc" style="Detail" positionType="Float" x="530" y="0" width="51" height="18"/>
@@ -421,6 +416,16 @@ FROM
 					</textElement>
 					<textFieldExpression><![CDATA[]]></textFieldExpression>
 				</textField>
+				<textField>
+					<reportElement uuid="85909089-9810-463f-a317-7229120126b5" x="90" y="0" width="36" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_ubicacion}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="09af132b-00b1-4c48-a9cb-63a8a211df11" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>

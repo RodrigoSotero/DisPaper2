@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
-	<property name="ireport.zoom" value="1.239669421487603"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="11.100374916387254"/>
+	<property name="ireport.x" value="7756"/>
+	<property name="ireport.y" value="1708"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -40,7 +40,7 @@
 FROM
      `vw_infoentradahoja` vw_infoentradahoja
      ORDER BY
-     vw_infoentradahoja.`fecha` ]]>
+     vw_infoentradahoja.`fecha`]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
@@ -122,13 +122,6 @@ FROM
 			</frame>
 			<frame>
 				<reportElement uuid="d04ace1d-708e-4862-b259-fa52081543dd" mode="Opaque" x="0" y="70" width="760" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement uuid="79c1e0c1-972b-45eb-b5b7-33261e331604" x="613" y="12" width="144" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Right">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</frame>
 			<image>
 				<reportElement uuid="c66692f6-60f9-4497-afab-acb5360cc6c3" x="2" y="0" width="81" height="66"/>
@@ -427,6 +420,9 @@ FROM
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_ubicacion}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement uuid="df77d359-f28b-452c-b0d4-2b8a664abe5a" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
+				</line>
 			</frame>
 		</band>
 	</detail>

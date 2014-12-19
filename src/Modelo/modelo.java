@@ -2344,5 +2344,17 @@ public class modelo extends database {
             return false;
         }
     }
+
+    public ResultSet buscafoliotrasp(String parametro) {
+         String q = "select folio from traspaso;";          
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
 }
 
