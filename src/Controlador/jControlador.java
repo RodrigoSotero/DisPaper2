@@ -5830,7 +5830,7 @@ public class jControlador implements ActionListener{
                                         cantcl=Integer.parseInt(existenciapapelcl.getString(1).replace(".00", ""));
                                     }
                                     if(cantcl<agregarexistencia){
-                                        mensaje(3,"no tienes suficiente existencia del papel: "+clavecl+", Tienes: "+cantcl);
+                                        mensaje(3,"no tienes suficiente kg/hojas del papel: "+clavecl+", Tienes: "+cantcl);
                                         traspaso.__CantidadPT.selectAll();
                                         traspaso.__CantidadPT.requestFocus();
                                         break;
@@ -5840,7 +5840,7 @@ public class jControlador implements ActionListener{
                                         presentacioncl=Integer.parseInt(presentacionpapelcl.getString(1).replace(".00", ""));
                                     }
                                     if(presentacioncl<presentacion){
-                                        mensaje(3,"no tienes suficiente presentacion del papel: "+clavecl+", Tienes: "+presentacioncl);
+                                        mensaje(3,"no tienes suficientes bob/paq/tar del papel: "+clavecl+", Tienes: "+presentacioncl);
                                         traspaso.__CantidadTotal.selectAll();
                                         traspaso.__CantidadTotal.requestFocus();
                                         break;
@@ -8302,7 +8302,7 @@ public class jControlador implements ActionListener{
             mensaje(3,"Selecciona al menos un turno");
             return;
         }*/
-        if(movimientos.__tablaEntrada.getValueAt(0, 0)==null){
+        if(movimientos.__tablaEntrada.getValueAt(0, 0)==null||movimientos.__tablaEntrada.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
@@ -8501,7 +8501,7 @@ public class jControlador implements ActionListener{
             mensaje(3,"Selecciona al menos un turno");
             return;
         }
-        if(movimientos.__tablaSalida.getValueAt(0, 0)==null){
+        if(movimientos.__tablaSalida.getValueAt(0, 0)==null||movimientos.__tablaSalida.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
@@ -8727,9 +8727,11 @@ public class jControlador implements ActionListener{
                     if(movimientos.__chkTurno3SalHoja.isSelected()){
                        t3="t3";
                     }
-                    if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null){
+                    if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null||movimientos.__tablaSalidaHoja.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
+                    }else{
+                        System.out.println(movimientos.__tablaSalidaHoja.getValueAt(0, 0));
                     }
                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                         try{
@@ -9028,6 +9030,7 @@ public class jControlador implements ActionListener{
         }
         tmpkg=0.0;
         totalkkgssss=0;
+        
         switch(modificarsalidab){
             case 0:
                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
