@@ -1886,6 +1886,32 @@ public class modelo extends database {
             return false;
         }
     }
+    
+    public boolean modifSalidaH(String foliosalida,String t1, String t2, String t3,String ordenProduccion,String estandarProduccion,int propietario,int maquina,String titulo, int responsable,String fecha,int tiposalida,String Observaciones,int cliente){
+        String q1="UPDATE `dis_paper`.`salidah` SET `TURNO1`='"+t1+"', "
+                + "`TURNO2`='"+t2+"', "
+                + "`TURNO3`='"+t3+"', "
+                + "`orden_produccion`='"+ordenProduccion+"', "
+                + "`estandar_produccion`='"+estandarProduccion+"', "
+                + "`id_cliente`='"+cliente+"', "
+                + "`id_propietario`='"+propietario+"', "
+                + "`id_maquina`='"+maquina+"', "
+                + "`fecha`='"+fecha+"', "
+                + "`titulo`='"+titulo+"', "
+                + "`id_responsable`='"+responsable+"', "
+                + "`observaciones`='"+Observaciones+"', "
+                + "`tipo_salida`='"+tiposalida+"' "
+                + "WHERE `folio`='"+foliosalida+"';";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q1);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            
+            return false;
+        }
+    }
      public boolean modifSalidaB(String foliob,String t1,String t2,String t3,String op,String ep,String factor,String pliego,String cliente,String propietario,String  maquina,
                             String fecha,String titulo,String responsable,String observaciones,String totalkgs,String tiroxpliego,String pliegokgs,
                             String pliegoajuste,String ajustekgs,int tiposal){

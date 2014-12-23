@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1e7a043-d6af-4b58-a35c-a44e3745b731">
 	<property name="ireport.zoom" value="3.1384283767210053"/>
-	<property name="ireport.x" value="1294"/>
-	<property name="ireport.y" value="280"/>
+	<property name="ireport.x" value="1273"/>
+	<property name="ireport.y" value="417"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -53,7 +53,7 @@ ORDER BY vw_infosalidah.`nombre` asc]]>
 		<variableExpression><![CDATA[100]]></variableExpression>
 	</variable>
 	<variable name="diferencia" class="java.lang.Integer">
-		<variableExpression><![CDATA[$F{vw_infosalidah_estandar_produccion}-$F{vw_infosalidah_presentacion}]]></variableExpression>
+		<variableExpression><![CDATA[$V{totalestandar}-$V{totalreal}]]></variableExpression>
 	</variable>
 	<variable name="xdife" class="java.math.BigDecimal">
 		<variableExpression><![CDATA[$V{diferencia}*$V{cienxciento}/$V{totalreal}]]></variableExpression>

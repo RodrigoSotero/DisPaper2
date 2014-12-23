@@ -5404,7 +5404,7 @@ public class jControlador implements ActionListener{
                                }
                                newcantidad=cantidadbd-restarcantidad;
                                newtotal=totalbd-restartotal;
-                               mimodelo.nuevaExistencia(newcantidad+"", detalleentrada.getString("clave_papel"),newtotal+"");
+//                               mimodelo.nuevaExistencia(newcantidad+"", detalleentrada.getString("clave_papel"),newtotal+"");
                                movimientos.__tablaEntrada.setValueAt(detalleentrada.getString("ubicacion"), d, 3);
                                movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("costo")), d, 4);
                                movimientos.__tablaEntrada.setValueAt(Double.parseDouble(detalleentrada.getString("total_costo")), d, 5);
@@ -5413,7 +5413,7 @@ public class jControlador implements ActionListener{
                                int a =totaltemporal-totaltemporal;
                                int b =cantidadtemporal-cantidadtemporal;
                                mimodelo.updateteporalde(a, b, identradas[d]);
-                           
+                               mimodelo.sumarexistencia(detalleentrada.getString("clave_papel"));
                            ResultSetMetaData metaData = detalleentrada.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
@@ -5831,7 +5831,7 @@ public class jControlador implements ActionListener{
                                         cantcl=Integer.parseInt(existenciapapelcl.getString(1).replace(".00", ""));
                                     }
                                     if(cantcl<agregarexistencia){
-                                        mensaje(3,"no tienes suficiente existencia del papel: "+clavecl+", Tienes: "+cantcl);
+                                        mensaje(3,"no tienes suficiente kg/hojas del papel: "+clavecl+", Tienes: "+cantcl);
                                         traspaso.__CantidadPT.selectAll();
                                         traspaso.__CantidadPT.requestFocus();
                                         break;
@@ -5841,7 +5841,7 @@ public class jControlador implements ActionListener{
                                         presentacioncl=Integer.parseInt(presentacionpapelcl.getString(1).replace(".00", ""));
                                     }
                                     if(presentacioncl<presentacion){
-                                        mensaje(3,"no tienes suficiente presentacion del papel: "+clavecl+", Tienes: "+presentacioncl);
+                                        mensaje(3,"no tienes suficientes bob/paq/tar del papel: "+clavecl+", Tienes: "+presentacioncl);
                                         traspaso.__CantidadTotal.selectAll();
                                         traspaso.__CantidadTotal.requestFocus();
                                         break;
@@ -8150,6 +8150,7 @@ public class jControlador implements ActionListener{
         return false;
     }
     String identradas_="";
+    Double costo_total_salida;
     public boolean PEPS2(String clave,double total_restar,double cantidad_restar){
         String fecpe="";
         Double total=0.0,cantidad=0.0;
@@ -8302,7 +8303,7 @@ public class jControlador implements ActionListener{
             mensaje(3,"Selecciona al menos un turno");
             return;
         }*/
-        if(movimientos.__tablaEntrada.getValueAt(0, 0)==null){
+        if(movimientos.__tablaEntrada.getValueAt(0, 0)==null||movimientos.__tablaEntrada.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
@@ -8501,7 +8502,7 @@ public class jControlador implements ActionListener{
             mensaje(3,"Selecciona al menos un turno");
             return;
         }
-        if(movimientos.__tablaSalida.getValueAt(0, 0)==null){
+        if(movimientos.__tablaSalida.getValueAt(0, 0)==null||movimientos.__tablaSalida.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
@@ -8727,9 +8728,11 @@ public class jControlador implements ActionListener{
                     if(movimientos.__chkTurno3SalHoja.isSelected()){
                        t3="t3";
                     }
-                    if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null){
+                    if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null||movimientos.__tablaSalidaHoja.getValueAt(0, 0).toString().isEmpty()){
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
+                    }else{
+                        System.out.println(movimientos.__tablaSalidaHoja.getValueAt(0, 0));
                     }
                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                         try{
@@ -8910,7 +8913,7 @@ public class jControlador implements ActionListener{
                                         }
                                     }
                                     String fechaentrada=fec.replaceAll("-", "");
-                                    boolean modifEntrada = mimodelo.modifEntrada(folioentrada,t1, t2, t3, ordenProduccion, ordenCompra,documentoEntrada, propietario, proveedor, id_responsable, fechaentrada, tipoentrada,Obs,cliente);
+                                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
                                     if(modifEntrada==true){
                                       mensaje(1,"Modificacion Correcta");
                                       this.borrarFormularioMovimientosPapel();
@@ -9028,6 +9031,7 @@ public class jControlador implements ActionListener{
         }
         tmpkg=0.0;
         totalkkgssss=0;
+        
         switch(modificarsalidab){
             case 0:
                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
