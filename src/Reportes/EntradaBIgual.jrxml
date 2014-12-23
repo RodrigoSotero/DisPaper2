@@ -42,7 +42,9 @@ FROM
      `vw_infoentradabobina` vw_infoentradabobina
 WHERE
      vw_infoentradabobina.`fecha` >= $P{ingresa}
-AND  vw_infoentradabobina.`fecha` <= $P{final}]]>
+AND  vw_infoentradabobina.`fecha` <= $P{final}
+ORDER BY vw_infoentradabobina.`fecha` ASC,
+         vw_infoentradabobina.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradabobina_fecha" class="java.sql.Date"/>
 	<field name="vw_infoentradabobina_turno" class="java.lang.String"/>

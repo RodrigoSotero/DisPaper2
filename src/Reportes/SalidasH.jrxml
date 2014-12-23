@@ -42,7 +42,9 @@ FROM
      `vw_infosalidah` vw_infosalidah
 WHERE
      vw_infosalidah.`fecha` >= $P{ingresa}
-AND  vw_infosalidah.`fecha` <= $P{fecha}]]>
+AND  vw_infosalidah.`fecha` <= $P{fecha}
+ORDER BY vw_infosalidah.`fecha` ASC,
+         vw_infosalidah.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infosalidah_folio" class="java.lang.String"/>
 	<field name="vw_infosalidah_Tipo_Salida" class="java.lang.String"/>

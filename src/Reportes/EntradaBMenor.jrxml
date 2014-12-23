@@ -38,10 +38,10 @@
      vw_infoentradabobina.`presentacion` AS vw_infoentradabobina_presentacion,
      CONVERT(vw_infoentradabobina.`costo`,UNSIGNED INT) AS vw_infoentradabobina_costo,
      CONVERT(vw_infoentradabobina.`total`,UNSIGNED INT) AS vw_infoentradabobina_total
-FROM
-     `vw_infoentradabobina` vw_infoentradabobina
-WHERE
-     vw_infoentradabobina.`fecha` <= $P{final}]]>
+FROM `vw_infoentradabobina` vw_infoentradabobina
+WHERE vw_infoentradabobina.`fecha` <= $P{final}
+ORDER BY vw_infoentradabobina.`fecha` ASC,
+         vw_infoentradabobina.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradabobina_fecha" class="java.sql.Date"/>
 	<field name="vw_infoentradabobina_turno" class="java.lang.String"/>

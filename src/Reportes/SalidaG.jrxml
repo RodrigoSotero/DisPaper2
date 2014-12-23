@@ -37,12 +37,11 @@
      vw_infosalida.`cantidad_salida` AS vw_infosalida_cantidad_salida,
      vw_infosalida.`costo` AS vw_infosalida_costo,
      vw_infosalida.`totalcosto` AS vw_infosalida_totalcosto
-FROM
-     `vw_infosalida` vw_infosalida
-WHERE
-      vw_infosalida.`fecha`>=$P{inicial}
-AND
-      vw_infosalida.`fecha`<=$P{final}]]>
+FROM `vw_infosalida` vw_infosalida
+WHERE vw_infosalida.`fecha`>=$P{inicial}
+AND vw_infosalida.`fecha`<=$P{final}
+ORDER BY vw_infosalida.`fecha` ASC,
+         vw_infosalida.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infosalida_folio" class="java.lang.String"/>
 	<field name="vw_infosalida_turno" class="java.lang.String"/>

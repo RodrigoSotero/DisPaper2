@@ -37,12 +37,14 @@
      vw_infoentradabobina.`ubicacion` AS vw_infoentradabobina_ubicacion,
      vw_infoentradabobina.`nombre` AS vw_infoentradabobina_nombre
 FROM
-     `vw_infoentradabobina` vw_infoentradabobina]]>
+     `vw_infoentradabobina` vw_infoentradabobina
+ORDER BY vw_infoentradabobina.`fecha` ASC,
+         vw_infoentradabobina.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradabobina_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradabobina_total" class="java.math.BigInteger"/>
 	<field name="vw_infoentradabobina_clave" class="java.lang.String"/>
-	<field name="vw_infoentradabobina_ancho" class="java.lang.Long"/>
+	<field name="vw_infoentradabobina_ancho" class="java.lang.String"/>
 	<field name="vw_infoentradabobina_grams" class="java.lang.String"/>
 	<field name="vw_infoentradabobina_color" class="java.lang.String"/>
 	<field name="vw_infoentradabobina_marca" class="java.lang.String"/>
