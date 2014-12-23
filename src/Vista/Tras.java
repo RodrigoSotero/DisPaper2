@@ -181,11 +181,11 @@ public class Tras extends javax.swing.JFrame {
 
         __etqCantidad.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __etqCantidad.setForeground(new java.awt.Color(255, 255, 255));
-        __etqCantidad.setText("Cantidad de Hojas:");
+        __etqCantidad.setText("Cantidad de Paquetes/Tarimas:");
 
         __etqCantidadPT.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __etqCantidadPT.setForeground(new java.awt.Color(255, 255, 255));
-        __etqCantidadPT.setText("Cantidad de Paquetes/Tarimas:");
+        __etqCantidadPT.setText("Cantidad de Hojas:");
 
         __CantidadPT.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
         __CantidadPT.setMaximumSize(new java.awt.Dimension(10, 30));
