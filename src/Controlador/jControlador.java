@@ -361,14 +361,14 @@ public class jControlador implements ActionListener{
                 mimodelo.bp(fech);
                 this.enviaarchivo("C:\\iexsa\\backups\\dump"+fech+".sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
                 File fichero = new File("C:\\iexsa\\backups\\dump"+fech+".sql");
-                fichero.delete();
+                fichero.delete();                
             }
              Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, false);
               Calendar Cal= Calendar.getInstance();                                                  
                                String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
                                String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
-                               horasalida = hora+":"+minute;                
-            boolean registrasalida=mimodelo.horasalida(horasalida,user);
+                               horasalida = hora+":"+minute;                                               
+            boolean registrasalida=mimodelo.horasalida(horasalida,user);            
             if(!user.equals("ROOT")){
                 mimodelo.cerrarsesion(user);
             }
@@ -4656,25 +4656,24 @@ public class jControlador implements ActionListener{
                 break;
             case __CANCELAR_FECHA:
                 confir = this.mensajeConfirmacion("¿Estas seguro que deseas salir?","ALERTA");
-                if (confir==JOptionPane.OK_OPTION){
-                    
+                if (confir==JOptionPane.OK_OPTION){                    
                     login.setEnabled(true);
                     ap.setEnabled(true);                   
                     movimientos.setEnabled(true);                   
                     reportes.setEnabled(true);                    
                     consultas.setEnabled(true);
                     fecha.setVisible(false);
-                     Calendar Cal= Calendar.getInstance();                                                  
-                               String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
-                               String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
-                               horasalida = hora+":"+minute;                
+                    Calendar Cal= Calendar.getInstance();                                                  
+                              String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
+                              String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
+                              horasalida = hora+":"+minute;                
                     boolean registrasalida=mimodelo.horasalida(horasalida,user);
                     if(!user.equals("ROOT")){
                                 try {
                                     mimodelo.cerrarsesion(user);
                                 } catch (SQLException ex) {
                                     Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                                }
+                                }                        
                     }
                             login.__Usuario.requestFocus();
                         }
@@ -4723,13 +4722,15 @@ public class jControlador implements ActionListener{
                     String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
                     horasalida = hora+":"+minute;                
                     boolean registrasalida=mimodelo.horasalida(horasalida,user);
-                    if(!user.equals("ROOT")){
-                        try {
-                            mimodelo.cerrarsesion(user);
-                        } catch (SQLException ex) {
-                            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                    if (registrasalida == true){                        
+                        if(!user.equals("ROOT")){                            
+                            try {                           
+                                mimodelo.cerrarsesion(user);
+                            } catch (SQLException ex) {
+                                Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
-                    }
+                    }                    
                     login.show();
                 }
                 break;

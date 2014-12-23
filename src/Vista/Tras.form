@@ -32,6 +32,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="__CANCELARTRASPASO" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace min="230" pref="230" max="-2" attributes="0"/>
+              <Component id="__ACEPTARTRASPASO" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -53,12 +60,12 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="__etqCantidadPT" min="-2" max="-2" attributes="0"/>
-                                  <Component id="__etqCantidad" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="__etqCantidad" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="__etqCantidadPT1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="__etqCantidadPT" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -86,13 +93,6 @@
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="__CANCELARTRASPASO" min="-2" pref="120" max="-2" attributes="0"/>
-              <EmptySpace min="230" pref="230" max="-2" attributes="0"/>
-              <Component id="__ACEPTARTRASPASO" min="-2" pref="120" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,26 +131,22 @@
                   <Component id="jLabel35" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="__ClavePapelTras" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                      <Component id="__etqCantidad" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="__etqCantidadPT" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="__CantidadTotal" min="-2" pref="33" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="__CantidadPT" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="__CantidadPT" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="__etqCantidadPT" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="__etqCantidadPT1" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="__CostoTras" min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="__CantidadTotal" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="__etqCantidad" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="50" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="__CostoTras" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="__etqCantidadPT1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="__CANCELARTRASPASO" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="__ACEPTARTRASPASO" min="-2" pref="33" max="-2" attributes="0"/>
