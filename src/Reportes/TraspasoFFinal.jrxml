@@ -38,7 +38,8 @@
 FROM
      `traspaso` traspaso
 WHERE traspaso.`fecha` <= $P{fechafinal}
-ORDER BY traspaso.`fecha` ASC]]>
+ORDER BY traspaso.`fecha` ASC,
+         traspaso.`folio` ASC]]>
 	</queryString>
 	<field name="traspaso_id_traspaso" class="java.lang.Integer"/>
 	<field name="traspaso_folio" class="java.lang.String"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
 	<property name="ireport.zoom" value="6.72749994932561"/>
-	<property name="ireport.x" value="4237"/>
+	<property name="ireport.x" value="4235"/>
 	<property name="ireport.y" value="750"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -40,7 +40,9 @@
 FROM
      `vw_infosalida` vw_infosalida
 WHERE
-      vw_infosalida.`fecha` <=$P{final}]]>
+      vw_infosalida.`fecha` <=$P{final}
+ORDER BY vw_infosalida.`fecha` ASC,
+         vw_infosalida.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infosalida_folio" class="java.lang.String"/>
 	<field name="vw_infosalida_turno" class="java.lang.String"/>

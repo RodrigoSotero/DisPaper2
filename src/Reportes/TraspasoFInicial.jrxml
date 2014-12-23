@@ -37,7 +37,9 @@
      traspaso.`costo` AS traspaso_costo
 FROM
      `traspaso` traspaso
-WHERE  traspaso.`fecha` >= $P{fechainicial}]]>
+WHERE  traspaso.`fecha` >= $P{fechainicial}
+ORDER BY traspaso.`fecha` ASC,
+         traspaso.`folio` ASC]]>
 	</queryString>
 	<field name="traspaso_id_traspaso" class="java.lang.Integer"/>
 	<field name="traspaso_folio" class="java.lang.String"/>

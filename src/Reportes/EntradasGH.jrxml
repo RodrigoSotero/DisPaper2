@@ -37,7 +37,9 @@
      vw_infoentradahoja.`ubicacion` AS vw_infoentradahoja_ubicacion,
      vw_infoentradahoja.`documento` AS vw_infoentradahoja_documento
 FROM
-     `vw_infoentradahoja` vw_infoentradahoja]]>
+     `vw_infoentradahoja` vw_infoentradahoja
+ORDER BY vw_infoentradahoja.`fecha` ASC,
+         vw_infoentradahoja.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>

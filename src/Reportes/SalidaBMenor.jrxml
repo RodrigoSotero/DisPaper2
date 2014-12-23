@@ -36,10 +36,10 @@
      vw_infosalidab.`desperdicio` AS vw_infosalidab_desperdicio,
      vw_infosalidab.`costo` AS vw_infosalidab_costo,
      vw_infosalidab.`total` AS vw_infosalidab_total
-FROM
-     `vw_infosalidab` vw_infosalidab
-WHERE
-     vw_infosalidab.`fecha` <= $P{final}]]>
+FROM `vw_infosalidab` vw_infosalidab
+WHERE vw_infosalidab.`fecha` <= $P{final}
+ORDER BY vw_infosalidab.`fecha` ASC,
+         vw_infosalidab.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infosalidab_fecha" class="java.sql.Date"/>
 	<field name="vw_infosalidab_folio" class="java.lang.String"/>

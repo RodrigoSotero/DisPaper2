@@ -35,12 +35,10 @@
      traspaso.`bobina_paq_tarima` AS traspaso_bobina_paq_tarima,
      traspaso.`fecha` AS traspaso_fecha,
      traspaso.`costo` AS traspaso_costo
-FROM
-     `traspaso` traspaso
-WHERE
-     traspaso.`folio` = $P{clave destino}
-ORDER BY
-     traspaso.`fecha` ASC]]>
+FROM `traspaso` traspaso
+WHERE traspaso.`folio` = $P{clave destino}
+ORDER BY traspaso.`fecha` ASC,
+         traspaso.`folio` ASC]]>
 	</queryString>
 	<field name="traspaso_id_traspaso" class="java.lang.Integer"/>
 	<field name="traspaso_folio" class="java.lang.String"/>

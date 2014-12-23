@@ -38,12 +38,10 @@
      vw_infoentradahoja.`Tipo_entrada` AS vw_infoentradahoja_Tipo_entrada,
      vw_infoentradahoja.`presentacion` AS vw_infoentradahoja_presentacion,
      vw_infoentradahoja.`cantidad` AS vw_infoentradahoja_cantidad
-FROM
-     `vw_infoentradahoja` vw_infoentradahoja
-WHERE
-     vw_infoentradahoja.`fecha`>=$P{Ingresa}
-     ORDER BY
-     vw_infoentradahoja.`fecha`]]>
+FROM `vw_infoentradahoja` vw_infoentradahoja
+WHERE vw_infoentradahoja.`fecha`>=$P{Ingresa}
+ORDER BY vw_infoentradahoja.`fecha` ASC,
+         vw_infoentradahoja.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
