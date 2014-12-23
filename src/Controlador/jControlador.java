@@ -8149,6 +8149,7 @@ public class jControlador implements ActionListener{
         return false;
     }
     String identradas_="";
+    Double costo_total_salida;
     public boolean PEPS2(String clave,double total_restar,double cantidad_restar){
         String fecpe="";
         Double total=0.0,cantidad=0.0;
@@ -8909,7 +8910,7 @@ public class jControlador implements ActionListener{
                                         }
                                     }
                                     String fechaentrada=fec.replaceAll("-", "");
-                                    boolean modifEntrada = mimodelo.modifEntrada(folioentrada,t1, t2, t3, ordenProduccion, ordenCompra,documentoEntrada, propietario, proveedor, id_responsable, fechaentrada, tipoentrada,Obs,cliente);
+                                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
                                     if(modifEntrada==true){
                                       mensaje(1,"Modificacion Correcta");
                                       this.borrarFormularioMovimientosPapel();
