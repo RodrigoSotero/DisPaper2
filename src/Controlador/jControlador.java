@@ -5781,8 +5781,8 @@ public class jControlador implements ActionListener{
                 mostrarTraspaso();
                 break;
             case __HOJA_TRASPASO:
-                traspaso.__etqCantidad.setText("Cantidad de Hojas");
-                traspaso.__etqCantidadPT.setText("Cantidad Por Paquete ó Tarima");
+                traspaso.__etqCantidad.setText("Cantidad Por Paquete ó Tarima");
+                traspaso.__etqCantidadPT.setText("Cantidad de Hojas");
                 mostrarTraspaso();
                 break;      
             case __CANCELAR_TRASPASO:
