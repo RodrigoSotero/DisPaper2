@@ -5775,14 +5775,14 @@ public class jControlador implements ActionListener{
                                 }
                 break;
             case __BOBINA_TRASPASO:    
-                traspaso.__etqCantidad.setText("Cantidad de Bobinas");
-                traspaso.__etqCantidadPT.setText("Cantidad de Kilos");  
+                traspaso.__etqCantidad.setText("Cantidad de Bobinas:");
+                traspaso.__etqCantidadPT.setText("Cantidad de Kilos:");  
 
                 mostrarTraspaso();
                 break;
             case __HOJA_TRASPASO:
-                traspaso.__etqCantidad.setText("Cantidad Por Paquete ó Tarima");
-                traspaso.__etqCantidadPT.setText("Cantidad de Hojas");
+                traspaso.__etqCantidad.setText("Cantidad Por Paquetes ó Tarimas:");
+                traspaso.__etqCantidadPT.setText("Cantidad de Hojass:");
                 mostrarTraspaso();
                 break;      
             case __CANCELAR_TRASPASO:
