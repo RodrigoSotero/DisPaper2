@@ -6116,7 +6116,7 @@ public class jControlador implements ActionListener{
                                     identradas_="";
                                     PEPS2(tmpclv,tmpkg,tmpbob);
                                     System.out.println("clave" + tmpclv);
-                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_);
+                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_,totalkil);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
