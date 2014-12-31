@@ -5775,14 +5775,14 @@ public class jControlador implements ActionListener{
                                 }
                 break;
             case __BOBINA_TRASPASO:    
-                traspaso.__etqCantidad.setText("Cantidad de Bobinas");
-                traspaso.__etqCantidadPT.setText("Cantidad de Kilos");  
+                traspaso.__etqCantidad.setText("Cantidad de Bobinas:");
+                traspaso.__etqCantidadPT.setText("Cantidad de Kilos:");  
 
                 mostrarTraspaso();
                 break;
             case __HOJA_TRASPASO:
-                traspaso.__etqCantidad.setText("Cantidad de Hojas");
-                traspaso.__etqCantidadPT.setText("Cantidad Por Paquete ó Tarima");
+                traspaso.__etqCantidad.setText("Cantidad Por Paquetes ó Tarimas:");
+                traspaso.__etqCantidadPT.setText("Cantidad de Hojass:");
                 mostrarTraspaso();
                 break;      
             case __CANCELAR_TRASPASO:
@@ -6116,7 +6116,7 @@ public class jControlador implements ActionListener{
                                     identradas_="";
                                     PEPS2(tmpclv,tmpkg,tmpbob);
                                     System.out.println("clave" + tmpclv);
-                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_);
+                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_,totalkil);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
