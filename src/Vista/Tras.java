@@ -164,7 +164,7 @@ public class Tras extends javax.swing.JFrame {
         __ClavePapelTras.setMaximumSize(new java.awt.Dimension(10, 30));
         __ClavePapelTras.setMinimumSize(new java.awt.Dimension(10, 30));
         __ClavePapelTras.setName(""); // NOI18N
-        __ClavePapelTras.setNextFocusableComponent(__CantidadTotal);
+        __ClavePapelTras.setNextFocusableComponent(__CantidadPT);
         __ClavePapelTras.setPreferredSize(new java.awt.Dimension(10, 30));
         __ClavePapelTras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +176,7 @@ public class Tras extends javax.swing.JFrame {
         __CantidadTotal.setMaximumSize(new java.awt.Dimension(10, 30));
         __CantidadTotal.setMinimumSize(new java.awt.Dimension(10, 30));
         __CantidadTotal.setName(""); // NOI18N
-        __CantidadTotal.setNextFocusableComponent(__CantidadPT);
+        __CantidadTotal.setNextFocusableComponent(__CostoTras);
         __CantidadTotal.setPreferredSize(new java.awt.Dimension(10, 30));
 
         __etqCantidad.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
@@ -191,7 +191,7 @@ public class Tras extends javax.swing.JFrame {
         __CantidadPT.setMaximumSize(new java.awt.Dimension(10, 30));
         __CantidadPT.setMinimumSize(new java.awt.Dimension(10, 30));
         __CantidadPT.setName(""); // NOI18N
-        __CantidadPT.setNextFocusableComponent(__CostoTras);
+        __CantidadPT.setNextFocusableComponent(__CantidadTotal);
         __CantidadPT.setPreferredSize(new java.awt.Dimension(10, 30));
 
         __CANCELARTRASPASO.setText("Cancelar");
