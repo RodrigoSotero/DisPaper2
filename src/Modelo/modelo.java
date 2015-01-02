@@ -114,10 +114,20 @@ public class modelo extends database {
                 if(folio==null||folio.isEmpty()){
                     folio= "SALHOJ"+anio+"-1";
                 }else{
-                    int fol = Integer.parseInt(folio.replace("SALHOJ2014-", ""));
-                    int ano = Integer.parseInt(folio.substring(6, 10));
-                    if(anio>ano) fol=1; else fol++;
-                    folio= "SALHOJ"+anio+"-"+fol; 
+                    String aniofolio = folio.substring(6);
+                    String aniof[]= aniofolio.split("-");
+                    if(Integer.parseInt(aniof[0])<anio){
+                        int fol = Integer.parseInt(folio.replace("SALHOJ"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(6, 10));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SALHOJ"+anio+"-"+fol; 
+                    }else 
+                    if(Integer.parseInt(aniof[0])==anio){
+                        int fol = Integer.parseInt(folio.replace("SALHOJ"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(6, 10));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SALHOJ"+anio+"-"+fol; 
+                    }   
                 }               
                 return folio;
             }
@@ -131,40 +141,49 @@ public class modelo extends database {
             }
         return null;
     }
-    public String buscarFolioEntrada() throws java.sql.SQLException{
+    
+    
+   public String buscarFolioEntrada() throws java.sql.SQLException{
         Calendar Cal= Calendar.getInstance();
         int anio=Integer.parseInt(Cal.get(Cal.YEAR)+"");
+        System.out.println(anio);
         try {
-            String id = "SELECT folio from entrada order by id_entrada desc limit 1  ";
+            String id = "SELECT folio from entrada order by id_entrada desc limit 1 ";
             PreparedStatement pstm = this.getConexion().prepareStatement(id);
             ResultSet res = pstm.executeQuery();
             if(!res.next()){
                 return "ENT"+anio+"-1";
             }
-                res.beforeFirst();
-                while(res.next()){
+            res.beforeFirst();
+            while(res.next()){
                 String folio = res.getString("folio");
-                System.err.println(folio);
                 if(folio==null||folio.isEmpty()){
                     folio= "ENT"+anio+"-1";
                 }else{
-                    int fol = Integer.parseInt(folio.replace("ENT"+anio+"-", ""));
-                    System.err.println(fol);
-                    int ano = Integer.parseInt(folio.substring(3, 7));
-                    if(anio>ano) fol=1; else fol++;
-                    folio= "ENT"+anio+"-"+fol; 
-                }               
+                    String aniofolio = folio.substring(3);
+                    String[] aniof = aniofolio.split("-");
+                    if(Integer.parseInt(aniof[0])<anio){
+                        int fol = Integer.parseInt(folio.replace("ENT"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(3, 7));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "ENT"+anio+"-"+fol; 
+                    }else
+                    if(Integer.parseInt(aniof[0])==anio){
+                        int fol = Integer.parseInt(folio.replace("ENT"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(3, 7));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "ENT"+anio+"-"+fol; 
+                    }
+                }             
                 return folio;
-            
-               }
-            }catch(SQLException e){
-                if(e.getMessage().equals("Illegal operation on empty result set.")){
-                    return "ENT"+anio+"-1";
-                }else{
-                    //return "ENT"+anio+"-1";
-                    return null;
-                }
+           }
+        }catch(SQLException e){
+            if(e.getMessage().equals("Illegal operation on empty result set.")){
+                return "ENT"+anio+"-1";
+            }else{
+                return null;
             }
+        }
         return null;
     }
     
@@ -185,11 +204,23 @@ public class modelo extends database {
                 if(folio==null||folio.isEmpty()){
                     folio= "SAL"+anio+"-1";
                 }else{
-                    int fol = Integer.parseInt(folio.replace("SAL"+anio+"-", ""));
-                    System.err.println(fol);
-                    int ano = Integer.parseInt(folio.substring(3, 7));
-                    if(anio>ano) fol=1; else fol++;
-                    folio= "SAL"+anio+"-"+fol; 
+                    String aniofolio = folio.substring(3);
+                    String aniof[] = aniofolio.split("-");
+                    if(Integer.parseInt(aniof[0])<anio){
+                        int fol = Integer.parseInt(folio.replace("SAL"+aniof[0]+"-", ""));
+                        System.err.println(fol);
+                        int ano = Integer.parseInt(folio.substring(3, 7));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SAL"+anio+"-"+fol;
+                    }else
+                     if(Integer.parseInt(aniof[0])==anio){
+                        int fol = Integer.parseInt(folio.replace("SAL"+aniof[0]+"-", ""));
+                        System.err.println(fol);
+                        int ano = Integer.parseInt(folio.substring(3, 7));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SAL"+anio+"-"+fol;
+                    }                   
+                     
                 }               
                 return folio;
             
@@ -205,7 +236,8 @@ public class modelo extends database {
         return null;
     }
     
-    public String buscarFolioMaxSalidaB() throws java.sql.SQLException{   
+    public String buscarFolioMaxSalidaBobina() throws java.sql.SQLException{  
+        System.out.println("AAAAAAAAAAAAAAMODELO");
         Calendar Cal= Calendar.getInstance();
         int anio=Integer.parseInt(Cal.get(Cal.YEAR)+"");
         try {
@@ -221,11 +253,22 @@ public class modelo extends database {
                 if(folio==null){
                     return "SALBOB"+anio+"-1";
                 }else{
-                    int fol = Integer.parseInt(folio.replace("SALBOB"+anio+"-", ""));
-                    int ano = Integer.parseInt(folio.substring(6, 10));
-                    if(anio==ano) fol++; else fol=1;
-                    return "SALBOB"+anio+"-"+fol; 
-                }          
+                    String aniofolio = folio.substring(6);
+                    String aniof[]= aniofolio.split("-");
+                    if(Integer.parseInt(aniof[0])<anio){
+                        int fol = Integer.parseInt(folio.replace("SALBOB"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(6, 10));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SALBOB"+anio+"-"+fol; 
+                    }else 
+                    if(Integer.parseInt(aniof[0])==anio){
+                        int fol = Integer.parseInt(folio.replace("SALBOB"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(6, 10));
+                        if(anio>ano) fol=1; else fol++;
+                        folio= "SALBOB"+anio+"-"+fol; 
+                    }   
+                }   
+                return folio;
             }
             }catch(Exception e){
                 if(e.getMessage().equals("Illegal operation on empty result set.")){
@@ -255,11 +298,22 @@ public class modelo extends database {
                 if(folio==null){
                     return "TRAS"+anio+"-1";
                 }else{
-                    int fol = Integer.parseInt(folio.replace("TRAS"+anio+"-", ""));
-                    int ano = Integer.parseInt(folio.substring(4, 8));
-                    if(anio==ano) fol++; else fol=1;
-                    return "TRAS"+anio+"-"+fol; 
-                }          
+                    String aniofolio = folio.substring(4);
+                    String aniof[]= aniofolio.split("-");
+                    if(Integer.parseInt(aniof[0])<anio){
+                        int fol = Integer.parseInt(folio.replace("TRAS"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(4, 8));
+                        if(anio==ano) fol++; else fol=1;
+                        folio = "TRAS"+anio+"-"+fol; 
+                    }else
+                    if(Integer.parseInt(aniof[0])==anio){
+                        int fol = Integer.parseInt(folio.replace("TRAS"+aniof[0]+"-", ""));
+                        int ano = Integer.parseInt(folio.substring(4, 8));
+                        if(anio==ano) fol++; else fol=1;
+                        folio = "TRAS"+anio+"-"+fol; 
+                    }
+                }
+                return folio;
             }
             }catch(Exception e){
                 if(e.getMessage().equals("Illegal operation on empty result set.")){
@@ -270,7 +324,6 @@ public class modelo extends database {
                     return null;
                 }
             }
-        //return "SALBOB"+anio+"-1";
         return null;
     }
     
