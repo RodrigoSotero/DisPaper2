@@ -375,7 +375,7 @@ public class jControlador implements ActionListener{
                 mimodelo.cerrarsesion(user);
             }
             System.exit(0);
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             mensaje(3,ex.getMessage());
         }
     }
