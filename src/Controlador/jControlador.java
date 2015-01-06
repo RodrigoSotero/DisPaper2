@@ -356,6 +356,9 @@ public class jControlador implements ActionListener{
                 }
         return false;
     }
+    
+    
+    
     public void SalirSistema(){
         try {
             //meter un update 
@@ -4647,7 +4650,7 @@ public class jControlador implements ActionListener{
             case __SALIR:
                 confir = mensajeConfirmacion("¿Desea Salir?","Salida");
                 if (confir==JOptionPane.OK_OPTION){
-                    this.SalirSistema();
+                    System.exit(0);
                 }
                 break;
             case __INICIA_SESION:
@@ -8793,6 +8796,8 @@ public class jControlador implements ActionListener{
                                         id_salidah=buscarMaxSalidah.getInt(1);
                                     }
                                     id_salidah++;
+                                    String fechasalidah = fec.replaceAll("-", "");
+                                        boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         try{
                                             String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
@@ -8839,7 +8844,8 @@ public class jControlador implements ActionListener{
                                                         return;
                                                     }
                                                     mimodelo.sumarexistencia(cpsalh);
-                                                    detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_);
+                                                    detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
+                                                    epsalh ="";
                                                 }
                                             }
                                         }catch(Exception evt){
@@ -8847,8 +8853,7 @@ public class jControlador implements ActionListener{
                                         }
                                         
                                     }
-                                    String fechasalidah = fec.replaceAll("-", "");
-                                        boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
+                                    
                                         if(altasalidah==true&&detallesalidah==true){
                                               mensaje(1,"Salida de Hoja agregada correctamente");
                                               this.borrarFormularioMovimientosPapel();
@@ -8863,6 +8868,8 @@ public class jControlador implements ActionListener{
                            Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
                             confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
                             if (confir==JOptionPane.OK_OPTION){
+                                String fechaentrada=fec.replaceAll("-", "");
+                                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         
                                         try{
@@ -8908,15 +8915,15 @@ public class jControlador implements ActionListener{
                                                         return;
                                                     }
                                                     mimodelo.sumarexistencia(cpsalh);
-                                                    mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_);
+                                                    mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
+                                                    epsalh="";
                                                 }
                                             }
                                         }catch(Exception evt){
                                             break;
                                         }
                                     }
-                                    String fechaentrada=fec.replaceAll("-", "");
-                                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
+                                    
                                     if(modifEntrada==true){
                                       mensaje(1,"Modificacion Correcta");
                                       this.borrarFormularioMovimientosPapel();
