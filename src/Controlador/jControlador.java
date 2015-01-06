@@ -212,8 +212,10 @@ public class jControlador implements ActionListener{
         }
     }
     private void maximosalidab() {
+        
         try {
-            String folio = mimodelo.buscarFolioMaxSalidaB();
+            //String folio = mimodelo.buscarFolioMaxSalidaBobina();
+            String folio = mimodelo.buscarFolioMaxSalidaBobina();
             movimientos.__FolioSalidaBobina.setText(folio);
         } catch (SQLException ex) {
             mensaje(3,ex.getMessage());
@@ -4700,6 +4702,7 @@ public class jControlador implements ActionListener{
                 maximoentrada();
                 maximosalida();
                 maximosalidah();
+                System.out.println("maximosalidab");
                 maximosalidab();
                 break;
             case __MENU_MASTER_REPORTES:
