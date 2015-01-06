@@ -25,7 +25,6 @@
      vw_infosalidah.`Tipo_Salida` AS vw_infosalidah_Tipo_Salida,
      vw_infosalidah.`titulo` AS vw_infosalidah_titulo,
      vw_infosalidah.`orden_produccion` AS vw_infosalidah_orden_produccion,
-     vw_infosalidah.`estandar_produccion` AS vw_infosalidah_estandar_produccion,
      vw_infosalidah.`Maquina` AS vw_infosalidah_Maquina,
      vw_infosalidah.`Cliente` AS vw_infosalidah_Cliente,
      vw_infosalidah.`cantidad` AS vw_infosalidah_cantidad,
@@ -37,19 +36,20 @@
      vw_infosalidah.`presentacion` AS vw_infosalidah_presentacion,
      vw_infosalidah.`costo` AS vw_infosalidah_costo,
      vw_infosalidah.`total` AS vw_infosalidah_total,
-     vw_infosalidah.`clave` AS vw_infosalidah_clave
+     vw_infosalidah.`clave` AS vw_infosalidah_clave,
+     vw_infosalidah.`ep` AS vw_infosalidah_ep
 FROM
      `vw_infosalidah` vw_infosalidah
 WHERE
      vw_infosalidah.`fecha` >= $P{ingresa}
-ORDER BY vw_infosalidah.`fecha` ASC,
-         vw_infosalidah.`folio` ASC]]>
+ORDER BY
+     vw_infosalidah.`fecha` ASC,
+     vw_infosalidah.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infosalidah_folio" class="java.lang.String"/>
 	<field name="vw_infosalidah_Tipo_Salida" class="java.lang.String"/>
 	<field name="vw_infosalidah_titulo" class="java.lang.String"/>
 	<field name="vw_infosalidah_orden_produccion" class="java.lang.String"/>
-	<field name="vw_infosalidah_estandar_produccion" class="java.lang.String"/>
 	<field name="vw_infosalidah_Maquina" class="java.lang.String"/>
 	<field name="vw_infosalidah_Cliente" class="java.lang.String"/>
 	<field name="vw_infosalidah_cantidad" class="java.lang.Integer"/>
@@ -62,6 +62,7 @@ ORDER BY vw_infosalidah.`fecha` ASC,
 	<field name="vw_infosalidah_costo" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidah_total" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidah_clave" class="java.lang.String"/>
+	<field name="vw_infosalidah_ep" class="java.lang.String"/>
 	<variable name="totalhojas" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infosalidah_presentacion}]]></variableExpression>
 	</variable>
