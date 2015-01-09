@@ -16,28 +16,31 @@
 	<parameter name="Ingresa_Orden_de_Produccion" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
+     
      vw_infosalidah.`folio` AS vw_infosalidah_folio,
      vw_infosalidah.`turno` AS vw_infosalidah_turno,
      vw_infosalidah.`orden_produccion` AS vw_infosalidah_orden_produccion,
-     CONVERT(vw_infosalidah.`estandar_produccion`,UNSIGNED INT) AS vw_infosalidah_estandar_produccion,
      vw_infosalidah.`cliente` AS vw_infosalidah_cliente,
      vw_infosalidah.`fecha` AS vw_infosalidah_fecha,
      vw_infosalidah.`titulo` AS vw_infosalidah_titulo,
      vw_infosalidah.`maquina` AS vw_infosalidah_maquina,
      vw_infosalidah.`clave` AS vw_infosalidah_clave,
      vw_infosalidah.`presentacion` AS vw_infosalidah_presentacion,
-     vw_infosalidah.`nombre` AS vw_infosalidah_nombre
+     vw_infosalidah.`nombre` AS vw_infosalidah_nombre,
+     CONVERT(vw_infosalidah.`ep`,UNSIGNED INT)  AS vw_infosalidah_ep
 FROM
      `vw_infosalidah` vw_infosalidah
-WHERE vw_infosalidah.`orden_produccion` = $P{Ingresa_Orden_de_Produccion}
-ORDER BY vw_infosalidah.`fecha` ASC,
-         vw_infosalidah.`folio` ASC,
-         vw_infosalidah.`nombre` ASC]]>
+WHERE
+     vw_infosalidah.`orden_produccion` = $P{Ingresa_Orden_de_Produccion}
+ORDER BY
+     vw_infosalidah.`fecha` ASC,
+     vw_infosalidah.`folio` ASC,
+     vw_infosalidah.`nombre` ASC,
+     vw_infosalidah.`ep` DESC]]>
 	</queryString>
 	<field name="vw_infosalidah_folio" class="java.lang.String"/>
 	<field name="vw_infosalidah_turno" class="java.lang.String"/>
 	<field name="vw_infosalidah_orden_produccion" class="java.lang.String"/>
-	<field name="vw_infosalidah_estandar_produccion" class="java.math.BigInteger"/>
 	<field name="vw_infosalidah_cliente" class="java.lang.String"/>
 	<field name="vw_infosalidah_fecha" class="java.sql.Date"/>
 	<field name="vw_infosalidah_titulo" class="java.lang.String"/>
@@ -45,11 +48,12 @@ ORDER BY vw_infosalidah.`fecha` ASC,
 	<field name="vw_infosalidah_clave" class="java.lang.String"/>
 	<field name="vw_infosalidah_presentacion" class="java.lang.Integer"/>
 	<field name="vw_infosalidah_nombre" class="java.lang.String"/>
+	<field name="vw_infosalidah_ep" class="java.math.BigInteger"/>
 	<variable name="totalreal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infosalidah_presentacion}]]></variableExpression>
 	</variable>
 	<variable name="totalestandar" class="java.math.BigDecimal" calculation="Sum">
-		<variableExpression><![CDATA[$F{vw_infosalidah_estandar_produccion}]]></variableExpression>
+		<variableExpression><![CDATA[$F{vw_infosalidah_ep}]]></variableExpression>
 	</variable>
 	<variable name="cienxciento" class="java.math.BigDecimal">
 		<variableExpression><![CDATA[100]]></variableExpression>
@@ -255,7 +259,7 @@ ORDER BY vw_infosalidah.`fecha` ASC,
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infosalidah_estandar_produccion}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{vw_infosalidah_ep}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement uuid="5d6f9ff0-c00d-40af-9aab-4d1dd9bf2801" style="Detail" positionType="Float" x="562" y="0" width="60" height="18"/>
