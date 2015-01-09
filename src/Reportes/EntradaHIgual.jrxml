@@ -21,6 +21,7 @@
 		<![CDATA[SELECT
      CONVERT(vw_infoentradahoja.`costo`,UNSIGNED INT) AS vw_infoentradahoja_costo,
      CONVERT(vw_infoentradahoja.`total`,UNSIGNED INT) AS vw_infoentradahoja_total,
+     concat(vw_infoentradahoja.`alto`,"") AS vw_infoentradahoja_alto,
      vw_infoentradahoja.`fecha` AS vw_infoentradahoja_fecha,
      vw_infoentradahoja.`turno` AS vw_infoentradahoja_turno,
      vw_infoentradahoja.`folio` AS vw_infoentradahoja_folio,
@@ -28,7 +29,6 @@
      vw_infoentradahoja.`clave` AS vw_infoentradahoja_clave,
      vw_infoentradahoja.`nombre` AS vw_infoentradahoja_nombre,
      vw_infoentradahoja.`ancho` AS vw_infoentradahoja_ancho,
-     concat(vw_infoentradahoja.`alto`,"") AS vw_infoentradahoja_alto,
      vw_infoentradahoja.`grams` AS vw_infoentradahoja_grams,
      vw_infoentradahoja.`color` AS vw_infoentradahoja_color,
      vw_infoentradahoja.`propiedad` AS vw_infoentradahoja_propiedad,
@@ -37,15 +37,20 @@
      vw_infoentradahoja.`proveedor` AS vw_infoentradahoja_proveedor,
      vw_infoentradahoja.`Tipo_entrada` AS vw_infoentradahoja_Tipo_entrada,
      vw_infoentradahoja.`presentacion` AS vw_infoentradahoja_presentacion,
-     vw_infoentradahoja.`cantidad` AS vw_infoentradahoja_cantidad
-FROM `vw_infoentradahoja` vw_infoentradahoja
-WHERE vw_infoentradahoja.`fecha` >= $P{Ingresa}
-and   vw_infoentradahoja.`fecha`<=$P{final}
-ORDER BY vw_infoentradahoja.`fecha` ASC,
-         vw_infoentradahoja.`folio` ASC]]>
+     vw_infoentradahoja.`cantidad` AS vw_infoentradahoja_cantidad,
+     vw_infoentradahoja.`orden_compra` AS vw_infoentradahoja_orden_compra
+FROM
+     `vw_infoentradahoja` vw_infoentradahoja
+WHERE
+     vw_infoentradahoja.`fecha` >= $P{Ingresa}
+     and vw_infoentradahoja.`fecha` <= $P{final}
+ORDER BY
+     vw_infoentradahoja.`fecha` ASC,
+     vw_infoentradahoja.`folio` ASC]]>
 	</queryString>
 	<field name="vw_infoentradahoja_costo" class="java.math.BigInteger"/>
 	<field name="vw_infoentradahoja_total" class="java.math.BigInteger"/>
+	<field name="vw_infoentradahoja_alto" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_fecha" class="java.sql.Date"/>
 	<field name="vw_infoentradahoja_turno" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_folio" class="java.lang.String"/>
@@ -53,7 +58,6 @@ ORDER BY vw_infoentradahoja.`fecha` ASC,
 	<field name="vw_infoentradahoja_clave" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_nombre" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_ancho" class="java.lang.String"/>
-	<field name="vw_infoentradahoja_alto" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_grams" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_color" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_propiedad" class="java.lang.String"/>
@@ -63,6 +67,7 @@ ORDER BY vw_infoentradahoja.`fecha` ASC,
 	<field name="vw_infoentradahoja_Tipo_entrada" class="java.lang.String"/>
 	<field name="vw_infoentradahoja_presentacion" class="java.lang.Integer"/>
 	<field name="vw_infoentradahoja_cantidad" class="java.lang.Integer"/>
+	<field name="vw_infoentradahoja_orden_compra" class="java.lang.String"/>
 	<variable name="totalpaq" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infoentradahoja_presentacion}]]></variableExpression>
 	</variable>
@@ -340,7 +345,7 @@ ORDER BY vw_infoentradahoja.`fecha` ASC,
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_orden_produccion}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_orden_compra}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement uuid="50f41808-d266-4464-8780-167846b545ac" style="Detail" positionType="Float" x="473" y="0" width="57" height="18"/>
