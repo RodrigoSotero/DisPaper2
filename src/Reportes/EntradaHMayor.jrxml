@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
-	<property name="ireport.zoom" value="6.72749994932561"/>
-	<property name="ireport.x" value="3205"/>
-	<property name="ireport.y" value="847"/>
+	<property name="ireport.zoom" value="2.3579476910000023"/>
+	<property name="ireport.x" value="556"/>
+	<property name="ireport.y" value="64"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -152,14 +152,7 @@ ORDER BY
 				<text><![CDATA[Nombre Papel]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="332f3cf0-6bda-4225-b4d6-51836d638bef" style="Column header" x="247" y="0" width="25" height="40" forecolor="#000000"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Ancho]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="49ebe43f-ea20-47cb-8baf-b85ee0363163" style="Column header" x="272" y="0" width="22" height="40" forecolor="#000000"/>
+				<reportElement uuid="49ebe43f-ea20-47cb-8baf-b85ee0363163" style="Column header" x="247" y="0" width="22" height="40" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -277,6 +270,13 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[Ubicación]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="332f3cf0-6bda-4225-b4d6-51836d638bef" style="Column header" x="269" y="0" width="25" height="40" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ancho]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -298,14 +298,7 @@ ORDER BY
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_nombre}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="cfe191a1-176f-4742-8555-92d4bffb0a60" style="Detail" positionType="Float" x="247" y="0" width="25" height="18"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial" size="5"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_ancho}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement uuid="25b00fc9-69b5-42cf-a854-22cea786ca36" style="Detail" positionType="Float" x="272" y="0" width="22" height="18"/>
+					<reportElement uuid="25b00fc9-69b5-42cf-a854-22cea786ca36" style="Detail" positionType="Float" x="247" y="0" width="22" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
@@ -426,6 +419,13 @@ ORDER BY
 				<line>
 					<reportElement uuid="d456abcf-b0a8-4adf-9ed9-a51c08d59a43" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
 				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="cfe191a1-176f-4742-8555-92d4bffb0a60" style="Detail" positionType="Float" x="269" y="0" width="25" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_ancho}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>

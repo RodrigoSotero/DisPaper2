@@ -2435,5 +2435,18 @@ public class modelo extends database {
                 return null;
             }
     }
+
+    public ResultSet buscarOrdenPro(String clave) {                
+        String q = "SELECT orden_produccion FROM dis_paper.vw_infoentrada where clave = '"+clave+"';";
+                  //SELECT orden_produccion FROM dis_paper.vw_infoentrada where clave = '01-3-BLA-2-87068-IEXSA-BIOPAPPEL';
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
 }
 
