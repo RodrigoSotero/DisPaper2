@@ -88,6 +88,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         __MODIFICACION = new javax.swing.JButton();
+        jMenuItem1 = new javax.swing.JMenuItem();
         JPanel = new javax.swing.JTabbedPane();
         __pnlEntrada = new javax.swing.JPanel();
         __OrdenProduccionEntr = new javax.swing.JTextField();
@@ -278,12 +279,13 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __menuEdiCambiarFecha = new javax.swing.JMenuItem();
         __menuEdiNewUsuario = new javax.swing.JMenuItem();
         __menuEdiCambiarContraseña = new javax.swing.JMenuItem();
+        __menuUbicacion = new javax.swing.JMenuItem();
+        __menuCambiarOP = new javax.swing.JMenuItem();
         __menuEdiReporteUsuario = new javax.swing.JMenuItem();
         __menutraspaso = new javax.swing.JMenuItem();
         __menucerrarsesiones = new javax.swing.JMenuItem();
         __menuEdiAcerca = new javax.swing.JMenuItem();
         __menuBackup = new javax.swing.JMenuItem();
-        __menuUbicacion = new javax.swing.JMenuItem();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -449,6 +451,8 @@ public class MovimientosPapel extends javax.swing.JFrame {
         jLabel16.setText("Tipo de Entrada:");
 
         __MODIFICACION.setText("Modificaciones");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movimientos de Papel");
@@ -2720,6 +2724,19 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __menuEdiCambiarContraseña.setName(""); // NOI18N
         __Edicion.add(__menuEdiCambiarContraseña);
 
+        __menuUbicacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        __menuUbicacion.setText("Cambiar Ubicación");
+        __menuUbicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                __menuUbicacionActionPerformed(evt);
+            }
+        });
+        __Edicion.add(__menuUbicacion);
+
+        __menuCambiarOP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        __menuCambiarOP.setText("Cambiar Orden de Producción");
+        __Edicion.add(__menuCambiarOP);
+
         __menuEdiReporteUsuario.setText("Reporte de Usuarios");
         __Edicion.add(__menuEdiReporteUsuario);
 
@@ -2742,15 +2759,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
             }
         });
         __Edicion.add(__menuBackup);
-
-        __menuUbicacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        __menuUbicacion.setText("Cambiar Ubicación");
-        __menuUbicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                __menuUbicacionActionPerformed(evt);
-            }
-        });
-        __Edicion.add(__menuUbicacion);
 
         __MenuMovimiento.add(__Edicion);
 
@@ -3147,6 +3155,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
     public javax.swing.JLabel __etqNewTipodeSalidaH;
     public javax.swing.JMenuItem __menuAltaPapel;
     public javax.swing.JMenuItem __menuBackup;
+    public javax.swing.JMenuItem __menuCambiarOP;
     public javax.swing.JMenuItem __menuEdiAcerca;
     public javax.swing.JMenuItem __menuEdiCambiarContraseña;
     public javax.swing.JMenuItem __menuEdiCambiarFecha;
@@ -3231,6 +3240,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;

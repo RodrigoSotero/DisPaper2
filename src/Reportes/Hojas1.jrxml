@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
-	<property name="ireport.zoom" value="6.727499949325612"/>
-	<property name="ireport.x" value="4237"/>
-	<property name="ireport.y" value="811"/>
+	<property name="ireport.zoom" value="2.5937424601000036"/>
+	<property name="ireport.x" value="622"/>
+	<property name="ireport.y" value="99"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -173,46 +173,53 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 				<text><![CDATA[Grams]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e131aba1-5063-4366-8de4-1fee351cd26d" style="Column header" x="512" y="0" width="61" height="32" forecolor="#000000"/>
+				<reportElement uuid="e131aba1-5063-4366-8de4-1fee351cd26d" style="Column header" x="536" y="0" width="61" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cantidad de Hojas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="aaaf9fb1-c210-4863-b6b3-e24649c144fb" style="Column header" x="399" y="0" width="60" height="32" forecolor="#000000"/>
+				<reportElement uuid="aaaf9fb1-c210-4863-b6b3-e24649c144fb" style="Column header" x="399" y="0" width="52" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Propiedad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b9176006-8e3a-4895-a9e0-f4c53eb17c34" x="692" y="0" width="68" height="32"/>
+				<reportElement uuid="b9176006-8e3a-4895-a9e0-f4c53eb17c34" x="708" y="0" width="52" height="32"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5407a09d-0cce-4496-8d2f-4774e0a05c4b" x="641" y="0" width="52" height="32"/>
+				<reportElement uuid="5407a09d-0cce-4496-8d2f-4774e0a05c4b" x="655" y="0" width="52" height="32"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Costo Promedio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="95bd7efe-1d5c-449f-847b-7617e0089eb6" style="Column header" x="573" y="0" width="68" height="32" forecolor="#000000"/>
+				<reportElement uuid="95bd7efe-1d5c-449f-847b-7617e0089eb6" style="Column header" x="597" y="0" width="58" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No. Paq ó Tarimas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="458" y="0" width="53" height="32" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="483" y="0" width="53" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ubicación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aaaf9fb1-c210-4863-b6b3-e24649c144fb" style="Column header" x="451" y="0" width="32" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O-P]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -221,7 +228,7 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 			<frame>
 				<reportElement uuid="3a88558b-31f1-4f50-9126-5e3989311a37" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
 				<textField isStretchWithOverflow="true" pattern="#,##0.0">
-					<reportElement uuid="d2880205-839b-4c36-b75e-3258b3ff2ea1" style="Detail" positionType="Float" x="512" y="0" width="61" height="18"/>
+					<reportElement uuid="d2880205-839b-4c36-b75e-3258b3ff2ea1" style="Detail" positionType="Float" x="536" y="0" width="61" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -242,14 +249,14 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_color}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="a71ceb75-b645-4d2f-89ed-424471b88131" style="Detail" positionType="Float" x="399" y="0" width="60" height="18"/>
+					<reportElement uuid="a71ceb75-b645-4d2f-89ed-424471b88131" style="Detail" positionType="Float" x="399" y="0" width="52" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_propiedad}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="#,##0">
-					<reportElement uuid="c4921e98-2fa4-4f4d-a5dd-28780faa2748" style="Detail" positionType="Float" x="573" y="0" width="68" height="18"/>
+					<reportElement uuid="c4921e98-2fa4-4f4d-a5dd-28780faa2748" style="Detail" positionType="Float" x="597" y="0" width="58" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -263,7 +270,7 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_clave}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00">
-					<reportElement uuid="292277d1-f2dd-4347-bc80-8fd089874ec5" x="693" y="0" width="67" height="18"/>
+					<reportElement uuid="292277d1-f2dd-4347-bc80-8fd089874ec5" x="708" y="0" width="52" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -298,14 +305,14 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_grams}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.0000">
-					<reportElement uuid="1c67b6a2-434f-4b6a-a68c-8149c2ea9a9e" x="641" y="0" width="52" height="18"/>
+					<reportElement uuid="1c67b6a2-434f-4b6a-a68c-8149c2ea9a9e" x="655" y="0" width="52" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelh_preciopromedio}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="458" y="0" width="53" height="18"/>
+					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="483" y="0" width="53" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -314,6 +321,13 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 				<line>
 					<reportElement uuid="89c716d2-b33c-49af-9718-01b7d06d610d" x="1" y="0" width="759" height="1" forecolor="#CCCCCC"/>
 				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="a71ceb75-b645-4d2f-89ed-424471b88131" style="Detail" positionType="Float" x="451" y="0" width="32" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infopapelh_propiedad}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>
@@ -326,35 +340,35 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 				</graphicElement>
 			</line>
 			<textField pattern="#,##0.0000000">
-				<reportElement uuid="d2189f31-7279-4c66-a2c9-859bd34cbab6" x="640" y="3" width="52" height="20"/>
+				<reportElement uuid="d2189f31-7279-4c66-a2c9-859bd34cbab6" x="656" y="3" width="52" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.0">
-				<reportElement uuid="8b0a9a3a-7e79-4d6d-b44b-1962f2d50d04" x="500" y="3" width="72" height="20"/>
+				<reportElement uuid="8b0a9a3a-7e79-4d6d-b44b-1962f2d50d04" x="536" y="3" width="61" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{cantidad}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="8524dc75-4db0-4ec8-acc9-15c7dabcea88" x="377" y="3" width="123" height="20"/>
+				<reportElement uuid="8524dc75-4db0-4ec8-acc9-15c7dabcea88" x="377" y="3" width="159" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTALES-------------------------------]]></text>
 			</staticText>
 			<textField pattern="#,##0.000">
-				<reportElement uuid="cf7648f5-190c-4fd2-9fb4-f10e49f2c6ca" x="692" y="3" width="68" height="20"/>
+				<reportElement uuid="cf7648f5-190c-4fd2-9fb4-f10e49f2c6ca" x="707" y="3" width="53" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.0">
-				<reportElement uuid="eb3716ee-1474-40b1-a860-b2de1d07674b" x="572" y="3" width="68" height="20"/>
+				<reportElement uuid="eb3716ee-1474-40b1-a860-b2de1d07674b" x="597" y="3" width="58" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>

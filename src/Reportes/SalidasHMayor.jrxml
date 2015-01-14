@@ -270,7 +270,7 @@ ORDER BY
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infosalidah_estandar_produccion}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{vw_infosalidah_ep}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement uuid="93b56b1b-dfa7-4cfd-8bd2-dd3135dbcc26" style="Detail" positionType="Float" x="454" y="0" width="49" height="18"/>

@@ -93,6 +93,7 @@ public class jControlador implements ActionListener{
     private final  Vista.bajaPapel bajaP = new bajaPapel();
     private final  Vista.ReFinanzas Finanzas = new ReFinanzas();
     private final  Vista.Ubicacion ubi = new Ubicacion();
+    private final  Vista.OrdenP orp = new OrdenP();
     private final  Vista.ConsumoTotal Consumo = new ConsumoTotal();
     private final  Vista.ReTraspaso retras = new ReTraspaso();
     JPopupMenu popup = new JPopupMenu(); 
@@ -745,6 +746,7 @@ public class jControlador implements ActionListener{
         __MENU_ACERCADE,
         __MENU_BACKUP,
         __MENU_UBICACION,
+        __MENU_ORDENPRODUCCION,
         __MENU_DATOS,
         __MENU_MOV_TRASPASO,
         __MENU_ABRIR_ARCHIVO,
@@ -822,6 +824,9 @@ public class jControlador implements ActionListener{
         __CANCELAR_CONSUMO,
         __ACEPTAR_UBICACION,
         __CANCELAR_UBICACION,
+        //cambiar orden de produccion
+        __ACEPTAR_ORDENP,
+        __CANCELAR_ORDENP,
         //vista ReTraspaso
         __ACEPTAR_TRASPASORE,  
         __CANCELAR_TRASPASORE
@@ -1229,6 +1234,9 @@ public class jControlador implements ActionListener{
         this.movimientos.__menuUbicacion.setActionCommand("__MENU_UBICACION");
         this.movimientos.__menuUbicacion.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_MASK));
         this.movimientos.__menuUbicacion.addActionListener(this);
+        this.movimientos.__menuCambiarOP.setActionCommand("__MENU_ORDENPRODUCCION");
+        this.movimientos.__menuCambiarOP.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_MASK));
+        this.movimientos.__menuCambiarOP.addActionListener(this);
         this.movimientos.__menutraspaso.setActionCommand("__MENU_MOV_TRASPASO");
         this.movimientos.__menutraspaso.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T,InputEvent.CTRL_MASK));
         this.movimientos.__menutraspaso.addActionListener(this);
@@ -1994,13 +2002,81 @@ public class jControlador implements ActionListener{
                         
                     }
                 }else{
+                    
                 }
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 
             }
         });
-        //Baja de Papel
+        //cambiar ordenProduccion
+        this.orp.__ACEPTAR.setActionCommand("__ACEPTAR_UBICACION");
+        this.orp.__ACEPTAR.setMnemonic('A');
+        this.orp.__ACEPTAR.addActionListener(this);
+        this.orp.__SALIR.setActionCommand("__CANCELAR_ORDENP");
+        this.orp.__SALIR.setMnemonic('C');
+        this.orp.__SALIR.addActionListener(this);
+        final TextAutoCompleter clavePapelorp = new TextAutoCompleter(orp.__clave );
+        clavePapelorp.setMode(0);//infijo
+        this.orp.__clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNumGuion(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
+                    //_ Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, true);
+                    boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){                        
+                        a=0;
+                    }else{
+                        a=1;
+                    }                   
+                } 
+               
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = orp.__clave.getText();
+                    ResultSet buscarClave = mimodelo.vw_buscaClaveTodoExist(parametro);
+                    clavePapelorp.removeAll();
+                    while(buscarClave.next()){
+                        clavePapelorp.addItem(buscarClave.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }
+                    
+        });  
+        this.orp.__OrdenProduccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNumCar(evt);
+            }
+        });
+        this.orp.__OrdenProduccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                String clave = orp.__clave.getText().toString();
+                Object orden = null;
+                if(!clave.isEmpty()){
+                    try{
+                        ResultSet buscarorden = mimodelo.buscarUbicacion(clave);
+                        while (buscarorden.next()){
+                            orden = buscarorden.getObject("orden_produccion");
+                        }
+                        if(orden!=null){
+                            orp.__OrdenProduccion.setText(orden.toString());
+                        }else{
+                            orp.__OrdenProduccion.setText("");
+                        }
+                    }catch (SQLException ex) {                        
+                    }                   
+                }else{                    
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {                
+            }
+        });
+        //Baja de Papel        
         this.bajaP.__GUARDAR.setActionCommand("__ACEPTAR_BAJA");
         this.bajaP.__GUARDAR.setMnemonic('A');
         this.bajaP.__GUARDAR.addActionListener(this);
@@ -5178,6 +5254,16 @@ public class jControlador implements ActionListener{
                     if(cargo==1){                        
                         movimientos.setEnabled(false);
                         ubi.setVisible(true);                        
+                    }else{
+                        mensaje(2,"No Hay Acceso a esta Información");
+                    }
+                    break;
+                case __MENU_ORDENPRODUCCION:
+                    if(cargo==1){
+                        movimientos.setEnabled(false);
+                        orp.setVisible(true);
+                    }else{
+                        mensaje(2,"No Hay Acceso a esta Información");
                     }
                     break;
                 case __MENU_FECHA:
@@ -7055,7 +7141,8 @@ public class jControlador implements ActionListener{
                 String __clave=this.ubi.__clave.getText().toString();
                 String __ubic = this.ubi.__Ubica.getText().toString();
                 boolean ubica =mimodelo.ubicacion(__clave, __ubic);
-                if(ubica){
+                //ef
+                if(ubica==true){
                     mensaje(1,"Ubicacion cambiada con exito");
                     ubi.__clave.setText("");
                     ubi.__Ubica.setText("");
@@ -7066,6 +7153,12 @@ public class jControlador implements ActionListener{
                 ubi.__Ubica.setText("");
                 movimientos.setEnabled(true);
                 ubi.setVisible(false);
+                break;
+            case __CANCELAR_ORDENP:
+                orp.__clave.setText("");
+                orp.__OrdenProduccion.setText("");
+                movimientos.setEnabled(true);
+                orp.setVisible(false);
                 break;
         }   
         
