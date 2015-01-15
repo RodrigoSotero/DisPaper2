@@ -966,9 +966,9 @@ public class modelo extends database {
         }
     }
 
-    public boolean altaDetalleSalidah(int id_salidah, String clave_papel, double total_hojas,int contenido, double cantidad, int resto,String costo,String totalcosto,String identradas_) {
-        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`,`identradas`)" 
-             +                                       "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+totalcosto+"','"+identradas_+"');";                         
+    public boolean altaDetalleSalidah(int id_salidah, String clave_papel, double total_hojas,int contenido, double cantidad, int resto,String costo,String totalcosto,String identradas_,String epsah) {
+        String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`,`costo`,`totalcosto`,`identradas`,estandar)" 
+             +                                       "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"','"+costo+"','"+totalcosto+"','"+identradas_+"','"+epsah+"');";                         
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -979,7 +979,7 @@ public class modelo extends database {
             return false;
         }
     }
-    public boolean modifDetalleSalidah(int id_salidah, String clave_papel, int total_hojas,int contenido, int cantidad, int resto,String costo,String totalcosto,String identradas_) {
+    public boolean modifDetalleSalidah(int id_salidah, String clave_papel, int total_hojas,int contenido, int cantidad, int resto,String costo,String totalcosto,String identradas_,String epsalh) {
         //String q = "INSERT INTO  `dis_paper`.`detallesalidah` (`id_salida` ,`Clave_Papel` ,`total_hojas` ,`contenido` ,`cantidad` ,`resto`)" 
         //     + "VALUES ('"+id_salidah+"','"+clave_papel+"','"+total_hojas+"','"+contenido+"','"+cantidad+"','"+resto+"');";                         
         String q="UPdATE detallesalidah SET clave_papel='"+clave_papel+"', total_hojas='"+total_hojas+"', "
@@ -987,7 +987,7 @@ public class modelo extends database {
                 + "                          cantidad='"+cantidad+"', "
                 + "                           resto='"+resto+"',"
                 + "                           costo='"+costo+"',"
-                + "                      totalcosto='"+totalcosto+", identradas='"+identradas_+"' where id_salida='"+id_salidah+"';";
+                + "                      totalcosto='"+totalcosto+", identradas='"+identradas_+"', estandar='"+epsalh+"' where id_salida='"+id_salidah+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
