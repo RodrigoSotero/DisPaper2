@@ -7134,16 +7134,20 @@ public class jControlador implements ActionListener{
                 reportes.setEnabled(true);
                 Consumo.setVisible(false);
                 break;
-            case __ACEPTAR_UBICACION:
-                String __clave=this.ubi.__clave.getText().toString();
-                String __ubic = this.ubi.__Ubica.getText().toString();
-                boolean ubica =mimodelo.ubicacion(__clave, __ubic);
-                //ef
-                if(ubica==true){
-                    mensaje(1,"Ubicacion cambiada con exito");
-                    ubi.__clave.setText("");
-                    ubi.__Ubica.setText("");
-                }
+            case __ACEPTAR_UBICACION:                
+                confir=this.mensajeConfirmacion("Estas Seguro de Cambiar la Ubicación","Ubucación");                
+                        if (confir==JOptionPane.OK_OPTION){
+                            String __clave=this.ubi.__clave.getText().toString();
+                            String __ubic = this.ubi.__Ubica.getText().toString(); 
+                            boolean ubica =mimodelo.ubicacion(__clave, __ubic);
+                             if(ubica==true){
+                                mensaje(1,"Ubicacion cambiada con exito");
+                                ubi.__clave.setText("");
+                                ubi.__Ubica.setText("");
+                            }else{
+                                 mensaje(1,"Ubicacion No Cambiada Ocurrio un Error");
+                             }
+                        }                
                 break;
             case __CANCELAR_UBICACION:
                 ubi.__clave.setText("");
