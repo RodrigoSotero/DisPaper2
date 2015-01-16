@@ -8937,9 +8937,7 @@ public class jControlador implements ActionListener{
                                                     nuevototsalh = totalsalh-totalhojassalh;
                                                     nuevacantsalh=totalcanth-cantsalh;
                                                     identradas_="";
-                                                    if(!PEPS2(cpsalh,totalhojassalh,cantsalh)){
-                                                        return;
-                                                    }
+                                                    PEPS2(cpsalh,totalhojassalh,cantsalh);
                                                     mimodelo.sumarexistencia(cpsalh);
                                                     detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
                                                     epsalh ="";
@@ -9008,9 +9006,7 @@ public class jControlador implements ActionListener{
                                                     nuevototsalh = totalsalh-totalhojassalh;
                                                     nuevacantsalh=totalcanth-cantsalh;
                                                     identradas_="";
-                                                    if(!PEPS2(cpsalh,totalhojassalh,cantsalh)){
-                                                        return;
-                                                    }
+                                                    PEPS2(cpsalh,totalhojassalh,cantsalh);
                                                     mimodelo.sumarexistencia(cpsalh);
                                                     mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
                                                     epsalh="";
