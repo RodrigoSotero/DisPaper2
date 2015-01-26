@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46732f24-dd08-46b3-b889-1d5d06b7e936">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="338"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -37,7 +37,7 @@
 FROM
      `vw_infocard` vw_infocard
 where vw_infocard.`fecha`<=$P{final}
-ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocard.`folio`]]>
+ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard.`clave`]]>
 	</queryString>
 	<field name="vw_infocard_folio" class="java.lang.String"/>
 	<field name="vw_infocard_clave" class="java.lang.String"/>

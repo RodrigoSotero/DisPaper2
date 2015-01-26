@@ -38,7 +38,7 @@ FROM
      `vw_infocard` vw_infocard
 where      vw_infocard.`fecha` >=$P{inicial}
 and      vw_infocard.`fecha`<=$P{final}
-ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocard.`folio`]]>
+ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard.`clave`]]>
 	</queryString>
 	<field name="vw_infocard_folio" class="java.lang.String"/>
 	<field name="vw_infocard_clave" class="java.lang.String"/>

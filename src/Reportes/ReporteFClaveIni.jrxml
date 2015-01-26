@@ -38,7 +38,7 @@ FROM
      `vw_infocard` vw_infocard
 where      vw_infocard.`clave` = $P{clave}
 and vw_infocard.`fecha`>=$P{inicial}
-ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocard.`folio`]]>
+ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard.`clave`]]>
 	</queryString>
 	<field name="vw_infocard_folio" class="java.lang.String"/>
 	<field name="vw_infocard_clave" class="java.lang.String"/>
@@ -63,10 +63,10 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
 	</variable>
 	<variable name="sumkg" class="java.lang.Long" calculation="Sum">
-		<variableExpression><![CDATA[$V{sumkg}]]></variableExpression>
+		<variableExpression><![CDATA[$F{vw_infocard_kg_hojas}]]></variableExpression>
 	</variable>
 	<variable name="sumbob" class="java.lang.Long" calculation="Sum">
-		<variableExpression><![CDATA[$V{sumbob}]]></variableExpression>
+		<variableExpression><![CDATA[$F{vw_infocard_bob_paq}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
