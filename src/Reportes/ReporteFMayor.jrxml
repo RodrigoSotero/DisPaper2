@@ -26,11 +26,11 @@
 		<![CDATA[SELECT
      vw_infocard.`folio` AS vw_infocard_folio,
      vw_infocard.`clave` AS vw_infocard_clave,
-     convert(vw_infocard.`kg_hojas`,unsigned int) AS vw_infocard_kg_hojas,
-     convert(vw_infocard.`bob_paq`,unsigned int) AS vw_infocard_bob_paq,
+     vw_infocard.`kg_hojas` AS vw_infocard_kg_hojas,
+     vw_infocard.`bob_paq` AS vw_infocard_bob_paq,
      vw_infocard.`concepto` AS vw_infocard_concepto,
      CONVERT(vw_infocard.`costo`,decimal(10,2)) AS vw_infocard_costo,
-     CONVERT(vw_infocard.`costo`,decimal(10,2))* convert(vw_infocard.`kg_hojas`,unsigned int) AS total,
+     CONVERT(vw_infocard.`costo`,decimal(10,2))* vw_infocard.`kg_hojas` AS total,
      vw_infocard.`fecha` AS vw_infocard_fecha,
      vw_infocard.`observaciones` AS vw_infocard_observaciones,
      vw_infocard.`tipo` AS vw_infocard_tipo
@@ -41,8 +41,8 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 	</queryString>
 	<field name="vw_infocard_folio" class="java.lang.String"/>
 	<field name="vw_infocard_clave" class="java.lang.String"/>
-	<field name="vw_infocard_kg_hojas" class="java.math.BigInteger"/>
-	<field name="vw_infocard_bob_paq" class="java.math.BigInteger"/>
+	<field name="vw_infocard_kg_hojas" class="java.lang.Long"/>
+	<field name="vw_infocard_bob_paq" class="java.lang.Long"/>
 	<field name="vw_infocard_concepto" class="java.lang.String"/>
 	<field name="vw_infocard_costo" class="java.math.BigDecimal"/>
 	<field name="total" class="java.math.BigDecimal"/>
@@ -60,6 +60,12 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 	</variable>
 	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<variable name="sumbob" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infocard_bob_paq}]]></variableExpression>
+	</variable>
+	<variable name="sumkg" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infocard_kg_hojas}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -265,13 +271,27 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="6" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<line>
 				<reportElement uuid="2317ab9f-225a-45be-8684-0404e80dec41" positionType="FixRelativeToBottom" x="0" y="3" width="760" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="383" y="5" width="55" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vw_infocard_bob_paq}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="442" y="6" width="84" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumbob}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
