@@ -52,6 +52,9 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 	<variable name="sum" class="java.lang.Long" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infocard_kg_hojas}]]></variableExpression>
 	</variable>
+	<variable name="sumabob" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{vw_infocard_bob_paq}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -256,13 +259,27 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="8" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<line>
 				<reportElement uuid="2317ab9f-225a-45be-8684-0404e80dec41" positionType="FixRelativeToBottom" x="0" y="3" width="760" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement uuid="2082b523-3036-44f7-af4e-209a1daa5408" x="360" y="5" width="78" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2082b523-3036-44f7-af4e-209a1daa5408" x="438" y="5" width="88" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumabob}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnFooter>
 	<pageFooter>
@@ -289,11 +306,6 @@ ORDER BY vw_infocard.`clave`, vw_infocard.`fecha`,vw_infocard.`tipo`, vw_infocar
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement uuid="2082b523-3036-44f7-af4e-209a1daa5408" x="387" y="0" width="51" height="23"/>
-					<textElement/>
-					<textFieldExpression><![CDATA[$V{sum}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
