@@ -492,7 +492,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="__menuCambiarOP">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+A"/>
+                  <KeyStroke key="Ctrl+O"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cambiar Orden de Producci&#xf3;n"/>
               </Properties>

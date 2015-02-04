@@ -2733,7 +2733,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         });
         __Edicion.add(__menuUbicacion);
 
-        __menuCambiarOP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        __menuCambiarOP.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         __menuCambiarOP.setText("Cambiar Orden de Producción");
         __Edicion.add(__menuCambiarOP);
 

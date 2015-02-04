@@ -1235,7 +1235,7 @@ public class jControlador implements ActionListener{
         this.movimientos.__menuUbicacion.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_MASK));
         this.movimientos.__menuUbicacion.addActionListener(this);
         this.movimientos.__menuCambiarOP.setActionCommand("__MENU_ORDENPRODUCCION");
-        this.movimientos.__menuCambiarOP.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_MASK));
+        this.movimientos.__menuCambiarOP.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_MASK));
         this.movimientos.__menuCambiarOP.addActionListener(this);
         this.movimientos.__menutraspaso.setActionCommand("__MENU_MOV_TRASPASO");
         this.movimientos.__menutraspaso.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T,InputEvent.CTRL_MASK));
