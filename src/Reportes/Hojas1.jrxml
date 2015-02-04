@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
 	<property name="ireport.zoom" value="2.5937424601000036"/>
-	<property name="ireport.x" value="622"/>
+	<property name="ireport.x" value="700"/>
 	<property name="ireport.y" value="99"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -27,18 +27,20 @@
      vw_infopapelh.`presentacion` AS vw_infopapelh_presentacion,
      vw_infopapelh.`preciopromedio` AS vw_infopapelh_preciopromedio,
      vw_infopapelh.`total` AS vw_infopapelh_total,
-     vw_infopapelh.`ubicacion` AS vw_infopapelh_ubicacion
+     vw_infopapelh.`ubicacion` AS vw_infopapelh_ubicacion,
+     vw_infopapelh.`op` AS vw_infopapelh_op
 FROM
      `vw_infopapelh` vw_infopapelh
 WHERE
      vw_infopapelh.`cantidad` <> 0
-ORDER BY vw_infopapelh.`nombre` ASC,
+ORDER BY
+     vw_infopapelh.`nombre` ASC,
      vw_infopapelh.`caras` ASC,
-     vw_infopapelh.`color` ASC, 
+     vw_infopapelh.`color` ASC,
      vw_infopapelh.`alto` ASC,
      vw_infopapelh.`ancho` ASC,
      vw_infopapelh.`grams` ASC,
-     vw_infopapelh.`propiedad`]]>
+     vw_infopapelh.`propiedad` ASC]]>
 	</queryString>
 	<field name="vw_infopapelh_clave" class="java.lang.String"/>
 	<field name="vw_infopapelh_nombre" class="java.lang.String"/>
@@ -53,6 +55,7 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 	<field name="vw_infopapelh_preciopromedio" class="java.math.BigDecimal"/>
 	<field name="vw_infopapelh_total" class="java.math.BigDecimal"/>
 	<field name="vw_infopapelh_ubicacion" class="java.lang.String"/>
+	<field name="vw_infopapelh_op" class="java.lang.String"/>
 	<variable name="cantidad" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infopapelh_cantidad}]]></variableExpression>
 	</variable>
@@ -326,7 +329,7 @@ ORDER BY vw_infopapelh.`nombre` ASC,
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{vw_infopapelh_propiedad}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{vw_infopapelh_op}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

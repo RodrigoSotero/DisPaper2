@@ -2360,7 +2360,34 @@ public class modelo extends database {
                 return null;
             }
     }
+    public ResultSet buscarOP(String nombre){ 
+        String q = "select op from inventario where clavepapel='"+nombre+"'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
     
+    public boolean updateop(String clave,String op) {
+            String q=" UPDATE  inventario SET op='"+op+"' where clavepapel ='"+clave+"';";
+        try{
+
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    //SELECT DISTINCT CLAVE , ORDEN_PRODUCCION FROM VW_INFOENTRADA
+    
+   
     public boolean ubicacion(String clave,String ubicacion) {
             String q=" UPDATE  inventario SET ubicacion='"+ubicacion+"' where clavepapel ='"+clave+"';";
         try{
