@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
-	<property name="ireport.zoom" value="5.696247503748628"/>
-	<property name="ireport.x" value="3391"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="1298"/>
+	<property name="ireport.y" value="496"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -27,15 +27,17 @@
      vw_infopapelb.`nombre` AS vw_infopapelb_nombre,
      vw_infopapelb.`total` AS vw_infopapelb_total,
      vw_infopapelb.`ancho` AS vw_infopapelb_ancho,
-     vw_infopapelb.`ubicacion` AS vw_infopapelb_ubicacion
+     vw_infopapelb.`ubicacion` AS vw_infopapelb_ubicacion,
+     vw_infopapelb.`op` AS vw_infopapelb_op
 FROM
      `vw_infopapelb` vw_infopapelb
 WHERE
      vw_infopapelb.`cantidad` <> 0
-ORDER BY vw_infopapelb.`nombre` ASC,
-         vw_infopapelb.`ancho` ASC,
-         vw_infopapelb.`grams` ASC,
-         vw_infopapelb.`propiedad` ASC]]>
+ORDER BY
+     vw_infopapelb.`nombre` ASC,
+     vw_infopapelb.`ancho` ASC,
+     vw_infopapelb.`grams` ASC,
+     vw_infopapelb.`propiedad` ASC]]>
 	</queryString>
 	<field name="vw_infopapelb_clave" class="java.lang.String"/>
 	<field name="vw_infopapelb_tipo" class="java.lang.String"/>
@@ -50,6 +52,7 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 	<field name="vw_infopapelb_total" class="java.math.BigDecimal"/>
 	<field name="vw_infopapelb_ancho" class="java.lang.String"/>
 	<field name="vw_infopapelb_ubicacion" class="java.lang.String"/>
+	<field name="vw_infopapelb_op" class="java.lang.String"/>
 	<variable name="kilos" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infopapelb_cantidad}]]></variableExpression>
 	</variable>
@@ -149,14 +152,14 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 				<text><![CDATA[Grams]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="710cd45b-6b1b-4cec-96d9-dada74ee321d" style="Column header" x="378" y="0" width="81" height="32" forecolor="#000000"/>
+				<reportElement uuid="710cd45b-6b1b-4cec-96d9-dada74ee321d" style="Column header" x="378" y="0" width="61" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Propiedad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="72ed4be6-1e62-4b6f-b027-8e4fb75cf2ad" style="Column header" x="509" y="0" width="76" height="32" forecolor="#000000"/>
+				<reportElement uuid="72ed4be6-1e62-4b6f-b027-8e4fb75cf2ad" style="Column header" x="539" y="0" width="46" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
@@ -191,11 +194,18 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 				<text><![CDATA[Color]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="459" y="0" width="52" height="32" forecolor="#000000"/>
+				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="438" y="0" width="52" height="32" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ubicación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87c51b63-b577-48dd-a516-a96c2ea2e9d6" style="Column header" x="490" y="0" width="49" height="32" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O-P]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -232,14 +242,14 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_grams}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ba6a0e70-5f86-4ceb-a6cc-5d32ea52e765" style="Detail" positionType="Float" x="378" y="0" width="81" height="18"/>
+					<reportElement uuid="ba6a0e70-5f86-4ceb-a6cc-5d32ea52e765" style="Detail" positionType="Float" x="378" y="0" width="61" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_propiedad}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="#,##0">
-					<reportElement uuid="6c6eded1-0374-477b-b1a8-3071de24cd99" style="Detail" positionType="Float" x="509" y="0" width="76" height="18"/>
+					<reportElement uuid="6c6eded1-0374-477b-b1a8-3071de24cd99" style="Detail" positionType="Float" x="539" y="0" width="46" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -274,7 +284,7 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_color}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="459" y="0" width="52" height="18"/>
+					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="438" y="0" width="52" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -283,6 +293,13 @@ ORDER BY vw_infopapelb.`nombre` ASC,
 				<line>
 					<reportElement uuid="e1989b93-834a-43dd-9637-0a5129fdea5a" x="2" y="0" width="758" height="1" forecolor="#CCCCCC"/>
 				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="490" y="1" width="49" height="17"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infopapelb_op}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>

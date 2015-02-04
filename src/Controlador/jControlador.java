@@ -2010,7 +2010,7 @@ public class jControlador implements ActionListener{
             }
         });
         //cambiar ordenProduccion
-        this.orp.__ACEPTAR.setActionCommand("__ACEPTAR_UBICACION");
+        this.orp.__ACEPTAR.setActionCommand("__ACEPTAR_ORDENP");
         this.orp.__ACEPTAR.setMnemonic('A');
         this.orp.__ACEPTAR.addActionListener(this);
         this.orp.__SALIR.setActionCommand("__CANCELAR_ORDENP");
@@ -2021,6 +2021,7 @@ public class jControlador implements ActionListener{
         this.orp.__clave.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 KeyTipedLetrasNumGuion(evt);
+                
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){
@@ -2032,7 +2033,25 @@ public class jControlador implements ActionListener{
                         a=1;
                     }                   
                 } 
-               
+               if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                   String clave = orp.__clave.getText().toString();
+                Object orden = null;
+                if(!clave.isEmpty()){
+                    try{
+                        ResultSet buscarorden = mimodelo.buscarOP(clave);
+                        while (buscarorden.next()){
+                            orden = buscarorden.getObject("op");
+                        }
+                        if(orden!=null){
+                            orp.__OrdenProduccion.setText(orden.toString());
+                        }else{
+                            orp.__OrdenProduccion.setText("");
+                        }
+                    }catch (SQLException ex) {                        
+                    }                   
+                }else{                    
+                }
+                } 
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
               try {
@@ -2055,23 +2074,7 @@ public class jControlador implements ActionListener{
         });
         this.orp.__OrdenProduccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                String clave = orp.__clave.getText().toString();
-                Object orden = null;
-                if(!clave.isEmpty()){
-                    try{
-                        ResultSet buscarorden = mimodelo.buscarUbicacion(clave);
-                        while (buscarorden.next()){
-                            orden = buscarorden.getObject("orden_produccion");
-                        }
-                        if(orden!=null){
-                            orp.__OrdenProduccion.setText(orden.toString());
-                        }else{
-                            orp.__OrdenProduccion.setText("");
-                        }
-                    }catch (SQLException ex) {                        
-                    }                   
-                }else{                    
-                }
+                
             }
             public void focusLost(java.awt.event.FocusEvent evt) {                
             }
@@ -7157,6 +7160,21 @@ public class jControlador implements ActionListener{
                 ubi.__Ubica.setText("");
                 movimientos.setEnabled(true);
                 ubi.setVisible(false);
+                break;
+            case __ACEPTAR_ORDENP:                
+                confir=this.mensajeConfirmacion("Estas Seguro de Cambiar la Orden de Producción","Orden de Producción");                
+                        if (confir==JOptionPane.OK_OPTION){
+                            String __clave=this.orp.__clave.getText().toString();
+                            String __op = this.orp.__OrdenProduccion.getText().toString(); 
+                            boolean oop =mimodelo.updateop(__clave, __op);
+                             if(oop==true){
+                                mensaje(1,"Orden de Producción cambiada con exito");
+                                orp.__clave.setText("");
+                                orp.__OrdenProduccion.setText("");
+                            }else{
+                                 mensaje(1,"Orden de Produccion No Cambiada Ocurrio un Error");
+                             }
+                        }                
                 break;
             case __CANCELAR_ORDENP:
                 orp.__clave.setText("");

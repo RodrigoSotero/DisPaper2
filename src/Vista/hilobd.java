@@ -7,7 +7,6 @@
 package Vista;
 import Modelo.modelo;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /*
@@ -18,7 +17,6 @@ public class hilobd extends Thread {
     modelo mimodelo = new modelo();
     public hilobd(){
         System.out.println("a");
-        
     }
     @Override
     public void run() {

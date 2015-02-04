@@ -24,8 +24,40 @@ public class prueba {
     private final modelo mimodelo = new modelo();
     
     public static void main(String[]args) throws SQLException{
-       System.out.println(new prueba().buscarFolioMaxSalidaB());
+        prueba a =new prueba();
+        ResultSet busquedaalgo = a.busquedaalgo();
+       while(busquedaalgo.next()){
+           System.out.println(busquedaalgo.getString(1)+" - "+ busquedaalgo.getString(2));
+           a.updateop(busquedaalgo.getString(1),busquedaalgo.getString(2));
+       }
     }
+    
+    public boolean updateop(String clave,String op) {
+            String q=" UPDATE  inventario SET op='"+op+"' where clavepapel ='"+clave+"';";
+        try{
+
+            PreparedStatement pstm = mimodelo.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+     public ResultSet busquedaalgo() {                
+        String q = "SELECT DISTINCT CLAVE , ORDEN_PRODUCCION FROM VW_INFOENTRADA";
+                  //SELECT orden_produccion FROM dis_paper.vw_infoentrada where clave = '01-3-BLA-2-87068-IEXSA-BIOPAPPEL';
+        try {
+                PreparedStatement pstm = mimodelo.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
+    
     public String buscarFolioMaxSalidaB() throws java.sql.SQLException{   
         Calendar Cal= Calendar.getInstance();
         int anio=Integer.parseInt(Cal.get(Cal.YEAR)+"");
