@@ -78,7 +78,7 @@ FROM
 				<reportElement uuid="0a2c7bb3-489e-4e23-a624-3318bc3ff519" mode="Opaque" x="0" y="100" width="572" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
 			</frame>
 			<image>
-				<reportElement uuid="6c6aca23-aaeb-4927-8d99-1f3028eda1ac" x="2" y="0" width="119" height="66"/>
+				<reportElement uuid="6c6aca23-aaeb-4927-8d99-1f3028eda1ac" x="2" y="0" width="100" height="66"/>
 				<imageExpression><![CDATA["C:\\IEXSA\\config\\cherry.jpg"]]></imageExpression>
 			</image>
 		</band>

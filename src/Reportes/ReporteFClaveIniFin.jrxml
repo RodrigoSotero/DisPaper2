@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46732f24-dd08-46b3-b889-1d5d06b7e936">
 	<property name="ireport.zoom" value="3.215383215000002"/>
-	<property name="ireport.x" value="1175"/>
-	<property name="ireport.y" value="196"/>
+	<property name="ireport.x" value="965"/>
+	<property name="ireport.y" value="317"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -292,7 +292,7 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{sumkg}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{sumbob}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
