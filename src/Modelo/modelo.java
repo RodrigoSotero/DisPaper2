@@ -987,7 +987,8 @@ public class modelo extends database {
                 + "                          cantidad='"+cantidad+"', "
                 + "                           resto='"+resto+"',"
                 + "                           costo='"+costo+"',"
-                + "                      totalcosto='"+totalcosto+", identradas='"+identradas_+"', estandar='"+epsalh+"' where id_salida='"+id_salidah+"';";
+                + "                      totalcosto='"+totalcosto+"', identradas='"+identradas_+"', estandar='"+epsalh+"' where id_salida='"+id_salidah+"';";
+        
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
