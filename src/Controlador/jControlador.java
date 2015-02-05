@@ -7518,6 +7518,10 @@ public class jControlador implements ActionListener{
                                     fecha.setVisible(true);
                                 }else{
                                     mensaje(3,"Error, La Sesion esta Activa Cierre Su Sesion");
+                                    
+                                    this.confir=this.mensajeConfirmacion("¿Deseas cerrar tu sesion para poder ingresar aqui?", "Cerrar Sesion");
+                                    //formulario cerrar sesion.
+                                    
                                     login.__Pswd.setText("");
                                     login.__Usuario.setText("");
                                     login.__Usuario.requestFocus();
