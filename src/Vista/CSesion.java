@@ -6,6 +6,10 @@
 
 package Vista;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Rodrigo
@@ -17,6 +21,15 @@ public class CSesion extends javax.swing.JFrame {
      */
     public CSesion() {
         initComponents();
+        Fondo fondo = new Fondo();
+        Dimension size = this.getSize();
+        fondo.setSize(size);
+        add(fondo);
+    }
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+        return retValue;
     }
 
     /**
@@ -36,6 +49,7 @@ public class CSesion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         __NewPswd.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         __NewPswd.setMinimumSize(new java.awt.Dimension(10, 30));
