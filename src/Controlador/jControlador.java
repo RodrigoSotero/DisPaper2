@@ -8912,6 +8912,7 @@ public class jControlador implements ActionListener{
                                     }
                                     id_salidah++;
                                     String fechasalidah = fec.replaceAll("-", "");
+                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                         boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         try{
@@ -8957,6 +8958,7 @@ public class jControlador implements ActionListener{
                                                     identradas_="";
                                                     PEPS2(cpsalh,totalhojassalh,cantsalh);
                                                     mimodelo.sumarexistencia(cpsalh);
+                                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                                     detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
                                                     epsalh ="";
                                                 }
@@ -8982,6 +8984,7 @@ public class jControlador implements ActionListener{
                             confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
                             if (confir==JOptionPane.OK_OPTION){
                                 String fechaentrada=fec.replaceAll("-", "");
+                                epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                      boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
                                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                                         
@@ -9026,6 +9029,7 @@ public class jControlador implements ActionListener{
                                                     identradas_="";
                                                     PEPS2(cpsalh,totalhojassalh,cantsalh);
                                                     mimodelo.sumarexistencia(cpsalh);
+                                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                                     mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
                                                     epsalh="";
                                                 }
