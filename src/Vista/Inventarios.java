@@ -88,7 +88,6 @@ public class Inventarios extends javax.swing.JFrame {
         __menuEdiNewUsuario = new javax.swing.JMenuItem();
         __menuEdiCambiarContraseña = new javax.swing.JMenuItem();
         __menuEdiReporteUsuario = new javax.swing.JMenuItem();
-        __menucerrarsesiones = new javax.swing.JMenuItem();
         __menuEdiAcerca = new javax.swing.JMenuItem();
         __menuBackup = new javax.swing.JMenuItem();
         __menuDatos = new javax.swing.JMenuItem();
@@ -286,9 +285,6 @@ public class Inventarios extends javax.swing.JFrame {
 
         __menuEdiReporteUsuario.setText("Reporte de Usuarios");
         __Edicion.add(__menuEdiReporteUsuario);
-
-        __menucerrarsesiones.setText("Cerar Todas las Sesiones");
-        __Edicion.add(__menucerrarsesiones);
 
         __menuEdiAcerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, java.awt.event.InputEvent.CTRL_MASK));
         __menuEdiAcerca.setText("Acerca de...");
@@ -620,7 +616,6 @@ public class Inventarios extends javax.swing.JFrame {
     public javax.swing.JMenuItem __menuMovimientosPapel;
     public javax.swing.JMenuItem __menuRegresar;
     public javax.swing.JMenuItem __menuSalirSistema;
-    public javax.swing.JMenuItem __menucerrarsesiones;
     public javax.swing.JMenuItem __menuconsulta;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -283,7 +283,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __menuCambiarOP = new javax.swing.JMenuItem();
         __menuEdiReporteUsuario = new javax.swing.JMenuItem();
         __menutraspaso = new javax.swing.JMenuItem();
-        __menucerrarsesiones = new javax.swing.JMenuItem();
         __menuEdiAcerca = new javax.swing.JMenuItem();
         __menuBackup = new javax.swing.JMenuItem();
 
@@ -2744,9 +2743,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __menutraspaso.setText("Realizar un Traspaso");
         __Edicion.add(__menutraspaso);
 
-        __menucerrarsesiones.setText("Cerar Todas las Sesiones");
-        __Edicion.add(__menucerrarsesiones);
-
         __menuEdiAcerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, java.awt.event.InputEvent.CTRL_MASK));
         __menuEdiAcerca.setText("Acerca de...");
         __Edicion.add(__menuEdiAcerca);
@@ -3165,7 +3161,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
     public javax.swing.JMenuItem __menuRegresar;
     public javax.swing.JMenuItem __menuSalirSistema;
     public javax.swing.JMenuItem __menuUbicacion;
-    public javax.swing.JMenuItem __menucerrarsesiones;
     public javax.swing.JMenuItem __menuconsulta;
     public javax.swing.JMenuItem __menutraspaso;
     public javax.swing.JPanel __pnlEntrada;

@@ -101,7 +101,6 @@ public class papel extends javax.swing.JFrame {
         __menuNuevoUsuario = new javax.swing.JMenuItem();
         __menuCambiarContraseña = new javax.swing.JMenuItem();
         __menuReporte = new javax.swing.JMenuItem();
-        __menucerrarsesiones = new javax.swing.JMenuItem();
         __menuBajaPapel = new javax.swing.JMenuItem();
         __menuAcerca = new javax.swing.JMenuItem();
         __menuBackup = new javax.swing.JMenuItem();
@@ -504,9 +503,6 @@ public class papel extends javax.swing.JFrame {
         __menuReporte.setText("Reporte de Usuarios");
         __Edicion.add(__menuReporte);
 
-        __menucerrarsesiones.setText("Cerrar Todas las Sesiones");
-        __Edicion.add(__menucerrarsesiones);
-
         __menuBajaPapel.setText("Baja de Papel");
         __Edicion.add(__menuBajaPapel);
 
@@ -668,7 +664,6 @@ public class papel extends javax.swing.JFrame {
     public javax.swing.JMenuItem __menuReporte;
     public javax.swing.JMenuItem __menuReportes;
     public javax.swing.JMenuItem __menuSalir;
-    public javax.swing.JMenuItem __menucerrarsesiones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

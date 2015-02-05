@@ -131,7 +131,6 @@ public class ConsultaPapel extends javax.swing.JFrame {
         __menuEdiNewUsuario = new javax.swing.JMenuItem();
         __menuEdiCambiarContraseña = new javax.swing.JMenuItem();
         __menuEdiReporteUsuario = new javax.swing.JMenuItem();
-        __menucerrarsesiones = new javax.swing.JMenuItem();
         __menuEdiAcerca = new javax.swing.JMenuItem();
         __menuBackup = new javax.swing.JMenuItem();
 
@@ -1033,9 +1032,6 @@ public class ConsultaPapel extends javax.swing.JFrame {
         __menuEdiReporteUsuario.setText("Reporte de Usuarios");
         __Edicion.add(__menuEdiReporteUsuario);
 
-        __menucerrarsesiones.setText("Cerar Todas las Sesiones");
-        __Edicion.add(__menucerrarsesiones);
-
         __menuEdiAcerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F10, java.awt.event.InputEvent.CTRL_MASK));
         __menuEdiAcerca.setText("Acerca de...");
         __Edicion.add(__menuEdiAcerca);
@@ -1302,7 +1298,6 @@ public class ConsultaPapel extends javax.swing.JFrame {
     public javax.swing.JMenuItem __menuMovimientosPapel;
     public javax.swing.JMenuItem __menuRegresar;
     public javax.swing.JMenuItem __menuSalirSistema;
-    public javax.swing.JMenuItem __menucerrarsesiones;
     public javax.swing.JRadioButton __optEntrada;
     public javax.swing.JRadioButton __optNinguno;
     public javax.swing.JRadioButton __optSalida;

@@ -745,8 +745,7 @@ public class jControlador implements ActionListener{
         __MENU_ORDENPRODUCCION,
         __MENU_DATOS,
         __MENU_MOV_TRASPASO,
-        __MENU_ABRIR_ARCHIVO,
-        __MENU_CERRAR_SESIONES,
+        __MENU_ABRIR_ARCHIVO,        
         __MENU_BAJA_PAPEL,
         
         //-formpassword
@@ -1167,9 +1166,7 @@ public class jControlador implements ActionListener{
                 
             }
         });
-        //--menus--/    
-        this.ap.__menucerrarsesiones.setActionCommand("__MENU_CERRAR_SESIONES");
-        this.ap.__menucerrarsesiones.addActionListener(this);
+        //--menus--/            
         this.ap.__menuMovimientosPapel.setActionCommand("__MENU_MOV_PAPEL");
         this.ap.__menuMovimientosPapel.addActionListener(this);
         this.ap.__menuMovimientosPapel.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M,InputEvent.CTRL_MASK));
@@ -1207,9 +1204,7 @@ public class jControlador implements ActionListener{
         this.ap.__menuBackup.setActionCommand("__MENU_BACKUP");
         this.ap.__menuBackup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B,InputEvent.CTRL_MASK));
         this.ap.__menuBackup.addActionListener(this);
-         //--MENU MOVIMIENTO
-        this.movimientos.__menucerrarsesiones.setActionCommand("__MENU_CERRAR_SESIONES");
-        this.movimientos.__menucerrarsesiones.addActionListener(this);
+         //--MENU MOVIMIENTO        
         this.movimientos.__menuRegresar.setActionCommand("__MENU_ANTERIOR");
         this.movimientos.__menuRegresar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,0));
         this.movimientos.__menuRegresar.addActionListener(this);
@@ -1257,9 +1252,7 @@ public class jControlador implements ActionListener{
         JButton btnEliRegistroB = new JButton ("Elimina");
         btnEliRegistroB.setActionCommand("__ELIMINA_REGISTRO");
         btnEliRegistroB.addActionListener(this);
-        //--MENU CONSULTA   
-        this.consultas.__menucerrarsesiones.setActionCommand("__MENU_CERRAR_SESIONES");
-        this.consultas.__menucerrarsesiones.addActionListener(this);
+        //--MENU CONSULTA           
         this.consultas.__Archivo.setMnemonic('R');
         this.consultas.__Edicion.setMnemonic('E');
         this.consultas.__menuMovimientosPapel.setActionCommand("__MENU_MOV_PAPEL");
@@ -1694,9 +1687,7 @@ public class jControlador implements ActionListener{
                 }
             }
         });
-        //--MENU INVENTARIO
-        this.reportes.__menucerrarsesiones.setActionCommand("__MENU_CERRAR_SESIONES");
-        this.reportes.__menucerrarsesiones.addActionListener(this);
+        //--MENU INVENTARIO        
         this.reportes.__Archivo.setMnemonic('R');
         this.reportes.__Edicion.setMnemonic('E');
         this.reportes.__menuMovimientosPapel.setActionCommand("__MENU_MOV_PAPEL");          
@@ -5314,30 +5305,7 @@ public class jControlador implements ActionListener{
                             mensaje(2,"No Hay Acceso a esta Información");
                             break;
                     }                                                    
-                break;
-                case __MENU_CERRAR_SESIONES:
-                    switch(cargo){
-                        case 1: 
-                            int SesionCerrada=0;                            
-                            confir= mensajeConfirmacion("Realmente Desea Cerrar Todas las Sesiones ","Cerrar Sesiones");
-                            if(confir==JOptionPane.OK_OPTION){
-                                boolean SC=mimodelo.cerrarsesiones(SesionCerrada);
-                                    if(SC==true){
-                                        mensaje(1,"Sesiones Cerradas con Exito");
-                                        tipoalta=0;
-                                    }else{
-                                        mensaje(3,"Ocurrio un Error al Cerrar las Sesiones");
-                                    }
-                            }
-                            break;
-                        case 2:
-                            mensaje(2,"No Hay Acceso a esta Información");
-                            break;
-                        case 3:
-                            mensaje(2,"No Hay Acceso a esta Información");
-                            break;
-                    }
-                    break;
+                break;               
                 case __MENU_MOV_TRASPASO:
                     ap.setEnabled(false);
                     movimientos.setEnabled(false);

@@ -159,14 +159,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="__menucerrarsesiones">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cerrar Todas las Sesiones"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="__menuBajaPapel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Baja de Papel"/>
