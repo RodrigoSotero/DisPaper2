@@ -852,6 +852,13 @@ public class jControlador implements ActionListener{
         this.csesion.__GUARDAR.setActionCommand("__ACEPTAR_SESION");
         this.csesion.__GUARDAR.addActionListener(this);
         this.csesion.__GUARDAR.setMnemonic('S');
+        this.csesion.__NewPswd.addKeyListener(new java.awt.event.KeyAdapter() {
+                     public void keyPressed(java.awt.event.KeyEvent evt){
+                         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                            sesionactiva();
+                        } 
+                     }
+                });
         this.csesion.__CANCELAR.setActionCommand("__CANCELAR_SESION");
         this.csesion.__CANCELAR.addActionListener(this);
         this.csesion.__CANCELAR.setMnemonic('C');
@@ -7190,6 +7197,22 @@ public class jControlador implements ActionListener{
                 orp.setVisible(false);
                 break;
             case __ACEPTAR_SESION:
+                sesionactiva();
+                break;
+            case __CANCELAR_SESION:
+                login.setEnabled(true);
+                login.__Usuario.setText("");
+                login.__Pswd.setText("");
+                csesion.__NewPswd.setText("");
+                csesion.dispose();
+                login.__Usuario.requestFocus();
+                break;
+        }   
+        
+    }  
+    
+    public void sesionactiva(){
+        
                 System.out.println(this.user);
                 contra=this.csesion.__NewPswd.getText();
                 if(contra.isEmpty()||contra.equals("")){
@@ -7231,11 +7254,7 @@ public class jControlador implements ActionListener{
                         Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }   
-                
-                break;
-        }   
-        
-    }  
+    }
     public File archivo(int file){
         File archivo;
         JFileChooser fileChooser = new JFileChooser();
@@ -7568,6 +7587,7 @@ public class jControlador implements ActionListener{
                                     fecha.setLocationRelativeTo(null);
                                     fecha.setVisible(true);
                                 }else{
+                                    mensaje(3,"Error, La sesion esta activa");
                                     this.confir=this.mensajeConfirmacion("¿Deseas cerrar tu sesion para poder ingresar aqui?", "Sesion Activa");
                                     //formulario cerrar sesion.
                                     if(confir==JOptionPane.OK_OPTION){
