@@ -852,12 +852,23 @@ public class jControlador implements ActionListener{
         this.csesion.__GUARDAR.addActionListener(this);
         this.csesion.__GUARDAR.setMnemonic('S');
         this.csesion.__NewPswd.addKeyListener(new java.awt.event.KeyAdapter() {
-                     public void keyPressed(java.awt.event.KeyEvent evt){
-                         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                            sesionactiva();
-                        } 
-                     }
-                });
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNum(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){
+                        csesion.__etqBloqMayus.setVisible(true);
+                        a=0;
+                    }else{
+                        csesion.__etqBloqMayus.setVisible(false);
+                        a=1;
+                    }
+                    if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                        sesionactiva();
+                    } 
+            }
+        });
         this.csesion.__CANCELAR.setActionCommand("__CANCELAR_SESION");
         this.csesion.__CANCELAR.addActionListener(this);
         this.csesion.__CANCELAR.setMnemonic('C');

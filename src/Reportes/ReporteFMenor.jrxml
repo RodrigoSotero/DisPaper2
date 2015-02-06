@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46732f24-dd08-46b3-b889-1d5d06b7e936">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="326"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -24,31 +24,38 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
+     vw_infocard.`costo`*vw_infocard.`kg_hojas` AS total,
      vw_infocard.`folio` AS vw_infocard_folio,
      vw_infocard.`clave` AS vw_infocard_clave,
      vw_infocard.`kg_hojas` AS vw_infocard_kg_hojas,
      vw_infocard.`bob_paq` AS vw_infocard_bob_paq,
      vw_infocard.`concepto` AS vw_infocard_concepto,
-     CONVERT(vw_infocard.`costo`,decimal(10,2)) AS vw_infocard_costo,
-     CONVERT(vw_infocard.`costo`,decimal(10,2))* vw_infocard.`kg_hojas` AS total,
+     vw_infocard.`costo` AS vw_infocard_costo,
      vw_infocard.`fecha` AS vw_infocard_fecha,
      vw_infocard.`observaciones` AS vw_infocard_observaciones,
-     vw_infocard.`tipo` AS vw_infocard_tipo
+     vw_infocard.`tipo` AS vw_infocard_tipo,
+     vw_infocard.`op` AS vw_infocard_op
 FROM
      `vw_infocard` vw_infocard
-where vw_infocard.`fecha`<=$P{final}
-ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard.`clave`]]>
+WHERE
+     vw_infocard.`fecha` <= $P{final}
+ORDER BY
+     vw_infocard.`fecha` ASC,
+     vw_infocard.`folio` ASC,
+     vw_infocard.`tipo` ASC,
+     vw_infocard.`clave` ASC]]>
 	</queryString>
+	<field name="total" class="java.math.BigDecimal"/>
 	<field name="vw_infocard_folio" class="java.lang.String"/>
 	<field name="vw_infocard_clave" class="java.lang.String"/>
 	<field name="vw_infocard_kg_hojas" class="java.lang.Long"/>
 	<field name="vw_infocard_bob_paq" class="java.lang.Long"/>
 	<field name="vw_infocard_concepto" class="java.lang.String"/>
 	<field name="vw_infocard_costo" class="java.math.BigDecimal"/>
-	<field name="total" class="java.math.BigDecimal"/>
 	<field name="vw_infocard_fecha" class="java.sql.Date"/>
 	<field name="vw_infocard_observaciones" class="java.lang.String"/>
 	<field name="vw_infocard_tipo" class="java.lang.Long"/>
+	<field name="vw_infocard_op" class="java.lang.String"/>
 	<variable name="cantidad" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{vw_infocard_kg_hojas}]]></variableExpression>
 	</variable>
@@ -133,28 +140,28 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 	<columnHeader>
 		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="0ecd264c-fde6-4746-b2a2-201bad5deebe" style="Column header" x="0" y="0" width="74" height="35" forecolor="#000000"/>
+				<reportElement uuid="0ecd264c-fde6-4746-b2a2-201bad5deebe" style="Column header" x="0" y="0" width="57" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="74" y="0" width="73" height="35" forecolor="#000000"/>
+				<reportElement uuid="d458e3e1-da69-44db-9ef5-684e2fbdb349" style="Column header" x="57" y="0" width="57" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Folio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="147" y="0" width="96" height="35" forecolor="#000000"/>
+				<reportElement uuid="37c73103-b755-4ea1-807e-2f86325aa507" style="Column header" x="114" y="0" width="82" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo de Movimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="243" y="0" width="140" height="35" forecolor="#000000"/>
+				<reportElement uuid="6ca2ef93-b075-4c07-bb5f-8974b2758343" style="Column header" x="196" y="0" width="140" height="35" forecolor="#000000"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -195,6 +202,13 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 				</textElement>
 				<text><![CDATA[Observaciones]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="5aafe76d-1647-435a-89ba-07005a8b1c71" style="Column header" x="336" y="0" width="48" height="35" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O-P]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -202,35 +216,35 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 			<frame>
 				<reportElement uuid="003f5ef6-01fa-43e1-9629-c94e56ddce3d" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
 				<textField isStretchWithOverflow="true" pattern="MMMMM dd, yyyy">
-					<reportElement uuid="e4fb2237-e9cf-4d0c-85a5-fd9429ae9b3d" style="Detail" positionType="Float" x="0" y="0" width="74" height="18"/>
+					<reportElement uuid="e4fb2237-e9cf-4d0c-85a5-fd9429ae9b3d" style="Detail" positionType="Float" x="0" y="0" width="57" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infocard_fecha}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="88485793-7b08-4a19-8383-560fdc473884" style="Detail" positionType="Float" x="74" y="0" width="73" height="18"/>
+					<reportElement uuid="88485793-7b08-4a19-8383-560fdc473884" style="Detail" positionType="Float" x="57" y="0" width="57" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infocard_folio}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="1ff22870-e103-4f22-9f01-708e9665205d" style="Detail" positionType="Float" x="147" y="0" width="96" height="18"/>
+					<reportElement uuid="1ff22870-e103-4f22-9f01-708e9665205d" style="Detail" positionType="Float" x="114" y="0" width="82" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infocard_concepto}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="243" y="0" width="140" height="18"/>
+					<reportElement uuid="ea58e21e-861c-48e7-a76e-00da2636cc05" style="Detail" positionType="Float" x="196" y="0" width="140" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infocard_clave}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="304b10b3-f083-4654-859d-64cfbb4997a2" style="Detail" positionType="Float" x="383" y="0" width="55" height="18"/>
+					<reportElement uuid="304b10b3-f083-4654-859d-64cfbb4997a2" style="Detail" positionType="Float" x="384" y="0" width="54" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
@@ -267,6 +281,13 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 				<line>
 					<reportElement uuid="3d2546d1-f492-4b2d-bf9c-4ad862642691" x="0" y="0" width="760" height="1" forecolor="#CCCCCC"/>
 				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="304b10b3-f083-4654-859d-64cfbb4997a2" style="Detail" positionType="Float" x="336" y="0" width="48" height="18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vw_infocard_op}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>
@@ -279,18 +300,25 @@ ORDER BY vw_infocard.`fecha`,vw_infocard.`folio`, vw_infocard.`tipo`,vw_infocard
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="440" y="4" width="84" height="17"/>
+				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="438" y="3" width="88" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{sumbob}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="f33bfa41-8095-4ee5-aaa2-836520d780e8" x="383" y="3" width="55" height="20"/>
+				<reportElement uuid="f33bfa41-8095-4ee5-aaa2-836520d780e8" x="384" y="3" width="54" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{sumkg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="568" y="3" width="68" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
