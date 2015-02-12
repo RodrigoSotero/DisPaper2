@@ -179,7 +179,7 @@ public class jControlador implements ActionListener{
         traspaso.__CantidadTotal.setText("");
         traspaso.__Origen.setText("");
         traspaso.__Destino.setText("");
-        traspaso.__CostoTras.setText("");
+        traspaso.__CostoTrasEntrada.setText("");
         traspaso.jLabel21.setVisible(true);
         traspaso.jLabel19.setVisible(true);
         traspaso.jLabel35.setVisible(true);
@@ -4526,7 +4526,7 @@ public class jControlador implements ActionListener{
               KeyTipedNum(evt);
             } 
         });
-        this.traspaso.__CostoTras.addKeyListener(new java.awt.event.KeyAdapter(){
+        this.traspaso.__CostoTrasEntrada.addKeyListener(new java.awt.event.KeyAdapter(){
             public void keyTyped(java.awt.event.KeyEvent evt) {
               KeyTipedNum(evt);
             } 
@@ -4574,7 +4574,7 @@ public class jControlador implements ActionListener{
                         ResultSet costotrass = mimodelo.ultimocosto(clavecl);
                         while(costotrass.next()){
                             //movimientos.__tablaSalida.setValueAt(Double.parseDouble(costo.getString("costo")+""), fila, 3);
-                            traspaso.__CostoTras.setText(costotrass.getString("costo"));
+                            traspaso.__CostoTrasEntrada.setText(costotrass.getString("costo"));
                         }
                     }catch(Exception e){
                     }
@@ -5953,7 +5953,7 @@ public class jControlador implements ActionListener{
                 if(traspaso.__ClasePapelTraspaso.isSelected(null)&& 
                    traspaso.__Origen.getText().equals("") && traspaso.__Destino.getText().equals("")&&
                    traspaso.__ClavePapelTras.getText().equals("") &&traspaso.__ClavePapelTras.getText().equals("")&&
-                   traspaso.__CantidadTotal.getText().equals("") && traspaso.__CantidadPT.getText().equals("") && traspaso.__CostoTras.getText().equals("")){
+                   traspaso.__CantidadTotal.getText().equals("") && traspaso.__CantidadPT.getText().equals("") && traspaso.__CostoTrasEntrada.getText().equals("")){
                     ap.setEnabled(true);
                     movimientos.setEnabled(true);
                     reportes.setEnabled(true);
@@ -6050,7 +6050,7 @@ public class jControlador implements ActionListener{
                                         break;
                                     }
                                     String foliotras=traspaso.__folioT.getText().toString();
-                                    double costotras=Double.parseDouble(traspaso.__CostoTras.getText().toString());
+                                    double costotras=Double.parseDouble(traspaso.__CostoTrasEntrada.getText().toString());
                                     System.out.println(costotras);
                                     mimodelo.Traspaso(foliotras, clavecl, clavePapcl1, agregarexistencia+"", presentacion+"", fec, costotras+"");
                                     String folioentrada = mimodelo.buscarFolioEntrada();
