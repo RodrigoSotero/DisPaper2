@@ -97,6 +97,7 @@ public class jControlador implements ActionListener{
     private final  Vista.ConsumoTotal Consumo = new ConsumoTotal();
     private final  Vista.ReTraspaso retras = new ReTraspaso();
     private final  Vista.CSesion csesion = new CSesion();
+    private final  Vista.SalidasGenerales salidageneral = new SalidasGenerales();
     JPopupMenu popup = new JPopupMenu(); 
     HashMap map = new HashMap();
     String pswd;
@@ -812,6 +813,9 @@ public class jControlador implements ActionListener{
         __SALIDAG,
         __RFINANZA,
         __CONSUMOOP,
+        //Salidas Generales
+        ACEPTAR_SG,
+        CANCELAR_SG,
         //Vista Finanzas
         __ACEPTAR_FINANZAS,
         __CANCELAR_FINANZAS,
@@ -2116,7 +2120,79 @@ public class jControlador implements ActionListener{
                     }
                 } catch (SQLException ex) {
                     mensaje(3,ex.getMessage());
-                }       
+                } 
+        //Busqueda Reporte Salidas Generales        
+        this.salidageneral.__ACEPTAR.setActionCommand("ACEPTAR_SG");
+        this.salidageneral.__ACEPTAR.setMnemonic('A');
+        this.salidageneral.__ACEPTAR.addActionListener(this);
+        this.salidageneral.__SALIR.setActionCommand("CANCELAR_SG");
+        this.salidageneral.__SALIR.setMnemonic('C');
+        this.salidageneral.__SALIR.addActionListener(this);
+        final TextAutoCompleter FolioInicial = new TextAutoCompleter(salidageneral.__FolioInicial);
+        FolioInicial.setMode(0);//infijo
+        this.salidageneral.__FolioInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNum(evt);                
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){                    
+                    boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){                        
+                        a=0;
+                    }else{
+                        a=1;
+                    }                   
+               }
+                if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+                    salidageneral.__FolioFinal.requestFocus(true);
+                }
+            }            
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = salidageneral.__FolioInicial.getText();
+                    ResultSet buscarFolioSG = mimodelo.buscafoliosg(parametro);
+                    FolioInicial.removeAll();
+                   
+                    while(buscarFolioSG.next()){
+                        FolioInicial.addItem(buscarFolioSG.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }                    
+        });
+        final TextAutoCompleter FolioFinal = new TextAutoCompleter(salidageneral.__FolioFinal);
+        FolioFinal.setMode(0);//infijo
+        this.salidageneral.__FolioFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                KeyTipedLetrasNum(evt);                
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode()==KeyEvent.VK_CAPS_LOCK){                    
+                    boolean lockingKeyState = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+                    if(lockingKeyState == true){                        
+                        a=0;
+                    }else{
+                        a=1;
+                    }                   
+               }
+                if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+                    salidageneral.__dateIni.requestFocus(true);
+                }
+            }            
+            public void keyReleased(java.awt.event.KeyEvent evt){
+              try {
+                    String parametro = salidageneral.__FolioFinal.getText();
+                    ResultSet buscarFolioSG = mimodelo.buscafoliosg(parametro);
+                    FolioFinal.removeAll();                   
+                    while(buscarFolioSG.next()){
+                        FolioFinal.addItem(buscarFolioSG.getString(1));
+                    }
+                } catch (SQLException ex) {
+                    mensaje(3,ex.getMessage());
+                }
+             }                    
+        });
         //movimientos Papel
         this.movimientos.__ACEPTARENTRADA.setActionCommand("__ACEPTAR_MOVIMIENTOS_ENTRADA");
         this.movimientos.__ACEPTARENTRADA.setMnemonic('A');
@@ -6799,26 +6875,76 @@ public class jControlador implements ActionListener{
                 this.reportes.setEnabled(false);
                 break;
             case __SALIDAG:
-                String SG = JOptionPane.showInputDialog(null, "Ingresa la Fecha Inicial (aaaa-mm-dd)");
-                map.put("inicial",SG);
-                String SGF = JOptionPane.showInputDialog(null, "Ingresa la Fecha Final (aaaa-mm-dd)");
-                map.put("final", SGF);
-                if(!SG.equals("") && !SGF.equals("")){
-                    mensaje(1,"Generando Salidas entre las Fechas "+SG+" - "+SGF );
-                    this.mimodelo.abrirReporte("SalidaG.jrxml",map);
-                }else if(!SG.equals("") && SGF.equals("")){
-                    mensaje(1,"Generando Salidas Mayores o Iguales a la Fecha "+SG);
-                    this.mimodelo.abrirReporte("SalidaGMayor.jrxml",map);
-                }else if(SG.equals("") && !SGF.equals("")){
-                    mensaje(1,"Generando Salidas Menores o Iguales a la Fecha "+SGF);
-                    this.mimodelo.abrirReporte("SalidaGMenor.jrxml",map);
-                }else{
-                    mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte");  
-                }             
+                this.salidageneral.setVisible(true);
+                this.reportes.setEnabled(false);
+                salidageneral.__FolioInicial.requestFocus(true);
                 break;
             case __RFINANZA:
                 this.Finanzas.setVisible(true);                
                 this.reportes.setEnabled(false);
+                break;
+            case ACEPTAR_SG:
+                String FOLIOI=this.salidageneral.__FolioInicial.getText();
+                String FOLIOF=this.salidageneral.__FolioFinal.getText();
+                Date fechainicialSG=null,fechafinalSG=null;
+                map.put("folioi",FOLIOI);
+                map.put("foliof",FOLIOF);
+                String SG,SGF;
+                if(aceptarFecha(this.salidageneral.__dateIni,1)==null){
+                    SG="";
+                }else{
+                    SG= this.aceptarFecha(this.salidageneral.__dateIni,1).toString();
+                    fechainicialSG = salidageneral.__dateIni.getCalendar().getTime();
+                    map.put("inicial",SG);
+                }
+                if(aceptarFecha(this.salidageneral.__datefin,1)==null){
+                    SGF="";
+                }else{
+                    SGF = this.aceptarFecha(this.salidageneral.__datefin,1).toString();
+                    map.put("final",SGF);
+                    fechafinalSG=  salidageneral.__datefin.getCalendar().getTime();
+                }
+                if(fechafinalSG!=null&&fechainicialSG!=null&&fechafinalSG.before(fechainicialSG)){
+                    mensaje(3,"La Fecha Inicial No Puede se Mayor a Fecha Final");
+                    return;
+                }
+                if(!FOLIOI.equals("") && !FOLIOF.equals("")){
+                    //generemos un reporte por rango de folios  
+                    mensaje(1,"Generando Salidas entre los Folios "+FOLIOI+" - "+FOLIOF );
+                    this.mimodelo.abrirReporte("SalidaGFolioIF.jrxml",map);
+                }else if(!FOLIOI.equals("") && FOLIOF.equals("")){
+                    //genara reporte por folio inicial
+                    mensaje(1,"Generando Salidas por Folio Inicial "+FOLIOI);
+                    this.mimodelo.abrirReporte("SalidaGFolioI.jrxml",map);
+                }else if(FOLIOI.equals("") && !FOLIOF.equals("")){
+                    //generando reporte por folio final
+                    mensaje(1,"Generando Salidas por Folio Final "+FOLIOF );
+                    this.mimodelo.abrirReporte("SalidaGFolioF.jrxml",map);
+                }else{
+                    if(!SG.equals("") && !SGF.equals("")){
+                        mensaje(1,"Generando Salidas entre las Fechas "+SG+" - "+SGF );
+                        this.mimodelo.abrirReporte("SalidaG.jrxml",map);
+                    }else if(!SG.equals("") && SGF.equals("")){
+                        mensaje(1,"Generando Salidas Mayores o Iguales a la Fecha "+SG);
+                        this.mimodelo.abrirReporte("SalidaGMayor.jrxml",map);
+                    }else if(SG.equals("") && !SGF.equals("")){
+                        mensaje(1,"Generando Salidas Menores o Iguales a la Fecha "+SGF);
+                        this.mimodelo.abrirReporte("SalidaGMenor.jrxml",map);
+                    }else{
+                        mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte");  
+                    }
+                }
+                
+                    
+                break;
+            case CANCELAR_SG:
+                salidageneral.__FolioInicial.setText("");
+                salidageneral.__FolioFinal.setText("");                
+                this.salidageneral.__dateIni.setDate(null);
+                this.salidageneral.__datefin.setDate(null);                
+                reportes.setEnabled(true);
+                reportes.setVisible(true);
+                salidageneral.setVisible(false);
                 break;
             case __ACEPTAR_FINANZAS:
                 String ClaveFinanzas=this.Finanzas.__clave.getText();

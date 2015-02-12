@@ -2476,5 +2476,17 @@ public class modelo extends database {
                 return null;
             }
     }
+    public ResultSet buscafoliosg(String parametro) {
+        String q = "SELECT folio FROM dis_paper.vw_infosalida where folio like'%"+parametro+"%' order by id_salida asc;";
+                  //SELECT folio FROM dis_paper.vw_infosalida where folio like"%             %" order by id_salida asc;
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }    
 }
 
