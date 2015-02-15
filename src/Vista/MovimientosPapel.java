@@ -1127,16 +1127,17 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __tablaSalida.setNextFocusableComponent(__MODIFICACIONENTRADA);
         __tablaSalida.setOpaque(false);
         __tablaSalida.setRowHeight(25);
+        __tablaSalida.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(__tablaSalida);
         if (__tablaSalida.getColumnModel().getColumnCount() > 0) {
             __tablaSalida.getColumnModel().getColumn(0).setResizable(false);
-            __tablaSalida.getColumnModel().getColumn(0).setPreferredWidth(190);
+            __tablaSalida.getColumnModel().getColumn(0).setPreferredWidth(218);
             __tablaSalida.getColumnModel().getColumn(0).setCellEditor(new javax.swing.DefaultCellEditor(__clavePapelsalida));
             __tablaSalida.getColumnModel().getColumn(1).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(1).setPreferredWidth(160);
             __tablaSalida.getColumnModel().getColumn(2).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(2).setPreferredWidth(140);
-            __tablaSalida.getColumnModel().getColumn(3).setMinWidth(100);
+            __tablaSalida.getColumnModel().getColumn(3).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(4).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(4).setPreferredWidth(110);
         }
