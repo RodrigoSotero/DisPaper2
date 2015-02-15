@@ -2516,8 +2516,9 @@ public class modelo extends database {
                 return null;
             }
     }
-    public ResultSet buscaentrada(int identrada) {
-        String q = "select id_detalleentrada as id, total_temporal as kghoj, cantidad_temoporal as bobpaq,costo,clave_papel from detalleentrada where id_detalleentrada='"+identrada+"' and total_temporal>0 limit 1";
+    public ResultSet buscafoliosg(String parametro) {
+        String q = "SELECT folio FROM dis_paper.vw_infosalida where folio like'%"+parametro+"%' order by id_salida asc;";
+                  //SELECT folio FROM dis_paper.vw_infosalida where folio like"%             %" order by id_salida asc;
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
@@ -2526,6 +2527,6 @@ public class modelo extends database {
                 
                 return null;
             }
-    }  
+    }    
 }
 
