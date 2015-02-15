@@ -2527,6 +2527,18 @@ public class modelo extends database {
                 
                 return null;
             }
-    }    
+    }
+    
+    public ResultSet buscaentrada(int identrada) {
+        String q = "select id_detalleentrada as id, total_temporal as kghoj, cantidad_temoporal as bobpaq,costo,clave_papel from detalleentrada where id_detalleentrada='"+identrada+"' and total_temporal>0 limit 1";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }  
 }
 
