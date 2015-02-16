@@ -5665,6 +5665,30 @@ public class jControlador implements ActionListener{
                                movimientos.__chkTurno3SalBobina.setSelected(true);
                            }
                            idfolio= RS.getInt("id_salida");
+                           merma = RS.getString("merma");
+                           fechaini = RS.getString("fecha_inicial");
+                           fechafin = RS.getString("fecha_final");
+                           hraini = RS.getString("hora_inicial");
+                           hrafin = RS.getString("hora_final");
+                           estandarprod = RS.getString("estandar_produccion");
+                           totalpliegos = RS.getString("total_pliego");
+                           controtativas = RS.getString("contador_rotativas");
+                           tiempoReal = RS.getString("tiempo_real");
+                           
+                           tiro.__MermaImpresion.setText(merma);
+                           tiro.__ContadorRotativas.setText(controtativas = RS.getString("contador_rotativas"));
+                           tiro.__EstandarProduccionXHora.setText(estandarprod);
+                           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-d");
+                           Date date = formatter.parse(RS.getString("fecha_final"));
+                           tiro.__FechaFinal.setDate(date);
+                           Date date2 = formatter.parse(RS.getString("fecha_inicial"));
+                           tiro.__FechaInicial.setDate(date2);
+                           tiro.__HoraFinal.setValue(hrafin = RS.getString("hora_final"));
+                           tiro.__HoraInicial.setValue(hrafin = RS.getString("hora_inicial"));
+                           tiro.__TiempoRealProduccion.setText(tiempoReal);
+                           tiro.__TotalPliegos.setText(totalpliegos);
+                                   //,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal;
+                           
                        } 
                        this.movimientos.__MenuMovimiento.setEnabled(false);
                        this.movimientos.__Archivo.setEnabled(false);
@@ -5672,6 +5696,7 @@ public class jControlador implements ActionListener{
                        this.movimientos.__MODIFICACIONB.setEnabled(false);
                        this.movimientos.JPanel.setEnabledAt(1, false);
                        this.movimientos.JPanel.setEnabledAt(0, false); 
+                       this.movimientos.JPanel.setEnabledAt(2, false); 
                     }else{
                         mensaje(2,"La Salida No Existe");
                     }
@@ -5705,7 +5730,7 @@ public class jControlador implements ActionListener{
                    columnas=movimientos.__tablaSalidaBobinaInventario.getColumnCount();
                 }catch(Exception ex){
                     mensaje(3,ex.getMessage());
-                    //Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
             case __ACEPTAR_MOVIMIENTOS_SALIDAB:
@@ -6053,9 +6078,11 @@ public class jControlador implements ActionListener{
                 if(tiempoReal==null){
                     break;
                 }else{
+                    tiro.setVisible(false);
                     movimientos.setEnabled(true);
                     movimientos.__FactorSalidaBobina.requestFocus();
                 }
+                tiro.setVisible(false);
                 this.movimientos.__TituloSalidaBobina.requestFocus();
                 mostrartiro=0;
                 break;
@@ -6088,7 +6115,7 @@ public class jControlador implements ActionListener{
                         if(confir==JOptionPane.OK_OPTION){
                             String fechasalidab = fec.replaceAll("-", "");
                             //altasalidab
-                            boolean altasalidab = mimodelo.altaSalidab(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal,merma,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal);
+                            boolean altasalidab = mimodelo.altaSalidab(foliob,t1,t2,t3,opsalB, this.estandarprod, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal,merma,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal);
                             try{
                                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){ 
                                     tmpkg=0.0;
@@ -6133,21 +6160,19 @@ public class jControlador implements ActionListener{
                                     capakg=0.0;
                                     conokg=0.0;
                                     if(altasalidab==true&&altadetallesalidab==true){
-                                        //boolean agregarinventarioinicial = mimodelo.agregarinventarioinicial(opsalB,tmpclv,devkgs,devbob);
-                                        //if(agregarinventarioinicial==true){
-                                            mimodelo.sumarexistencia(tmpclv);
-                                            mensaje(1,"Salida de bobina correcta");
-                                        //}
+                                        mimodelo.sumarexistencia(tmpclv);
+                                        mensaje(1,"Salida de bobina correcta");
+                                        this.borrarFormularioMovimientosPapel();
+                                        this.borrarFormularioEmergente();
+                                        emergente.dispose();
+                                        this.movimientos.__pnlSalidaBobina.requestFocus();
                                     }
                                 }
                             } catch (Exception ex) {
                                 
                             }
                         }
-                        this.borrarFormularioMovimientosPapel();
-                        this.borrarFormularioEmergente();
-                        emergente.dispose();
-                        this.movimientos.__pnlSalidaBobina.requestFocus();
+                        
                         break;
                     case 1:
                         Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Bobina");    
@@ -6156,6 +6181,7 @@ public class jControlador implements ActionListener{
                             try{
                                 String fechasalidab = fec.replaceAll("-", "");
                                 boolean modifsalidab = mimodelo.modifSalidaB(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal);
+                                mimodelo.modifsalidabtiro(merma, fechaini, hraini, fechafin, hrafin, estandarprod, totalpliegos, controtativas, tiempoReal, foliob);
                                 try{
                                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){ 
                                     int conkghoj=0, conbobpaq=0;
@@ -7882,6 +7908,9 @@ public class jControlador implements ActionListener{
         t1="";
         t2="";
         t3="";
+        
+        this.borrarFormularioTiro();
+        this.movimientos.JPanel.setEnabledAt(2, true); 
         
     }
     public void limpiarTabla(JTable tabla){

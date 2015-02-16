@@ -1013,11 +1013,30 @@ public class modelo extends database {
             return false;
         }
     }
-    public boolean modifdetalleSalidab(String id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo,String totalcosto,String identradas_,String estandar) {
+    public boolean modifdetalleSalidab(String id_salidab,String clave_papel,String totksini,String totbobini,String totkgssur,String totbobsur,String totkgsdev,String totbobdev,String totalsurtido,String desperdicio,String empaque,String capa,String cono,String totales,String totalpliegos,String despliegos,String empqplie,String capaplie,String conoplie,String totalesplie,String costo,
+            String totalcosto,String identradas_,String estandar) {
+        
        // String q = "INSERT INTO  `dis_paper`.`detallesalidab` (`id_salida` ,`Clave_Papel` ,`totkgsini` ,`totbobini` ,`totkgssur` ,`totbobsur` ,`totkgsdev` ,`totbobdev` ,`totalsurtido` ,`desperdicio` ,`empaque` ,`capa` ,`cono` ,`totales` ,`totalpliegos` ,`despliegos` ,`empqplie` ,`capaplie` ,`conoplie` ,`totalesplie`)"
         //+"VALUES ('"+id_salidab+"',  '"+clave_papel+"',  '"+totksini+"',  '"+totbobini+"',  '"+totkgssur+"',  '"+totbobsur+"',  '"+totkgsdev+"',  '"+totbobdev+"',  '"+totalsurtido+"',  '"+desperdicio+"',  '"+empaque+"',  '"+capa+"',  '"+cono+"',  '"+totales+"',  '"+totalpliegos+"',  '"+despliegos+"',  '"+empqplie+"',  '"+capaplie+"',  '"+conoplie+"',  '"+totalesplie+"');";
          String q="UPDATE `dis_paper`.`detallesalidab` SET `clave_papel`='"+clave_papel+"',`totkgsini`='"+totksini+"', `totbobini`='"+totbobini+"', `totkgssur`='"+totkgssur+"', `totbobsur`='"+totbobsur+"', `totkgsdev`='"+totkgsdev+"', `totbobdev`='"+totbobdev+"', `totalsurtido`='"+totalsurtido+"', `desperdicio`='"+desperdicio+"', `empaque`='"+empaque+"', `capa`='"+capa+"', `cono`='"+cono+"', `totales`='"+totales+"', `totalpliegos`='"+totalpliegos+"', `despliegos`='"+despliegos+"', `empqplie`='"+empqplie+"', `capaplie`='"+capaplie+"', `conoplie`='"+conoplie+"', `totalesplie`='"+totalesplie+"', `costo`='"+costo+"', `totalcosto`='"+totalcosto+"', `entradas`='"+identradas_+"' , `estandar`='"+estandar+"'  WHERE `idd_salida`='"+id_salidab+"';";                      
         try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage()+"altadeta");
+            return false;
+        }
+    }
+    
+    public boolean modifsalidabtiro(String merma,String fechaini,String hraini,String fechafin,String hrafin,String estandarprod,String totalespliegos,String controtativas,String tiempoReal,String folio){
+        String q="UPDATE `dis_paper`.`salidab` SET `merma`='"+merma+"', "
+        + "`fecha_inicial`='"+fechaini+"', `hora_inicial`='"+hraini+"', `fecha_final`='"+fechafin+"', `hora_final`='"+hrafin+"',"
+                + " `tiempo_real`='"+tiempoReal+"', `total_pliego`='"+totalespliegos+"',estandar_produccion='"+estandarprod+"', `contador_rotativas`='"+controtativas+"' "
+                + "WHERE `folio`='"+folio+"';";
+        try{
+            System.out.println(q);
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
@@ -1111,10 +1130,11 @@ public class modelo extends database {
         
       String q=  "INSERT INTO  `dis_paper`.`salidab` (`id_salida` ,`folio` ,`TURNO1` ,`TURNO2` ,`TURNO3` ,`orden_produccion` ,`estandar_produccion` ,`factor` ,`pliego` ,`id_cliente` "
               + ",`id_propietario` ,`id_maquina` ,`Fecha` ,`titulo` ,`id_responsable` ,`observaciones` ,`totalkg` ,`tiroxpliego` ,`pliegokgs` ,`pliegoajuste` ,`ajustekgs`,`tipo_salida`"
-              + ",`estandar_produccion`,`tiempo_real`,`total_pliego`,`contador_rotativas`,`merma`,`fecha_inicial`,`hora_inicial`,`fecha_final`,`hora_final`,)"
+              + ",`tiempo_real`,`total_pliego`,`contador_rotativas`,`merma`,`fecha_inicial`,`hora_inicial`,`fecha_final`,`hora_final`)"
               +"VALUES (NULL ,  '"+foliob+"',  '"+t1+"',  '"+t2+"',  '"+t3+"',  '"+op+"',  '"+ep+"',  '"+factor+"',  '"+pliego+"',  '"+cliente+"',  '"+propietario+"',  '"+maquina+"',"
               +"'"+fecha+"',  '"+titulo+"',  '"+responsable+"',  '"+observaciones+"',  '"+totalkgs+"',  '"+tiroxpliego+"',  '"+pliegokgs+"', '"+pliegokgs+"',  '"+ajustekgs+"','"+tiposal+"'"
-              + ",'"+estandarprod+"','"+tiempoReal+"','"+totalpliegos+"','"+controtativas+"','"+merma+"','"+fechaini+"','"+hraini+"','"+fechafin+"','"+hrafin+"');";
+              + ",'"+tiempoReal+"','"+totalpliegos+"','"+controtativas+"','"+merma+"','"+fechaini+"','"+hraini+"','"+fechafin+"','"+hrafin+"');";
+      System.out.println(q);
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();

@@ -28,14 +28,32 @@ public class prueba {
     
     Double totalbd, cantidadbd;
     public prueba(){
-        String clavePapel="01-3-BLA-2-87070-IEXSA-IMPORTADO";
-        String fecha="2015-02-12";
-        int conkghoj=11;
-        int conbobpaq= 0;
-        this.consumir(clavePapel, conkghoj, conbobpaq, fecha);
-        System.out.println("-----------");
-        this.antipeps3(entradas);
-        
+        try {
+            ResultSet merma = merma();
+            while(merma.next()){
+                try {
+                    String op = merma.getString("id_op");
+                    String mermaa = merma.getString("merma");
+                    this.merma(op, mermaa);
+                } catch (SQLException ex) {
+                    Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ResultSet merma() {
+        String q = "select id_op,merma from ordenprod;";
+        try {
+                PreparedStatement pstm = mimodelo.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
     }
     
     public ResultSet buscarExistenciaPapelfecha(String clavePapel,String fecha) {
@@ -61,6 +79,20 @@ public class prueba {
                 return null;
             }
     }  
+    
+    public boolean merma(String op, String merma) {
+        String q=" UPDATE  `dis_paper`.`salidab` SET  `merma` =  '"+merma+"' WHERE `orden_produccion` =  '"+op+"' ;";
+        
+        try{
+            PreparedStatement pstm = mimodelo.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage() + "nuevexis");
+            return false;
+        }
+    }
     
     public boolean updateteporalde(int newkghoj,int newbobpaq,int id) {
         String q=" UPDATE  `dis_paper`.`detalleentrada` SET  `cantidad_temoporal` =  '"+newbobpaq+"',total_temporal='"+newkghoj+"' WHERE `id_detalleentrada` =  '"+id+"' ;";
