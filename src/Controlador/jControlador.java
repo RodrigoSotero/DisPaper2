@@ -5683,8 +5683,8 @@ public class jControlador implements ActionListener{
                            tiro.__FechaFinal.setDate(date);
                            Date date2 = formatter.parse(RS.getString("fecha_inicial"));
                            tiro.__FechaInicial.setDate(date2);
-                           tiro.__HoraFinal.setValue(hrafin = RS.getString("hora_final"));
-                           tiro.__HoraInicial.setValue(hrafin = RS.getString("hora_inicial"));
+                           tiro.__HoraFinal.setText(hrafin);
+                           tiro.__HoraInicial.setText(hraini);
                            tiro.__TiempoRealProduccion.setText(tiempoReal);
                            tiro.__TotalPliegos.setText(totalpliegos);
                                    //,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal;
