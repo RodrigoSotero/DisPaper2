@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5822724e-44db-41b1-a504-7d31c0aebf80">
-	<property name="ireport.zoom" value="2.928200000000008"/>
-	<property name="ireport.x" value="575"/>
-	<property name="ireport.y" value="1289"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -13,9 +13,7 @@
 			<style mode="Opaque" backcolor="#FFFFFF"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="folio" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
+	<parameter name="op" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      vw_infosalidab.`folio` AS vw_infosalidab_folio,
@@ -25,21 +23,21 @@
      vw_infosalidab.`pliego` AS vw_infosalidab_pliego,
      vw_infosalidab.`cliente` AS vw_infosalidab_cliente,
      vw_infosalidab.`maquina` AS vw_infosalidab_maquina,
-     vw_infosalidab.`totalkg` AS vw_infosalidab_totalkg,
-     vw_infosalidab.`tiroxpliego` AS vw_infosalidab_tiroxpliego,
-     vw_infosalidab.`pliegokgs` AS vw_infosalidab_pliegokgs,
-     vw_infosalidab.`pliegoajuste` AS vw_infosalidab_pliegoajuste,
-     vw_infosalidab.`ajustekgs` AS vw_infosalidab_ajustekgs,
+     sum(vw_infosalidab.`totalkg`) AS vw_infosalidab_totalkg,
+     sum(vw_infosalidab.`tiroxpliego`) AS vw_infosalidab_tiroxpliego,
+     sum(vw_infosalidab.`pliegokgs`) AS vw_infosalidab_pliegokgs,
+     sum(vw_infosalidab.`pliegoajuste`) AS vw_infosalidab_pliegoajuste,
+     sum(vw_infosalidab.`ajustekgs`) AS vw_infosalidab_ajustekgs,
      vw_infosalidab.`Clave` AS vw_infosalidab_Clave,
-     vw_infosalidab.`totalsurtido` AS vw_infosalidab_totalsurtido,
-     vw_infosalidab.`desperdicio` AS vw_infosalidab_desperdicio,
-     vw_infosalidab.`presentacion` AS vw_infosalidab_presentacion,
-     vw_infosalidab.`empaque` AS vw_infosalidab_empaque,
-     vw_infosalidab.`capa` AS vw_infosalidab_capa,
-     vw_infosalidab.`cono` AS vw_infosalidab_cono,
-     vw_infosalidab.`totales` AS vw_infosalidab_totales,
-     vw_infosalidab.`totalpliegos` AS vw_infosalidab_totalpliegos,
-     vw_infosalidab.`despliegos` AS vw_infosalidab_despliegos,
+     sum(vw_infosalidab.`totalsurtido`) AS vw_infosalidab_totalsurtido,
+     sum(vw_infosalidab.`desperdicio`) AS vw_infosalidab_desperdicio,
+     sum(vw_infosalidab.`presentacion`) AS vw_infosalidab_presentacion,
+     sum(vw_infosalidab.`empaque`) AS vw_infosalidab_empaque,
+     sum(vw_infosalidab.`capa`) AS vw_infosalidab_capa,
+     sum(vw_infosalidab.`cono`) AS vw_infosalidab_cono,
+     sum(vw_infosalidab.`totales`) AS vw_infosalidab_totales,
+     sum(vw_infosalidab.`totalpliegos`) AS vw_infosalidab_totalpliegos,
+     sum(vw_infosalidab.`despliegos`) AS vw_infosalidab_despliegos,
      vw_infosalidab.`turno` AS vw_infosalidab_turno,
      vw_infosalidab.`estandar` AS vw_infosalidab_estandar,
      vw_infosalidab.`id_op` AS vw_infosalidab_id_op,
@@ -49,16 +47,16 @@
      vw_infosalidab.`hora_final` AS vw_infosalidab_hora_final,
      vw_infosalidab.`estandar_produccion` AS vw_infosalidab_estandar_produccion,
      vw_infosalidab.`tiempo_real` AS vw_infosalidab_tiempo_real,
-     vw_infosalidab.`total_pliego` AS vw_infosalidab_total_pliego,
-     vw_infosalidab.`totalesplie` AS vw_infosalidab_totalesplie,
-     vw_infosalidab.`merma` AS vw_infosalidab_merma,
-     vw_infosalidab.`capaplie` AS vw_infosalidab_capaplie,
-     vw_infosalidab.`empqplie` AS vw_infosalidab_empqplie,
-     vw_infosalidab.`conoplie` AS vw_infosalidab_conoplie
+     sum(vw_infosalidab.`total_pliego`) AS vw_infosalidab_total_pliego,
+     sum(vw_infosalidab.`totalesplie`) AS vw_infosalidab_totalesplie,
+     sum(vw_infosalidab.`merma`) AS vw_infosalidab_merma,
+     sum(vw_infosalidab.`capaplie`) AS vw_infosalidab_capaplie,
+     sum(vw_infosalidab.`empqplie`) AS vw_infosalidab_empqplie,
+     sum(vw_infosalidab.`conoplie`) AS vw_infosalidab_conoplie
 FROM
      `vw_infosalidab` vw_infosalidab
 WHERE
-     vw_infosalidab.`folio` = $P{folio}]]>
+     vw_infosalidab.`id_op` = $P{op}]]>
 	</queryString>
 	<field name="vw_infosalidab_folio" class="java.lang.String"/>
 	<field name="vw_infosalidab_titulo" class="java.lang.String"/>
@@ -75,7 +73,7 @@ WHERE
 	<field name="vw_infosalidab_Clave" class="java.lang.String"/>
 	<field name="vw_infosalidab_totalsurtido" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_desperdicio" class="java.math.BigDecimal"/>
-	<field name="vw_infosalidab_presentacion" class="java.lang.Long"/>
+	<field name="vw_infosalidab_presentacion" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_empaque" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_capa" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_cono" class="java.math.BigDecimal"/>
@@ -93,7 +91,7 @@ WHERE
 	<field name="vw_infosalidab_tiempo_real" class="java.lang.String"/>
 	<field name="vw_infosalidab_total_pliego" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_totalesplie" class="java.math.BigDecimal"/>
-	<field name="vw_infosalidab_merma" class="java.lang.String"/>
+	<field name="vw_infosalidab_merma" class="java.lang.Double"/>
 	<field name="vw_infosalidab_capaplie" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_empqplie" class="java.math.BigDecimal"/>
 	<field name="vw_infosalidab_conoplie" class="java.math.BigDecimal"/>
