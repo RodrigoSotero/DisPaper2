@@ -97,7 +97,17 @@ public class jControlador implements ActionListener{
     private final  Vista.ConsumoTotal Consumo = new ConsumoTotal();
     private final  Vista.ReTraspaso retras = new ReTraspaso();
     private final  Vista.CSesion csesion = new CSesion();
+
+    int mostrartiro=1;
+    String merma,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal;
+    String entradas="";
+    int newkghoj;
+    int newbobpaq;
+    double costoconsumo=0;
+    int newtemkghoj,newtembobpaq;
+
     private final  Vista.SalidasGenerales salidageneral = new SalidasGenerales();
+
     JPopupMenu popup = new JPopupMenu(); 
     HashMap map = new HashMap();
     String pswd;
@@ -619,7 +629,7 @@ public class jControlador implements ActionListener{
                     return true;
                 }
                 if(newtottem>totbd){
-                    mimodelo.tottemp(totbd, cantbdtem, entradas[j]);
+                    //mimodelo.tottemp(totbd, cantbdtem, entradas[j]);
                     antipeps2(entradas,totalsumar-totbdtem,0);
                 }
                 if(newtottem<totbd){
@@ -3623,18 +3633,7 @@ public class jControlador implements ActionListener{
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavepapelbobina.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 7);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -3661,18 +3660,7 @@ public class jControlador implements ActionListener{
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavepapelhoja.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalidaHoja.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 3);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -3692,31 +3680,7 @@ public class jControlador implements ActionListener{
                     mensaje(3, ex.getMessage());
                 }
             }
-        });        
-        this.movimientos.__tablaSalida.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalida.getSelectedColumn();
-                int fila = movimientos.__tablaSalida.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 1)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 3)+"");
-                            Double totcos= tot*cos;
-                            movimientos.__tablaSalida.setValueAt(totcos, fila, 4);
-                        }
-                    }catch(Exception e){
-                        mensaje(3,"completa los campos");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });        
+        });         
         this.movimientos.__tablaEntrada.addKeyListener(new java.awt.event.KeyAdapter(){
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 
@@ -3741,82 +3705,14 @@ public class jControlador implements ActionListener{
                 
             }
         });        
-        this.movimientos.__tablaSalidaHoja.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalidaHoja.getSelectedColumn();
-                int fila = movimientos.__tablaSalidaHoja.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 1)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 3)+"");
-                            Double totcos= tot*cos;
-                            movimientos.__tablaSalidaHoja.setValueAt(totcos, fila, 4);
-                        }
-                    }catch(Exception e){
-                        mensaje(3,"completa los campos");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });
-        this.movimientos.__tablaSalidaBobinaInventario.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalidaBobinaInventario.getSelectedColumn();
-                int fila = movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4||columna==5||columna==6||columna==7||columna==8){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 1)+"");
-                            tot+=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 3)+"");
-                            tot-=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 5)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 7)+"");
-                            Double totcos= tot*cos;
-                            
-                            //1+3-5
-                            
-                            movimientos.__tablaSalidaBobinaInventario.setValueAt(totcos, fila, 8);
-                            /*for(int i=0;i<6;i++){
-                                Object valor = movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, i);
-                                if(valor==null){
-                                    mensaje(2,"Completa los campos...");
-                                }
-                            }*/
-                        }
-                    }catch(Exception e){
-                        mensaje(2,"Completa los campos...");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });        
+        
+        
         this.movimientos.__clavePapelsalida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavePapelsalida.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalida.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 3);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -3838,92 +3734,28 @@ public class jControlador implements ActionListener{
             }
         });
         
+        this.movimientos.__TituloSalidaBobina.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if(mostrartiro==1){
+                    oppp();
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                
+            }
+        });
         this.movimientos.__OPSalidaBobina.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 
             }
+            @Override
             public void keyPressed(java.awt.event.KeyEvent evt){
                 if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    String op = movimientos.__OPSalidaBobina.getText();
-                    if(op.equals("    -    ")){
-                        mensaje(3,"Captura la orden de producción");
-                        return;
-                    }else
-                    if(op.isEmpty()){
-                        mensaje(3,"Captura la orden de producción");
-                        return;
-                    }else{
-                        confir = mensajeConfirmacion("¿Es correcta la Orden de Produccion "+op+"?","Confirma");  
-                        if(confir==JOptionPane.YES_OPTION){
-                            try {                        
-                                ResultSet Op = mimodelo.buscarop(op);
-                                if(Op.next()){
-                                    Op.beforeFirst();
-                                    tiro.op = op;                                    
-                                    movimientos.setEnabled(false);
-                                    tiro.setVisible(true);
-                                    tiro.setLocationRelativeTo(null);
-                                    while(Op.next()){
-                                        tiro.__MermaImpresion.setText(Op.getString("merma"));
-                                        //String fechaini=Op.getString("fecha_inicial");
-                                        Date fechini=null;
-                                        Date fechfin=null;
-                                        try {
-                                            fechini = new SimpleDateFormat("yyyy-MM-d").parse(Op.getString("fecha_inicial"));
-                                            fechfin = new SimpleDateFormat("yyyy-MM-d").parse(Op.getString("fecha_final"));
-                                        } catch (ParseException ex) {
-                                            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                                        } 
-                                        tiro.__FechaInicial.setDate(fechini);
-                                        tiro.__FechaFinal.setDate(fechfin);
-                                        tiro.__HoraInicial.setText(Op.getString("hora_inicial"));
-                                        tiro.__HoraFinal.setText(Op.getString("hora_final"));
-                                        tiro.__EstandarProduccionXHora.setText(Op.getString("estandar_produccion"));
-                                        tiro.__TiempoRealProduccion.setText(Op.getString("tiempo_real"));
-                                        tiro.__TotalPliegos.setText(Op.getString("total_pliego"));
-                                        tiro.__ContadorRotativas.setText(Op.getString("contador_rotatvivas"));
-                                        limpiarTabla(movimientos.__tablaSalidaBobinaInventario);
-                                        movimientos.__tablaSalidaBobinaInventario.setValueAt(Op.getString("clave_papel"), 0, 0);
-                                        movimientos.__tablaSalidaBobinaInventario.setValueAt(Op.getString("invkgs"), 0, 1);
-                                        movimientos.__tablaSalidaBobinaInventario.setValueAt(Op.getString("invbob"), 0, 2);
-                                    }
-                                    ResultSet Op2 = mimodelo.buscarop2(op);
-                                    if(Op2.next()){
-                                        Op2.beforeFirst();
-                                        while(Op2.next()){
-                                            movimientos.__TituloSalidaBobina.setText(Op2.getString("titulo"));
-                                            movimientos.__ClienteSalidaB.setText(Op2.getString("cliente"));
-                                        }
-                                        movimientos.__FactorSalidaBobina.requestFocus();
-                                    }else{
-                                        movimientos.__TituloSalidaBobina.requestFocus();
-                                    }
-                                    tiro.guardar=1;
-                                }else{
-                                    mensaje(2,"La orden de produccion "+op+" no existe, Se capturara la nueva orden de produccion");
-                                    tiro.op = op;
-                                    tiro.guardar=0;
-                                    movimientos.setEnabled(false);
-                                    tiro.setVisible(true);
-                                    tiro.setLocationRelativeTo(null);                                   
-                                    limpiarTabla(movimientos.__tablaSalidaBobinaInventario);
-                                }
-                            } catch (SQLException ex) {
-                                mensaje(3,ex.getMessage());
-                            }
-                            if(movimientos.__TituloSalidaBobina.getText().isEmpty()){
-                                movimientos.__TituloSalidaBobina.requestFocus();
-                                movimientos.setEnabled(true);
-                            }else{
-                                movimientos.__FactorSalidaBobina.requestFocus();
-                                movimientos.setEnabled(true);
-                            } 
-                        }
-                    } 
+                    oppp();
                 } 
            }
             public void keyReleased(java.awt.event.KeyEvent evt){
-                
             }
         });
         //this.movimientos.__tablaSalidaBobinaInventario.setDefaultRenderer(Object.class, new TableCellRenderedColor());
@@ -5463,8 +5295,6 @@ public class jControlador implements ActionListener{
                        detallesalida.beforeFirst();
                        int a=0;
                        while(detallesalida.next()){
-                           
-                           
                             idsalidas[a]=detallesalida.getString("iddetallesalida");
                             movimientos.__tablaSalida.setValueAt(detallesalida.getString("clavepapel"), a, 0);
                             movimientos.__tablaSalida.setValueAt(detallesalida.getInt("total_salida"), a, 1);
@@ -5476,14 +5306,10 @@ public class jControlador implements ActionListener{
                                 totalbd=Double.parseDouble(bep.getString("presentacion"));
                                 cantidadbd=Double.parseDouble(bep.getString("cantidad"));
                             }
-
-                            String entradas[] = detallesalida.getString("entradas").split(",");
-                            j = entradas.length;
-                            antipeps2(entradas,totalsumar,cantidadsumar);
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("costo")), a, 3);
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("totalcosto")), a, 4);
-                               mimodelo.sumarexistencia(detallesalida.getString("clavepapel"));
-                           
+                            String entradaas = detallesalida.getString("entradas");
+                            this.antipeps3(entradaas);
+                            mimodelo.sumarexistencia(detallesalida.getString("clavepapel"));
+                            System.err.println(idsalidas[a]+"el id de la salida " +a);
                            ResultSetMetaData metaData = detallesalida.getMetaData();
                            int numcol = metaData.getColumnCount();
                            nombrecolumnas = new String[numcol];
@@ -5646,44 +5472,26 @@ public class jControlador implements ActionListener{
                    }else{
                        mensaje(2,"La Salida no Existe");
                        break;
-                   }
-                   ResultSet detallesalidah = mimodelo.buscarDetalleSalidaH(idfolio);
-                   if(detallesalidah.next()){
-                       detallesalidah.beforeFirst();
-                       int a=0;
-                       while(detallesalidah.next()){
-                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
-                           idsalidash[a]=detallesalidah.getString("id_salida");
-                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
-                           int totalsumar=detallesalidah.getInt("total_hojas");
-                           movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), a, 2);
-                           int cantidadsumar=detallesalidah.getInt("cantidad");
-                           movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("costo")),a,3);
-                           movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("totalcosto")),a,4);
-                           ResultSet bep = mimodelo.buscarExistenciaPapel(detallesalidah.getString("clave_papel"));
-                           while(bep.next()){
-                               totalbd=Double.parseDouble(bep.getString("presentacion"));
-                               cantidadbd=Double.parseDouble(bep.getString("cantidad"));
-                           }
-                           String entradas[] = detallesalidah.getString("identradas").split(",");
-                           j = entradas.length;
-                           antipeps2(entradas,totalsumar,cantidadsumar);
-                           mimodelo.sumarexistencia(detallesalidah.getString("clave_papel"));
-                           ResultSetMetaData metaData = detallesalidah.getMetaData();
-                           int numcol = metaData.getColumnCount();
-                           nombrecolumnas = new String[numcol];
-                           for(int i=2;i<numcol;i++){
-                               this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
-                           }
-                           a++;
-                       }
-                   }
+                    }
+                    ResultSet detallesalidah = mimodelo.buscarDetalleSalidaH(idfolio);
+                    a=0;
+                    while(detallesalidah.next()){
+                        idsalidash[a]=detallesalidah.getString("id_salida");
+                        movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
+                        movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
+                        movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), a, 2);
+                        entradas=detallesalidah.getString("identradas");
+                        this.antipeps3(entradas);
+                        mimodelo.sumarexistencia(detallesalidah.getString("clave_papel"));
+                        a++;
+                    }
                 }catch(Exception ex){
                     mensaje(3,ex.getMessage());
                 } 
                 break;
                 //DESDE AQUI EMPEZE HOY 11 04 2014
             case __ACEPTAR_MOVIMIENTOS_SALIDAH:
+                
                 modificacionsalh();
                  
                 break;
@@ -5739,6 +5547,30 @@ public class jControlador implements ActionListener{
                                movimientos.__chkTurno3SalBobina.setSelected(true);
                            }
                            idfolio= RS.getInt("id_salida");
+                           merma = RS.getString("merma");
+                           fechaini = RS.getString("fecha_inicial");
+                           fechafin = RS.getString("fecha_final");
+                           hraini = RS.getString("hora_inicial");
+                           hrafin = RS.getString("hora_final");
+                           estandarprod = RS.getString("estandar_produccion");
+                           totalpliegos = RS.getString("total_pliego");
+                           controtativas = RS.getString("contador_rotativas");
+                           tiempoReal = RS.getString("tiempo_real");
+                           
+                           tiro.__MermaImpresion.setText(merma);
+                           tiro.__ContadorRotativas.setText(controtativas = RS.getString("contador_rotativas"));
+                           tiro.__EstandarProduccionXHora.setText(estandarprod);
+                           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-d");
+                           Date date = formatter.parse(RS.getString("fecha_final"));
+                           tiro.__FechaFinal.setDate(date);
+                           Date date2 = formatter.parse(RS.getString("fecha_inicial"));
+                           tiro.__FechaInicial.setDate(date2);
+                           tiro.__HoraFinal.setText(hrafin);
+                           tiro.__HoraInicial.setText(hraini);
+                           tiro.__TiempoRealProduccion.setText(tiempoReal);
+                           tiro.__TotalPliegos.setText(totalpliegos);
+                                   //,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal;
+                           
                        } 
                        this.movimientos.__MenuMovimiento.setEnabled(false);
                        this.movimientos.__Archivo.setEnabled(false);
@@ -5746,6 +5578,7 @@ public class jControlador implements ActionListener{
                        this.movimientos.__MODIFICACIONB.setEnabled(false);
                        this.movimientos.JPanel.setEnabledAt(1, false);
                        this.movimientos.JPanel.setEnabledAt(0, false); 
+                       this.movimientos.JPanel.setEnabledAt(2, false); 
                     }else{
                         mensaje(2,"La Salida No Existe");
                     }
@@ -5755,50 +5588,29 @@ public class jControlador implements ActionListener{
                         int s=0;
                          while(detallesalidab.next()){
                                idsalidasb[s]=detallesalidab.getString("idd_salida");
-                               String cclave= detallesalidab.getString("clave_papel");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getString("clave_papel"), s, 0);
-                               int a =detallesalidab.getInt("totkgsini");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsini"), s, 1);
-                               int a1 =detallesalidab.getInt("totbobini");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobini"), s, 2);
-                               int b= detallesalidab.getInt("totkgssur");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgssur"), s, 3);
-                               int b1=detallesalidab.getInt("totbobsur");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobsur"), s, 4);
-                               int c=detallesalidab.getInt("totkgsdev");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsdev"), s, 5);
-                               int c1=detallesalidab.getInt("totbobdev");
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobdev"), s, 6);
-                               int rk = a+b-c;
-                               int rb = a1+b1-c1;
-                               
-                               String entradas[] = detallesalidab.getString("entradas").split(",");
-                               j = entradas.length;
-                               antipeps2(entradas,rk,rb);
                                mimodelo.sumarexistencia(detallesalidab.getString("clave_papel"));
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("costo")), s, 7);
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("totalcosto")), s, 8);
-                               
-                           
-                           emergente.__CapaKG.setText(detallesalidab.getString("capa"));
-                           emergente.__ConoKG.setText(detallesalidab.getString("cono"));
-                           emergente.__DesperdicioKG.setText(detallesalidab.getString("desperdicio"));
-                           emergente.__DesperdicioPliegos.setText(detallesalidab.getString("despliegos"));
-                           emergente.__EmpaqueKG.setText(detallesalidab.getString("empaque"));
-                           ResultSetMetaData metaData = detallesalidab.getMetaData();
-                           int numcol = metaData.getColumnCount();
-                           nombrecolumnas = new String[numcol];
-                           for(int i=2;i<numcol;i++){
-                               this.nombrecolumnas[i]=metaData.getColumnLabel(i+1);
-                           }
-                           s++;
+                               String entradass = detallesalidab.getString("entradas");
+                               antipeps3(entradass);
+                               emergente.__CapaKG.setText(detallesalidab.getString("capa"));
+                               emergente.__ConoKG.setText(detallesalidab.getString("cono"));
+                               emergente.__DesperdicioKG.setText(detallesalidab.getString("desperdicio"));
+                               emergente.__DesperdicioPliegos.setText(detallesalidab.getString("despliegos"));
+                               emergente.__EmpaqueKG.setText(detallesalidab.getString("empaque"));
+                               s++;
                        }
                    }
                    filas=movimientos.__tablaSalidaBobinaInventario.getRowCount();
                    columnas=movimientos.__tablaSalidaBobinaInventario.getColumnCount();
                 }catch(Exception ex){
                     mensaje(3,ex.getMessage());
-                    //Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
             case __ACEPTAR_MOVIMIENTOS_SALIDAB:
@@ -6087,6 +5899,7 @@ public class jControlador implements ActionListener{
                                     mimodelo.sumarexistencia(clavePapcl1);
                                     mimodelo.costopromedio(clavePapcl1);
                                     mimodelo.ubicacion(clavePapcl1, ubicacion);
+                                    
                                     mensaje(1,"traspaso correcto");
                                     addItems("traspaso");
                                     ap.setEnabled(true);
@@ -6112,56 +5925,51 @@ public class jControlador implements ActionListener{
                     }
                 break;
             case __ACEPTARTIRO:
-                String op = this.tiro.op;
-                String merma = this.tiro.__MermaImpresion.getText();
+                //merma,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal
+                merma = this.tiro.__MermaImpresion.getText();
                 if(merma.isEmpty()){
                     mensaje(3,"No Dejes Campos Vacios");
                     tiro.__MermaImpresion.requestFocus();
                     break;
                 }
-                String fechaini = aceptarFecha(tiro.__FechaInicial,0);
-                String hraini = tiro.__HoraInicial.getText();
-                String fechafin = aceptarFecha(tiro.__FechaFinal,0);
-                String hrafin = tiro.__HoraFinal.getText();
-                String estandarprod = this.tiro.__EstandarProduccionXHora.getText();
+                fechaini = aceptarFecha(tiro.__FechaInicial,0);
+                hraini = tiro.__HoraInicial.getText();
+                fechafin = aceptarFecha(tiro.__FechaFinal,0);
+                hrafin = tiro.__HoraFinal.getText();
+                estandarprod = this.tiro.__EstandarProduccionXHora.getText();
                 if(estandarprod.isEmpty()){
                     mensaje(3,"No Dejes Campos Vacios");
                     tiro.__EstandarProduccionXHora.requestFocus();
                     break;
                 }
-                String totalpliegos = this.tiro.__TotalPliegos.getText();
+                totalpliegos = this.tiro.__TotalPliegos.getText();
                 if(totalpliegos.isEmpty()){
                     mensaje(3,"No Dejes Campos Vacios");
                     tiro.__TotalPliegos.requestFocus();
                     break;
                 }
-                String controtativas= this.tiro.__ContadorRotativas.getText();
+                controtativas= this.tiro.__ContadorRotativas.getText();
                 if(controtativas.isEmpty()){
                     mensaje(3,"No Dejes Campos Vacios");
                     tiro.__ContadorRotativas.requestFocus();
                     break;
                 }
-                String tiempoReal = tiro.__TiempoRealProduccion.getText();
+                tiempoReal = tiro.__TiempoRealProduccion.getText();
                 if(tiempoReal==null){
                     break;
                 }else{
-                    boolean altaop = mimodelo.altaop(op, merma, fechaini, hraini, fechafin, hrafin, estandarprod, tiempoReal, totalpliegos, controtativas);
-                    if(altaop==true){
-                        mensaje(1,"Datos Correctos de OP");
-                        this.borrarFormularioTiro();
-                        tiro.dispose();
-                        movimientos.__FactorSalidaBobina.requestFocus();
-                    }else{
-                        mensaje(3,"Error");
-                    }
+                    tiro.setVisible(false);
+                    movimientos.setEnabled(true);
                     movimientos.__FactorSalidaBobina.requestFocus();
                 }
+                tiro.setVisible(false);
                 this.movimientos.__TituloSalidaBobina.requestFocus();
+                mostrartiro=0;
                 break;
-            
             case __CANCELARTIRO:
                 this.tiro.dispose();
-                movimientos.__FactorSalidaBobina.requestFocus();
+                movimientos.setEnabled(true);
+                
                 break;
             case  __ACEPTAR_PROVEEDOR:
                 altaproveedor();                             
@@ -6186,10 +5994,12 @@ public class jControlador implements ActionListener{
                         confir = this.mensajeConfirmacion("Estas Seguro de Realizar la Salida", "Salida");
                         if(confir==JOptionPane.OK_OPTION){
                             String fechasalidab = fec.replaceAll("-", "");
-                            boolean altasalidab = mimodelo.altaSalidab(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal);
+                            //altasalidab
+                            boolean altasalidab = mimodelo.altaSalidab(foliob,t1,t2,t3,opsalB, this.estandarprod, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal,merma,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal);
                             try{
                                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){ 
                                     tmpkg=0.0;
+                                    int conkghoj=0, conbobpaq=0;
                                     tmpbob=0.0;
                                     for(int j=0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
                                         tmpclv= movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
@@ -6199,10 +6009,11 @@ public class jControlador implements ActionListener{
                                         surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
                                         devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
                                         devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                                        costo = new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 7)+"");
-                                        totalcosto= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8).toString()+"");
+                                        
                                         tmpkg = invinikgs + surkgs - devkgs+0.0;
                                         tmpbob =  invinibob + surbob -devbob+0.0;
+                                        conkghoj = invinikgs + surkgs - devkgs;
+                                        conbobpaq = invinibob + surbob -devbob;
                                     }
                                     ResultSet bucarMaxSalidab = mimodelo.bucarMaxSalidab();
                                     int idsalidas=0;
@@ -6214,9 +6025,11 @@ public class jControlador implements ActionListener{
                                     }else{
                                         idsalidas=1;    
                                     }
-                                    identradas_="";
-                                    PEPS2(tmpclv,tmpkg,tmpbob);
-                                    boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",totalkil,identradas_);
+                                    entradas="";
+                                    this.costoconsumo=0.0;
+                                    this.Peps3(tmpclv, conkghoj, conbobpaq);
+                                    Double costo = costoconsumo/conkghoj;
+                                    boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",totalkil,entradas);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
@@ -6227,21 +6040,19 @@ public class jControlador implements ActionListener{
                                     capakg=0.0;
                                     conokg=0.0;
                                     if(altasalidab==true&&altadetallesalidab==true){
-                                        boolean agregarinventarioinicial = mimodelo.agregarinventarioinicial(opsalB,tmpclv,devkgs,devbob);
-                                        if(agregarinventarioinicial==true){
-                                            mimodelo.sumarexistencia(tmpclv);
-                                            mensaje(1,"Salida de bobina correcta");
-                                        }
+                                        mimodelo.sumarexistencia(tmpclv);
+                                        mensaje(1,"Salida de bobina correcta");
+                                        this.borrarFormularioMovimientosPapel();
+                                        this.borrarFormularioEmergente();
+                                        emergente.dispose();
+                                        this.movimientos.__pnlSalidaBobina.requestFocus();
                                     }
                                 }
                             } catch (Exception ex) {
                                 
                             }
                         }
-                        this.borrarFormularioMovimientosPapel();
-                        this.borrarFormularioEmergente();
-                        emergente.dispose();
-                        this.movimientos.__pnlSalidaBobina.requestFocus();
+                        
                         break;
                     case 1:
                         Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Bobina");    
@@ -6250,8 +6061,10 @@ public class jControlador implements ActionListener{
                             try{
                                 String fechasalidab = fec.replaceAll("-", "");
                                 boolean modifsalidab = mimodelo.modifSalidaB(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal);
+                                mimodelo.modifsalidabtiro(merma, fechaini, hraini, fechafin, hrafin, estandarprod, totalpliegos, controtativas, tiempoReal, foliob);
                                 try{
                                 for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){ 
+                                    int conkghoj=0, conbobpaq=0;
                                     tmpkg=0.0;
                                     tmpbob=0.0;
                                     for(int j=0;j<movimientos.__tablaSalidaBobinaInventario.getColumnCount();j++){
@@ -6266,6 +6079,8 @@ public class jControlador implements ActionListener{
                                         totalcosto= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8).toString()+"");
                                         tmpkg = invinikgs + surkgs - devkgs+0.0;
                                         tmpbob =  invinibob + surbob -devbob+0.0;
+                                        conkghoj = invinikgs + surkgs - devkgs;
+                                        conbobpaq = invinibob + surbob -devbob;
                                     }
                                     ResultSet bucarMaxSalidab = mimodelo.bucarMaxSalidab();
                                     int idsalidas=0;
@@ -6277,10 +6092,11 @@ public class jControlador implements ActionListener{
                                     }else{
                                         idsalidas=1;    
                                     }
-                                    identradas_="";
-                                    PEPS2(tmpclv,tmpkg,tmpbob);
-                                    System.out.println("clave" + tmpclv);
-                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",totalcosto+"",identradas_,totalkil);
+                                    entradas="";
+                                    this.costoconsumo=0.0;
+                                    this.Peps3(tmpclv, conkghoj, conbobpaq);
+                                    Double costo = costoconsumo/conkghoj;
+                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",entradas,totalkil);
                                     //para reporte en 0
                                     totalkil="0";
                                     totalpliego=0.0;
@@ -7552,6 +7368,15 @@ public class jControlador implements ActionListener{
         consultas.__chkTurno3.setSelected(false);              
     }
     public void borrarFormularioEmergente(){
+        merma="";
+        fechaini="";
+        hraini="";
+        fechafin="";
+        hrafin="";
+        estandarprod="";
+        totalpliegos="";
+        controtativas="";
+        tiempoReal="";
         emergente.__TotalSurtidoKG.setText("");
         emergente.__TotalSurtidoPliegos.setText("");
         emergente.__DesperdicioKG.setText("");
@@ -7965,6 +7790,18 @@ public class jControlador implements ActionListener{
         t2="";
         t3="";
         
+        this.borrarFormularioTiro();
+        this.movimientos.JPanel.setEnabledAt(2, true); 
+        
+        ResultSet claves = mimodelo.buscarTodosPapeles();
+        try {
+            while(claves.next()){
+                String clave = claves.getString("clavePapel");
+                mimodelo.costopromedio(clave);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void limpiarTabla(JTable tabla){
         try {
@@ -8655,6 +8492,7 @@ public class jControlador implements ActionListener{
                                     detalleentrada = mimodelo.altaDetalleEntrada(id_entrada,clavePapel,totalentrada+"",cantidadentrada+"",ubicacion,costo,totalcosto);
                                     mimodelo.sumarexistencia(clavePapel);
                                     mimodelo.costopromedio(clavePapel);
+                                    mimodelo.updateop(clavePapel, ordenProduccion);
                                     mimodelo.ubicacion(clavePapel, ubicacion);
                                 }else{
                                     mensaje(3,"EL PAPEL NO EXISTE");
@@ -8761,32 +8599,32 @@ public class jControlador implements ActionListener{
             return;
         }
         proveedor=this.busquedaid(movimientos.__ProvSalida);
-        /*if(proveedor==0){
+        if(proveedor==0){
             mensaje(3,"Verifica el Proveedor");
             movimientos.__ProvSalida.requestFocus();
             return;
-        }*/
+        }
         cliente = this.busquedaid(movimientos.__ClientSalida);
-        /*if(cliente== 0){
+        if(cliente== 0){
             mensaje(3,"Verifica el Cliente");
             movimientos.__ClientSalida.requestFocus();
             return;
-        }*/
+        }
         ordenProduccion = this.movimientos.__OrdenProduccionSalida.getText();
-        /*if(ordenProduccion.isEmpty()){
+        if(ordenProduccion.isEmpty()){
             mensaje(3,"Debe Especificar la Orden de Producción de Papel");
             movimientos.__OrdenProduccionSalida.requestFocus();
             return;
-        }*/
+        }
         if(movimientos.__TipoSalida.getText().equals("PAPEL DEL CLIENTE")){
              this.movimientos.__OrdenCompraEntr.setText("N/A");
         }
         ordenCompra = this.movimientos.__OrdenCompraSalida.getText();
-        /*if(ordenCompra.isEmpty()){
+        if(ordenCompra.isEmpty()){
             mensaje(3,"Debe Especificar la Orden de Compra");
             movimientos.__OrdenCompraSalida.requestFocus();
             return;
-        } */   
+        }  
         documentoSalida = this.movimientos.__documentoSalida.getText();
         if(documentoSalida.isEmpty()){
             mensaje(3,"Debe Especificar el Documento de Salida");
@@ -8807,42 +8645,33 @@ public class jControlador implements ActionListener{
             return;
         }
         if(movimientos.__tablaSalida.getValueAt(0, 0)==null||movimientos.__tablaSalida.getValueAt(0, 0).toString().isEmpty()){
-                        mensaje(3,"Ingresa valores a la tabla");
-                        return;
-                    }
-        
+            mensaje(3,"Ingresa valores a la tabla");
+            return;
+        }
         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
             
-            try{
+            try {
                 String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
-                int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
-                int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
-                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
-                ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
-                int totalentr = 0,nuevototentr;
-                int cantentr =0, nuevacantentr;
-                if(existenciaPapel.next()){
-                    existenciaPapel.beforeFirst();
-                    while(existenciaPapel.next()){
-                        totalentr=existenciaPapel.getInt(1);
-                        cantentr=existenciaPapel.getInt(2);
-                    }
-                    if(totalsalida>totalentr){
-                        mensaje(3,"tu existencia de kg/hojas es de "+totalentr+" en la salida " +(i+1));
+                int conkghoj=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
+                int conbobpaq= Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
+                ResultSet existenciaactual = mimodelo.buscarExistenciaPapelfecha2(clavePapel, fec);
+                while(existenciaactual.next()){
+                    int exiskghoj = existenciaactual.getInt("kghoj");
+                    int exisbobpaq = existenciaactual.getInt("bobpaq");
+                    if(conkghoj>exiskghoj){
+                        mensaje(2,"no hay suficientes kghoj en la salida "+(i+1));
                         return;
-
+                    }else{
+                        if(conbobpaq>exisbobpaq){
+                            mensaje(2,"no hay suficientes bobpaq en la salida "+(i+1));
+                            return;
+                        }
                     }
-                    if(cantidadsalida>cantentr){
-                        mensaje(3,"tu cantidad de paq/bob es de "+cantentr+" en la salida " +(i+1));
-                        return;
-                    }
-                }else{
-                    mensaje(3,"EL PAPEL NO EXISTE");
-                    return;
                 }
-            }catch(Exception e){
+            } catch (Exception ex) {
+                break;
             }
+            
         }
         switch(this.modificarsalida){
             case 0:
@@ -8865,40 +8694,18 @@ public class jControlador implements ActionListener{
                                 String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
                                 int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
                                 int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
-                                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
-                                ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
-                                int totalentr = 0,nuevototentr;
-                                int cantentr =0, nuevacantentr;
-                                if(existenciaPapel.next()){
-                                    existenciaPapel.beforeFirst();
-                                    while(existenciaPapel.next()){
-                                        totalentr=existenciaPapel.getInt(1);
-                                         cantentr=existenciaPapel.getInt(2);
-                                    }
-                                    if(totalsalida>totalentr){
-                                        mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
-                                        return;
-                                        
-                                    }
-                                    if(cantidadsalida>cantentr){
-                                        mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
-                                        return;
-                                    }
-                                    identradas_="";
-                                    this.PEPS2(clavePapel, totalsalida, cantidadsalida);
-                                    mimodelo.sumarexistencia(clavePapel);
-                                    detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto,identradas_);
-                                    
-                                }else{
-                                    mensaje(3,"EL PAPEL NO EXISTE");
-                                    return;
-                                }
+                                int conkghoj=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
+                                int conbobpaq= Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
+                                costoconsumo=0.0;
+                                entradas="";
+                                this.Peps3(clavePapel, conkghoj, conbobpaq);
+                                mimodelo.sumarexistencia(clavePapel);
+                                Double costo = costoconsumo/conkghoj;
+                                detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo+"",costoconsumo+"",entradas);
                             }catch(Exception evt){
                                 break;
                             }
                         }
-                        
                         String fechaentrada=fec.replaceAll("-", "");
                         boolean altaSalida = mimodelo.altaSalida(foliosalida,t1, t2, t3, ordenProduccion, ordenCompra,documentoSalida, propietario, proveedor, id_responsable, fechaentrada, tiposalida,Obs,cliente);
                         if(altaSalida==true && detallesalida==true){
@@ -8919,45 +8726,22 @@ public class jControlador implements ActionListener{
             case 1:
                 Obs=JOptionPane.showInputDialog(null, "Observaciones de la Salida");
                 confir=mensajeConfirmacion("Estas seguro de modificar la Salida","Aceptar");
-                
                 if (confir==JOptionPane.OK_OPTION){
                     for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
-                            try{
-                                String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
-                                int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
-                                int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
-                                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
-                                ResultSet existenciaPapel = mimodelo.buscarExistenciaPapelfecha(clavePapel,fec);
-                                int totalentr = 0,nuevototentr;
-                                int cantentr =0, nuevacantentr;
-                                if(existenciaPapel.next()){
-                                    existenciaPapel.beforeFirst();
-                                    while(existenciaPapel.next()){
-                                        totalentr=existenciaPapel.getInt(1);
-                                         cantentr=existenciaPapel.getInt(2);
-                                    }
-                                    if(totalsalida>totalentr){
-                                        mensaje(3,"tu existencia de kg/hojas es de "+totalentr);
-                                        return;
-                                        
-                                    }
-                                    if(cantidadsalida>cantentr){
-                                        mensaje(3,"tu cantidad de paq/bob es de "+cantentr);
-                                        return;
-                                    }
-                                    identradas_="";
-                                    this.PEPS2(clavePapel, totalsalida, cantidadsalida);
-                                    mimodelo.sumarexistencia(clavePapel);
-                                    mimodelo.modifDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,totalcosto,identradas_);
-                                }else{
-                                    mensaje(3,"EL PAPEL NO EXISTE");
-                                    return;
-                                }
-                            }catch(Exception evt){
-                                break;
-                            }
+                        try{
+                            String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
+                            int conkghoj=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
+                            int conbobpaq= Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
+                            costoconsumo=0.0;
+                            entradas="";
+                            this.Peps3(clavePapel, conkghoj, conbobpaq);
+                            mimodelo.sumarexistencia(clavePapel);
+                            Double costo = costoconsumo/conkghoj;
+                            mimodelo.modifDetalleSalida(Integer.parseInt(idsalidas[i]),clavePapel,conkghoj+"",conbobpaq+"",costo+"",costoconsumo+"",entradas);
+                        }catch(Exception evt){
+                            break;
                         }
+                    }
                     String fechaentrada=fec.replaceAll("-", "");
                     boolean modifSalida = mimodelo.modifSalida(foliosalida,t1, t2, t3, ordenProduccion, ordenCompra,documentoSalida, propietario, proveedor, id_responsable, fechaentrada, tiposalida,Obs,cliente);
                     if(modifSalida==true){
@@ -8970,6 +8754,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(0, true);
                         this.movimientos.JPanel.setEnabledAt(2, true);
                         this.movimientos.JPanel.setEnabledAt(3, true);
+                        
                     }
                 }
                 break;
@@ -8977,268 +8762,173 @@ public class jControlador implements ActionListener{
     }
     public void modificacionsalh(){
         tiposal=busquedaid(movimientos.__TipodeSalidaH);
-                if(tiposal==0){
-                    mensaje(3,"Verifica el tipo de salida");
-                    movimientos.__TipodeSalidaH.requestFocus();;
-                    return;
-                }
+        if(tiposal==0){
+            mensaje(3,"Verifica el tipo de salida");
+            movimientos.__TipodeSalidaH.requestFocus();;
+            return;
+        }
         int clientesalh = this.busquedaid(movimientos.__ClienteSalidaH);
-                if(clientesalh==0){
-                    mensaje(3,"Verifica el cliente");
-                    movimientos.__ClienteSalidaH.requestFocus();;
-                    return;
-                }
-                int propsalh=busquedaid(movimientos.__PropietarioSalidaH);
-                if(propsalh==0){
-                    mensaje(3,"Verifica el propietario");
-                    movimientos.__PropietarioSalidaH.requestFocus();;
-                    return;
-                }
+        if(clientesalh==0){
+            mensaje(3,"Verifica el cliente");
+            movimientos.__ClienteSalidaH.requestFocus();;
+            return;
+        }
+        int propsalh=busquedaid(movimientos.__PropietarioSalidaH);
+        if(propsalh==0){
+            mensaje(3,"Verifica el propietario");
+            movimientos.__PropietarioSalidaH.requestFocus();;
+            return;
+        }
         String titulosalh = movimientos.__TituloSalidaHoja.getText();
-                String folio = movimientos.__FolioSalidaHoja.getText();
-                if(titulosalh.isEmpty()){
-                    mensaje(3,"escribe el titulo");
-                    movimientos.__TituloSalidaHoja.requestFocus();
-                    return;
-                }
-                String opsalh= movimientos.__OPSalidaHoja.getText();
-                if(opsalh.isEmpty()){
-                    mensaje(3,"escribe la orden de produccion");
-                    movimientos.__OPSalidaHoja.requestFocus();
-                    return;
-                }
-                String epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
-                if(epsalh.isEmpty()){
-                    mensaje(3,"escribe el estandar de produccion");
-                    movimientos.__EstandarProduccionSalidaHoja.requestFocus();
-                    return;
-                }
-                int maqsalh=this.busquedaid(movimientos.__MaquinaSalidaH);
-                if(maqsalh==0){
-                    mensaje(3,"Verifica la maquina");
-                    movimientos.__MaquinaSalidaH.requestFocus();;
-                    return;
-                }
-                if(!movimientos.__chkTurno1SalHoja.isSelected()&&!movimientos.__chkTurno2SalHoja.isSelected()&&!movimientos.__chkTurno3SalHoja.isSelected()){
-                        mensaje(3,"Selecciona al menos un turno");
-                        return;
-                    }
-                if(movimientos.__chkTurno1SalHoja.isSelected()){
-                       t1="t1";
-                    }
-                    if(movimientos.__chkTurno2SalHoja.isSelected()){
-                       t2="t2";
-                    }
-                    if(movimientos.__chkTurno3SalHoja.isSelected()){
-                       t3="t3";
-                    }
-                    if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null||movimientos.__tablaSalidaHoja.getValueAt(0, 0).toString().isEmpty()){
-                        mensaje(3,"Ingresa valores a la tabla");
+        String folio = movimientos.__FolioSalidaHoja.getText();
+        if(titulosalh.isEmpty()){
+            mensaje(3,"escribe el titulo");
+            movimientos.__TituloSalidaHoja.requestFocus();
+            return;
+        }
+        String opsalh= movimientos.__OPSalidaHoja.getText();
+        if(opsalh.isEmpty()){
+            mensaje(3,"escribe la orden de produccion");
+            movimientos.__OPSalidaHoja.requestFocus();
+            return;
+        }
+        String epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+        if(epsalh.isEmpty()){
+            mensaje(3,"escribe el estandar de produccion");
+            movimientos.__EstandarProduccionSalidaHoja.requestFocus();
+            return;
+        }
+        int maqsalh=this.busquedaid(movimientos.__MaquinaSalidaH);
+        if(maqsalh==0){
+            mensaje(3,"Verifica la maquina");
+            movimientos.__MaquinaSalidaH.requestFocus();;
+            return;
+        }
+        if(!movimientos.__chkTurno1SalHoja.isSelected()&&!movimientos.__chkTurno2SalHoja.isSelected()&&!movimientos.__chkTurno3SalHoja.isSelected()){
+                mensaje(3,"Selecciona al menos un turno");
+                return;
+            }
+        if(movimientos.__chkTurno1SalHoja.isSelected()){
+               t1="t1";
+            }
+        if(movimientos.__chkTurno2SalHoja.isSelected()){
+           t2="t2";
+        }
+        if(movimientos.__chkTurno3SalHoja.isSelected()){
+           t3="t3";
+        }
+        if(movimientos.__tablaSalidaHoja.getValueAt(0, 0)==null||movimientos.__tablaSalidaHoja.getValueAt(0, 0).toString().isEmpty()){
+            mensaje(3,"Ingresa valores a la tabla");
+            return;
+        }
+        for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+            try {
+                String clavePapel=movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
+                int conkghoj=Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
+                int conbobpaq= Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
+                ResultSet existenciaactual = mimodelo.buscarExistenciaPapelfecha2(clavePapel, fec);
+                while(existenciaactual.next()){
+                    int exiskghoj = existenciaactual.getInt("kghoj");
+                    int exisbobpaq = existenciaactual.getInt("bobpaq");
+                    if(conkghoj>exiskghoj){
+                        mensaje(2,"no hay suficientes kghoj en la salida "+(i+1));
                         return;
                     }else{
-                        System.out.println(movimientos.__tablaSalidaHoja.getValueAt(0, 0));
-                    }
-                    for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
-                        try{
-                            String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
-                            double totalhojassalh =Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
-                            int contsalh=0;
-                            double cantsalh=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
-                            costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
-                            totalcosto =new BigDecimal( movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
-                            int restosalh=0;
-                            ResultSet existenciaPapelh = mimodelo.buscarExistenciaPapelfecha(cpsalh,fec);
-                            double totalsalh = 0.0,nuevototsalh, totalcanth=0.0,nuevacantsalh;
-                            if(existenciaPapelh.next()){
-                                existenciaPapelh.beforeFirst();
-                                while(existenciaPapelh.next()){
-                                    totalsalh=Double.parseDouble(existenciaPapelh.getString("cantidad"));
-                                    totalcanth=Double.parseDouble(existenciaPapelh.getString("presentacion"));
-                                }
-                            }else{
-                                mensaje(3,"EL PAPEL NO EXISTE");
-                                return;
-                            }
-                            if(totalhojassalh>totalsalh){
-                                mensaje(3,"No tienes suficiente existencia en la salida #"+(i+1)+". El total es de "+totalsalh);
-                                return;
-                            }else{
-                                if(cantsalh>totalcanth){
-                                    mensaje(3,"No tienes suficiente cantidad en la salida #"+(i+1)+". El total es de "+totalcanth);
-                                    return;
-                                }else{
-                                    if(totalhojassalh==totalsalh&&cantsalh<totalcanth){
-                                        mensaje(3,"Verifica el numero de paquetes");
-                                        return;
-                                    }
-                                    if(cantsalh==totalcanth&&totalhojassalh<totalsalh){
-                                        mensaje(3,"Verifica el total de hojas");
-                                        return;
-                                    }
-                                }
-                            }
-                        }catch(Exception evt){
+                        if(conbobpaq>exisbobpaq){
+                            mensaje(2,"no hay suficientes bobpaq en la salida "+(i+1));
+                            return;
                         }
                     }
-                switch(this.modificarsalidah){
-                       case 0:
-                           Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
-                           confir = this.mensajeConfirmacion("Estas Seguro de Realizar la Salida", "Salida");
-                            if(confir==JOptionPane.OK_OPTION){
-                                ResultSet buscarMaxSalidah=null;
-                                boolean detallesalidah=false;
-                                int id_salidah=0;
-                                try{
-                                    buscarMaxSalidah=mimodelo.bucarMaxSalidah();
-                                    while(buscarMaxSalidah.next()){
-                                        id_salidah=buscarMaxSalidah.getInt(1);
-                                    }
-                                    id_salidah++;
-                                    String fechasalidah = fec.replaceAll("-", "");
-                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
-                                        boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
-                                    for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
-                                        try{
-                                            String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
-                                            double totalhojassalh =Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
-                                            int contsalh=0;
-                                            double cantsalh=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
-                                            costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
-                                            totalcosto =new BigDecimal( movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
-                                            int restosalh=0;
-                                            ResultSet existenciaPapelh = mimodelo.buscarExistenciaPapelfecha(cpsalh,fec);
-                                            double totalsalh = 0.0,nuevototsalh, totalcanth=0.0,nuevacantsalh;
-                                            if(existenciaPapelh.next()){
-                                                existenciaPapelh.beforeFirst();
-                                                while(existenciaPapelh.next()){
-                                                totalsalh=Double.parseDouble(existenciaPapelh.getString("cantidad"));
-                                                totalcanth=Double.parseDouble(existenciaPapelh.getString("presentacion"));
-                                                }
-                                            }else{
-                                                mensaje(3,"EL PAPEL NO EXISTE");
-                                                return;
-                                            }
-                                            if(totalhojassalh>totalsalh){
-                                                mensaje(3,"No tienes suficiente existencia en la salida #"+(i+1)+". El total es de "+totalhojassalh);
-                                                detallesalidah=false;
-                                                break;
-                                            }else{
-                                                if(cantsalh>totalcanth){
-                                                     mensaje(3,"No tienes suficiente cantidad en la salida #"+(i+1)+". El total es de "+cantsalh);
-                                                     detallesalidah=false;
-                                                     break;
-                                                }else{
-                                                    if(totalhojassalh==totalsalh&&cantsalh<totalcanth){
-                                                        mensaje(3,"Verifica el numero de paquetes");
-                                                        return;
-                                                    }
-                                                    if(cantsalh==totalcanth&&totalhojassalh<totalsalh){
-                                                         mensaje(3,"Verifica el total de hojas");
-                                                        return;
-                                                    }
-                                                    nuevototsalh = totalsalh-totalhojassalh;
-                                                    nuevacantsalh=totalcanth-cantsalh;
-                                                    identradas_="";
-                                                    PEPS2(cpsalh,totalhojassalh,cantsalh);
-                                                    mimodelo.sumarexistencia(cpsalh);
-                                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
-                                                    detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
-                                                    epsalh ="";
-                                                }
-                                            }
-                                        }catch(Exception evt){
-                                            break;
-                                        }
-                                        
-                                    }
-                                    
-                                        if(altasalidah==true&&detallesalidah==true){
-                                              mensaje(1,"Salida de Hoja agregada correctamente");
-                                              this.borrarFormularioMovimientosPapel();
-                                        }
-                                }catch(SQLException ex){
-                                    mensaje(3,ex.getMessage());
-                                    break;
-                                }
-                            }
-                           break;
-                       case 1:
-                           Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
-                            confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
-                            if (confir==JOptionPane.OK_OPTION){
-                                String fechaentrada=fec.replaceAll("-", "");
+                }   
+            } catch (Exception ex) {
+            //Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        switch(this.modificarsalidah){
+            case 0:
+                Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
+                confir = this.mensajeConfirmacion("Estas Seguro de Realizar la Salida", "Salida");
+                if(confir==JOptionPane.OK_OPTION){
+                    ResultSet buscarMaxSalidah=null;
+                    boolean detallesalidah=false;
+                    int id_salidah=0;
+                    try{
+                        buscarMaxSalidah=mimodelo.bucarMaxSalidah();
+                        while(buscarMaxSalidah.next()){
+                            id_salidah=buscarMaxSalidah.getInt(1);
+                        }
+                        id_salidah++;
+                        String fechasalidah = fec.replaceAll("-", "");
+                        epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                        boolean altasalidah=mimodelo.altaSalidah(folio, t1, t2, t3,opsalh, epsalh, clientesalh, propsalh, maqsalh, fechasalidah, titulosalh, id_responsable,Obs,tiposal);
+                        for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+                            try{
+                                String clavePapel = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
+                                int kghoj = Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
+                                int bobpaq= Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
+                                this.costoconsumo=0.0;
+                                entradas="";
+                                this.Peps3(clavePapel, kghoj,bobpaq);
+                                mimodelo.sumarexistencia(clavePapel);
                                 epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
-                                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
-                                    for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
-                                        
-                                        try{
-                                            String cpsalh = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
-                                            int totalhojassalh =Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
-                                            int contsalh=0;
-                                            int cantsalh=Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
-                                            int restosalh=0;
-                                             costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
-                                            totalcosto =new  BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
-                                            ResultSet existenciaPapelh = mimodelo.buscarExistenciaPapelfecha(cpsalh,fec);
-                                            int totalsalh = 0,nuevototsalh, totalcanth=0,nuevacantsalh;
-                                            if(existenciaPapelh.next()){
-                                                existenciaPapelh.beforeFirst();
-                                                    while(existenciaPapelh.next()){
-                                                    totalsalh=existenciaPapelh.getInt("cantidad");
-                                                    totalcanth=existenciaPapelh.getInt("presentacion");
-                                                }
-                                            }else{
-                                                mensaje(3,"EL PAPEL NO EXISTE");
-                                                return;
-                                            }
-                                            if(totalhojassalh>totalsalh){
-                                                mensaje(2,"No Tienes Suficiente Existencia en la Salida #"+(i+1)+". El total es de "+totalhojassalh);
-                                                return;
-                                            }else{
-                                                if(cantsalh>totalcanth){
-                                                     mensaje(2,"No Tienes Suficiente Cantidad en la Salida #"+(i+1)+". El total es de "+cantsalh);
-                                                     return;
-                                                }else{
-                                                    if(totalhojassalh==totalsalh&&cantsalh<totalcanth){
-                                                        mensaje(3,"Verifica el Numero de Paquetes");
-                                                        return;
-                                                    }
-                                                    if(cantsalh==totalcanth&&totalhojassalh<totalsalh){
-                                                         mensaje(3,"Verifica el Total de Hojas");
-                                                        return;
-                                                    }
-                                                    nuevototsalh = totalsalh-totalhojassalh;
-                                                    nuevacantsalh=totalcanth-cantsalh;
-                                                    identradas_="";
-                                                    PEPS2(cpsalh,totalhojassalh,cantsalh);
-                                                    mimodelo.sumarexistencia(cpsalh);
-                                                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
-                                                    mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),cpsalh,totalhojassalh,contsalh,cantsalh,restosalh,costo+"",totalcosto+"",identradas_,epsalh);
-                                                    epsalh="";
-                                                }
-                                            }
-                                        }catch(Exception evt){
-                                            break;
-                                        }
-                                    }
-                                    
-                                    if(modifEntrada==true){
-                                      mensaje(1,"Modificacion Correcta");
-                                      this.borrarFormularioMovimientosPapel();
-                                      this.movimientos.__MenuMovimiento.setEnabled(true);
-                                    this.movimientos.__Archivo.setEnabled(true);
-                                    this.movimientos.__Edicion.setEnabled(true);
-                                    this.movimientos.__MODIFICACIONH.setEnabled(true);
-                                    this.movimientos.JPanel.setEnabledAt(0, true);
-                                    this.movimientos.JPanel.setEnabledAt(1, true); 
-                                    this.movimientos.JPanel.setEnabledAt(2, true); 
-                                    this.movimientos.JPanel.setEnabledAt(3, true);
-                                    }else{
-                                    mensaje(3,"Modificacion Incorrecta");
-                                }
+                                Double costo = costoconsumo/kghoj;
+                                detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
+                                epsalh =""; 
+                            }catch(Exception evt){
+                                break;
                             }
-                           break;
+                        }
+                        if(altasalidah==true&&detallesalidah==true){
+                              mensaje(1,"Salida de Hoja agregada correctamente");
+                              this.borrarFormularioMovimientosPapel();
+                        }
+                    }catch(SQLException ex){
+                        mensaje(3,ex.getMessage());
+                        break;
+                    }
                 }
+                break;
+            case 1:
+                Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Hoja");
+                confir=mensajeConfirmacion("Estas Seguro de modificar la salida de hoja","Aceptar");
+                if (confir==JOptionPane.OK_OPTION){
+                    String fechaentrada=fec.replaceAll("-", "");
+                    epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                    boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
+                    for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+                        try{
+                            String clavePapel = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
+                                int kghoj = Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
+                                int bobpaq= Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
+                                this.costoconsumo=0.0;
+                                entradas="";
+                                this.Peps3(clavePapel, kghoj,bobpaq);
+                                mimodelo.sumarexistencia(clavePapel);
+                                epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                                Double costo = costoconsumo/kghoj;
+                                mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
+                                epsalh="";
+                        }catch(Exception evt){
+                            break;
+                        }
+                    }
+                    if(modifEntrada==true){
+                        mensaje(1,"Modificacion Correcta");
+                        this.borrarFormularioMovimientosPapel();
+                        this.movimientos.__MenuMovimiento.setEnabled(true);
+                        this.movimientos.__Archivo.setEnabled(true);
+                        this.movimientos.__Edicion.setEnabled(true);
+                        this.movimientos.__MODIFICACIONH.setEnabled(true);
+                        this.movimientos.JPanel.setEnabledAt(0, true);
+                        this.movimientos.JPanel.setEnabledAt(1, true); 
+                        this.movimientos.JPanel.setEnabledAt(2, true); 
+                        this.movimientos.JPanel.setEnabledAt(3, true);
+                    }else{
+                        mensaje(3,"Modificacion Incorrecta");
+                    }
+                }
+                break;
+        }
     }
     int totalkkgssss;
     public void modificacionsalb(){
@@ -9339,98 +9029,42 @@ public class jControlador implements ActionListener{
         }
         tmpkg=0.0;
         totalkkgssss=0;
-        
-        switch(modificarsalidab){
-            case 0:
-                for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
-                    try{
-                        tmpclv= movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
-                        invinikgs = Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 1).toString());
-                        invinibob = Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 2).toString());
-                        surkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 3).toString());
-                        surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
-                        devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
-                        devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                        costo= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 7)+"");
-                        totalcosto=new BigDecimal (movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8)+"");
-                        tmpkg = invinikgs + surkgs - devkgs+0.0;
-                        totalkkgssss+= tmpkg;
-                        tmpbob =  invinibob + surbob -devbob+0.0;
-                        ResultSet buscarExistenciaPapelB = mimodelo.buscarExistenciaPapelfecha(tmpclv,fec);
-                        while(buscarExistenciaPapelB.next()){
-                            exiskgs=buscarExistenciaPapelB.getInt("cantidad");
-                            exisbob=buscarExistenciaPapelB.getInt("presentacion");
-                        }
-                        if(exiskgs<tmpkg){
-                            mensaje(3, "No Tienes Suficientes Kilos para la Salida #"+(i+1)+". El Total es de "+exiskgs);
+        for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
+            try{
+                String clavePapel=movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
+                int akghoj=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 1).toString());
+                int bkghoj=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 3).toString());
+                int ckghoj=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
+                int conkghoj=akghoj+bkghoj-ckghoj;
+                int abobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 2).toString());
+                int bbobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
+                int cbobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
+                int conbobpaq=abobpaq+bbobpaq-cbobpaq;
+                ResultSet existenciaactual = mimodelo.buscarExistenciaPapelfecha2(clavePapel, fec);
+                while(existenciaactual.next()){
+                    int exiskghoj = existenciaactual.getInt("kghoj");
+                    int exisbobpaq = existenciaactual.getInt("bobpaq");
+                    if(conkghoj>exiskghoj){
+                        mensaje(2,"no hay suficientes kghoj en la salida "+(i+1));
+                        return;
+                    }else{
+                        if(conbobpaq>exisbobpaq){
+                            mensaje(2,"no hay suficientes bobpaq en la salida "+(i+1));
                             return;
-                        }else if(exisbob<tmpbob){
-                                mensaje(3, "No Tienes Suficientes Bobinas para la Salida #"+(i+1)+". El Total es de "+exisbob);
-                                return;
-                        } else{
-                            int tmpkgi = ( int) Math.floor ( tmpkg );
-                            newkgs =exiskgs-tmpkgi;
-                            int tmpbobi = ( int) Math.floor ( tmpbob );
-                            newbob = exisbob-tmpbobi;
-                            newkgs=( int) Math.floor ( tmpkg );
-                            newbob=( int) Math.floor ( tmpbob );
+                        }else{
+                            totalkkgssss+= conkghoj;
+                            tmppliegos = Double.parseDouble(totalkkgssss+"")/Double.parseDouble(factor);
+                            emergente.__TotalSurtidoKG.setText(conkghoj+"");
+                            emergente.__TotalSurtidoPliegos.setText(tmppliegos+"");
+                            emergente.setVisible(true);
+                            emergente.setLocationRelativeTo(null);
+                            emergente.__DesperdicioKG.requestFocus();
                         }
-                    }catch(Exception evt){
-                        break;
                     }
-                }
-                tmppliegos = Double.parseDouble(totalkkgssss+"")/Double.parseDouble(factor);
-                emergente.__TotalSurtidoKG.setText(totalkkgssss+"");
-                emergente.__TotalSurtidoPliegos.setText(tmppliegos+"");
-                emergente.setVisible(true);
-                emergente.setLocationRelativeTo(null);
-                emergente.__DesperdicioKG.requestFocus();
-                break;
-            case 1:
-                for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
-                    try{
-                        tmpclv= movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
-                        invinikgs = Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 1).toString());
-                        invinibob = Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 2).toString());
-                        surkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 3).toString());
-                        surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
-                        devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
-                        devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                        costo= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 7)+"");
-                        totalcosto=new BigDecimal (movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8)+"");
-                        tmpkg = invinikgs + surkgs - devkgs+0.0;
-                        totalkkgssss+= tmpkg;
-                        tmpbob =  invinibob + surbob -devbob+0.0;
-                        ResultSet buscarExistenciaPapelB = mimodelo.buscarExistenciaPapelfecha(tmpclv,fec);
-                        while(buscarExistenciaPapelB.next()){
-                            exiskgs=buscarExistenciaPapelB.getInt("cantidad");
-                            exisbob=buscarExistenciaPapelB.getInt("presentacion");
-                        }
-                        if(exiskgs<tmpkg){
-                            mensaje(3, "No Tienes Suficientes Kilos para la Salida #"+(i+1)+". El Total es de "+exiskgs);
-                            return;
-                        }else if(exisbob<tmpbob){
-                                mensaje(3, "No Tienes Suficientes Bobinas para la Salida #"+(i+1)+". El Total es de "+exisbob);
-                                return;
-                        } else{
-                            int tmpkgi = ( int) Math.floor ( tmpkg );
-                            newkgs =exiskgs-tmpkgi;
-                            int tmpbobi = ( int) Math.floor ( tmpbob );
-                            newbob = exisbob-tmpbobi;
-                            newkgs=( int) Math.floor ( tmpkg );
-                            newbob=( int) Math.floor ( tmpbob );
-                        }
-                    }catch(Exception evt){
-                        break;
-                    }
-                }
-                tmppliegos = Double.parseDouble(totalkkgssss+"")/Double.parseDouble(factor);
-                emergente.__TotalSurtidoKG.setText(totalkkgssss+"");
-                emergente.__TotalSurtidoPliegos.setText(tmppliegos+"");
-                emergente.setVisible(true);
-                emergente.setLocationRelativeTo(null);
-                emergente.__DesperdicioKG.requestFocus();
-                break;
+                }   
+            } catch (Exception ex) {
+            //Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     public int busquedaid(JTextField campo){
@@ -9695,4 +9329,84 @@ public class jControlador implements ActionListener{
         }
         return 0;
     }
+    
+    public void Peps3(String clavePapel, int conkghoj, int conbobpaq) {
+        try {
+            ResultSet primeraentrada = mimodelo.primeraentrada(clavePapel);
+            while(primeraentrada.next()){
+                int identrada= primeraentrada.getInt("id");
+                int temkghoj = primeraentrada.getInt("kghoj");
+                int tembobpaq = primeraentrada.getInt("bobpaq");
+                Double costoentrada = primeraentrada.getDouble("costo");
+                newtemkghoj = temkghoj-conkghoj;
+                newtembobpaq = tembobpaq-conbobpaq;
+                if(newtemkghoj<0){
+                    //falta consumo
+                    mimodelo.updateteporalde(0, 0, identrada);
+                    mimodelo.sumarexistencia(clavePapel);
+                    newtemkghoj=newtemkghoj*-1;
+                    newtembobpaq=newtembobpaq*-1;
+                    costoconsumo = costoconsumo +(costoentrada *temkghoj);
+                    Peps3(clavePapel,newtemkghoj,newtembobpaq);
+                    entradas+=identrada+","+temkghoj+","+tembobpaq+"/";
+                }else{
+                    costoconsumo = costoconsumo +(costoentrada *conkghoj);
+                    entradas+=identrada+","+conkghoj+","+conbobpaq+"/";
+                    mimodelo.updateteporalde(newtemkghoj, newtembobpaq, identrada);
+                    mimodelo.sumarexistencia(clavePapel);
+                    return;
+                }
+            }
+        } catch (SQLException ex) {
+            
+        }
+    }
+    
+    public void antipeps3(String entradas){
+        String entrada[] = entradas.split("/");
+        for(int i=0;i<entrada.length;i++){
+            try {
+                String detalleentrada[]=entrada[i].split(",");
+                int identrada= Integer.parseInt(detalleentrada[0]);
+                int kghoj= Integer.parseInt(detalleentrada[1]);
+                int bobpaq= Integer.parseInt(detalleentrada[2]);
+                int temkghoj=0,tembobpaq=0;
+                String clavePapel="";
+                ResultSet buscaentrada = mimodelo.buscaentrada(identrada);
+                while(buscaentrada.next()){
+                    temkghoj=buscaentrada.getInt("kghoj");
+                    tembobpaq=buscaentrada.getInt("bobpaq");
+                    clavePapel=buscaentrada.getString("clave_papel");
+                }
+                int newtemkghoj = temkghoj+kghoj;
+                int newtembobpaq = tembobpaq+bobpaq;
+                mimodelo.updateteporalde(newtemkghoj, newtembobpaq, identrada);
+                mimodelo.sumarexistencia(clavePapel);
+            } catch (SQLException ex) {
+                //Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void oppp(){
+        String op = movimientos.__OPSalidaBobina.getText();
+        if(op.isEmpty()){
+            mensaje(3,"Captura la orden de producción");
+        }else{
+            confir = mensajeConfirmacion("¿Es correcta la Orden de Produccion "+op+"?","Confirma");  
+            if(confir==JOptionPane.YES_OPTION){
+                tiro.op = op;
+                tiro.guardar=0;
+                movimientos.setEnabled(false);
+                tiro.setVisible(true);
+                tiro.setLocationRelativeTo(null);                        
+                this.movimientos.setEnabled(false);
+            }
+        } 
+    }
+    
+    
+    
+   
+    
 }

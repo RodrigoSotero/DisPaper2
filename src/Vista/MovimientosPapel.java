@@ -1095,50 +1095,41 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __tablaSalida.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         __tablaSalida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Clave de Papel", "Total de Salida (Kg/Hojas)", "Cantidad de Paq/Bobina", "Costo (Kg/Millar)", "Total de Costo"
+                "Clave de Papel", "Total de Salida (Kg/Hojas)", "Cantidad de Paq/Bobina"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         __tablaSalida.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         __tablaSalida.setNextFocusableComponent(__MODIFICACIONENTRADA);
         __tablaSalida.setOpaque(false);
         __tablaSalida.setRowHeight(25);
+        __tablaSalida.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(__tablaSalida);
         if (__tablaSalida.getColumnModel().getColumnCount() > 0) {
             __tablaSalida.getColumnModel().getColumn(0).setResizable(false);
-            __tablaSalida.getColumnModel().getColumn(0).setPreferredWidth(190);
+            __tablaSalida.getColumnModel().getColumn(0).setPreferredWidth(218);
             __tablaSalida.getColumnModel().getColumn(0).setCellEditor(new javax.swing.DefaultCellEditor(__clavePapelsalida));
             __tablaSalida.getColumnModel().getColumn(1).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(1).setPreferredWidth(160);
             __tablaSalida.getColumnModel().getColumn(2).setResizable(false);
             __tablaSalida.getColumnModel().getColumn(2).setPreferredWidth(140);
-            __tablaSalida.getColumnModel().getColumn(3).setMinWidth(100);
-            __tablaSalida.getColumnModel().getColumn(4).setResizable(false);
-            __tablaSalida.getColumnModel().getColumn(4).setPreferredWidth(110);
         }
 
         __OrdenProduccionSalida.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -1315,16 +1306,13 @@ public class MovimientosPapel extends javax.swing.JFrame {
                                         .addGap(4, 4, 4)
                                         .addComponent(__ClientSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(__etqNewEliCliente1)))))
+                                        .addComponent(__etqNewEliCliente1))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(76, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidasGLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(__etqFechaSalida)
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidasGLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidasGLayout.createSequentialGroup()
                 .addGap(238, 238, 238)
                 .addComponent(__etqLimpiarTablaSalida)
@@ -1416,9 +1404,9 @@ public class MovimientosPapel extends javax.swing.JFrame {
                 .addComponent(jLabel57)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel58)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(__pnlSalidasGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(__pnlSalidasGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(__MODIFICACIONSALIDA, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1444,34 +1432,27 @@ public class MovimientosPapel extends javax.swing.JFrame {
 
         __tablaSalidaHoja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Clave de Papel", "Total de Hojas", "Cantidad de Paq/Tarima", "Costo", "Costo Total"
+                "Clave de Papel", "Total de Hojas", "Cantidad de Paq/Tarima"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         __tablaSalidaHoja.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -1486,8 +1467,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
             __tablaSalidaHoja.getColumnModel().getColumn(1).setPreferredWidth(150);
             __tablaSalidaHoja.getColumnModel().getColumn(2).setResizable(false);
             __tablaSalidaHoja.getColumnModel().getColumn(2).setPreferredWidth(200);
-            __tablaSalidaHoja.getColumnModel().getColumn(3).setResizable(false);
-            __tablaSalidaHoja.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -1825,15 +1804,15 @@ public class MovimientosPapel extends javax.swing.JFrame {
                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jLabel59))
-                    .addComponent(jLabel60)
-                    .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                            .addComponent(__etqLimpiarTablaSalH, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(__MODIFICACIONH, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(__ACEPTARSALIDAH, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                        .addComponent(__etqLimpiarTablaSalH, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(305, 305, 305)
+                        .addComponent(__MODIFICACIONH, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(__ACEPTARSALIDAH, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel60)))
                 .addGap(157, 157, 157))
         );
         __pnlSalidaHojaLayout.setVerticalGroup(
@@ -1903,9 +1882,9 @@ public class MovimientosPapel extends javax.swing.JFrame {
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel60)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(__ACEPTARSALIDAH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(__MODIFICACIONH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1932,34 +1911,27 @@ public class MovimientosPapel extends javax.swing.JFrame {
 
         __tablaSalidaBobinaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Clave de Papel", "Total de Kilos", "# de Bobinas", "Total de Kilos", "# de Bobinas", "Total de Kilos", "# de Bobinas", "Costo", "Costo Total"
+                "Clave de Papel", "Total de Kilos", "# de Bobinas", "Total de Kilos", "# de Bobinas", "Total de Kilos", "# de Bobinas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, true, false
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         __tablaSalidaBobinaInventario.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -1982,8 +1954,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
             __tablaSalidaBobinaInventario.getColumnModel().getColumn(5).setPreferredWidth(90);
             __tablaSalidaBobinaInventario.getColumnModel().getColumn(6).setResizable(false);
             __tablaSalidaBobinaInventario.getColumnModel().getColumn(6).setPreferredWidth(90);
-            __tablaSalidaBobinaInventario.getColumnModel().getColumn(7).setResizable(false);
-            __tablaSalidaBobinaInventario.getColumnModel().getColumn(8).setResizable(false);
         }
 
         __ACEPTARSALIDAB.setText("Aceptar");
@@ -2430,23 +2400,6 @@ public class MovimientosPapel extends javax.swing.JFrame {
                         .addGap(140, 140, 140)
                         .addComponent(jLabel64))
                     .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
-                        .addGap(300, 300, 300)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(__etqLimpiarTablaSalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(560, 560, 560)
-                        .addComponent(__MODIFICACIONB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(__ACEPTARSALIDAB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(__pnlSalidaBobinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, __pnlSalidaBobinaLayout.createSequentialGroup()
@@ -2543,7 +2496,24 @@ public class MovimientosPapel extends javax.swing.JFrame {
                                     .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
                                         .addGap(5, 5, 5)
                                         .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(__pnlSalidaBobinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
+                                .addComponent(__etqLimpiarTablaSalB, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(486, 486, 486)
+                                .addComponent(__MODIFICACIONB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(__ACEPTARSALIDAB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
+                                .addGap(250, 250, 250)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         __pnlSalidaBobinaLayout.setVerticalGroup(
@@ -2634,20 +2604,18 @@ public class MovimientosPapel extends javax.swing.JFrame {
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(7, 7, 7)
                 .addComponent(jLabel64)
-                .addGap(17, 17, 17)
+                .addGap(11, 11, 11)
                 .addGroup(__pnlSalidaBobinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(__pnlSalidaBobinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(__pnlSalidaBobinaLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(__etqLimpiarTablaSalB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(__MODIFICACIONB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(__ACEPTARSALIDAB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(__ACEPTARSALIDAB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(__etqLimpiarTablaSalB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         JPanel.addTab("4. Salidas / Bobinas", __pnlSalidaBobina);

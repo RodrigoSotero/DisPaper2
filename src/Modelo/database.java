@@ -29,7 +29,7 @@ public class database {
 
   /* DATOS PARA LA CONEXION */
   /** base de datos por defecto es test*/
-  static String db = "dis_paper";
+  static String db = "dis_paper2";
   /** usuario */
   static String user = "root";
   /** contraseña de MySql*/
