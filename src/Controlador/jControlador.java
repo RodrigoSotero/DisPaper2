@@ -199,6 +199,15 @@ public class jControlador implements ActionListener{
         traspaso.__CantidadPT.setVisible(true);
         traspaso.__etqCantidad.setVisible(true);
         traspaso.__etqCantidadPT.setVisible(true); 
+        ResultSet claves = mimodelo.buscarTodosPapeles();
+        try {
+            while(claves.next()){
+                String clave = claves.getString("clavePapel");
+                mimodelo.costopromedio(clave);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     private void maximosalidah() {
         try {
@@ -5796,6 +5805,7 @@ public class jControlador implements ActionListener{
                             int cantcl=0,cantcl1=0, nuevaexistenciacl1=0,nuevaexistenciacl=0,nuevapresentacioncl=0,nuevapresentacioncl1=0,presentacioncl=0,presentacioncl1=0;;
                             int agregarexistencia = Integer.parseInt(traspaso.__CantidadPT.getText()); //kghojas
                             int presentacion = Integer.parseInt(traspaso.__CantidadTotal.getText()); //paqbob
+                            Double costoentrada = Double.parseDouble(traspaso.__CostoTrasEntrada.getText());
                             Object object=null;
                             if(cliente==cliente1){
                                 mensaje(2,"No se puede efectuar un traspaso al mismo propietario");
@@ -5862,9 +5872,6 @@ public class jControlador implements ActionListener{
                                         break;
                                     }
                                     String foliotras=traspaso.__folioT.getText().toString();
-                                    double costotras=Double.parseDouble(traspaso.__CostoTrasEntrada.getText().toString());
-                                    System.out.println(costotras);
-                                    mimodelo.Traspaso(foliotras, clavecl, clavePapcl1, agregarexistencia+"", presentacion+"", fec, costotras+"");
                                     String folioentrada = mimodelo.buscarFolioEntrada();
                                     String foliosalida = mimodelo.buscarFolioSalida();
                                     ResultSet buscarMaxSalida = mimodelo.bucarMaxSalida();
@@ -5875,14 +5882,15 @@ public class jControlador implements ActionListener{
                                     buscarMaxSalida.close();
                                     id_salida++;
                                     int propietario = obtenerpropietario(clavecl);
-                                    mimodelo.altaSalida(foliosalida,"-", "-", "-", "N/A", "N/A","-", cliente, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,0);
-                                    identradas_="";
-                                    this.PEPS2(clavecl,agregarexistencia,presentacion);
-                                    mimodelo.altaDetalleSalida(id_salida,clavecl,agregarexistencia+"",presentacion+"",costotras+"",(costotras*agregarexistencia)+"",identradas_);
-                                    System.out.println(costotras);
+                                    mimodelo.altaSalida(foliosalida,"-", "-", "-", "N/A", "N/A","-", cliente, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,19);
+                                    entradas="";
+                                    costoconsumo=0.0;
+                                    this.Peps3(clavecl,agregarexistencia,presentacion);
+                                    //this.PEPS2(clavecl,agregarexistencia,presentacion);
+                                    Double costo = costoconsumo/agregarexistencia;
+                                    mimodelo.altaDetalleSalida(id_salida,clavecl,agregarexistencia+"",presentacion+"",costo+"",costoconsumo+"",entradas);
                                      mimodelo.altaEntrada(folioentrada,"-", "-", "-", "N/A", "N/A","-", cliente1, 0, id_responsable, fec, 12,"TRASPASO CON LA CLAVE DE TRASPASO "+foliotras,0);
                                      mimodelo.sumarexistencia(clavecl);
-
                                     ResultSet ubic = mimodelo.buscarUbicacion(clavecl);
                                     String ubicacion="";
                                     while(ubic.next()){
@@ -5895,11 +5903,11 @@ public class jControlador implements ActionListener{
                                     }
                                     buscarMaxEntrada.close();
                                     //id_entrada++;
-                                    mimodelo.altaDetalleEntrada(id_entrada, clavePapcl1, agregarexistencia+"", presentacion+"",ubicacion,costotras+"", (costotras*agregarexistencia)+"");
+                                    mimodelo.altaDetalleEntrada(id_entrada, clavePapcl1, agregarexistencia+"", presentacion+"",ubicacion,costoentrada+"", (costoentrada*agregarexistencia)+"");
                                     mimodelo.sumarexistencia(clavePapcl1);
                                     mimodelo.costopromedio(clavePapcl1);
                                     mimodelo.ubicacion(clavePapcl1, ubicacion);
-                                    
+                                    mimodelo.Traspaso(foliotras, clavecl, clavePapcl1, agregarexistencia+"", presentacion+"", fec, costoconsumo+"");
                                     mensaje(1,"traspaso correcto");
                                     addItems("traspaso");
                                     ap.setEnabled(true);
