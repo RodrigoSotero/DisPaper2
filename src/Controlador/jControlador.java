@@ -3633,18 +3633,7 @@ public class jControlador implements ActionListener{
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavepapelbobina.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 7);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -3671,18 +3660,7 @@ public class jControlador implements ActionListener{
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavepapelhoja.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalidaHoja.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 3);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -3702,31 +3680,7 @@ public class jControlador implements ActionListener{
                     mensaje(3, ex.getMessage());
                 }
             }
-        });        
-        this.movimientos.__tablaSalida.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalida.getSelectedColumn();
-                int fila = movimientos.__tablaSalida.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 1)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalida.getValueAt(fila, 3)+"");
-                            Double totcos= tot*cos;
-                            movimientos.__tablaSalida.setValueAt(totcos, fila, 4);
-                        }
-                    }catch(Exception e){
-                        mensaje(3,"completa los campos");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });        
+        });         
         this.movimientos.__tablaEntrada.addKeyListener(new java.awt.event.KeyAdapter(){
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 
@@ -3751,82 +3705,14 @@ public class jControlador implements ActionListener{
                 
             }
         });        
-        this.movimientos.__tablaSalidaHoja.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalidaHoja.getSelectedColumn();
-                int fila = movimientos.__tablaSalidaHoja.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 1)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalidaHoja.getValueAt(fila, 3)+"");
-                            Double totcos= tot*cos;
-                            movimientos.__tablaSalidaHoja.setValueAt(totcos, fila, 4);
-                        }
-                    }catch(Exception e){
-                        mensaje(3,"completa los campos");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });
-        this.movimientos.__tablaSalidaBobinaInventario.addKeyListener(new java.awt.event.KeyAdapter(){
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                int columna = movimientos.__tablaSalidaBobinaInventario.getSelectedColumn();
-                int fila = movimientos.__tablaSalidaBobinaInventario.getSelectedRow();
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try{
-                        if(columna==3||columna==1||columna==2||columna==4||columna==5||columna==6||columna==7||columna==8){
-                            Double tot=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 1)+"");
-                            tot+=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 3)+"");
-                            tot-=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 5)+"");
-                            Double cos=Double.parseDouble(movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, 7)+"");
-                            Double totcos= tot*cos;
-                            
-                            //1+3-5
-                            
-                            movimientos.__tablaSalidaBobinaInventario.setValueAt(totcos, fila, 8);
-                            /*for(int i=0;i<6;i++){
-                                Object valor = movimientos.__tablaSalidaBobinaInventario.getValueAt(fila, i);
-                                if(valor==null){
-                                    mensaje(2,"Completa los campos...");
-                                }
-                            }*/
-                        }
-                    }catch(Exception e){
-                        mensaje(2,"Completa los campos...");
-                    }
-                }
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                
-            }
-        });        
+        
+        
         this.movimientos.__clavePapelsalida.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    try {
-                        String parametro = movimientos.__clavePapelsalida.getText();
-                        ResultSet costo = mimodelo.costoprom(parametro);
-                        int fila =movimientos.__tablaSalida.getSelectedRow();
-                        while(costo.next()){
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(costo.getString("preciopromedio")+""), fila, 3);
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+                
             }
             public void keyReleased(java.awt.event.KeyEvent evt){
                 try {
@@ -5422,8 +5308,6 @@ public class jControlador implements ActionListener{
                             }
                             String entradaas = detallesalida.getString("entradas");
                             this.antipeps3(entradaas);
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("costo")), a, 3);
-                            movimientos.__tablaSalida.setValueAt(Double.parseDouble(detallesalida.getString("totalcosto")), a, 4);
                             mimodelo.sumarexistencia(detallesalida.getString("clavepapel"));
                             System.err.println(idsalidas[a]+"el id de la salida " +a);
                            ResultSetMetaData metaData = detallesalida.getMetaData();
@@ -5596,8 +5480,6 @@ public class jControlador implements ActionListener{
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), a, 2);
-                        movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("costo")),a,3);
-                        movimientos.__tablaSalidaHoja.setValueAt(Double.parseDouble(detallesalidah.getString("totalcosto")),a,4);
                         entradas=detallesalidah.getString("identradas");
                         this.antipeps3(entradas);
                         mimodelo.sumarexistencia(detallesalidah.getString("clave_papel"));
@@ -5714,8 +5596,6 @@ public class jControlador implements ActionListener{
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totkgsdev"), s, 5);
                                movimientos.__tablaSalidaBobinaInventario.setValueAt(detallesalidab.getInt("totbobdev"), s, 6);
                                mimodelo.sumarexistencia(detallesalidab.getString("clave_papel"));
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("costo")), s, 7);
-                               movimientos.__tablaSalidaBobinaInventario.setValueAt(Double.parseDouble(detallesalidab.getString("totalcosto")), s, 8);
                                String entradass = detallesalidab.getString("entradas");
                                antipeps3(entradass);
                                emergente.__CapaKG.setText(detallesalidab.getString("capa"));
@@ -6129,8 +6009,7 @@ public class jControlador implements ActionListener{
                                         surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
                                         devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
                                         devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                                        costo = new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 7)+"");
-                                        totalcosto= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8).toString()+"");
+                                        
                                         tmpkg = invinikgs + surkgs - devkgs+0.0;
                                         tmpbob =  invinibob + surbob -devbob+0.0;
                                         conkghoj = invinikgs + surkgs - devkgs;
@@ -6149,6 +6028,7 @@ public class jControlador implements ActionListener{
                                     entradas="";
                                     this.costoconsumo=0.0;
                                     this.Peps3(tmpclv, conkghoj, conbobpaq);
+                                    Double costo = costoconsumo/conkghoj;
                                     boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",totalkil,entradas);
                                     //para reporte en 0
                                     totalkil="0";
@@ -6215,6 +6095,7 @@ public class jControlador implements ActionListener{
                                     entradas="";
                                     this.costoconsumo=0.0;
                                     this.Peps3(tmpclv, conkghoj, conbobpaq);
+                                    Double costo = costoconsumo/conkghoj;
                                     boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",entradas,totalkil);
                                     //para reporte en 0
                                     totalkil="0";
@@ -8804,15 +8685,14 @@ public class jControlador implements ActionListener{
                                 String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
                                 int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
                                 int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                                String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
-                                String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
                                 int conkghoj=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
                                 int conbobpaq= Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
                                 costoconsumo=0.0;
                                 entradas="";
                                 this.Peps3(clavePapel, conkghoj, conbobpaq);
                                 mimodelo.sumarexistencia(clavePapel);
-                                detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo,costoconsumo+"",entradas);
+                                Double costo = costoconsumo/conkghoj;
+                                detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo+"",costoconsumo+"",entradas);
                             }catch(Exception evt){
                                 break;
                             }
@@ -8841,18 +8721,14 @@ public class jControlador implements ActionListener{
                     for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
                         try{
                             String clavePapel=movimientos.__tablaSalida.getValueAt(i, 0).toString();
-                            int totalsalida =Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
-                            int cantidadsalida=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
-                            String costo=movimientos.__tablaSalida.getValueAt(i, 3).toString();
-                            String totalcosto=movimientos.__tablaSalida.getValueAt(i, 4).toString();
                             int conkghoj=Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 1).toString());
                             int conbobpaq= Integer.parseInt(movimientos.__tablaSalida.getValueAt(i, 2).toString());
                             costoconsumo=0.0;
                             entradas="";
                             this.Peps3(clavePapel, conkghoj, conbobpaq);
                             mimodelo.sumarexistencia(clavePapel);
-                            
-                            mimodelo.modifDetalleSalida(Integer.parseInt(idsalidas[i]),clavePapel,conkghoj+"",conbobpaq+"",costo,costoconsumo+"",entradas);
+                            Double costo = costoconsumo/conkghoj;
+                            mimodelo.modifDetalleSalida(Integer.parseInt(idsalidas[i]),clavePapel,conkghoj+"",conbobpaq+"",costo+"",costoconsumo+"",entradas);
                         }catch(Exception evt){
                             break;
                         }
@@ -8981,13 +8857,12 @@ public class jControlador implements ActionListener{
                                 String clavePapel = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                 int kghoj = Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
                                 int bobpaq= Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
-                                costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
-                                totalcosto =new BigDecimal( movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
                                 this.costoconsumo=0.0;
                                 entradas="";
                                 this.Peps3(clavePapel, kghoj,bobpaq);
                                 mimodelo.sumarexistencia(clavePapel);
                                 epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                                Double costo = costoconsumo/kghoj;
                                 detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
                                 epsalh =""; 
                             }catch(Exception evt){
@@ -9016,13 +8891,12 @@ public class jControlador implements ActionListener{
                             String clavePapel = movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
                                 int kghoj = Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 1).toString());
                                 int bobpaq= Integer.parseInt(movimientos.__tablaSalidaHoja.getValueAt(i, 2).toString());
-                                costo = new BigDecimal(movimientos.__tablaSalidaHoja.getValueAt(i, 3).toString());
-                                totalcosto =new BigDecimal( movimientos.__tablaSalidaHoja.getValueAt(i, 4).toString());
                                 this.costoconsumo=0.0;
                                 entradas="";
                                 this.Peps3(clavePapel, kghoj,bobpaq);
                                 mimodelo.sumarexistencia(clavePapel);
                                 epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                                Double costo = costoconsumo/kghoj;
                                 mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
                                 epsalh="";
                         }catch(Exception evt){
@@ -9521,5 +9395,9 @@ public class jControlador implements ActionListener{
             }
         } 
     }
+    
+    
+    
+   
     
 }

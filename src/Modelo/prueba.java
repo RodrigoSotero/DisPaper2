@@ -28,20 +28,7 @@ public class prueba {
     
     Double totalbd, cantidadbd;
     public prueba(){
-        try {
-            ResultSet merma = merma();
-            while(merma.next()){
-                try {
-                    String op = merma.getString("id_op");
-                    String mermaa = merma.getString("merma");
-                    this.merma(op, mermaa);
-                } catch (SQLException ex) {
-                    Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        mimodelo.bp("654654-CHIDANUEVACEROS");
     }
     
     public ResultSet merma() {
@@ -169,10 +156,11 @@ public class prueba {
                         System.out.println("no hay suficientes bobpaq");
                         return;
                     }else{
-                        Peps3(clavePapel,conkghoj,conbobpaq);
+                        /*Peps3(clavePapel,conkghoj,conbobpaq);
                         this.sumarexistencia(clavePapel);
                         System.out.println(costoconsumo);
-                        System.out.println(entradas);
+                        System.out.println(entradas);*/
+                        
                     }
                 }
             }
