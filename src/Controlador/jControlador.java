@@ -7793,6 +7793,15 @@ public class jControlador implements ActionListener{
         this.borrarFormularioTiro();
         this.movimientos.JPanel.setEnabledAt(2, true); 
         
+        ResultSet claves = mimodelo.buscarTodosPapeles();
+        try {
+            while(claves.next()){
+                String clave = claves.getString("clavePapel");
+                mimodelo.costopromedio(clave);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void limpiarTabla(JTable tabla){
         try {

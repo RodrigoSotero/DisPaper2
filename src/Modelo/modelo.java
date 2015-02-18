@@ -1059,6 +1059,20 @@ public class modelo extends database {
             }
     }
     
+    public ResultSet buscarTodosPapeles() {
+        String q = "SELECT clavePapel FROM inventario ";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
+    
+   
+    
     public ResultSet buscarExistenciaPapelfecha(String clavePapel,String fecha) {
         String q = "call sumaxistencia_fecha('"+clavePapel+"','"+fecha+"');";
         try {
@@ -2134,7 +2148,7 @@ public class modelo extends database {
         }
     }
     public boolean costopromedio(String clave) {
-        String q1="CALL preciopromedio('"+clave+"')";
+        String q1="CALL preciopromedio2('"+clave+"')";
          try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q1);
             pstm.execute();
