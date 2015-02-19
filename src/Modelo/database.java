@@ -177,7 +177,7 @@ public class database {
             if(fichero.exists()){
                 return;
             }
-            String executeCmd="mysqldump -u"+user+" -p"+password+" -h "+cadena+" --routines dis_paper --result-file=C:\\iexsa\\backups\\dump"+fecha+".sql";
+            String executeCmd="mysqldump -u"+user+" -p"+password+" -h "+cadena+" --routines dis_paper2 --result-file=C:\\iexsa\\backups\\dump"+fecha+".sql";
             System.out.println(executeCmd);
             runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             runtimeProcess.getErrorStream();
