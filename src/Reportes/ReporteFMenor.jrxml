@@ -314,8 +314,8 @@ ORDER BY
 				<textFieldExpression><![CDATA[$V{sumkg}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.0000">
-				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="568" y="3" width="68" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement uuid="dc9b4095-56da-4ffe-92a1-272a8fc7d922" x="568" y="3" width="192" height="20"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>

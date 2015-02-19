@@ -305,8 +305,8 @@ ORDER BY
 				<textFieldExpression><![CDATA[$V{sumabob}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.0000">
-				<reportElement uuid="2082b523-3036-44f7-af4e-209a1daa5408" x="557" y="3" width="140" height="25"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement uuid="2082b523-3036-44f7-af4e-209a1daa5408" x="568" y="3" width="192" height="25"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
