@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df55957-7437-4e40-98a1-660addacbba4">
 	<property name="ireport.zoom" value="2.143588810000002"/>
-	<property name="ireport.x" value="401"/>
+	<property name="ireport.x" value="482"/>
 	<property name="ireport.y" value="16"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
@@ -367,28 +367,28 @@ ORDER BY
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_Tipo_entrada}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="###0">
 					<reportElement uuid="65835e4f-380d-4a24-bc24-0743020860c5" style="Detail" positionType="Float" x="624" y="0" width="39" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_presentacion}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="###0">
 					<reportElement uuid="b34cd824-15b6-49ac-a972-0e509a5c1e79" style="Detail" positionType="Float" x="663" y="0" width="25" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_cantidad}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<textField isStretchWithOverflow="true" pattern="#,##0.0000">
 					<reportElement uuid="cd28b832-1640-4796-be8e-242d83332c2a" style="Detail" positionType="Float" x="688" y="0" width="32" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradahoja_costo}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<textField isStretchWithOverflow="true" pattern="#,##0.0000">
 					<reportElement uuid="f8b00d7f-2659-417c-a78a-8d14f2948486" style="Detail" positionType="Float" x="720" y="0" width="40" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
@@ -451,28 +451,28 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[TOTALES---------------------------------------------------------------------------]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="###0">
 				<reportElement uuid="a2f7eb2f-cdaa-4d0f-8a26-cdf76b3d933c" x="627" y="3" width="36" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{totalpaq}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0">
 				<reportElement uuid="c7062287-317f-49a9-8035-1e8710f43cfd" x="663" y="3" width="25" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{cantidad}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="f7102df0-49a4-411e-9a89-4fc94ef2d734" x="688" y="3" width="32" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="b4d3b619-5567-4799-9cb9-680b01d47d78" x="720" y="3" width="40" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>

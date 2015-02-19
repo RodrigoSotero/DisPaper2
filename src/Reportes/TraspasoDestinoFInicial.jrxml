@@ -184,7 +184,7 @@ ORDER BY traspaso.`fecha` ASC,
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_bobina_paq_tarima}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00">
+				<textField pattern="#,##0.0000">
 					<reportElement uuid="4bbfcd1e-71db-462f-8d0d-1d6199d4551a" x="706" y="0" width="54" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>

@@ -355,28 +355,28 @@ ORDER BY vw_infoentradabobina.`fecha` ASC,
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_Tipo_entrada}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement uuid="aac31558-d9d8-43c2-8458-cf0d2f5e3d44" style="Detail" positionType="Float" x="635" y="0" width="36" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_presentacion}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
 					<reportElement uuid="a074b04a-a019-4675-8e20-1a8369ea3718" style="Detail" positionType="Float" x="671" y="0" width="34" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_cantidad}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<textField isStretchWithOverflow="true" pattern="#,##0.0000">
 					<reportElement uuid="2c8cc874-a8be-49d3-8161-f047be5aac05" style="Detail" positionType="Float" x="705" y="0" width="28" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infoentradabobina_costo}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<textField isStretchWithOverflow="true" pattern="#,##0.0000">
 					<reportElement uuid="8c632df9-c859-4ddd-9ad4-5384b2b26781" style="Detail" positionType="Float" x="733" y="0" width="27" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
@@ -419,28 +419,28 @@ ORDER BY vw_infoentradabobina.`fecha` ASC,
 	</detail>
 	<columnFooter>
 		<band height="20" splitType="Stretch">
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement uuid="cf001f6a-dd93-478c-8d09-e648c36dcb0d" x="635" y="0" width="36" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Presentacion}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement uuid="10c563b5-86f3-4284-af49-fa9e07ae2011" x="671" y="0" width="34" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{cantidad}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="b845e869-0248-4f6f-9169-019b17367076" x="705" y="0" width="28" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="871d4176-4e61-440f-a809-5bbef145967f" x="733" y="0" width="27" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="5" isBold="true"/>

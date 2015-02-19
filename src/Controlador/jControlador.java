@@ -828,6 +828,7 @@ public class jControlador implements ActionListener{
         __SALIR_REPORTE,
         __ORDENPRODUCCION,
         __ORDENPRODUCCIONH,
+        __DETALLE_OP,
         __Traspaso,
         __SALIDAG,
         __RFINANZA,
@@ -1784,11 +1785,14 @@ public class jControlador implements ActionListener{
         this.reportes.__SALIR.setMnemonic('R');
         this.reportes.__SALIR.addActionListener(this);
         this.reportes.__OP.setActionCommand("__ORDENPRODUCCION");
-        this.reportes.__OP.setMnemonic('P');
+        this.reportes.__OP.setMnemonic('O');
         this.reportes.__OP.addActionListener(this);
         this.reportes.__OPHojas.setActionCommand("__ORDENPRODUCCIONH");
         this.reportes.__OPHojas.setMnemonic('P');
         this.reportes.__OPHojas.addActionListener(this);
+        this.reportes.__DetalleOP.setActionCommand("__DETALLE_OP");
+        this.reportes.__DetalleOP.setMnemonic('D');
+        this.reportes.__DetalleOP.addActionListener(this);
         this.reportes.__TraspasoBH.setActionCommand("__Traspaso");
         this.reportes.__TraspasoBH.setMnemonic('T');
         this.reportes.__TraspasoBH.addActionListener(this);
@@ -6692,6 +6696,14 @@ public class jControlador implements ActionListener{
                     this.mimodelo.abrirReporte("HojaOP.jrxml",map);                
                 }else{
                     mensaje(2,"No hay Parametros de Busqueda, No se Creara el Reporte");  
+                }
+                break;
+            case __DETALLE_OP:
+                String DOP = JOptionPane.showInputDialog(null,"Ingresa El Folio de Salida");
+                map.put("folio", DOP);
+                if(!DOP.equals("")){
+                    mensaje(1,"Generando Reporte por Folio "+DOP);
+                    this.mimodelo.abrirReporte("DetalleOP.jrxml", map);
                 }
                 break;
             case __Traspaso:

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
-	<property name="ireport.zoom" value="4.0"/>
-	<property name="ireport.x" value="1298"/>
-	<property name="ireport.y" value="496"/>
+	<property name="ireport.zoom" value="1.8660295208389333"/>
+	<property name="ireport.x" value="238"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -262,14 +262,14 @@ ORDER BY
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_presentacion}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00">
+				<textField pattern="#,##0.0000">
 					<reportElement uuid="b8191708-8c5b-4b2d-9e05-4773cb675e5b" x="698" y="0" width="62" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_total}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.00">
+				<textField pattern="#,##0.0000">
 					<reportElement uuid="4bbfcd1e-71db-462f-8d0d-1d6199d4551a" x="644" y="0" width="54" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
@@ -318,28 +318,28 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[TOTALES----------------------------------------------------]]></text>
 			</staticText>
-			<textField>
-				<reportElement uuid="44031758-339c-4576-8dd3-a3c5579b0969" x="509" y="3" width="76" height="20"/>
+			<textField pattern="#,##0">
+				<reportElement uuid="44031758-339c-4576-8dd3-a3c5579b0969" x="539" y="3" width="46" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{kilos}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement uuid="bc00a1da-1290-4db3-a2c0-4fee55cf1e3e" x="585" y="3" width="59" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{bobinas}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="2db0aa06-8eba-44c0-bdc3-5c4f08072f41" x="644" y="3" width="54" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{costo}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.0000">
 				<reportElement uuid="0d8a0c01-6ceb-4063-93d2-e58edb47ad19" x="698" y="3" width="62" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" isBold="true"/>
