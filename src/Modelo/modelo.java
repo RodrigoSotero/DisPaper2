@@ -2564,6 +2564,19 @@ public class modelo extends database {
             }
     }
     
+    public ResultSet buscarultimaop(String clave) {                
+        String q = "SELECT op FROM inventario where clavePapel = '"+clave+"';";
+                  //SELECT orden_produccion FROM dis_paper2.vw_infoentrada where clave = '01-3-BLA-2-87068-IEXSA-BIOPAPPEL';
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
+    
     public ResultSet buscaopPP(String op) {
         String q = "select titulo,factor,cliente,clave,totkgsdev,totbobdev,estandar_produccion,merma,fecha_inicial,hora_inicial,fecha_final,hora_final,tiempo_real,total_pliego,contador_rotativas " +
                    "from vw_infosalidab where id_op ='"+op+"' order by id desc limit 1";
