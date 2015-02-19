@@ -5567,7 +5567,7 @@ public class jControlador implements ActionListener{
                            tiempoReal = RS.getString("tiempo_real");
                            
                            tiro.__MermaImpresion.setText(merma);
-                           tiro.__ContadorRotativas.setText(controtativas = RS.getString("contador_rotativas"));
+                           tiro.__ContadorRotativas.setText(RS.getString("contador_rotativas"));
                            tiro.__EstandarProduccionXHora.setText(estandarprod);
                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-d");
                            Date date = formatter.parse(RS.getString("fecha_final"));
@@ -9403,12 +9403,48 @@ public class jControlador implements ActionListener{
         }else{
             confir = mensajeConfirmacion("¿Es correcta la Orden de Produccion "+op+"?","Confirma");  
             if(confir==JOptionPane.YES_OPTION){
-                tiro.op = op;
-                tiro.guardar=0;
-                movimientos.setEnabled(false);
-                tiro.setVisible(true);
-                tiro.setLocationRelativeTo(null);                        
-                this.movimientos.setEnabled(false);
+                try {
+                    ResultSet oppp = mimodelo.buscaopPP(op);
+                    while(oppp.next()){
+                        merma = oppp.getString("merma");
+                        fechaini = oppp.getString("fecha_inicial");
+                        fechafin = oppp.getString("fecha_final");
+                        hraini = oppp.getString("hora_inicial");
+                        hrafin = oppp.getString("hora_final");
+                        estandarprod = oppp.getString("estandar_produccion");
+                        totalpliegos = oppp.getString("total_pliego");
+                        controtativas = oppp.getString("contador_rotativas");
+                        tiempoReal = oppp.getString("tiempo_real");
+                        tiro.__MermaImpresion.setText(merma);
+                        tiro.__ContadorRotativas.setText(oppp.getString("contador_rotativas"));
+                        tiro.__EstandarProduccionXHora.setText(estandarprod);
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-d");
+                        Date date = formatter.parse(fechafin);
+                        tiro.__FechaFinal.setDate(date);
+                        Date date2 = formatter.parse(fechaini);
+                        tiro.__FechaInicial.setDate(date2);
+                        tiro.__HoraFinal.setText(hrafin);
+                        tiro.__HoraInicial.setText(hraini);
+                        tiro.__TiempoRealProduccion.setText(tiempoReal);
+                        tiro.__TotalPliegos.setText(totalpliegos);
+                        //titulo,factor,cliente,clave,totkgsdev,totbobdev,
+                        movimientos.__TituloSalidaBobina.setText(oppp.getString("titulo"));
+                        movimientos.__FactorSalidaBobina.setText(oppp.getString("factor"));
+                        movimientos.__ClienteSalidaB.setText(oppp.getString("cliente"));
+                        movimientos.__tablaSalidaBobinaInventario.setValueAt(oppp.getString("clave"), 0, 0);
+                        movimientos.__tablaSalidaBobinaInventario.setValueAt(oppp.getString("totkgsdev"), 0, 1);
+                        movimientos.__tablaSalidaBobinaInventario.setValueAt(oppp.getString("totbobdev"), 0, 2);
+                    }
+                    
+                    tiro.op = op;
+                    tiro.guardar=0;
+                    movimientos.setEnabled(false);
+                    tiro.setVisible(true);
+                    tiro.setLocationRelativeTo(null);
+                    this.movimientos.setEnabled(false);
+                } catch (Exception ex) {
+                    Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         } 
     }
