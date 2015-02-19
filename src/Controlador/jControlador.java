@@ -2610,7 +2610,7 @@ public class jControlador implements ActionListener{
                     //ResultSet buscarPropiedad = mimodelo.buscarPropiedad(parametro);
                     Com_clienteEntr.removeAll();
                     while(buscarClientes.next()){
-                        Com_clienteEntr.addItem(buscarClientes.getString(2));
+                        Com_clienteEntr.addItem(buscarClientes.getString(1));
                     }
                 } catch (SQLException ex) {
                     mensaje(3,ex.getMessage());
@@ -3399,6 +3399,10 @@ public class jControlador implements ActionListener{
                             int fila =movimientos.__tablaEntrada.getSelectedRow();
                             while(costo.next()){
                                 movimientos.__tablaEntrada.setValueAt(Double.parseDouble(costo.getString("costo")+""), fila, 4);
+                                ResultSet ubicacion = mimodelo.ubicacion(parametro);
+                                while(ubicacion.next()){
+                                    movimientos.__tablaEntrada.setValueAt(ubicacion.getString("ubicacion")+"", fila, 3);
+                                }
                             }
                         } catch (SQLException ex) {
                             Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);

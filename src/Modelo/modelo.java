@@ -500,7 +500,7 @@ public class modelo extends database {
             }
     }
     public ResultSet buscarCliente(String parametro, boolean like) {
-        String q = like==true? "SELECT id_clientes as id,nombre as descripcion  FROM `clientes` where nombre like '%"+parametro+"%'" : "SELECT id_clientes as id,nombre FROM `clientes` where nombre ='"+parametro+"'";
+        String q = like==true? "SELECT DISTINCT(nombre) FROM `clientes` where nombre like '%"+parametro+"%'" : "SELECT id_clientes as id,nombre FROM `clientes` where nombre ='"+parametro+"'";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
@@ -2188,6 +2188,19 @@ public class modelo extends database {
     
     public ResultSet ultimocosto(String clave) {
         String q = "select costo from detalleentrada where clave_papel='"+clave+"' order by id_detalleentrada desc limit 1";
+        //          SELECT nombreempleado, CONCAT( fecha,horaentrada) AS ingreso, CONCAT( fecha,horasalida) AS salida FROM `reporusuario` WHERE nombreempleado =  'jhafet' LIMIT 0 , 30
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(Exception e){
+                
+                return null;
+            }
+    }
+    
+    public ResultSet ubicacion(String clave) {
+        String q = "select ubicacion from inventario where clavepapel='"+clave+"' ";
         //          SELECT nombreempleado, CONCAT( fecha,horaentrada) AS ingreso, CONCAT( fecha,horasalida) AS salida FROM `reporusuario` WHERE nombreempleado =  'jhafet' LIMIT 0 , 30
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
