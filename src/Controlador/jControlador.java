@@ -2637,7 +2637,7 @@ public class jControlador implements ActionListener{
                     //ResultSet buscarPropiedad = mimodelo.buscarPropiedad(parametro);
                     Com_clienteSalida.removeAll();
                     while(buscarClientes.next()){
-                        Com_clienteSalida.addItem(buscarClientes.getString(2));
+                        Com_clienteSalida.addItem(buscarClientes.getString(1));
                     }
                 } catch (SQLException ex) {
                     mensaje(3,ex.getMessage());
@@ -2662,7 +2662,7 @@ public class jControlador implements ActionListener{
                     //ResultSet buscarPropiedad = mimodelo.buscarPropiedad(parametro);
                     Com_cliente.removeAll();
                     while(buscarClientes.next()){
-                        Com_cliente.addItem(buscarClientes.getString(2));
+                        Com_cliente.addItem(buscarClientes.getString(1));
                     }
                 } catch (SQLException ex) {
                     mensaje(3,ex.getMessage());
@@ -2686,7 +2686,7 @@ public class jControlador implements ActionListener{
                     //ResultSet buscarPropiedad = mimodelo.buscarPropiedad(parametro);
                     Com_clienteB.removeAll();
                     while(buscarClientes.next()){
-                        Com_clienteB.addItem(buscarClientes.getString(2));
+                        Com_clienteB.addItem(buscarClientes.getString(1));
                     }
                 } catch (SQLException ex) {
                     mensaje(3,ex.getMessage());

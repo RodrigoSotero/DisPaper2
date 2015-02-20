@@ -89,7 +89,7 @@ public class database {
    /** Constructor de clase */
    public database(){
       //this.direccion = JOptionPane.showInputDialog(null,"Escribe la direccion ip del servidor");
-       File folder = new File("C:\\IEXSA\\");
+       File folder = new File("C:\\IEXSA2\\");
        if (!folder.exists()) { 
            folder.mkdir();
        }
@@ -100,7 +100,7 @@ public class database {
       if (!d1.exists()) { 
             d1.mkdir();
       }
-      File d2 = new File("c:\\IEXSA\\Reportes");
+      File d2 = new File("c:\\IEXSA2\\Reportes");
       if (!d2.exists()) { 
             d2.mkdir();
       }
@@ -112,7 +112,7 @@ public class database {
       if (!d12.exists()) { 
             d12.mkdir();
       }
-      File d22 = new File("c:\\IEXSA\\config");
+      File d22 = new File("c:\\IEXSA2\\config");
       if (!d22.exists()) { 
             d22.mkdir();
       }
@@ -121,14 +121,14 @@ public class database {
         PrintWriter pw = null;
         
         try{
-            File folder2 = new File("C:\\IEXSA\\config");
+            File folder2 = new File("C:\\IEXSA2\\config");
             if (!folder2.exists()) { 
                 folder2.mkdir();
             } 
-            String sFichero = "c:\\IEXSA\\config\\conf.txt";
+            String sFichero = "c:\\IEXSA2\\config\\conf.txt";
             File fichero = new File(sFichero);
             if(!fichero.exists()){
-                PrintStream archivo = new PrintStream("C:\\IEXSA\\config\\conf.txt");
+                PrintStream archivo = new PrintStream("C:\\IEXSA2\\config\\conf.txt");
             }
             fr = new FileReader(fichero);
             BufferedReader entrada = new BufferedReader(fr);
@@ -172,12 +172,12 @@ public class database {
    public static void backupbd(String fecha){
    Process runtimeProcess;
         try {
-            String sFichero = "C:\\iexsa\\backups\\dump"+fecha+".sql";
+            String sFichero = "C:\\iexsa2\\backups\\dump"+fecha+".sql";
             File fichero = new File(sFichero);
             if(fichero.exists()){
                 return;
             }
-            String executeCmd="mysqldump -u"+user+" -p"+password+" -h "+cadena+" --routines dis_paper2 --result-file=C:\\iexsa\\backups\\dump"+fecha+".sql";
+            String executeCmd="mysqldump -u"+user+" -p"+password+" -h "+cadena+" --routines dis_paper2 --result-file=C:\\iexsa2\\backups\\dump"+fecha+".sql";
             System.out.println(executeCmd);
             runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             runtimeProcess.getErrorStream();

@@ -1738,7 +1738,7 @@ public class modelo extends database {
     
     public void abrirReporte(String report,HashMap map){
         try{
-            String in ="C:/IEXSA/Reportes/"+report;
+            String in ="C:/IEXSA2/Reportes/"+report;
             JasperReport archivo = JasperCompileManager.compileReport(in);
             JasperPrint jasperPrint= JasperFillManager.fillReport(archivo,map,this.getConexion());
             java.util.List<JRPrintPage> pages = jasperPrint.getPages();
