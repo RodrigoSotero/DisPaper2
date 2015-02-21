@@ -384,8 +384,8 @@ public class jControlador implements ActionListener{
             //meter un update 
             if(cargo==1){
                 mimodelo.bp(fech);
-                this.enviaarchivo("C:\\iexsa\\backups\\dump"+fech+".sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
-                File fichero = new File("C:\\iexsa\\backups\\dump"+fech+".sql");
+                this.enviaarchivo("C:\\iexsa2\\backups\\dump"+fech+".sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
+                File fichero = new File("C:\\iexsa2\\backups\\dump"+fech+".sql");
                 fichero.delete();                
             }
              Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, false);
@@ -5187,8 +5187,8 @@ public class jControlador implements ActionListener{
                     //respaldo bd
                     if(cargo==1){
                         mimodelo.bp(fech+"desdemenu");
-                        this.enviaarchivo("C:\\iexsa\\backups\\dump"+fech+"desdemenu.sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
-                        File fichero = new File("C:\\iexsa\\backups\\dump"+fech+"desdemenu.sql");
+                        this.enviaarchivo("C:\\iexsa2\\backups\\dump"+fech+"desdemenu.sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
+                        File fichero = new File("C:\\iexsa2\\backups\\dump"+fech+"desdemenu.sql");
                         fichero.delete();
                         mensaje(1,"Backup de la Base de Datos Correcta");
                     }else{
@@ -7223,7 +7223,7 @@ public class jControlador implements ActionListener{
         FileFilter filtro = new FileNameExtensionFilter("Archivos Excel (.xls)", "xls");
         fileChooser.setFileFilter(filtro);
         fileChooser.setAcceptAllFileFilterUsed(false);
-        File folder = new File("C:\\IEXSA\\");
+        File folder = new File("C:\\IEXSA2\\");
         if (!folder.exists()) { 
             folder.mkdir();
         }
@@ -7834,15 +7834,7 @@ public class jControlador implements ActionListener{
         this.borrarFormularioTiro();
         this.movimientos.JPanel.setEnabledAt(2, true); 
         
-        ResultSet claves = mimodelo.buscarTodosPapeles();
-        try {
-            while(claves.next()){
-                String clave = claves.getString("clavePapel");
-                mimodelo.costopromedio(clave);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
     public void limpiarTabla(JTable tabla){
         try {
@@ -8535,6 +8527,7 @@ public class jControlador implements ActionListener{
                                     mimodelo.costopromedio(clavePapel);
                                     mimodelo.updateop(clavePapel, ordenProduccion);
                                     mimodelo.ubicacion(clavePapel, ubicacion);
+                                    mimodelo.costopromedio(clavePapel);
                                 }else{
                                     mensaje(3,"EL PAPEL NO EXISTE");
                                     return;
@@ -8595,6 +8588,7 @@ public class jControlador implements ActionListener{
                                 mimodelo.costopromedio(clavePapel);
                                 mimodelo.sumarexistencia(clavePapel);
                                 mimodelo.ubicacion(clavePapel, ubicacion);
+                                mimodelo.costopromedio(clavePapel);
                             }else{
                                 mensaje(3,"EL PAPEL NO EXISTE");
                                 return;
@@ -8608,7 +8602,6 @@ public class jControlador implements ActionListener{
                     mimodelo.altaDocEntrada(eval);
                     if(modifEntrada==true){
                         mensaje(1,"Modificacion Correcta");
-                        mimodelo.costopromedio(clavePapel);
                         this.borrarFormularioMovimientosPapel();
                         this.movimientos.__MenuMovimiento.setEnabled(true);
                         this.movimientos.__Archivo.setEnabled(true);
@@ -8743,6 +8736,7 @@ public class jControlador implements ActionListener{
                                 mimodelo.sumarexistencia(clavePapel);
                                 Double costo = costoconsumo/conkghoj;
                                 detallesalida = mimodelo.altaDetalleSalida(id_salida,clavePapel,totalsalida+"",cantidadsalida+"",costo+"",costoconsumo+"",entradas);
+                                mimodelo.costopromedio(clavePapel);
                             }catch(Exception evt){
                                 break;
                             }
@@ -8779,6 +8773,7 @@ public class jControlador implements ActionListener{
                             mimodelo.sumarexistencia(clavePapel);
                             Double costo = costoconsumo/conkghoj;
                             mimodelo.modifDetalleSalida(Integer.parseInt(idsalidas[i]),clavePapel,conkghoj+"",conbobpaq+"",costo+"",costoconsumo+"",entradas);
+                            mimodelo.costopromedio(clavePapel);
                         }catch(Exception evt){
                             break;
                         }
