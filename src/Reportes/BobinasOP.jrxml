@@ -124,7 +124,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="120" splitType="Stretch">
+		<band height="141" splitType="Stretch">
 			<frame>
 				<reportElement uuid="0587de44-ef59-4c7d-acf9-86de5a7540e9" mode="Opaque" x="81" y="0" width="681" height="66" backcolor="#FFFFFF"/>
 				<staticText>
@@ -144,7 +144,7 @@ WHERE
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement uuid="927f3db5-3507-40c3-9470-fdf78cf66b4d" mode="Opaque" x="0" y="70" width="762" height="50" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="927f3db5-3507-40c3-9470-fdf78cf66b4d" mode="Opaque" x="0" y="70" width="762" height="71" forecolor="#000000" backcolor="#FFFFFF"/>
 				<staticText>
 					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="58" y="1" width="23" height="18" forecolor="#333333"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -160,8 +160,8 @@ WHERE
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_id_op}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="99babd91-031f-4adf-acec-190328a436d6" style="Detail" positionType="Float" x="255" y="32" width="502" height="18" forecolor="#333333"/>
-					<textElement verticalAlignment="Middle">
+					<reportElement uuid="99babd91-031f-4adf-acec-190328a436d6" style="Detail" positionType="Float" x="255" y="37" width="502" height="34" forecolor="#333333"/>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
 						<font fontName="Arial" size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_cliente}]]></textFieldExpression>
@@ -181,43 +181,43 @@ WHERE
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_merma}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement uuid="fa7ca441-b302-468b-88c4-d59af023ce79" x="199" y="1" width="558" height="31" forecolor="#333333"/>
-					<textElement verticalAlignment="Top">
-						<font fontName="Arial" size="10" isBold="true"/>
+					<reportElement uuid="fa7ca441-b302-468b-88c4-d59af023ce79" x="199" y="1" width="558" height="36" forecolor="#333333"/>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="10" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_titulo}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="160" y="1" width="39" height="18" forecolor="#333333"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="160" y="1" width="39" height="36" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Titulo:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="216" y="32" width="39" height="18" forecolor="#333333"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="216" y="37" width="39" height="34" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Cliente:]]></text>
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="310" y="27" width="218" height="20" forecolor="#333333"/>
+				<reportElement uuid="3816ff8d-60d2-4fe2-9c52-ba7355581d53" x="305" y="17" width="218" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IMPRESORA Y EDITORA XALCO S.A DE C.V]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="310" y="47" width="217" height="20" forecolor="#333333"/>
+				<reportElement uuid="e0fc8e13-8fdf-4e43-8541-3c82fd79f4a5" x="305" y="37" width="217" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-   Departamento de Administracion de Papel   -]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="359" y="7" width="124" height="20" forecolor="#333333"/>
+				<reportElement uuid="9673b7bb-2d1b-4a47-8638-cecb1ac8081c" x="354" y="-3" width="124" height="20" forecolor="#333333"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>

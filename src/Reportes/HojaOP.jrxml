@@ -118,8 +118,8 @@ ORDER BY
 					<textFieldExpression><![CDATA[$F{vw_infosalidah_titulo}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="144" y="0" width="33" height="18" forecolor="#000000" backcolor="#FFFFFF"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
+					<reportElement uuid="2cc83b87-9c04-4161-8c7d-8252425f3460" style="Column header" x="144" y="0" width="33" height="32" forecolor="#000000" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Titulo:]]></text>
