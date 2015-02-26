@@ -64,6 +64,7 @@ public class Correo extends javax.swing.JFrame {
         setUndecorated(true);
 
         jLabel5.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Destinatario:");
 
         __archivo.setEditable(false);
@@ -74,6 +75,7 @@ public class Correo extends javax.swing.JFrame {
         __SALIRCORREO.setText("Salir");
 
         jLabel6.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Archivo: ");
 
         __destinatario.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
@@ -81,6 +83,7 @@ public class Correo extends javax.swing.JFrame {
         __BUSCARARCHIVO.setText("...");
 
         jLabel7.setFont(new java.awt.Font("Papyrus", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Mensaje:");
 
         __msg.setColumns(20);
@@ -88,6 +91,7 @@ public class Correo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(__msg);
 
         jLabel3.setFont(new java.awt.Font("Papyrus", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Enviar por Correo");
 
         __ABRIREXCEL.setText("Abrir Excel");
@@ -103,8 +107,8 @@ public class Correo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
