@@ -1494,7 +1494,7 @@ public class jControlador implements ActionListener{
         });
         this.consultas.__OrdenP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                KeyTipedLetrasNumGuion(evt);
+                KeyTipedLetrasNumCar(evt);                
             }
         });
         this.consultas.__OrdenC.addKeyListener(new java.awt.event.KeyAdapter() {
