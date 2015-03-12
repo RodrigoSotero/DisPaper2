@@ -988,8 +988,8 @@ public class modelo extends database {
                 + " total_hojas='"+kghoj+"', "
                 + " cantidad='"+bobpaq+"', "
                 + " costo='"+costo+"',"
-                + " totalcosto='"+totalcosto+"', identradas='"+entradas+"', estandar='"+epsalh+"' where id_salida='"+id_salidah+"';";
-        
+                + " totalcosto='"+totalcosto+"', identradas='"+entradas+"', estandar='"+epsalh+"' where id_detallesalidah='"+id_salidah+"';";
+        System.out.println(q);
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -1036,7 +1036,6 @@ public class modelo extends database {
                 + " `tiempo_real`='"+tiempoReal+"', `total_pliego`='"+totalespliegos+"',estandar_produccion='"+estandarprod+"', `contador_rotativas`='"+controtativas+"' "
                 + "WHERE `folio`='"+folio+"';";
         try{
-            System.out.println(q);
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
@@ -2029,6 +2028,7 @@ public class modelo extends database {
                 + "`ajustekgs`='"+ajustekgs+"', "
                 + "`tipo_salida`='"+tiposal+"' "
                 + "WHERE `folio`='"+foliob+"';";
+        System.out.println(q1);
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q1);
             pstm.execute();

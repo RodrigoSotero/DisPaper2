@@ -382,18 +382,13 @@ public class jControlador implements ActionListener{
     public void SalirSistema(){
         try {
             //meter un update 
-            if(cargo==1){
-                mimodelo.bp(fech);
-                this.enviaarchivo("C:\\iexsa2\\backups\\dump"+fech+".sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
-                File fichero = new File("C:\\iexsa2\\backups\\dump"+fech+".sql");
-                fichero.delete();                
-            }
-             Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, false);
-              Calendar Cal= Calendar.getInstance();                                                  
-                               String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
-                               String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
-                               horasalida = hora+":"+minute;                                               
-            boolean registrasalida=mimodelo.horasalida(horasalida,user);            
+            mimodelo.bp(fech);
+            this.enviaarchivo("C:\\iexsa2\\backups\\dump"+fech+".sql","dispaper.iexsa@gmail.com" ,"Backup de la base de datos");
+            File fichero = new File("C:\\iexsa2\\backups\\dump"+fech+".sql");
+            fichero.delete();  
+            Toolkit.getDefaultToolkit().setLockingKeyState(KeyEvent.VK_CAPS_LOCK, false);
+                                                         
+            //         
             
             System.exit(0);
         } catch (Exception ex) {
@@ -4671,7 +4666,7 @@ public class jControlador implements ActionListener{
             case __SALIR:
                 confir = mensajeConfirmacion("¿Desea Salir?","Salida");
                 if (confir==JOptionPane.OK_OPTION){
-                    System.exit(0);
+                    this.SalirSistema();
                 }
                 break;
             case __INICIA_SESION:
@@ -5092,8 +5087,8 @@ public class jControlador implements ActionListener{
                             this.ap.dispose();
                             movimientos.dispose();
                             consultas.dispose();
-                            reportes.dispose();
-                            reporteuser.dispose();
+                            reportes.dispose(); 
+                           reporteuser.dispose();
                             mimodelo.cerrarsesion(user);
                             borrarFormularioNewUser();
                             borrarFormularioAltaPapel();
@@ -5101,6 +5096,11 @@ public class jControlador implements ActionListener{
                             borrarFormularioProveedor();
                             borrarFormularioConsultas();
                             borrarFormularioEmergente();
+                            Calendar Cal= Calendar.getInstance();                                                  
+                               String hora=Cal.get(Cal.HOUR_OF_DAY)<10 ? "0"+Cal.get(Cal.HOUR_OF_DAY) : ""+Cal.get(Cal.HOUR_OF_DAY);
+                               String minute=Cal.get(Cal.MINUTE)<10 ? "0"+Cal.get(Cal.MINUTE) : ""+Cal.get(Cal.MINUTE);
+                               horasalida = hora+":"+minute;    
+                            mimodelo.horasalida(horasalida,user);   
                         } catch (SQLException ex) {
                             mensaje(3,ex.getMessage());
                         }
@@ -5494,7 +5494,7 @@ public class jControlador implements ActionListener{
                     ResultSet detallesalidah = mimodelo.buscarDetalleSalidaH(idfolio);
                     a=0;
                     while(detallesalidah.next()){
-                        idsalidash[a]=detallesalidah.getString("id_salida");
+                        idsalidash[a]=detallesalidah.getString("id_detallesalidah");
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getString("clave_papel"), a, 0);
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("total_hojas"), a, 1);
                         movimientos.__tablaSalidaHoja.setValueAt(detallesalidah.getInt("cantidad"), a, 2);
@@ -5587,7 +5587,7 @@ public class jControlador implements ActionListener{
                            tiro.__HoraInicial.setText(hraini);
                            tiro.__TiempoRealProduccion.setText(tiempoReal);
                            tiro.__TotalPliegos.setText(totalpliegos);
-                                   //,fechaini,hraini,fechafin,hrafin,estandarprod,totalpliegos,controtativas,tiempoReal;
+                                   
                            
                        } 
                        this.movimientos.__MenuMovimiento.setEnabled(false);
@@ -6042,7 +6042,6 @@ public class jControlador implements ActionListener{
                                         surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
                                         devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
                                         devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                                        
                                         tmpkg = invinikgs + surkgs - devkgs+0.0;
                                         tmpbob =  invinibob + surbob -devbob+0.0;
                                         conkghoj = invinikgs + surkgs - devkgs;
@@ -6062,8 +6061,10 @@ public class jControlador implements ActionListener{
                                     this.costoconsumo=0.0;
                                     this.Peps3(tmpclv, conkghoj, conbobpaq);
                                     Double costo = costoconsumo/conkghoj;
-                                    boolean altadetallesalidab = mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",totalkil,entradas);
-                                    //para reporte en 0
+                                    mimodelo.altaDetalleSalidab(idsalidas, movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString(), invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",totalkil,entradas);
+                                    System.out.println("entraadas   "+entradas);
+                                    mimodelo.sumarexistencia(tmpclv);
+                                    System.out.println("estandar   "+totalkil);
                                     totalkil="0";
                                     totalpliego=0.0;
                                     dsppliegos=0.0;
@@ -6072,18 +6073,15 @@ public class jControlador implements ActionListener{
                                     empqkg=0.0;
                                     capakg=0.0;
                                     conokg=0.0;
-                                    if(altasalidab==true&&altadetallesalidab==true){
-                                        mimodelo.sumarexistencia(tmpclv);
-                                        mensaje(1,"Salida de bobina correcta");
-                                        this.borrarFormularioMovimientosPapel();
-                                        this.borrarFormularioEmergente();
-                                        emergente.dispose();
-                                        this.movimientos.__pnlSalidaBobina.requestFocus();
-                                    }
+                                    
                                 }
                             } catch (Exception ex) {
-                                
                             }
+                            mensaje(1,"Salida de bobina correcta");
+                            this.borrarFormularioMovimientosPapel();
+                            this.borrarFormularioEmergente();
+                            emergente.dispose();
+                            this.movimientos.__pnlSalidaBobina.requestFocus();
                         }
                         
                         break;
@@ -6091,12 +6089,11 @@ public class jControlador implements ActionListener{
                         Obs = JOptionPane.showInputDialog(null,"Observaciones de la salida de Bobina");    
                         confir = this.mensajeConfirmacion("Estas Seguro de Modificar la Salida", "Salida");
                         if(confir==JOptionPane.OK_OPTION){
-                            try{
-                                String fechasalidab = fec.replaceAll("-", "");
-                                boolean modifsalidab = mimodelo.modifSalidaB(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal);
-                                mimodelo.modifsalidabtiro(merma, fechaini, hraini, fechafin, hrafin, estandarprod, totalpliegos, controtativas, tiempoReal, foliob);
-                                try{
-                                for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){ 
+                            String fechasalidab = fec.replaceAll("-", "");
+                            mimodelo.modifSalidaB(foliob,t1,t2,t3,opsalB, epsalb, factor, pliego, clientesalb+"", propsalb+"", maqsalb+"", fechasalidab, titulosalb, id_responsable+"", Obs, totalkil, tiroxpliego, pliegokgs, pliegosdeajuste, ajustekgs,tiposal);
+                            mimodelo.modifsalidabtiro(merma, fechaini, hraini, fechafin, hrafin, estandarprod, totalpliegos, controtativas, tiempoReal, foliob);
+                            try {
+                                for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
                                     int conkghoj=0, conbobpaq=0;
                                     tmpkg=0.0;
                                     tmpbob=0.0;
@@ -6108,29 +6105,28 @@ public class jControlador implements ActionListener{
                                         surbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
                                         devkgs=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
                                         devbob=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
-                                        costo = new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 7)+"");
-                                        totalcosto= new BigDecimal(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 8).toString()+"");
                                         tmpkg = invinikgs + surkgs - devkgs+0.0;
                                         tmpbob =  invinibob + surbob -devbob+0.0;
                                         conkghoj = invinikgs + surkgs - devkgs;
                                         conbobpaq = invinibob + surbob -devbob;
-                                    }
-                                    ResultSet bucarMaxSalidab = mimodelo.bucarMaxSalidab();
+                                    }   ResultSet bucarMaxSalidab = mimodelo.bucarMaxSalidab();
                                     int idsalidas=0;
                                     if(bucarMaxSalidab.next()){
-                                         bucarMaxSalidab.beforeFirst();
+                                        bucarMaxSalidab.beforeFirst();
                                         while(bucarMaxSalidab.next()){
                                             idsalidas = bucarMaxSalidab.getInt(1);
                                         }
                                     }else{
                                         idsalidas=1;    
-                                    }
-                                    entradas="";
+                                    }   entradas="";
                                     this.costoconsumo=0.0;
                                     this.Peps3(tmpclv, conkghoj, conbobpaq);
                                     Double costo = costoconsumo/conkghoj;
-                                    boolean modifdetallesalidab = mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",entradas,totalkil);
+                                    mimodelo.modifdetalleSalidab(idsalidasb[i], tmpclv, invinikgs+"", invinibob+"", surkgs+"",surbob+"",devkgs+"",devbob+"", tmpkg+"", dspkg+"", empqkg+"", capakg+"", conokg+"",totalkg+"", tmppliegos+"", dsppliegos+"", empqpliegos+"", capapliego+"",tmpconopliego+"" ,totalpliego+"",costo+"",costoconsumo+"",entradas,totalkil);
                                     //para reporte en 0
+                                    System.out.println("entraadas   "+entradas);
+                                    mimodelo.sumarexistencia(tmpclv);
+                                    System.out.println("estandar   "+totalkil);
                                     totalkil="0";
                                     totalpliego=0.0;
                                     dsppliegos=0.0;
@@ -6139,15 +6135,12 @@ public class jControlador implements ActionListener{
                                     empqkg=0.0;
                                     capakg=0.0;
                                     conokg=0.0;
-                                    if(modifsalidab==true&&modifdetallesalidab==true){
-                                        boolean agregarinventarioinicial = mimodelo.agregarinventarioinicial(opsalB,tmpclv,devkgs,devbob);
-                                        if(agregarinventarioinicial==true){
-                                            mimodelo.sumarexistencia(tmpclv);
-                                            mensaje(1,"Modificacion de Salida de bobina correcta");
-                                        }
-                                    }
+                                    mimodelo.agregarinventarioinicial(opsalB,tmpclv,devkgs,devbob);
                                 }
-                            } catch (Exception ex) {}
+                            } catch (Exception ex) {
+                                    
+                            }
+                            mensaje(1,"Modificación de bobina correcta");
                             this.borrarFormularioMovimientosPapel();
                             this.borrarFormularioEmergente();
                             this.movimientos.__MenuMovimiento.setEnabled(true);
@@ -6158,8 +6151,6 @@ public class jControlador implements ActionListener{
                             this.movimientos.JPanel.setEnabledAt(0, true);
                             emergente.dispose();
                             this.movimientos.__pnlSalidaBobina.requestFocus();    
-                            }catch(Exception evt){
-                            }
                         }
                         
                         break;
@@ -8906,7 +8897,6 @@ public class jControlador implements ActionListener{
                                 entradas="";
                                 this.Peps3(clavePapel, kghoj,bobpaq);
                                 mimodelo.sumarexistencia(clavePapel);
-                                epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                 Double costo = costoconsumo/kghoj;
                                 detallesalidah=mimodelo.altaDetalleSalidah(id_salidah,clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
                                 epsalh =""; 
@@ -8930,6 +8920,7 @@ public class jControlador implements ActionListener{
                 if (confir==JOptionPane.OK_OPTION){
                     String fechaentrada=fec.replaceAll("-", "");
                     epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
+                    System.out.println(epsalh);
                     boolean modifEntrada=mimodelo.modifSalidaH(folio, t1, t2, t3, opsalh, epsalh, propsalh, maqsalh, titulosalh, id_responsable, fechaentrada, tiposal, Obs, clientesalh);
                     for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
                         try{
@@ -8940,10 +8931,9 @@ public class jControlador implements ActionListener{
                                 entradas="";
                                 this.Peps3(clavePapel, kghoj,bobpaq);
                                 mimodelo.sumarexistencia(clavePapel);
-                                epsalh = movimientos.__EstandarProduccionSalidaHoja.getText();
                                 Double costo = costoconsumo/kghoj;
                                 mimodelo.modifDetalleSalidah(Integer.parseInt(idsalidash[i]),clavePapel,kghoj,bobpaq,costo+"",costoconsumo+"",entradas,epsalh);
-                                epsalh="";
+                                epsalh="0";
                         }catch(Exception evt){
                             break;
                         }
@@ -9065,6 +9055,7 @@ public class jControlador implements ActionListener{
         }
         tmpkg=0.0;
         totalkkgssss=0;
+        int conskg=0;
         for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
             try{
                 String clavePapel=movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0).toString();
@@ -9072,6 +9063,7 @@ public class jControlador implements ActionListener{
                 int bkghoj=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 3).toString());
                 int ckghoj=Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 5).toString());
                 int conkghoj=akghoj+bkghoj-ckghoj;
+                conskg=conskg+conkghoj;
                 int abobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 2).toString());
                 int bbobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 4).toString());
                 int cbobpaq= Integer.parseInt(movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 6).toString());
@@ -9089,8 +9081,8 @@ public class jControlador implements ActionListener{
                             return;
                         }else{
                             totalkkgssss+= conkghoj;
-                            tmppliegos = Double.parseDouble(totalkkgssss+"")/Double.parseDouble(factor);
-                            emergente.__TotalSurtidoKG.setText(conkghoj+"");
+                            tmppliegos = Double.parseDouble(conskg+"")/Double.parseDouble(factor);
+                            emergente.__TotalSurtidoKG.setText(conskg+"");
                             emergente.__TotalSurtidoPliegos.setText(tmppliegos+"");
                             emergente.setVisible(true);
                             emergente.setLocationRelativeTo(null);
@@ -9418,6 +9410,12 @@ public class jControlador implements ActionListener{
                 int newtembobpaq = tembobpaq+bobpaq;
                 mimodelo.updateteporalde(newtemkghoj, newtembobpaq, identrada);
                 mimodelo.sumarexistencia(clavePapel);
+                System.out.println(identrada+"\t"+kghoj+"\t"+bobpaq);
+                System.out.println(identrada+"\t"+temkghoj+"\t"+tembobpaq);
+                System.out.println(identrada+"\t"+newtemkghoj+"\t"+newtembobpaq);
+                
+                
+                
             } catch (SQLException ex) {
                 //Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
             }
