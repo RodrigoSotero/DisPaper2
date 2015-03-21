@@ -8472,6 +8472,42 @@ public class jControlador implements ActionListener{
                         mensaje(3,"Ingresa valores a la tabla");
                         return;
                     }
+        
+        int contador = 0 ;
+        for(int i=0;i<movimientos.__tablaEntrada.getRowCount();i++){
+            Object valueAt = movimientos.__tablaEntrada.getValueAt(i, 0);
+            if(valueAt!=null){
+                contador++;
+            }
+        }
+        for(int i=0;i<contador;i++){
+            for (int j=0;j<6;j++){
+                Object valueAt =   movimientos.__tablaEntrada.getValueAt(i, j);
+                if(valueAt==null||(valueAt.toString()).isEmpty()||valueAt.toString().equals("")){
+                    switch(j){
+                        case 0:
+                            mensaje(2,"Completa la clave de la entrada " +(i+1));
+                            break;
+                        case 1:
+                            mensaje(2,"Completa el total de kg/hoj de la entrada " +(i+1));
+                            break;
+                        case 2:
+                            mensaje(2,"Completa la cantidad de paq/bob de la entrada " +(i+1));
+                            break;
+                        case 3:
+                            mensaje(2,"Completa la ubicacion de la entrada " +(i+1));
+                            break;
+                        case 4:
+                            mensaje(2,"Completa el costo de la entrada " +(i+1));
+                            break;
+                        case 5:
+                            mensaje(2,"Completa el Total de costo de la entrada " +(i+1));
+                            break;
+                    }
+                    return;
+                }
+            }
+        }
         String clavePapel="";
         switch(this.modificarentrada){
             case 0:
@@ -8563,8 +8599,6 @@ public class jControlador implements ActionListener{
                             String costo=movimientos.__tablaEntrada.getValueAt(i, 4).toString();
                             String totalcosto=movimientos.__tablaEntrada.getValueAt(i, 5).toString();
                             ResultSet existenciaPapel = mimodelo.buscarExistenciaPapel(clavePapel);
-                            int totalentr = 0,nuevototentr;
-                            int cantentr =0,nuevacantentr;
                             if(existenciaPapel.next()){
                                 /*existenciaPapel.beforeFirst();
                                 while(existenciaPapel.next()){
@@ -8575,7 +8609,37 @@ public class jControlador implements ActionListener{
                                 nuevototentr = totalentr+totalentrada;
                                 nuevacantentr = cantidadentrada + cantentr;
                                 mimodelo.nuevaExistencia(nuevototentr+"",clavePapel,nuevacantentr+"");*/
+                                ResultSet cantidades = mimodelo.buscadetalleentrada(Integer.parseInt(identradas[i]));
+                                int totentr=0,canentr=0,temptot=0,tempcant=0;
+                                while(cantidades.next()){
+                                    totentr=cantidades.getInt("total_entrada");
+                                    canentr=cantidades.getInt("cantidad_entrada");
+                                    temptot=cantidades.getInt("total_temporal");
+                                    tempcant=cantidades.getInt("cantidad_temoporal");
+                                }
+                                int nuevotemporal;
+                                if(totentr>totalentrada){
+                                    nuevotemporal=temptot-(totentr-totalentrada);
+                                    System.out.println(nuevotemporal+"mayortotal");
+                                    mimodelo.newtottemp(nuevotemporal,Integer.parseInt(identradas[i]));
+                                }
+                                if(totentr<totalentrada){
+                                    nuevotemporal=temptot+(totalentrada-totentr);
+                                    System.out.println(nuevotemporal+"menrototal");
+                                    mimodelo.newtottemp(nuevotemporal,Integer.parseInt(identradas[i]));
+                                }
+                                if(canentr>cantidadentrada){
+                                    nuevotemporal=tempcant-(canentr-cantidadentrada);
+                                    System.out.println(nuevotemporal+"mayorcantidad");
+                                    mimodelo.newcanttemp(nuevotemporal,Integer.parseInt(identradas[i]));
+                                }
+                                if(canentr<cantidadentrada){
+                                    nuevotemporal=tempcant+(cantidadentrada-canentr);
+                                    System.out.println(nuevotemporal+"menrocantidad");
+                                    mimodelo.newcanttemp(nuevotemporal,Integer.parseInt(identradas[i]));
+                                }
                                 mimodelo.modifDetalleEntrada(Integer.parseInt(identradas[i]),clavePapel,totalentrada+"",cantidadentrada+"",ubicacion,costo,totalcosto);
+                                mimodelo.updateop(clavePapel, ordenProduccion);
                                 mimodelo.costopromedio(clavePapel);
                                 mimodelo.sumarexistencia(clavePapel);
                                 mimodelo.ubicacion(clavePapel, ubicacion);
@@ -8673,6 +8737,33 @@ public class jControlador implements ActionListener{
             mensaje(3,"Ingresa valores a la tabla");
             return;
         }
+        int contador = 0 ;
+        for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
+            Object valueAt = movimientos.__tablaSalida.getValueAt(i, 0);
+            if(valueAt!=null){
+                contador++;
+            }
+        }
+        for(int i=0;i<contador;i++){
+            for (int j=0;j<3;j++){
+                Object valueAt =   movimientos.__tablaSalida.getValueAt(i, j);
+                if(valueAt==null||(valueAt.toString()).isEmpty()||valueAt.toString().equals("")){
+                    switch(j){
+                        case 0:
+                            mensaje(2,"Completa la clave de la salida " +(i+1));
+                            break;
+                        case 1:
+                            mensaje(2,"Completa el total de kg/hoj de la salida " +(i+1));
+                            break;
+                        case 2:
+                            mensaje(2,"Completa la cantidad de paq/bob de la salida " +(i+1));
+                            break;
+                    }
+                    return;
+                }
+            }
+        }
+        
         for(int i=0;i<movimientos.__tablaSalida.getRowCount();i++){
             
             try {
@@ -8848,6 +8939,34 @@ public class jControlador implements ActionListener{
             mensaje(3,"Ingresa valores a la tabla");
             return;
         }
+        
+        int contador = 0 ;
+        for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
+            Object valueAt = movimientos.__tablaSalidaHoja.getValueAt(i, 0);
+            if(valueAt!=null){
+                contador++;
+            }
+        }
+        for(int i=0;i<contador;i++){
+            for (int j=0;j<3;j++){
+                Object valueAt =   movimientos.__tablaSalidaHoja.getValueAt(i, j);
+                if(valueAt==null||(valueAt.toString()).isEmpty()||valueAt.toString().equals("")){
+                    switch(j){
+                        case 0:
+                            mensaje(2,"Completa la clave de la salida " +(i+1));
+                            break;
+                        case 1:
+                            mensaje(2,"Completa el total de hojas de la salida " +(i+1));
+                            break;
+                        case 2:
+                            mensaje(2,"Completa la cantidad de paq/Tarima de la salida " +(i+1));
+                            break;
+                    }
+                    return;
+                }
+            }
+        }
+        
         for(int i=0;i<movimientos.__tablaSalidaHoja.getRowCount();i++){
             try {
                 String clavePapel=movimientos.__tablaSalidaHoja.getValueAt(i, 0).toString();
@@ -9053,6 +9172,51 @@ public class jControlador implements ActionListener{
             movimientos.__PliegoSalidaBobina.requestFocus();
             return;
         }
+        
+        if(movimientos.__tablaSalidaBobinaInventario.getValueAt(0, 0)==null||movimientos.__tablaSalidaBobinaInventario.getValueAt(0, 0).toString().isEmpty()){
+            mensaje(3,"Ingresa valores a la tabla");
+            return;
+        }
+        
+        int contador = 0 ;
+        for(int i=0;i<movimientos.__tablaSalidaBobinaInventario.getRowCount();i++){
+            Object valueAt = movimientos.__tablaSalidaBobinaInventario.getValueAt(i, 0);
+            if(valueAt!=null){
+                contador++;
+            }
+        }
+        for(int i=0;i<contador;i++){
+            for (int j=0;j<7;j++){
+                Object valueAt =   movimientos.__tablaSalidaBobinaInventario.getValueAt(i, j);
+                if(valueAt==null||(valueAt.toString()).isEmpty()||valueAt.toString().equals("")){
+                    switch(j){
+                        case 0:
+                            mensaje(2,"Completa la clave de la salida " +(i+1));
+                            break;
+                        case 1:
+                            mensaje(2,"Completa el total de kg de inventario incial de la salida " +(i+1));
+                            break;
+                        case 2:
+                            mensaje(2,"Completa el # de Bob de inventario inicial de la salida " +(i+1));
+                            break;
+                        case 3:
+                            mensaje(2,"Completa el total de kg de surtido de la salida " +(i+1));
+                            break;
+                        case 4:
+                            mensaje(2,"Completa el # de Bob de surtido de la salida " +(i+1));
+                            break;
+                        case 5:
+                            mensaje(2,"Completa el total de kg de devolución de la salida " +(i+1));
+                            break;
+                        case 6:
+                            mensaje(2,"Completa el # de Bob de devolución de la salida " +(i+1));
+                            break;
+                    }
+                    return;
+                }
+            }
+        }
+        
         tmpkg=0.0;
         totalkkgssss=0;
         int conskg=0;

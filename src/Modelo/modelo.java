@@ -931,8 +931,6 @@ public class modelo extends database {
                                         +"cantidad_entrada='"+cantidadentrada+"',"
                                         +"ubicacion='"+ubicacion+"', "
                                         +"costo='"+costo+"', "
-                +"total_temporal='"+totalentrada+"', "
-                +"cantidad_temoporal='"+cantidadentrada+"', "
                                         +"total_costo='"+totalcosto+"' where id_detalleentrada='"+id_entrada+"';";
         try{
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -2614,5 +2612,43 @@ public class modelo extends database {
                 return null;
             }
     }  
+    
+    public ResultSet buscadetalleentrada(int id_detalleentrada) {
+        String q = "select id_detalleentrada,clave_papel,total_entrada,cantidad_entrada,total_temporal,cantidad_temoporal from detalleentrada where id_detalleentrada='"+id_detalleentrada+"'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }  
+    public boolean newtottemp(int tottemp,int id) {
+            String q=" UPDATE  detalleentrada SET total_temporal='"+tottemp+"' where id_detalleentrada ='"+id+"';";
+            System.out.println(q);
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean newcanttemp(int canttemp,int id) {
+            String q=" UPDATE  detalleentrada SET cantidad_temoporal='"+canttemp+"' where id_detalleentrada ='"+id+"';";
+            System.out.println(q);
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
 }
 
