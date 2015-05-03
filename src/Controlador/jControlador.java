@@ -6082,6 +6082,7 @@ public class jControlador implements ActionListener{
                             this.borrarFormularioEmergente();
                             emergente.dispose();
                             this.movimientos.__pnlSalidaBobina.requestFocus();
+                            this.movimientos.__TipodeSalidaB.requestFocus();
                         }
                         
                         break;
@@ -6150,7 +6151,10 @@ public class jControlador implements ActionListener{
                             this.movimientos.JPanel.setEnabledAt(1, true);
                             this.movimientos.JPanel.setEnabledAt(0, true);
                             emergente.dispose();
-                            this.movimientos.__pnlSalidaBobina.requestFocus();    
+                            this.movimientos.__pnlSalidaBobina.requestFocus();
+                            this.movimientos.__TipodeSalidaB.requestFocus();
+                            
+                            
                         }
                         
                         break;
@@ -6873,6 +6877,8 @@ public class jControlador implements ActionListener{
             case __ACEPTAR_TRASPASORE:
                 String ClaveOrigen=this.retras.__foliotras.getText();
                 String ClaveDestino=this.retras.__foliotrashasta.getText();
+                String idorigen = mimodelo.buscaridtraspaso(ClaveOrigen);
+                String iddestino = mimodelo.buscaridtraspaso(ClaveDestino);
                 Date fechainicial=null,fechafinal=null;
                 map.put("clave",ClaveOrigen);
                 map.put("clave destino",ClaveDestino);
@@ -6984,6 +6990,8 @@ public class jControlador implements ActionListener{
                             if(trasFF.equals("")){
                                 //busca solo por clave origen y dstino
                                 mensaje(1,"Busqueda por: Folio Inicial "+ClaveOrigen+", Folio Final "+ClaveDestino);
+                                map.put("clave",idorigen);
+                                map.put("clave destino",iddestino);
                                 this.mimodelo.abrirReporte("TraspasoOrigenDestino.jrxml",map);
                                 System.out.println("Segun es esto busca solo por clave origen y dstino");
                             }else{
@@ -8570,7 +8578,9 @@ public class jControlador implements ActionListener{
                         if(altaEntrada==true && detalleentrada==true){
                             mensaje(1,"Entrada agregada correctamente");
                             this.borrarFormularioMovimientosPapel();
+                            this.movimientos.__documentoEntr.requestFocus();
                             mimodelo.costopromedio(clavePapel);
+                            
                         }else{
                             mensaje(3,"Ocurrio un error al dar de alta la entrada");
                             break;
@@ -8666,6 +8676,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(1, true);
                         this.movimientos.JPanel.setEnabledAt(2, true);
                         this.movimientos.JPanel.setEnabledAt(3, true);
+                        this.movimientos.__documentoEntr.requestFocus();
                     }
                 }
                 break;
@@ -8828,7 +8839,7 @@ public class jControlador implements ActionListener{
                         if(altaSalida==true && detallesalida==true){
                             mensaje(1,"Salida agregada correctamente");
                             this.borrarFormularioMovimientosPapel();
-                            
+                             this.movimientos.__TipoSalida.requestFocus();
                         }else{
                             mensaje(3,"Ocurrio un error al dar de alta la SALIDA");
                             break;
@@ -8872,6 +8883,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(0, true);
                         this.movimientos.JPanel.setEnabledAt(2, true);
                         this.movimientos.JPanel.setEnabledAt(3, true);
+                        this.movimientos.__TipoSalida.requestFocus();
                         
                     }
                 }
@@ -9026,6 +9038,7 @@ public class jControlador implements ActionListener{
                         if(altasalidah==true&&detallesalidah==true){
                               mensaje(1,"Salida de Hoja agregada correctamente");
                               this.borrarFormularioMovimientosPapel();
+                               this.movimientos.__TipodeSalidaH.requestFocus();
                         }
                     }catch(SQLException ex){
                         mensaje(3,ex.getMessage());
@@ -9068,6 +9081,7 @@ public class jControlador implements ActionListener{
                         this.movimientos.JPanel.setEnabledAt(1, true); 
                         this.movimientos.JPanel.setEnabledAt(2, true); 
                         this.movimientos.JPanel.setEnabledAt(3, true);
+                        this.movimientos.__TipodeSalidaH.requestFocus();
                     }else{
                         mensaje(3,"Modificacion Incorrecta");
                     }

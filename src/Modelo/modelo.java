@@ -2650,5 +2650,19 @@ public class modelo extends database {
             return false;
         }
     }
+
+    public String buscaridtraspaso(String folio) {
+        String q = "select id_traspaso from traspaso where folio='"+folio+"'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                res.next();
+                String id = res.getString(1);
+                return id;
+            }catch(SQLException e){
+                return "";
+            }
+    }
+    
 }
 

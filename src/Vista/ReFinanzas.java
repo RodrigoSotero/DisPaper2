@@ -54,7 +54,7 @@ public class ReFinanzas extends javax.swing.JFrame {
         __datefin = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
         __clave.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
