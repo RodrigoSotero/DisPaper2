@@ -2224,8 +2224,7 @@ public class modelo extends database {
     }
     
     public ResultSet ops(String opini,String opfin) {
-        String q = "select id_op from ordenprod where id_op>='"+opini+"' and id_op<='"+opfin+"'";
-        //          SELECT nombreempleado, CONCAT( fecha,horaentrada) AS ingreso, CONCAT( fecha,horasalida) AS salida FROM `reporusuario` WHERE nombreempleado =  'jhafet' LIMIT 0 , 30
+        String q = "select DISTINCT(id_op) from vw_infosalidab where orden_produccion>='"+opini+"' and orden_produccion<='"+opfin+"' ORDER BY ID_OP";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
@@ -2308,7 +2307,7 @@ public class modelo extends database {
     }
     
     public ResultSet buscatodoop() {
-        String q = "SELECT id_op FROM ordenprod;";
+        String q = "SELECT distinct(id_op) FROM vw_infosalidab order by id_op;";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();
