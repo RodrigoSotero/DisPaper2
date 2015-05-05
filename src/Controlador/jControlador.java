@@ -6715,7 +6715,7 @@ public class jControlador implements ActionListener{
                 }
                 break;
             case __DETALLE_OP:
-                String DOP = JOptionPane.showInputDialog(null,"Ingresa El Folio de Salida");
+                String DOP = JOptionPane.showInputDialog(null,"Ingresa El Folio de Salida De Bobina");
                 map.put("folio", DOP);
                 if(!DOP.equals("")){
                     mensaje(1,"Generando Reporte por Folio "+DOP);
@@ -7051,7 +7051,7 @@ public class jControlador implements ActionListener{
                     mensaje(3,"La Fecha Inicial No Puede se Mayor a Fecha Final");
                     return;
                 }
-                mimodelo.ops();
+                mimodelo.ops();//trunca ops
                 if(!opini.equals("") && !opfin.equals("")){
                     ResultSet ops = mimodelo.ops(opini, opfin);
                     try {
@@ -7063,6 +7063,7 @@ public class jControlador implements ActionListener{
                         mensaje(3,ex.getMessage());
                     }
                     mensaje(1,"Busqueda por: OP Inicial "+opini+ " y OP Final "+opfin);
+                  
                     this.mimodelo.abrirReporte("ConsumoTotalOP.jrxml",new HashMap());
                     return;
                 }
