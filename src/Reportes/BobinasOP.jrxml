@@ -411,84 +411,84 @@ WHERE
 		<band height="19" splitType="Stretch">
 			<frame>
 				<reportElement uuid="6ce1f59d-9eeb-4323-b79d-84d0c56618c5" style="Row" mode="Opaque" x="0" y="0" width="762" height="18"/>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="202e3ed1-cdc0-4426-b511-8b432727f5e4" style="Detail" positionType="Float" x="206" y="0" width="42" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_maquina}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="5c8f52cd-7393-4ec0-a2d0-53ee2680a670" style="Detail" positionType="Float" x="464" y="0" width="40" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_desperdicio}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="aa3db04c-9250-4aab-8c18-ca14d9e9aeb2" style="Detail" positionType="Float" x="553" y="0" width="35" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_capa}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="10343ebc-7f38-43e7-9601-4efb9d3a3a1d" style="Detail" positionType="Float" x="320" y="0" width="50" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_totalesplie}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="5d6f9ff0-c00d-40af-9aab-4d1dd9bf2801" style="Detail" positionType="Float" x="628" y="0" width="43" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_totalsurtido}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="9f39d9ad-fdd9-43fe-9c2b-143d34bcfab4" style="Detail" positionType="Float" x="424" y="0" width="40" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_totales}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="1d91ea6b-64df-414a-9281-859a59ee1215" style="Detail" positionType="Float" x="509" y="0" width="44" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_empaque}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="f48e0719-b83b-40f5-9e6c-d998ab428c2c" style="Detail" positionType="Float" x="588" y="0" width="35" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_cono}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="4134cb5c-86d4-4ad0-8f03-6d649235038a" style="Detail" positionType="Float" x="370" y="0" width="50" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_despliegos}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="85cb6314-9f12-4a16-be50-f7a07e00f2a4" style="Detail" positionType="Float" x="277" y="0" width="39" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_pliego}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="MMMMM dd, yyyy">
+				<textField isStretchWithOverflow="true" pattern="MMMMM dd, yyyy" isBlankWhenNull="true">
 					<reportElement uuid="ce504490-d82d-4079-86d3-7fe836bc8f04" style="Detail" positionType="Float" x="0" y="0" width="49" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_fecha}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="bdeb5237-273f-4ea9-abd1-6d756ae4ba91" style="Detail" positionType="Float" x="89" y="0" width="71" height="18" forecolor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
@@ -519,28 +519,28 @@ WHERE
 				<line>
 					<reportElement uuid="13735cca-3bbb-4b25-a36f-01468c7e44b8" x="320" y="0" width="1" height="18" forecolor="#CCCCCC"/>
 				</line>
-				<textField>
+				<textField isBlankWhenNull="true">
 					<reportElement uuid="45885d7e-14cb-45f2-a5dd-d1a60faf1a1b" x="49" y="0" width="40" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_folio}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="3a59907d-b0ad-4a3f-8884-08c116c1152f" style="Detail" positionType="Float" x="671" y="0" width="43" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infosalidab_estandar}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="bdeb5237-273f-4ea9-abd1-6d756ae4ba91" style="Detail" positionType="Float" x="160" y="0" width="46" height="18" forecolor="#000000"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{vw_infopapelb_nombre}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="202e3ed1-cdc0-4426-b511-8b432727f5e4" style="Detail" positionType="Float" x="248" y="0" width="29" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="5" isBold="false"/>
@@ -756,7 +756,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$V{consumoestandar}]]></textFieldExpression>
 			</textField>
-			<textField pattern="#,##0.00">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement uuid="640c1de1-0975-434a-ac11-0edb2ecb5263" x="714" y="5" width="45" height="18"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="10" isBold="true" isUnderline="true"/>

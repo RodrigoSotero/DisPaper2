@@ -44,7 +44,7 @@
      vw_infosalida.`costo` AS vw_infosalida_costo,
      vw_infosalida.`totalcosto` AS vw_infosalida_totalcosto
 FROM `vw_infosalida` vw_infosalida
-WHERE vw_infosalida.`folio`=$P{folioi}
+WHERE vw_infosalida.`id_salida`=$P{folioi}
 ORDER BY vw_infosalida.`fecha` ASC,
          vw_infosalida.`folio` ASC]]>
 	</queryString>

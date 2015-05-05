@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="800" pageHeight="595" orientation="Landscape" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="472c8a9f-2450-49a6-8dae-06879dd8d436">
-	<property name="ireport.zoom" value="4.594972986357222"/>
-	<property name="ireport.x" value="2488"/>
-	<property name="ireport.y" value="428"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -156,49 +156,49 @@ ORDER BY traspaso.`fecha` ASC,
 		<band height="18" splitType="Stretch">
 			<frame>
 				<reportElement uuid="3a88558b-31f1-4f50-9126-5e3989311a37" style="Row" mode="Opaque" x="0" y="0" width="760" height="18"/>
-				<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy">
+				<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
 					<reportElement uuid="0e8157b2-3461-423a-8651-96b7bde531b3" style="Detail" positionType="Float" x="0" y="0" width="63" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_fecha}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="118" y="0" width="199" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_clave_papel_origen}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="6c6eded1-0374-477b-b1a8-3071de24cd99" style="Detail" positionType="Float" x="509" y="0" width="76" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_kg_hojas}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="#,##0">
+				<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="6386d449-5aff-456b-8e84-a7ad09c94757" style="Detail" positionType="Float" x="585" y="0" width="121" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_bobina_paq_tarima}]]></textFieldExpression>
 				</textField>
-				<textField pattern="#,##0.0000">
+				<textField pattern="#,##0.0000" isBlankWhenNull="true">
 					<reportElement uuid="4bbfcd1e-71db-462f-8d0d-1d6199d4551a" x="706" y="0" width="54" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_costo}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="63" y="0" width="56" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{traspaso_folio}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement uuid="30257ab5-3079-417b-860a-cc8be43aa21f" style="Detail" positionType="Float" x="318" y="0" width="191" height="18"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Arial" size="8"/>

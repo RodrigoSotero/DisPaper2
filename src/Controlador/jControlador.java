@@ -110,6 +110,7 @@ public class jControlador implements ActionListener{
 
     JPopupMenu popup = new JPopupMenu(); 
     HashMap map = new HashMap();
+    HashMap map2 = new HashMap();
     String pswd;
     String fec,mensaje,user="",contra,ordenProduccion,ordenCompra,documentoEntrada,t1="",t2="",t3="",Obs="",modificaruser,folioentrada,foliosalida;
     String buscarfolio;
@@ -591,7 +592,7 @@ public class jControlador implements ActionListener{
                 this.consultas.__documento.setEnabled(true);
                 this.consultas.__documento.setText("");
             }
-            if(consultas.__optSalida.isSelected()){
+            if(consultas.__optSalida.isSelected()||consultas.__optSalidaInterna.isSelected()){
                 this.consultas.__cmbTipoEntrada.setEnabled(false);
                 this.consultas.__cmbTipoEntrada.setSelectedIndex(0);
                 this.consultas.__chkTipoEntrada.setEnabled(false);
@@ -1330,6 +1331,8 @@ public class jControlador implements ActionListener{
         this.consultas.__optEntrada.addActionListener(this);
         this.consultas.__optSalida.setActionCommand("__CONSULTAS");
         this.consultas.__optSalida.addActionListener(this);
+        this.consultas.__optSalidaInterna.setActionCommand("__CONSULTAS");
+        this.consultas.__optSalidaInterna.addActionListener(this);
         this.consultas.__PapelNingun.setActionCommand("__CONSULTAS");
         this.consultas.__PapelNingun.addActionListener(this);
         this.consultas.__optNinguno.setActionCommand("__CONSULTAS");
@@ -6648,11 +6651,15 @@ public class jControlador implements ActionListener{
             case __SALIDASH:
                 String SLH = JOptionPane.showInputDialog(null,"Ingresa la Fecha Inicial(aaaa-mm-dd)");
                 map.put("ingresa", SLH);
+                System.out.println(SLH);
                 String SLHF = JOptionPane.showInputDialog(null,"Ingresa la Fecha Final(aaaa-mm-dd)");
                 map.put("final", SLHF);
+                System.out.println(SLHF);
                 if(!SLH.equals("") && !SLHF.equals("")){
                     mensaje(1,"Generando Salidas entre las Fechas "+SLH+" - "+SLHF );
-                    this.mimodelo.abrirReporte("SalidasH.jrxml",map);                    
+                    map2.put("inicial", SLH);
+                    map2.put("final", SLHF);
+                    this.mimodelo.abrirReporte("SalidasH2.jrxml",map2);                    
                 }else if(!SLH.equals("") && SLHF.equals("")){
                     mensaje(1,"Generando Salidas Mayores o Iguales a la Fecha "+SLH);
                     this.mimodelo.abrirReporte("SalidasHMayor.jrxml",map);                    
@@ -6736,8 +6743,10 @@ public class jControlador implements ActionListener{
                 this.reportes.setEnabled(false);
                 break;
             case ACEPTAR_SG:
-                String FOLIOI=this.salidageneral.__FolioInicial.getText();
-                String FOLIOF=this.salidageneral.__FolioFinal.getText();
+                String FI=this.salidageneral.__FolioInicial.getText();
+                String FOLIOI = mimodelo.buscaridsalidageneral(FI);
+                String FF=this.salidageneral.__FolioFinal.getText();
+                String FOLIOF = mimodelo.buscaridsalidageneral(FF);
                 Date fechainicialSG=null,fechafinalSG=null;
                 map.put("folioi",FOLIOI);
                 map.put("foliof",FOLIOF);

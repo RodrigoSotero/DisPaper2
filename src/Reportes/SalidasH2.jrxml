@@ -13,10 +13,10 @@
 			<style mode="Opaque" backcolor="#FFFFFF"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="ingresa" class="java.lang.String">
+	<parameter name="inicial" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="fecha" class="java.lang.String">
+	<parameter name="final" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -42,8 +42,8 @@
 FROM
      `vw_infosalidah` vw_infosalidah
 WHERE
-     vw_infosalidah.`fecha` >= $P{ingresa}
- AND vw_infosalidah.`fecha` <= $P{fecha}
+     vw_infosalidah.`fecha` >= $P{inicial}
+ AND vw_infosalidah.`fecha` <= $P{final}
 ORDER BY
      vw_infosalidah.`fecha` ASC,
      vw_infosalidah.`folio` ASC]]>

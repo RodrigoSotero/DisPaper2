@@ -2588,7 +2588,7 @@ public class modelo extends database {
             }
     }
     public ResultSet buscafoliosg(String parametro) {
-        String q = "SELECT folio FROM dis_paper2.vw_infosalida where folio like'%"+parametro+"%' order by id_salida asc;";
+        String q = "SELECT DISTINCT(folio) FROM dis_paper2.vw_infosalida where folio like'%"+parametro+"%' order by id_salida asc;";
                   //SELECT folio FROM dis_paper2.vw_infosalida where folio like"%             %" order by id_salida asc;
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -2652,6 +2652,19 @@ public class modelo extends database {
 
     public String buscaridtraspaso(String folio) {
         String q = "select id_traspaso from traspaso where folio='"+folio+"'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                res.next();
+                String id = res.getString(1);
+                return id;
+            }catch(SQLException e){
+                return "";
+            }
+    }
+    
+    public String buscaridsalidageneral(String folio) {
+        String q = "select id_salida from vw_infosalida where folio='"+folio+"'";
         try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 ResultSet res = pstm.executeQuery();

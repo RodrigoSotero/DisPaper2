@@ -49,7 +49,7 @@ public class ConsumoTotal extends javax.swing.JFrame {
         __etqFechaIni5 = new javax.swing.JLabel();
         OPHasta = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
         OPDesde.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
