@@ -211,7 +211,8 @@ public class ConsultaPapel extends javax.swing.JFrame {
         __etqFechaConMov.setForeground(new java.awt.Color(255, 255, 255));
         __etqFechaConMov.setText("DD/MM/AAAA");
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de Movimiento:"));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de Movimiento:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel9.setForeground(new java.awt.Color(255, 255, 255));
         jPanel9.setOpaque(false);
 
         __grpMovimiento.add(__optSalida);
@@ -456,7 +457,7 @@ public class ConsultaPapel extends javax.swing.JFrame {
         __dateIni.setEnabled(false);
         __dateIni.setNextFocusableComponent(__chkFechaFin);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Clase de Papel"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Clase de Papel", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setOpaque(false);
 
