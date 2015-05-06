@@ -1216,6 +1216,17 @@ public class modelo extends database {
                 return null;
             }
     }
+    public ResultSet buscarDatosPapeltodos(String clave) {
+        String q = "select * from vw_infopapeltodo where  clave = '"+clave+"'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
     
     public String buscarnombrePapel(int id){
         String q = "select nombre from nombre_papel where  id_nombre= '"+id+"'";

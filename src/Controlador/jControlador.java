@@ -826,6 +826,7 @@ public class jControlador implements ActionListener{
         __ORDENPRODUCCION,
         __ORDENPRODUCCIONH,
         __DETALLE_OP,
+        __DETALLE_OP1,
         __Traspaso,
         __SALIDAG,
         __RFINANZA,
@@ -1792,6 +1793,9 @@ public class jControlador implements ActionListener{
         this.reportes.__DetalleOP.setActionCommand("__DETALLE_OP");
         this.reportes.__DetalleOP.setMnemonic('D');
         this.reportes.__DetalleOP.addActionListener(this);
+        this.reportes.__DetalleOP1.setActionCommand("__DETALLE_OP1");
+        this.reportes.__DetalleOP1.setMnemonic('T');
+        this.reportes.__DetalleOP1.addActionListener(this);
         this.reportes.__TraspasoBH.setActionCommand("__Traspaso");
         this.reportes.__TraspasoBH.setMnemonic('T');
         this.reportes.__TraspasoBH.addActionListener(this);
@@ -5889,6 +5893,10 @@ public class jControlador implements ActionListener{
                                                 this.ap.__Propiedad.setSelectedItem(this.traspaso.__Destino.getText()+"");
                                                 this.ap.__Marca.setSelectedIndex(datosPapel.getInt("MARCA_id_marca"));
                                             }
+                                            ResultSet datosPapeltodo = mimodelo.buscarDatosPapeltodos(clavecl);
+                                            while(datosPapeltodo.next()){
+                                                this.ap.__Marca.setSelectedItem(datosPapeltodo.getString("marca"));
+                                            }
                                         }
                                         break;
                                     }
@@ -6727,6 +6735,14 @@ public class jControlador implements ActionListener{
                 if(!DOP.equals("")){
                     mensaje(1,"Generando Reporte por Folio "+DOP);
                     this.mimodelo.abrirReporte("DetalleOP.jrxml", map);
+                }
+                break;
+            case __DETALLE_OP1:
+                String DOP1 = JOptionPane.showInputDialog(null,"Escribe la Orden de Producción");
+                map.put("Ingresa_Orden_de_Produccion", DOP1);
+                if(!DOP1.equals("")){
+                    mensaje(1,"Generando Reporte por Folio "+DOP1);
+                    this.mimodelo.abrirReporte("OpEspecifico.jrxml", map);
                 }
                 break;
             case __Traspaso:
