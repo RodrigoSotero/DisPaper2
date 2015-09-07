@@ -1417,6 +1417,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
 
         JPanel.addTab("2. Salidas Generales", __pnlSalidasG);
 
+        __pnlSalidaHoja.setBackground(new java.awt.Color(0, 0, 0));
         __pnlSalidaHoja.setOpaque(false);
         __pnlSalidaHoja.setPreferredSize(new java.awt.Dimension(729, 400));
 
@@ -1512,7 +1513,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
                     .addComponent(__chkTurno3SalHoja)
                     .addComponent(__chkTurno2SalHoja)
                     .addComponent(__chkTurno1SalHoja))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1544,7 +1545,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __TituloSalidaHoja.setMaximumSize(new java.awt.Dimension(10, 30));
         __TituloSalidaHoja.setMinimumSize(new java.awt.Dimension(10, 30));
         __TituloSalidaHoja.setName(""); // NOI18N
-        __TituloSalidaHoja.setNextFocusableComponent(__OPSalidaHoja);
+        __TituloSalidaHoja.setNextFocusableComponent(__ClienteSalidaH);
         __TituloSalidaHoja.setPreferredSize(new java.awt.Dimension(10, 30));
         __TituloSalidaHoja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1584,7 +1585,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __OPSalidaHoja.setMaximumSize(new java.awt.Dimension(10, 30));
         __OPSalidaHoja.setMinimumSize(new java.awt.Dimension(10, 30));
         __OPSalidaHoja.setName(""); // NOI18N
-        __OPSalidaHoja.setNextFocusableComponent(__EstandarProduccionSalidaHoja);
+        __OPSalidaHoja.setNextFocusableComponent(__TituloSalidaHoja);
         __OPSalidaHoja.setPreferredSize(new java.awt.Dimension(10, 30));
         __OPSalidaHoja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1627,7 +1628,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __TipodeSalidaH.setMaximumSize(new java.awt.Dimension(10, 30));
         __TipodeSalidaH.setMinimumSize(new java.awt.Dimension(10, 30));
         __TipodeSalidaH.setName("__TipodeSalidaH"); // NOI18N
-        __TipodeSalidaH.setNextFocusableComponent(__ClienteSalidaH);
+        __TipodeSalidaH.setNextFocusableComponent(__OPSalidaHoja);
         __TipodeSalidaH.setPreferredSize(new java.awt.Dimension(10, 30));
         __TipodeSalidaH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1651,7 +1652,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         __PropietarioSalidaH.setMaximumSize(new java.awt.Dimension(10, 30));
         __PropietarioSalidaH.setMinimumSize(new java.awt.Dimension(10, 30));
         __PropietarioSalidaH.setName("__PropietarioSalidaH"); // NOI18N
-        __PropietarioSalidaH.setNextFocusableComponent(__TituloSalidaHoja);
+        __PropietarioSalidaH.setNextFocusableComponent(__EstandarProduccionSalidaHoja);
         __PropietarioSalidaH.setPreferredSize(new java.awt.Dimension(10, 30));
         __PropietarioSalidaH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1717,87 +1718,79 @@ public class MovimientosPapel extends javax.swing.JFrame {
                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(__etqFechaSalH)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                         .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(__FolioSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(__FolioSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jLabel46)))
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                                .addGap(53, 53, 53)
-                                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                                        .addComponent(jLabel9)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(__ClienteSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                                        .addComponent(jLabel52)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(__TipodeSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                                        .addComponent(jLabel20)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(__PropietarioSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(__etqNewEliTipoSalidaH)
-                                                    .addComponent(__etqNewEliPropietario2)
-                                                    .addComponent(__etqNewEliCliente2)))
-                                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                                .addGap(115, 115, 115)
-                                                .addComponent(__etqNewClienteSalH)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(__etqNewTipodeSalidaH)
-                                        .addGap(107, 107, 107))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidaHojaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(__etqNewPropietarioH)
-                                .addGap(135, 135, 135)))
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel46)))
                         .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                .addGap(114, 114, 114)
-                                .addComponent(__etqNewMaquinaH)
-                                .addGap(180, 180, 180))
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel52)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(__TipodeSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(__etqNewEliTipoSalidaH))
+                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__OPSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(__etqNewTipodeSalidaH)
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addComponent(jLabel47)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__TituloSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__ClienteSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(__etqNewEliCliente2)
+                                .addGap(7, 7, 7)))
+                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addGap(59, 59, 59)
+                                        .addComponent(jLabel20)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(__etqNewPropietarioH))
+                                            .addComponent(__PropietarioSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__etqNewEliPropietario2))
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addGap(108, 108, 108)
+                                        .addComponent(__etqNewMaquinaH)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                                .addComponent(__etqFechaSalH)
+                                .addGap(123, 123, 123))
                             .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                            .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel10)
-                                                .addComponent(jLabel11))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(__OPSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(__EstandarProduccionSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidaHojaLayout.createSequentialGroup()
-                                            .addComponent(jLabel47)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(__TituloSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__EstandarProduccionSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                                         .addComponent(jLabel48)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(__MaquinaSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__etqNewEliMaquina))
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
                                         .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(32, 32, 32))
-                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(__etqNewEliMaquina)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
+                                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, __pnlSalidaHojaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1813,7 +1806,11 @@ public class MovimientosPapel extends javax.swing.JFrame {
                     .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel60)))
-                .addGap(157, 157, 157))
+                .addGap(161, 161, 161))
+            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                .addGap(394, 394, 394)
+                .addComponent(__etqNewClienteSalH)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         __pnlSalidaHojaLayout.setVerticalGroup(
             __pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1825,16 +1822,20 @@ public class MovimientosPapel extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(2, 2, 2)
+                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel47)
-                                    .addComponent(__TituloSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(__OPSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addComponent(__etqNewEliPropietario2)
+                                        .addGap(32, 32, 32))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, __pnlSalidaHojaLayout.createSequentialGroup()
+                                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(__PropietarioSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(__etqNewPropietarioH)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(__EstandarProduccionSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11)))
@@ -1852,33 +1853,32 @@ public class MovimientosPapel extends javax.swing.JFrame {
                     .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
                         .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(__etqNewTipodeSalidaH))
-                                    .addComponent(jLabel46)
-                                    .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(__FolioSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(__ClienteSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(__etqNewEliCliente2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(__etqNewClienteSalH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel20)
-                                    .addComponent(__PropietarioSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(__etqNewEliPropietario2)))
+                                .addGap(36, 36, 36)
+                                .addComponent(__etqNewTipodeSalidaH))
+                            .addComponent(jLabel46)
+                            .addGroup(__pnlSalidaHojaLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(__FolioSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel52)
                                 .addComponent(__TipodeSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(__etqNewEliTipoSalidaH)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(__etqNewPropietarioH)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(__OPSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(__TituloSalidaHoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel47))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(__pnlSalidaHojaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(__ClienteSalidaH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(__etqNewEliCliente2))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(__etqNewClienteSalH)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel60)
@@ -1889,7 +1889,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
                     .addComponent(__ACEPTARSALIDAH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(__MODIFICACIONH, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(__etqLimpiarTablaSalH, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JPanel.addTab("3. Salidas / Hojas", __pnlSalidaHoja);
@@ -2736,7 +2736,7 @@ public class MovimientosPapel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+            .addComponent(JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 648, Short.MAX_VALUE)
         );
 
         pack();

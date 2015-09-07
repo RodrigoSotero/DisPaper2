@@ -2686,6 +2686,31 @@ public class modelo extends database {
                 return "";
             }
     }
+
+    public ResultSet buscaOPsalidah(String parametro) {
+        String q="SELECT distinct orden_produccion FROM VW_INFOSALIDAH where orden_produccion like  '%"+parametro+"%'";
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
+    
+    public ResultSet buscaTodoOPsalidah(String parametro) {
+        String q="SELECT TITULO,CLIENTE,PROPIEDAD,estandar_produccion FROM VW_INFOSALIDAH where orden_produccion ='"+parametro+"'  order by id_salida desc limit 1";
+        System.out.println(q);
+        try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(q);
+                ResultSet res = pstm.executeQuery();
+                return res;
+            }catch(SQLException e){
+                
+                return null;
+            }
+    }
     
 }
 

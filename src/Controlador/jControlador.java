@@ -2766,13 +2766,35 @@ public class jControlador implements ActionListener{
                 KeyTipedLetrasNumCar(evt);
             }
             public void keyPressed(java.awt.event.KeyEvent evt){
-                
+                if(evt.getKeyCode()==KeyEvent.VK_ENTER||evt.getKeyCode()==KeyEvent.VK_TAB){
+                    if(!movimientos.__OPSalidaHoja.getText().equals("")){
+                        try {
+                            ResultSet buscaOP = mimodelo.buscaTodoOPsalidah(movimientos.__OPSalidaHoja.getText());
+                            
+                                while(buscaOP.next()){
+                                    System.out.println(buscaOP.getString(1));
+                                    movimientos.__TituloSalidaHoja.setText(buscaOP.getString(1));
+                                    movimientos.__ClienteSalidaH.setText(buscaOP.getString(2));
+                                    movimientos.__PropietarioSalidaH.setText(buscaOP.getString(3));
+                                    movimientos.__EstandarProduccionSalidaHoja.setText(buscaOP.getString(4));
+                                    movimientos.__MaquinaSalidaH.requestFocus();
+                                }
+                                
+                            if(movimientos.__TituloSalidaHoja.getText().equals("")){
+                                movimientos.__TituloSalidaHoja.requestFocus();
+                            }    
+                            
+                        } catch (SQLException ex) {
+                            Logger.getLogger(jControlador.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
             }
             
             public void keyReleased(java.awt.event.KeyEvent evt){
              try {
                     String parametro = movimientos.__OPSalidaHoja.getText();
-                    ResultSet buscaOP = mimodelo.buscaOP(parametro);
+                    ResultSet buscaOP = mimodelo.buscaOPsalidah(parametro);
                     opSalH.removeAll();
                     while(buscaOP.next()){
                         opSalH.addItem(buscaOP.getString(1));
@@ -3619,16 +3641,7 @@ public class jControlador implements ActionListener{
                 }
             }
         });
-        this.movimientos.__OPSalidaHoja.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                KeyTipedLetrasNumCar(evt);
-            } 
-            public void keyPressed(java.awt.event.KeyEvent evt){
-                if(evt.getKeyCode()==KeyEvent.VK_ENTER||evt.getKeyCode()==KeyEvent.VK_TAB){
-                    movimientos.__EstandarProduccionSalidaHoja.requestFocus();
-                }
-            }
-        });
+        
         this.movimientos.__EstandarProduccionSalidaHoja.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 KeyTipedNum(evt);
